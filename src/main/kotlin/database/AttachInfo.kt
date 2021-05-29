@@ -7,6 +7,8 @@ class AttachInfo(
 ) {
     var drawOrderSlotName: String? = null
         private set
+    var drawOrderZIndex: Int = 0
+        private set
     var hideSlotNames: Array<out String> = emptyArray()
         private set
 
@@ -20,7 +22,10 @@ class AttachInfo(
         private set
 
     fun hideSlots(vararg names: String) = apply { this.hideSlotNames = names }
-    fun drawOrder(slotName: String) = apply { this.drawOrderSlotName = slotName }
+    fun drawOrder(slotName: String, zIndex: Int = 0) = apply {
+        this.drawOrderSlotName = slotName
+        this.drawOrderZIndex = zIndex
+    }
     fun scale(scale: Float) = apply { scaleX(scale).scaleY(scale) }
     fun scaleX(scale: Float) = apply { this.scaleX = scale }
     fun scaleY(scale: Float) = apply { this.scaleY = scale }
