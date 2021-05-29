@@ -36,13 +36,13 @@ object Ironclad {
             )
             .relic(HappyFlower.ID,
                 AttachInfo("root")
-                    .drawOrder("shadow")
+                    .drawOrder("shadow", 1)
                     .position(-90f, 5f)
                     .scale(0.8f)
             )
             .relic(AncientTeaSet.ID,
                 AttachInfo("root")
-                    .drawOrder("shadow")
+                    .drawOrder("shadow", -1)
                     .position(135f, 40f)
                     .scale(0.9f)
             )
