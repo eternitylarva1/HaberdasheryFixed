@@ -69,5 +69,13 @@ object Ironclad {
                     .scaleX(-0.5f)
                     .scaleY(0.5f)
             )
+            .relic(CentennialPuzzle.ID,
+                AttachInfo("Neck_1")
+                    .drawOrder("pauldron_right")
+                    .position(-150f, 10f)
+                    .rotation(-100f)
+                    .scaleX(-0.4f)
+                    .scaleY(0.4f)
+            )
     }
 }
