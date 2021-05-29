@@ -15,6 +15,13 @@ object Ironclad {
                     .rotation(-85f)
                     .scale(0.93f)
             )
+            .relic(SmilingMask.ID,
+                AttachInfo("Head")
+                    .drawOrder("eye", 1)
+                    .position(20f, 16f)
+                    .rotation(-90f)
+                    .scale(0.6f)
+            )
             .relic(PenNib.ID,
                 AttachInfo("Arm_R_3")
                     .position(77.5f, 140f)
@@ -45,6 +52,22 @@ object Ironclad {
                     .drawOrder("shadow", -1)
                     .position(135f, 40f)
                     .scale(0.9f)
+            )
+            .relic(TinyChest.ID,
+                AttachInfo("root")
+                    .drawOrder("boot_left")
+                    .position(176f, 39f)
+                    .rotation(5f)
+                    .scaleX(-0.4f)
+                    .scaleY(0.4f)
+            )
+            .relic(Lantern.ID,
+                AttachInfo("Hips")
+                    .drawOrder("pants")
+                    .position(15f, 32f)
+                    .rotation(40f)
+                    .scaleX(-0.5f)
+                    .scaleY(0.5f)
             )
     }
 }
