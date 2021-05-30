@@ -15,6 +15,14 @@ object Ironclad {
                     .rotation(-85f)
                     .scale(0.93f)
             )
+            .relic(CultistMask.ID,
+                AttachInfo("Head")
+                    .hideSlots("helmet", "eye", "hair")
+                    .drawOrder("eye")
+                    .position(-77f, 11f)
+                    .rotation(-61f)
+                    .scale(0.95f)
+            )
             .relic(SmilingMask.ID,
                 AttachInfo("Head")
                     .drawOrder("eye", 1)
