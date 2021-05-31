@@ -30,11 +30,25 @@ object Ironclad {
                     .rotation(-90f)
                     .scale(0.6f)
             )
+            .relic(GremlinHorn.ID,
+                AttachInfo("Head")
+                    .drawOrder("shadow")
+                    .position(-13f, 25f)
+                    .rotation(-80f)
+                    .scale(0.7f)
+            )
             .relic(PenNib.ID,
                 AttachInfo("Arm_R_3")
                     .position(77.5f, 140f)
                     .rotation(-67f)
                     .scaleY(-1f)
+            )
+            .relic(Courier.ID,
+                AttachInfo("Arm_R_1")
+                    .position(-120f, 22f)
+                    .rotation(14f)
+                    .scaleX(0.6f)
+                    .scaleY(-0.6f)
             )
             .relic(BronzeScales.ID,
                 AttachInfo("Arm_L_1")
