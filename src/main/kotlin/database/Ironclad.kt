@@ -99,5 +99,27 @@ object Ironclad {
                     .scaleX(-0.4f)
                     .scaleY(0.4f)
             )
+            .relic(Anchor.ID,
+                AttachInfo("Leg_R_2")
+                    .drawOrder("shirt", 1)
+                    .position(135f, 6f)
+                    .rotation(-70f)
+                    .scale(0.6f)
+            )
+            .relic(HornCleat.ID,
+                AttachInfo("Leg_R_")
+                    .drawOrder("shirt", 0)
+                    .position(-40f, 28f)
+                    .rotation(180f)
+                    .scale(0.55f)
+            )
+            .relic(CaptainsWheel.ID,
+                AttachInfo("Hips")
+                    .drawOrder("shirt", 0)
+                    .position(0f, 3f)
+                    .rotation(-35f)
+                    .scaleX(-0.6f)
+                    .scaleY(0.6f)
+            )
     }
 }
