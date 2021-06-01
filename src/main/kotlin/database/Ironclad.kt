@@ -83,6 +83,18 @@ object Ironclad {
                     .scaleX(-0.4f)
                     .scaleY(0.4f)
             )
+            .relic(WarPaint.ID,
+                AttachInfo("root")
+                    .drawOrder("shadow", 1)
+                    .position(164f, 110f)
+                    .scale(0.7f)
+            )
+            .relic(Whetstone.ID,
+                AttachInfo("root")
+                    .drawOrder("shadow", 2)
+                    .position(173f, 90f)
+                    .scale(0.6f)
+            )
             .relic(Lantern.ID,
                 AttachInfo("Hips")
                     .drawOrder("pants")
@@ -120,6 +132,13 @@ object Ironclad {
                     .rotation(-35f)
                     .scaleX(-0.6f)
                     .scaleY(0.6f)
+            )
+            .relic(MealTicket.ID,
+                AttachInfo("Hips")
+                    .drawOrder("shadow", 5)
+                    .position(140f, 35f)
+                    .scaleX(-0.5f)
+                    .scaleY(0.5f)
             )
     }
 }
