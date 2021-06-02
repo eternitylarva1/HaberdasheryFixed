@@ -49,6 +49,8 @@ object AdjustRelic {
     private var rotating: Vector2? = null
     private var scaling: Float? = null
 
+    var active: Boolean = false
+
     fun setRelic(relicId: String) {
         val player = AbstractDungeon.player ?: return
 
@@ -66,6 +68,10 @@ object AdjustRelic {
         val info = info
         if (relicId == null || info == null) {
             return
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
+            active = !active
         }
 
         // Reset changes
