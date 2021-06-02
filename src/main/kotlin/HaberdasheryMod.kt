@@ -4,7 +4,10 @@ import basemod.BaseMod
 import basemod.ModPanel
 import basemod.devcommands.ConsoleCommand
 import basemod.interfaces.PostInitializeSubscriber
+import basemod.interfaces.PostRenderSubscriber
+import basemod.interfaces.PreUpdateSubscriber
 import basemod.interfaces.RelicGetSubscriber
+import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.relics.AbstractRelic
@@ -12,7 +15,9 @@ import com.megacrit.cardcrawl.relics.AbstractRelic
 @SpireInitializer
 class HaberdasheryMod :
     PostInitializeSubscriber,
-    RelicGetSubscriber
+    RelicGetSubscriber,
+    PreUpdateSubscriber,
+    PostRenderSubscriber
 {
     companion object Statics {
         val ID: String = "haberdashery"
@@ -40,11 +45,20 @@ class HaberdasheryMod :
         )
 
         ConsoleCommand.addCommand("haberdashery", TestCommand::class.java)
+        ConsoleCommand.addCommand("adjust", AdjustCommand::class.java)
     }
 
     override fun receiveRelicGet(relic: AbstractRelic?) {
         if (relic != null) {
             AttachRelic.receive(relic)
         }
+    }
+
+    override fun receivePreUpdate() {
+        AdjustRelic.update()
+    }
+
+    override fun receivePostRender(sb: SpriteBatch) {
+        AdjustRelic.render(sb)
     }
 }

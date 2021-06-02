@@ -32,7 +32,7 @@ object AttachDatabase {
     }
 
     fun relic(character: AbstractPlayer.PlayerClass, relicID: String, info: AttachInfo) {
-        database.getOrPut(character) { mutableMapOf() }[relicID] = info
+        database.getOrPut(character) { mutableMapOf() }[relicID] = info.finalize()
     }
 
     fun character(character: AbstractPlayer.PlayerClass): CharacterState {
