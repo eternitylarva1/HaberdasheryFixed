@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
 import com.esotericsoftware.spine.Skeleton
+import com.esotericsoftware.spine.attachments.Attachment
 import com.esotericsoftware.spine.attachments.RegionAttachment
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.CardCrawlGame
@@ -16,14 +17,24 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.FontHelper
 import haberdashery.database.AttachDatabase
 import haberdashery.database.AttachInfo
+import haberdashery.extensions.flipY
 import haberdashery.extensions.getPrivate
 import haberdashery.extensions.scale
 import kotlin.math.absoluteValue
 import kotlin.math.max
-import kotlin.math.roundToInt
 
 object AdjustRelic {
     private val debugRenderer = ShapeRenderer()
+    private val projection
+        get() = Gdx.app.applicationListener.getPrivate<OrthographicCamera>("camera", clazz = CardCrawlGame::class.java).combined
+    private val skeleton
+        get() = AbstractDungeon.player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java)
+    private val attachment: Attachment?
+        get() {
+            val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
+            val slotIndex = skeleton?.findSlotIndex(relicSlotName) ?: return null
+            return skeleton?.getAttachment(slotIndex, relicSlotName)
+        }
 
     private var relicId: String? = null
         set(value) {
@@ -35,12 +46,13 @@ object AdjustRelic {
     private var info: AttachInfo? = null
 
     private var rotating: Vector2? = null
+    private var scaling: Float? = null
 
     fun setRelic(relicId: String) {
         val player = AbstractDungeon.player ?: return
 
         val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
-        val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
+        val skeleton = skeleton ?: return
         if (skeleton.findSlotIndex(relicSlotName) < 0) {
             return
         }
@@ -61,9 +73,32 @@ object AdjustRelic {
                 .sub(Settings.WIDTH / 2f, Settings.HEIGHT / 2f)
                 .nor()
                 .scl(200.scale())
-        } else if (!Gdx.input.isKeyPressed(Input.Keys.R)) {
+        } else if (!Gdx.input.isKeyPressed(Input.Keys.R) && rotating != null) {
             rotating = null
             info.finalize()
+        }
+
+        // Scale
+        if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
+            val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()).sub(Settings.WIDTH / 2f, Settings.HEIGHT / 2f)
+            scaling = if (mouse.x.absoluteValue > mouse.y.absoluteValue) {
+                mouse.x.absoluteValue
+            } else {
+                mouse.y.absoluteValue
+            }
+        } else if (!Gdx.input.isKeyPressed(Input.Keys.S) && scaling != null) {
+            scaling = null
+            info.finalize()
+        }
+
+        // Flip
+        if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
+            info.flipHorizontal(!info.flipHorizontal)
+            attachmentScale(info)
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.Y)) {
+            info.flipVertical(!info.flipVertical)
+            attachmentScale(info)
         }
     }
 
@@ -75,6 +110,7 @@ object AdjustRelic {
         }
 
         rotationWidget(sb, info)
+        scaleWidget(sb, info)
 
         FontHelper.renderFontCenteredHeight(
             sb,
@@ -83,8 +119,8 @@ object AdjustRelic {
                     "Bone: ${info.boneName}\n" +
                     "Position: ${info.positionData.x}°, ${info.positionData.y}\n" +
                     "Rotation: ${info.dirtyRotation}\n" +
-                    "Scale: ${info.scaleX}, ${info.scaleY}\n",
-            30f, Settings.HEIGHT / 2f,
+                    "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n",
+            30f, Settings.HEIGHT - 300.scale(),
             Color.WHITE
         )
     }
@@ -94,7 +130,6 @@ object AdjustRelic {
         if (startRotation != null) {
             sb.end()
 
-            val projection = Gdx.app.applicationListener.getPrivate<OrthographicCamera>("camera", clazz = CardCrawlGame::class.java).combined
             val center = Vector2(Settings.WIDTH / 2f, Settings.HEIGHT / 2f)
             val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()).sub(center)
 
@@ -102,10 +137,7 @@ object AdjustRelic {
             info.relativeRotation(angle)
 
             if (info.dirtyRotation != info.rotation) {
-                val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
-                val skeleton = AbstractDungeon.player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
-                val slotIndex = skeleton.findSlotIndex(relicSlotName)
-                val attachment = skeleton.getAttachment(slotIndex, relicSlotName)
+                val attachment = attachment
                 if (attachment is RegionAttachment) {
                     attachment.rotation = info.dirtyRotation
                     attachment.updateOffset()
@@ -118,9 +150,57 @@ object AdjustRelic {
             debugRenderer.color = Color.RED
             debugRenderer.arc(center.x, center.y, 100.scale(), 360f - startRotation.angle(), angle, max(1, (angle.absoluteValue / 10f).toInt()))
             debugRenderer.color = Color.WHITE
-            debugRenderer.line(center, startRotation.cpy().add(center).apply { y = Settings.HEIGHT - y })
+            debugRenderer.line(center, startRotation.cpy().add(center).flipY())
             debugRenderer.color = Color.RED
-            debugRenderer.line(center, mouse.cpy().add(center).apply { y = Settings.HEIGHT - y })
+            debugRenderer.line(center, mouse.cpy().add(center).flipY())
+            debugRenderer.end()
+            Gdx.gl.glLineWidth(1f)
+
+            sb.begin()
+        }
+    }
+
+    private fun attachmentScale(info: AttachInfo) {
+        val attachment = attachment
+        if (attachment is RegionAttachment) {
+            attachment.scaleX = info.dirtyScaleX
+            if (info.flipHorizontal) {
+                attachment.scaleX *= -1
+            }
+            attachment.scaleY = info.dirtyScaleY
+            if (info.flipVertical) {
+                attachment.scaleY *= -1
+            }
+            attachment.updateOffset()
+        }
+    }
+
+    private fun scaleWidget(sb: SpriteBatch, info: AttachInfo) {
+        val startScale = scaling
+        if (startScale != null) {
+            sb.end()
+
+            val center = Vector2(Settings.WIDTH / 2f, Settings.HEIGHT / 2f)
+            val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()).sub(center)
+            val longSide = if (mouse.x.absoluteValue > mouse.y.absoluteValue) {
+                mouse.x.absoluteValue
+            } else {
+                mouse.y.absoluteValue
+            }
+
+            info.scale(longSide / startScale)
+
+            if (info.dirtyScaleX != info.scaleX) {
+                attachmentScale(info)
+            }
+
+            Gdx.gl.glLineWidth(2f)
+            debugRenderer.projectionMatrix = projection
+            debugRenderer.begin(ShapeRenderer.ShapeType.Line)
+            debugRenderer.color = Color.WHITE
+            debugRenderer.rect(center.x - startScale, center.y - startScale, startScale * 2, startScale * 2)
+            debugRenderer.color = Color.RED
+            debugRenderer.rect(center.x - longSide, center.y - longSide, longSide * 2, longSide * 2)
             debugRenderer.end()
             Gdx.gl.glLineWidth(1f)
 

@@ -16,6 +16,10 @@ class AttachInfo(
         private set
     var scaleY: Float = 1f
         private set
+    var flipHorizontal: Boolean = false
+        private set
+    var flipVertical: Boolean = false
+        private set
     var rotation: Float = 0f
         private set
     var position: Vector2 = Vector2()
@@ -24,14 +28,25 @@ class AttachInfo(
         private set
 
 
+    var dirtyScaleX: Float = scaleX
+        private set
+    var dirtyScaleY: Float = scaleY
+        private set
     var dirtyRotation: Float = rotation
         private set(value) {
             field = value % 360f
         }
 
-    fun finalize(): AttachInfo {
+    fun finalize() = apply {
+        scaleX = dirtyScaleX
+        if (flipHorizontal) {
+            scaleX *= -1
+        }
+        scaleY = dirtyScaleY
+        if (flipVertical) {
+            scaleY *= -1
+        }
         rotation = dirtyRotation
-        return this
     }
 
     fun hideSlots(vararg names: String) = apply { this.hideSlotNames = names }
@@ -40,8 +55,22 @@ class AttachInfo(
         this.drawOrderZIndex = zIndex
     }
     fun scale(scale: Float) = apply { scaleX(scale).scaleY(scale) }
-    fun scaleX(scale: Float) = apply { this.scaleX = scale }
-    fun scaleY(scale: Float) = apply { this.scaleY = scale }
+    fun scaleX(scale: Float) = apply {
+        this.dirtyScaleX = scale
+        if (scale < 0) {
+            this.dirtyScaleX *= -1
+            flipHorizontal(true)
+        }
+    }
+    fun scaleY(scale: Float) = apply {
+        this.dirtyScaleY = scale
+        if (scale < 0) {
+            this.dirtyScaleY *= -1
+            flipVertical(true)
+        }
+    }
+    fun flipHorizontal(flip: Boolean) = apply { this.flipHorizontal = flip }
+    fun flipVertical(flip: Boolean) = apply { this.flipVertical = flip }
     fun rotation(degrees: Float) = apply { this.dirtyRotation = degrees }
     fun relativeRotation(degrees: Float) = apply { this.dirtyRotation = this.rotation + degrees }
     fun position(degrees: Float, distance: Float) = apply {

@@ -1,6 +1,7 @@
 package haberdashery.extensions
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.math.Vector2
 import com.megacrit.cardcrawl.core.Settings
 
 fun Int.scale(): Float =
@@ -14,3 +15,9 @@ fun Int.timeScale(): Float =
 
 fun Float.timeScale(): Float =
     this * Gdx.graphics.deltaTime
+
+fun Float.flipY(): Float =
+    Settings.HEIGHT - this
+
+fun Vector2.flipY(): Vector2 =
+    apply { y = y.flipY() }
