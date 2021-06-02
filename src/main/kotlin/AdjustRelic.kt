@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.FontHelper
+import com.megacrit.cardcrawl.helpers.input.InputHelper
 import haberdashery.database.AttachDatabase
 import haberdashery.database.AttachInfo
 import haberdashery.extensions.flipY
@@ -65,6 +66,19 @@ object AdjustRelic {
         val info = info
         if (relicId == null || info == null) {
             return
+        }
+
+        // Reset changes
+        if (InputHelper.justClickedRight) {
+            info.clean()
+            if (rotating != null) {
+                attachmentRotation(info)
+                rotating = null
+            }
+            if (scaling != null) {
+                attachmentScale(info)
+                scaling = null
+            }
         }
 
         // Rotation
@@ -125,38 +139,11 @@ object AdjustRelic {
         )
     }
 
-    private fun rotationWidget(sb: SpriteBatch, info: AttachInfo) {
-        val startRotation = rotating
-        if (startRotation != null) {
-            sb.end()
-
-            val center = Vector2(Settings.WIDTH / 2f, Settings.HEIGHT / 2f)
-            val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()).sub(center)
-
-            val angle = mouse.angle(startRotation)
-            info.relativeRotation(angle)
-
-            if (info.dirtyRotation != info.rotation) {
-                val attachment = attachment
-                if (attachment is RegionAttachment) {
-                    attachment.rotation = info.dirtyRotation
-                    attachment.updateOffset()
-                }
-            }
-
-            Gdx.gl.glLineWidth(2f)
-            debugRenderer.projectionMatrix = projection
-            debugRenderer.begin(ShapeRenderer.ShapeType.Line)
-            debugRenderer.color = Color.RED
-            debugRenderer.arc(center.x, center.y, 100.scale(), 360f - startRotation.angle(), angle, max(1, (angle.absoluteValue / 10f).toInt()))
-            debugRenderer.color = Color.WHITE
-            debugRenderer.line(center, startRotation.cpy().add(center).flipY())
-            debugRenderer.color = Color.RED
-            debugRenderer.line(center, mouse.cpy().add(center).flipY())
-            debugRenderer.end()
-            Gdx.gl.glLineWidth(1f)
-
-            sb.begin()
+    private fun attachmentRotation(info: AttachInfo) {
+        val attachment = attachment
+        if (attachment is RegionAttachment) {
+            attachment.rotation = info.dirtyRotation
+            attachment.updateOffset()
         }
     }
 
@@ -172,6 +159,37 @@ object AdjustRelic {
                 attachment.scaleY *= -1
             }
             attachment.updateOffset()
+        }
+    }
+
+    private fun rotationWidget(sb: SpriteBatch, info: AttachInfo) {
+        val startRotation = rotating
+        if (startRotation != null) {
+            sb.end()
+
+            val center = Vector2(Settings.WIDTH / 2f, Settings.HEIGHT / 2f)
+            val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()).sub(center)
+
+            val angle = mouse.angle(startRotation)
+            info.relativeRotation(angle)
+
+            if (info.dirtyRotation != info.rotation) {
+                attachmentRotation(info)
+            }
+
+            Gdx.gl.glLineWidth(2f)
+            debugRenderer.projectionMatrix = projection
+            debugRenderer.begin(ShapeRenderer.ShapeType.Line)
+            debugRenderer.color = Color.RED
+            debugRenderer.arc(center.x, center.y, 100.scale(), 360f - startRotation.angle(), angle, max(1, (angle.absoluteValue / 10f).toInt()))
+            debugRenderer.color = Color.WHITE
+            debugRenderer.line(center, startRotation.cpy().add(center).flipY())
+            debugRenderer.color = Color.RED
+            debugRenderer.line(center, mouse.cpy().add(center).flipY())
+            debugRenderer.end()
+            Gdx.gl.glLineWidth(1f)
+
+            sb.begin()
         }
     }
 

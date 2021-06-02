@@ -1,6 +1,7 @@
 package haberdashery.database
 
 import com.badlogic.gdx.math.Vector2
+import kotlin.math.absoluteValue
 
 class AttachInfo(
     val boneName: String
@@ -47,6 +48,11 @@ class AttachInfo(
             scaleY *= -1
         }
         rotation = dirtyRotation
+    }
+    fun clean() = apply {
+        dirtyScaleX = scaleX.absoluteValue
+        dirtyScaleY = scaleY.absoluteValue
+        dirtyRotation = rotation
     }
 
     fun hideSlots(vararg names: String) = apply { this.hideSlotNames = names }
