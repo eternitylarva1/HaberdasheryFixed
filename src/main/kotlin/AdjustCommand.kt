@@ -7,12 +7,16 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 class AdjustCommand : ConsoleCommand() {
     init {
         requiresPlayer = true
-        minExtraTokens = 1
+        minExtraTokens = 0
         maxExtraTokens = 1
         simpleCheck = true
     }
 
     override fun execute(tokens: Array<out String>, depth: Int) {
+        if (tokens.size <= 1) {
+            AdjustRelic.setRelic(null)
+            return
+        }
         val relicId = Relic.getRelicName(tokens.copyOfRange(1, tokens.size))
         AdjustRelic.setRelic(relicId)
     }

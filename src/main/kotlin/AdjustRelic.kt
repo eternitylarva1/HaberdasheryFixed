@@ -52,7 +52,12 @@ object AdjustRelic {
 
     var active: Boolean = false
 
-    fun setRelic(relicId: String) {
+    fun setRelic(relicId: String?) {
+        if (relicId == null) {
+            this.relicId = relicId
+            return
+        }
+
         val player = AbstractDungeon.player ?: return
 
         val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
