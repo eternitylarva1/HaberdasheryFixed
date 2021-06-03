@@ -31,6 +31,12 @@ object AdjustRelic {
         get() = Gdx.app.applicationListener.getPrivate<OrthographicCamera>("camera", clazz = CardCrawlGame::class.java).combined
     private val skeleton
         get() = AbstractDungeon.player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java)
+    private val skeletonStart by lazy {
+        Skeleton(skeleton).apply {
+            setToSetupPose()
+            updateWorldTransform()
+        }
+    }
     private val attachment: Attachment?
         get() {
             val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
@@ -47,6 +53,7 @@ object AdjustRelic {
         }
     private var info: AttachInfo? = null
 
+    private var positioning: Vector2? = null
     private var rotating: Vector2? = null
     private var scaling: Float? = null
 
@@ -83,6 +90,10 @@ object AdjustRelic {
         // Reset changes
         if (InputHelper.justClickedRight) {
             info.clean()
+            if (positioning != null) {
+                attachmentPosition(info)
+                positioning = null
+            }
             if (rotating != null) {
                 attachmentRotation(info)
                 rotating = null
@@ -91,6 +102,14 @@ object AdjustRelic {
                 attachmentScale(info)
                 scaling = null
             }
+        }
+
+        // Position
+        if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
+            positioning = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
+        } else if (!Gdx.input.isKeyPressed(Input.Keys.T) && positioning != null) {
+            positioning = null
+            info.finalize()
         }
 
         // Rotation
@@ -135,6 +154,7 @@ object AdjustRelic {
             return
         }
 
+        positionWidget(sb, info)
         rotationWidget(sb, info)
         scaleWidget(sb, info)
 
@@ -143,12 +163,21 @@ object AdjustRelic {
             FontHelper.tipBodyFont,
             "[$relicId]\n" +
                     "Bone: ${info.boneName}\n" +
-                    "Position: ${info.positionData.x}°, ${info.positionData.y}\n" +
+                    "Position: ${info.dirtyPositionData.x}°, ${info.dirtyPositionData.y}\n" +
                     "Rotation: ${info.dirtyRotation}\n" +
                     "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n",
             30f, Settings.HEIGHT - 300.scale(),
             Color.WHITE
         )
+    }
+
+    private fun attachmentPosition(info: AttachInfo) {
+        val attachment = attachment
+        if (attachment is RegionAttachment) {
+            attachment.x = info.dirtyPosition.x
+            attachment.y = info.dirtyPosition.y
+            attachment.updateOffset()
+        }
     }
 
     private fun attachmentRotation(info: AttachInfo) {
@@ -171,6 +200,40 @@ object AdjustRelic {
                 attachment.scaleY *= -1
             }
             attachment.updateOffset()
+        }
+    }
+
+    private fun positionWidget(sb: SpriteBatch, info: AttachInfo) {
+        val startPosition = positioning
+        if (startPosition != null) {
+            sb.end()
+
+            val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
+            val diff = mouse.cpy().sub(startPosition).scl(0.1f)
+            skeletonStart.findBone(info.boneName)?.let { bone ->
+                diff.rotate(bone.worldRotationX).scl(1f, -1f)
+            }
+
+            info.relativePosition(diff.x , diff.y)
+
+            if (info.dirtyPosition != info.position) {
+                attachmentPosition(info)
+            }
+
+            Gdx.gl.glLineWidth(2f)
+            debugRenderer.projectionMatrix = projection
+            debugRenderer.begin(ShapeRenderer.ShapeType.Line)
+            debugRenderer.color = Color.WHITE
+            debugRenderer.line(startPosition.cpy().add(-20f, 0f).flipY(), startPosition.cpy().add(20f, 0f).flipY())
+            debugRenderer.line(startPosition.cpy().add(0f, -20f).flipY(), startPosition.cpy().add(0f, 20f).flipY())
+            debugRenderer.color = Color.RED
+            debugRenderer.line(startPosition.cpy().flipY(), mouse.cpy().flipY())
+            debugRenderer.line(mouse.cpy().add(-20f, 0f).flipY(), mouse.cpy().add(20f, 0f).flipY())
+            debugRenderer.line(mouse.cpy().add(0f, -20f).flipY(), mouse.cpy().add(0f, 20f).flipY())
+            debugRenderer.end()
+            Gdx.gl.glLineWidth(1f)
+
+            sb.begin()
         }
     }
 
