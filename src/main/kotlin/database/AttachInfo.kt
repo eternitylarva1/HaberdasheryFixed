@@ -29,20 +29,20 @@ class AttachInfo(
         private set
 
 
-    var dirtyScaleX: Float = scaleX
+    internal var dirtyScaleX: Float = scaleX
         private set
-    var dirtyScaleY: Float = scaleY
+    internal var dirtyScaleY: Float = scaleY
         private set
-    var dirtyRotation: Float = rotation
+    internal var dirtyRotation: Float = rotation
         private set(value) {
             field = value % 360f
         }
-    var dirtyPosition: Vector2 = Vector2()
+    internal var dirtyPosition: Vector2 = Vector2()
         private set
-    var dirtyPositionData: Vector2 = Vector2()
+    internal var dirtyPositionData: Vector2 = Vector2()
         private set
 
-    fun finalize() = apply {
+    internal fun finalize() = apply {
         scaleX = dirtyScaleX
         if (flipHorizontal) {
             scaleX *= -1
@@ -55,7 +55,7 @@ class AttachInfo(
         position.set(dirtyPosition)
         positionData.set(dirtyPositionData)
     }
-    fun clean() = apply {
+    internal fun clean() = apply {
         dirtyScaleX = scaleX.absoluteValue
         dirtyScaleY = scaleY.absoluteValue
         dirtyRotation = rotation
@@ -86,12 +86,12 @@ class AttachInfo(
     fun flipHorizontal(flip: Boolean) = apply { this.flipHorizontal = flip }
     fun flipVertical(flip: Boolean) = apply { this.flipVertical = flip }
     fun rotation(degrees: Float) = apply { this.dirtyRotation = degrees }
-    fun relativeRotation(degrees: Float) = apply { this.dirtyRotation = this.rotation + degrees }
+    internal fun relativeRotation(degrees: Float) = apply { this.dirtyRotation = this.rotation + degrees }
     fun position(degrees: Float, distance: Float) = apply {
         this.dirtyPositionData.set(degrees, distance)
         this.dirtyPosition.set(distance, 0f).rotate(degrees)
     }
-    fun relativePosition(x: Float, y: Float) = apply {
+    internal fun relativePosition(x: Float, y: Float) = apply {
         this.dirtyPosition.set(position.x + x, position.y + y)
         this.dirtyPositionData.set(dirtyPosition.angle(), dirtyPosition.len())
     }
