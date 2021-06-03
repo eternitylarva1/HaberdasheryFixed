@@ -1,5 +1,6 @@
 package haberdashery
 
+import basemod.DevConsole
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.graphics.Color
@@ -66,7 +67,7 @@ object AdjustRelic {
     fun update() {
         val relicId = relicId
         val info = info
-        if (relicId == null || info == null) {
+        if (DevConsole.visible || relicId == null || info == null) {
             return
         }
 
