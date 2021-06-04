@@ -1,0 +1,292 @@
+{
+  "IRONCLAD": {
+    "Runic Dome": {
+      "drawOrderSlotName": "eye",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "helmet"
+      ],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.93,
+      "scaleY": 0.93,
+      "rotation": -85.0,
+      "position": {
+        "x": 1.6731558,
+        "y": -5.761992
+      },
+      "boneName": "Head"
+    },
+    "CultistMask": {
+      "drawOrderSlotName": "eye",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "helmet",
+        "eye",
+        "hair"
+      ],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.95,
+      "scaleY": 0.95,
+      "rotation": -61.0,
+      "position": {
+        "x": -10.03394,
+        "y": -4.5077763
+      },
+      "boneName": "Head"
+    },
+    "Smiling Mask": {
+      "drawOrderSlotName": "eye",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.6,
+      "scaleY": 0.6,
+      "rotation": -90.0,
+      "position": {
+        "x": 8.286553,
+        "y": -13.686966
+      },
+      "boneName": "Head"
+    },
+    "Gremlin Horn": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.7,
+      "scaleY": 0.7,
+      "rotation": -80.0,
+      "position": {
+        "x": -0.7886977,
+        "y": -24.987556
+      },
+      "boneName": "Head"
+    },
+    "Pen Nib": {
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": true,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -67.0,
+      "position": {
+        "x": 129.091,
+        "y": -54.180386
+      },
+      "boneName": "Arm_R_3"
+    },
+    "The Courier": {
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": true,
+      "scaleX": 0.6,
+      "scaleY": 0.6,
+      "rotation": 14.0,
+      "position": {
+        "x": 19.357134,
+        "y": -10.454733
+      },
+      "boneName": "Arm_R_1"
+    },
+    "Bronze Scales": {
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.5,
+      "scaleY": 0.5,
+      "rotation": 15.0,
+      "position": {
+        "x": -11.498552,
+        "y": -6.0649223
+      },
+      "boneName": "Arm_L_1"
+    },
+    "Bag of Marbles": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.7,
+      "scaleY": 0.7,
+      "rotation": 0.0,
+      "position": {
+        "x": 140.0,
+        "y": 0.0
+      },
+      "boneName": "root"
+    },
+    "Happy Flower": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.8,
+      "scaleY": 0.8,
+      "rotation": 0.0,
+      "position": {
+        "x": -2.1855695E-7,
+        "y": -5.0
+      },
+      "boneName": "root"
+    },
+    "Ancient Tea Set": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.9,
+      "scaleY": 0.9,
+      "rotation": 0.0,
+      "position": {
+        "x": -28.284271,
+        "y": 28.284271
+      },
+      "boneName": "root"
+    },
+    "Tiny Chest": {
+      "drawOrderSlotName": "boot_left",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.4,
+      "scaleY": 0.4,
+      "rotation": 5.0,
+      "position": {
+        "x": -38.905,
+        "y": 2.7205024
+      },
+      "boneName": "root"
+    },
+    "War Paint": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.7,
+      "scaleY": 0.7,
+      "rotation": 0.0,
+      "position": {
+        "x": -105.738785,
+        "y": 30.32011
+      },
+      "boneName": "root"
+    },
+    "Whetstone": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 2,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.6,
+      "scaleY": 0.6,
+      "rotation": 0.0,
+      "position": {
+        "x": -89.329155,
+        "y": 10.968235
+      },
+      "boneName": "root"
+    },
+    "Lantern": {
+      "drawOrderSlotName": "pants",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.5,
+      "scaleY": 0.5,
+      "rotation": 40.0,
+      "position": {
+        "x": 30.909626,
+        "y": 8.282209
+      },
+      "boneName": "Hips"
+    },
+    "Centennial Puzzle": {
+      "drawOrderSlotName": "pauldron_right",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.4,
+      "scaleY": 0.4,
+      "rotation": -100.0,
+      "position": {
+        "x": -1.0214746,
+        "y": 9.947693
+      },
+      "boneName": "Neck_1"
+    },
+    "Anchor": {
+      "drawOrderSlotName": "shirt",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.6,
+      "scaleY": 0.6,
+      "rotation": -70.0,
+      "position": {
+        "x": -4.951823,
+        "y": -3.3881333
+      },
+      "boneName": "Leg_R_2"
+    },
+    "HornCleat": {
+      "drawOrderSlotName": "shirt",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.55,
+      "scaleY": 0.55,
+      "rotation": 180.0,
+      "position": {
+        "x": -1.6012392,
+        "y": 27.954176
+      },
+      "boneName": "Leg_R_"
+    },
+    "CaptainsWheel": {
+      "drawOrderSlotName": "shirt",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.6,
+      "scaleY": 0.6,
+      "rotation": -35.0,
+      "position": {
+        "x": 3.0,
+        "y": 0.0
+      },
+      "boneName": "Hips"
+    },
+    "MealTicket": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 5,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.5,
+      "scaleY": 0.5,
+      "rotation": 0.0,
+      "position": {
+        "x": -26.811556,
+        "y": 22.497568
+      },
+      "boneName": "Hips"
+    }
+  }
+}

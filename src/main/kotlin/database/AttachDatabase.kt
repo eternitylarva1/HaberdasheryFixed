@@ -30,7 +30,6 @@ object AttachDatabase {
             .filter { Files.isRegularFile(it) }
             .forEach { load(it) }
 
-        Ironclad.initialize()
         Silent.initialize()
         Defect.initialize()
         Watcher.initialize()
