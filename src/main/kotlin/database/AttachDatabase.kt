@@ -29,8 +29,6 @@ object AttachDatabase {
         Files.walk(path, 1)
             .filter { Files.isRegularFile(it) }
             .forEach { load(it) }
-
-        Watcher.initialize()
     }
 
     fun test() {
