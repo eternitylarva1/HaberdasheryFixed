@@ -7,6 +7,9 @@ import kotlin.math.absoluteValue
 class AttachInfo(
     val boneName: String
 ) {
+    // for gson initializing
+    private constructor() : this("") {}
+
     var drawOrderSlotName: String? = null
         private set
     var drawOrderZIndex: Int = 0
