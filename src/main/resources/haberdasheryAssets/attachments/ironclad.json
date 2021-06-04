@@ -362,6 +362,21 @@
         "y": -6.4000006
       },
       "boneName": "root"
+    },
+    "Nunchaku": {
+      "drawOrderSlotName": "shirt",
+      "drawOrderZIndex": 2,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.5841251,
+      "scaleY": 0.5841251,
+      "rotation": -273.29147,
+      "position": {
+        "x": -10.167364,
+        "y": 16.074972
+      },
+      "boneName": "Leg_R_2"
     }
   }
 }
