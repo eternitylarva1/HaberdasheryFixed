@@ -33,8 +33,6 @@ class AttachInfo(
     @Transient
     var position: Vector2 = Vector2()
         private set
-    @Transient
-    var positionVector: Vector2? = null
 
 
     @SerializedName("scaleX")
@@ -95,9 +93,6 @@ class AttachInfo(
     fun flipVertical(flip: Boolean) = apply { this.flipVertical = flip }
     fun rotation(degrees: Float) = apply { this.dirtyRotation = degrees }
     internal fun relativeRotation(degrees: Float) = apply { this.dirtyRotation = this.rotation + degrees }
-    fun positionVector(degrees: Float, distance: Float) = apply {
-        this.positionVector = Vector2(degrees, distance)
-    }
     fun position(x: Float, y: Float) = apply {
         this.dirtyPosition.set(x, y)
     }
