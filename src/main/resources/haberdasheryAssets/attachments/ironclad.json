@@ -287,6 +287,51 @@
         "y": 22.497568
       },
       "boneName": "Hips"
+    },
+    "Molten Egg 2": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.74222225,
+      "scaleY": 0.74222225,
+      "rotation": -28.417788,
+      "position": {
+        "x": -143.40001,
+        "y": 14.5
+      },
+      "boneName": "root"
+    },
+    "Toxic Egg 2": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 3,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.84771574,
+      "scaleY": 0.84771574,
+      "rotation": 0.0,
+      "position": {
+        "x": -161.9,
+        "y": 11.5
+      },
+      "boneName": "root"
+    },
+    "Frozen Egg 2": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 2,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.6571429,
+      "scaleY": 0.6571429,
+      "rotation": 4.8762217,
+      "position": {
+        "x": -179.70001,
+        "y": 16.0
+      },
+      "boneName": "root"
     }
   }
 }
