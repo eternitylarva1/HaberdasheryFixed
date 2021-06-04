@@ -167,6 +167,7 @@ object AdjustRelic {
             FontHelper.tipBodyFont,
             "[$relicId]\n" +
                     "Bone: ${info.boneName}\n" +
+                    "Draw Order: ${info.drawOrderSlotName} [${info.drawOrderZIndex}]\n" +
                     "Position: ${info.dirtyPosition.x}, ${info.dirtyPosition.y}\n" +
                     "Rotation: ${info.dirtyRotation}\n" +
                     "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n",
