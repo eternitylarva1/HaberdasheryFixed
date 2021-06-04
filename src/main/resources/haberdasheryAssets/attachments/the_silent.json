@@ -1,0 +1,38 @@
+{
+  "THE_SILENT": {
+    "Runic Dome": {
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "skull"
+      ],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -55.0,
+      "position": {
+        "x": -6.964468,
+        "y": -3.9365196
+      },
+      "boneName": "Skull"
+    },
+    "CultistMask": {
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "skull",
+        "hair",
+        "hair2"
+      ],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -40.0,
+      "position": {
+        "x": -13.893959,
+        "y": -11.443685
+      },
+      "boneName": "Skull"
+    }
+  }
+}
