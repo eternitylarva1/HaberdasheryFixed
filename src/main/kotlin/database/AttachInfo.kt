@@ -1,6 +1,7 @@
 package haberdashery.database
 
 import com.badlogic.gdx.math.Vector2
+import com.google.gson.annotations.SerializedName
 import kotlin.math.absoluteValue
 
 class AttachInfo(
@@ -13,28 +14,38 @@ class AttachInfo(
     var hideSlotNames: Array<out String> = emptyArray()
         private set
 
+    @Transient
     var scaleX: Float = 1f
         private set
+    @Transient
     var scaleY: Float = 1f
         private set
     var flipHorizontal: Boolean = false
         private set
     var flipVertical: Boolean = false
         private set
+    @Transient
     var rotation: Float = 0f
         private set
+    @Transient
     var position: Vector2 = Vector2()
         private set
+    @Transient
+    var positionVector: Vector2? = null
 
 
+    @SerializedName("scaleX")
     internal var dirtyScaleX: Float = scaleX
         private set
+    @SerializedName("scaleY")
     internal var dirtyScaleY: Float = scaleY
         private set
+    @SerializedName("rotation")
     internal var dirtyRotation: Float = rotation
         private set(value) {
             field = value % 360f
         }
+    @SerializedName("position")
     internal var dirtyPosition: Vector2 = Vector2()
         private set
 

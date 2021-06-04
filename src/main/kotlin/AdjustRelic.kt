@@ -83,6 +83,10 @@ object AdjustRelic {
             return
         }
 
+        if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
+            AttachDatabase.save(AbstractDungeon.player.chosenClass)
+        }
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
             active = !active
         }

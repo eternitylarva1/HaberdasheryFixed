@@ -1,5 +1,7 @@
 package haberdashery.database
 
+import com.badlogic.gdx.Gdx
+import com.google.gson.GsonBuilder
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
@@ -24,6 +26,20 @@ object AttachDatabase {
                     relic
                 )
             }
+        }
+    }
+
+    fun save(character: AbstractPlayer.PlayerClass) {
+        println("Saving attach info...")
+        val gson = GsonBuilder()
+            .setPrettyPrinting()
+            .create()
+        database[character]?.let {
+            val json = gson.toJson(mapOf(character to it))
+            val filename = "${character.name.toLowerCase()}.json"
+            println(filename)
+            Gdx.files.local(filename).writeString(json, false)
+            println("Done")
         }
     }
 
