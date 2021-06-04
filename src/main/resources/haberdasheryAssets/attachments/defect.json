@@ -1,0 +1,38 @@
+{
+  "DEFECT": {
+    "Runic Dome": {
+      "drawOrderSlotName": "Eye_up",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -50.0,
+      "position": {
+        "x": 17.591429,
+        "y": -3.8133593
+      },
+      "boneName": "Neck_3"
+    },
+    "CultistMask": {
+      "drawOrderSlotName": "Eye_up",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "head",
+        "Eye_up",
+        "Eye_down"
+      ],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -15.0,
+      "position": {
+        "x": 8.107108,
+        "y": -16.07093
+      },
+      "boneName": "Neck_3"
+    }
+  }
+}

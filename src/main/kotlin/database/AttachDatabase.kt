@@ -30,7 +30,6 @@ object AttachDatabase {
             .filter { Files.isRegularFile(it) }
             .forEach { load(it) }
 
-        Defect.initialize()
         Watcher.initialize()
     }
 
