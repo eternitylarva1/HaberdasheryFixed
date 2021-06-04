@@ -1,8 +1,9 @@
-package haberdashery
+package haberdashery.devcommands
 
 import basemod.devcommands.ConsoleCommand
 import basemod.devcommands.relic.Relic
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
+import haberdashery.AdjustRelic
 
 class AdjustCommand : ConsoleCommand() {
     init {
@@ -13,11 +14,11 @@ class AdjustCommand : ConsoleCommand() {
     }
 
     override fun execute(tokens: Array<out String>, depth: Int) {
-        if (tokens.size <= 1) {
+        if (tokens.size <= 2) {
             AdjustRelic.setRelic(null)
             return
         }
-        val relicId = Relic.getRelicName(tokens.copyOfRange(1, tokens.size))
+        val relicId = Relic.getRelicName(tokens.copyOfRange(2, tokens.size))
         AdjustRelic.setRelic(relicId)
     }
 

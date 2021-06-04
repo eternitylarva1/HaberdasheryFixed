@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.relics.AbstractRelic
+import haberdashery.devcommands.HaberdasheryCommand
 
 @SpireInitializer
 class HaberdasheryMod :
@@ -44,8 +45,7 @@ class HaberdasheryMod :
             settingsPanel
         )
 
-        ConsoleCommand.addCommand("haberdashery", TestCommand::class.java)
-        ConsoleCommand.addCommand("adjust", AdjustCommand::class.java)
+        ConsoleCommand.addCommand("haberdashery", HaberdasheryCommand::class.java)
     }
 
     override fun receiveRelicGet(relic: AbstractRelic?) {
