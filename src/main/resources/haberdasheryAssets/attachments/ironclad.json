@@ -332,6 +332,36 @@
         "y": 16.0
       },
       "boneName": "root"
+    },
+    "Akabeko": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.806701,
+      "scaleY": 0.806701,
+      "rotation": 0.0,
+      "position": {
+        "x": 79.600006,
+        "y": 15.700001
+      },
+      "boneName": "root"
+    },
+    "MawBank": {
+      "drawOrderSlotName": "boot_left",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.75659823,
+      "scaleY": 0.75659823,
+      "rotation": 0.0,
+      "position": {
+        "x": -62.6,
+        "y": -6.4000006
+      },
+      "boneName": "root"
     }
   }
 }
