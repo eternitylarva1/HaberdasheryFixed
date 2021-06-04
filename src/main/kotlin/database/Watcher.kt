@@ -11,7 +11,7 @@ object Watcher {
             .relic(RunicDome.ID,
                 AttachInfo("Head")
                     .drawOrder("ear")
-                    .position(-20f, 10f)
+                    .positionVector(-20f, 10f)
                     .rotation(-100f)
                     .scale(0.8f)
             )
@@ -19,7 +19,7 @@ object Watcher {
                 AttachInfo("Head")
                     .hideSlots("ear", "hair_accessory copy", "hair_fg", "face")
                     .drawOrder("ear")
-                    .position(-90f, 10f)
+                    .positionVector(-90f, 10f)
                     .rotation(-78f)
                     .scale(0.9f)
             )

@@ -25,8 +25,6 @@ class AttachInfo(
         private set
     var position: Vector2 = Vector2()
         private set
-    var positionData: Vector2 = Vector2()
-        private set
 
 
     internal var dirtyScaleX: Float = scaleX
@@ -38,8 +36,6 @@ class AttachInfo(
             field = value % 360f
         }
     internal var dirtyPosition: Vector2 = Vector2()
-        private set
-    internal var dirtyPositionData: Vector2 = Vector2()
         private set
 
     internal fun finalize() = apply {
@@ -53,14 +49,12 @@ class AttachInfo(
         }
         rotation = dirtyRotation
         position.set(dirtyPosition)
-        positionData.set(dirtyPositionData)
     }
     internal fun clean() = apply {
         dirtyScaleX = scaleX.absoluteValue
         dirtyScaleY = scaleY.absoluteValue
         dirtyRotation = rotation
         dirtyPosition.set(position)
-        dirtyPositionData.set(positionData)
     }
 
     fun hideSlots(vararg names: String) = apply { this.hideSlotNames = names }
@@ -87,12 +81,13 @@ class AttachInfo(
     fun flipVertical(flip: Boolean) = apply { this.flipVertical = flip }
     fun rotation(degrees: Float) = apply { this.dirtyRotation = degrees }
     internal fun relativeRotation(degrees: Float) = apply { this.dirtyRotation = this.rotation + degrees }
-    fun position(degrees: Float, distance: Float) = apply {
-        this.dirtyPositionData.set(degrees, distance)
-        this.dirtyPosition.set(distance, 0f).rotate(degrees)
+    fun positionVector(degrees: Float, distance: Float) = apply {
+        this.positionVector = Vector2(degrees, distance)
+    }
+    fun position(x: Float, y: Float) = apply {
+        this.dirtyPosition.set(x, y)
     }
     internal fun relativePosition(x: Float, y: Float) = apply {
         this.dirtyPosition.set(position.x + x, position.y + y)
-        this.dirtyPositionData.set(dirtyPosition.angle(), dirtyPosition.len())
     }
 }

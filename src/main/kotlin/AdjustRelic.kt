@@ -163,7 +163,7 @@ object AdjustRelic {
             FontHelper.tipBodyFont,
             "[$relicId]\n" +
                     "Bone: ${info.boneName}\n" +
-                    "Position: ${info.dirtyPositionData.x}°, ${info.dirtyPositionData.y}\n" +
+                    "Position: ${info.dirtyPosition.x}, ${info.dirtyPosition.y}\n" +
                     "Rotation: ${info.dirtyRotation}\n" +
                     "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n",
             30f, Settings.HEIGHT - 300.scale(),
@@ -174,9 +174,12 @@ object AdjustRelic {
     private fun attachmentPosition(info: AttachInfo) {
         val attachment = attachment
         if (attachment is RegionAttachment) {
-            attachment.x = info.dirtyPosition.x
-            attachment.y = info.dirtyPosition.y
-            attachment.updateOffset()
+            skeletonStart.findBone(info.boneName)?.let { bone ->
+                val pos = info.dirtyPosition.cpy().rotate(bone.worldRotationX)
+                attachment.x = pos.x
+                attachment.y = pos.y
+                attachment.updateOffset()
+            }
         }
     }
 
@@ -211,7 +214,7 @@ object AdjustRelic {
             val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
             val diff = mouse.cpy().sub(startPosition).scl(0.1f)
             skeletonStart.findBone(info.boneName)?.let { bone ->
-                diff.rotate(bone.worldRotationX).scl(1f, -1f)
+                diff.rotate(bone.worldRotationX).scl(1f, -1f).rotate(-bone.worldRotationX)
             }
 
             info.relativePosition(diff.x , diff.y)

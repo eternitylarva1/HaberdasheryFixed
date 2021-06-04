@@ -11,13 +11,13 @@ object Silent {
             .relic(RunicDome.ID,
                 AttachInfo("Skull")
                     .hideSlots("skull")
-                    .position(-110f, 8f)
+                    .positionVector(-110f, 8f)
                     .rotation(-55f)
             )
             .relic(CultistMask.ID,
                 AttachInfo("Skull")
                     .hideSlots("skull", "hair", "hair2")
-                    .position(-100f, 18f)
+                    .positionVector(-100f, 18f)
                     .rotation(-40f)
             )
     }

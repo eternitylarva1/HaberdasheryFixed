@@ -1,5 +1,6 @@
 package haberdashery
 
+import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.Array
 import com.esotericsoftware.spine.BlendMode
 import com.esotericsoftware.spine.Bone
@@ -26,6 +27,10 @@ object AttachRelic {
         val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
         if (skeleton.findSlotIndex(relicSlotName) >= 0) {
             return
+        }
+        val skeletonStart = Skeleton(skeleton).apply {
+            setToSetupPose()
+            updateWorldTransform()
         }
 
         val bone = skeleton.findBone(info.boneName) ?: return
@@ -64,8 +69,19 @@ object AttachRelic {
             region = tex
             width = tex.regionWidth.toFloat()
             height = tex.regionHeight.toFloat()
-            x = info.position.x
-            y = info.position.y
+            if (info.positionVector != null) {
+                skeletonStart.findBone(info.boneName)?.let { bone ->
+                    val pos = Vector2(info.positionVector!!.y, 0f).rotate(info.positionVector!!.x)
+                    pos.rotate(-bone.worldRotationX)
+                    info.position(pos.x, pos.y).finalize()
+                    info.positionVector = null
+                }
+            }
+            skeletonStart.findBone(info.boneName)?.let { bone ->
+                val pos = info.position.cpy().rotate(bone.worldRotationX)
+                x = pos.x
+                y = pos.y
+            }
             scaleX = info.scaleX
             scaleY = info.scaleY
             rotation = info.rotation
