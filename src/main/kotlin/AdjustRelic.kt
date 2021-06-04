@@ -288,7 +288,7 @@ object AdjustRelic {
                 mouse.y.absoluteValue
             }
 
-            info.scale(longSide / startScale)
+            info.relativeScale(longSide / startScale)
 
             if (info.dirtyScaleX != info.scaleX) {
                 attachmentScale(info)

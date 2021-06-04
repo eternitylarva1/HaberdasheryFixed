@@ -75,6 +75,7 @@ class AttachInfo(
         this.drawOrderZIndex = zIndex
     }
     fun scale(scale: Float) = apply { scaleX(scale).scaleY(scale) }
+    internal fun relativeScale(scale: Float) = apply { scaleX(this.scaleX * scale).scaleY(this.scaleY * scale) }
     fun scaleX(scale: Float) = apply {
         this.dirtyScaleX = scale
         if (scale < 0) {
