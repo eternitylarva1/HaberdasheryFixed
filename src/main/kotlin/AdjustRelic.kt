@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.FontHelper
+import com.megacrit.cardcrawl.helpers.RelicLibrary
 import com.megacrit.cardcrawl.helpers.input.InputHelper
 import haberdashery.database.AttachDatabase
 import haberdashery.database.AttachInfo
@@ -31,7 +32,7 @@ object AdjustRelic {
     private val projection
         get() = Gdx.app.applicationListener.getPrivate<OrthographicCamera>("camera", clazz = CardCrawlGame::class.java).combined
     private val skeleton
-        get() = AbstractDungeon.player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java)
+        get() = AbstractDungeon.player?.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java)
     private val skeletonStart by lazy {
         Skeleton(skeleton).apply {
             setToSetupPose()
@@ -68,6 +69,11 @@ object AdjustRelic {
 
     var renderBones: Boolean = false
 
+    fun addRelic(relicId: String) {
+        this.relicId = relicId
+        renderBones = true
+    }
+
     fun setRelic(relicId: String?) {
         if (relicId == null) {
             this.relicId = relicId
@@ -87,17 +93,34 @@ object AdjustRelic {
 
     fun update() {
         val relicId = relicId
-        val info = info
-        if (DevConsole.visible || relicId == null || info == null) {
+        if (DevConsole.visible || relicId == null) {
             return
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
-            AttachDatabase.save(AbstractDungeon.player.chosenClass)
+        if (renderBones) {
+            if (InputHelper.justClickedLeft && srd.hoveredBone != null) {
+                renderBones = false
+
+                val relic = RelicLibrary.getRelic(relicId)?.makeCopy() ?: return
+                AttachDatabase.relic(
+                    AbstractDungeon.player.chosenClass,
+                    relicId,
+                    AttachInfo(srd.hoveredBone.data.name)
+                )
+                AbstractDungeon.getCurrRoom().spawnRelicAndObtain(
+                    Settings.WIDTH / 2f, Settings.HEIGHT / 2f,
+                    relic
+                )
+
+                setRelic(relicId)
+            }
+            return
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
-            renderBones = !renderBones
+        val info = info ?: return
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
+            AttachDatabase.save(AbstractDungeon.player.chosenClass)
         }
 
         // Reset changes
@@ -161,17 +184,32 @@ object AdjustRelic {
     }
 
     fun render(sb: SpriteBatch) {
-        val relicId = relicId
-        val info = info
-        if (relicId == null || info == null) {
-            return
-        }
-
         if (renderBones) {
             sb.end()
             srd.shapeRenderer.projectionMatrix = projection
             srd.draw(skeleton)
             sb.begin()
+
+            FontHelper.renderFontLeftTopAligned(
+                sb,
+                FontHelper.tipBodyFont,
+                "[$relicId]\n" +
+                        "Bone: " + if (srd.hoveredBone != null) {
+                            srd.hoveredBone.data.name
+                        } else {
+                            "<Select a Bone>"
+                        } + "\n",
+                30f, Settings.HEIGHT - 300.scale(),
+                Color.WHITE
+            )
+
+            return
+        }
+
+        val relicId = relicId
+        val info = info
+        if (relicId == null || info == null) {
+            return
         }
 
         positionWidget(sb, info)
@@ -186,11 +224,8 @@ object AdjustRelic {
                     "Draw Order: ${info.drawOrderSlotName} [${info.drawOrderZIndex}]\n" +
                     "Position: ${info.dirtyPosition.x}, ${info.dirtyPosition.y}\n" +
                     "Rotation: ${info.dirtyRotation}\n" +
-                    "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n" +
-                    if (srd.hoveredBone != null) {
-                        "\nBone Select: ${srd.hoveredBone.data.name}\n"
-                    } else { "" },
-            30f, Settings.HEIGHT - 300.scale(),
+                    "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n",
+            30f.scale(), Settings.HEIGHT - 300.scale(),
             Color.WHITE
         )
     }

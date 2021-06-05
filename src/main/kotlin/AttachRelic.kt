@@ -95,7 +95,7 @@ object AttachRelic {
             drawOrder.indexOfLast { it.bone == bone }
         }
         if (ret < 0) {
-            TODO("Cannot determine draw order for relic: $relicId")
+            return 0
         }
         return ret
     }
