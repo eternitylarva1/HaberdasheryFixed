@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
+import com.esotericsoftware.spine.BonePickerSkeletonRendererDebug
 import com.esotericsoftware.spine.Skeleton
 import com.esotericsoftware.spine.attachments.Attachment
 import com.esotericsoftware.spine.attachments.RegionAttachment
@@ -37,6 +38,14 @@ object AdjustRelic {
             updateWorldTransform()
         }
     }
+    private val srd = BonePickerSkeletonRendererDebug().apply {
+        setPremultipliedAlpha(true)
+        setBoundingBoxes(false)
+        setMeshHull(false)
+        setMeshTriangles(false)
+        setRegionAttachments(false)
+        setScale(Settings.scale)
+    }
     private val attachment: Attachment?
         get() {
             val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
@@ -57,7 +66,7 @@ object AdjustRelic {
     private var rotating: Vector2? = null
     private var scaling: Float? = null
 
-    var active: Boolean = false
+    var renderBones: Boolean = false
 
     fun setRelic(relicId: String?) {
         if (relicId == null) {
@@ -88,7 +97,7 @@ object AdjustRelic {
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
-            active = !active
+            renderBones = !renderBones
         }
 
         // Reset changes
@@ -158,11 +167,18 @@ object AdjustRelic {
             return
         }
 
+        if (renderBones) {
+            sb.end()
+            srd.shapeRenderer.projectionMatrix = projection
+            srd.draw(skeleton)
+            sb.begin()
+        }
+
         positionWidget(sb, info)
         rotationWidget(sb, info)
         scaleWidget(sb, info)
 
-        FontHelper.renderFontCenteredHeight(
+        FontHelper.renderFontLeftTopAligned(
             sb,
             FontHelper.tipBodyFont,
             "[$relicId]\n" +
@@ -170,7 +186,10 @@ object AdjustRelic {
                     "Draw Order: ${info.drawOrderSlotName} [${info.drawOrderZIndex}]\n" +
                     "Position: ${info.dirtyPosition.x}, ${info.dirtyPosition.y}\n" +
                     "Rotation: ${info.dirtyRotation}\n" +
-                    "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n",
+                    "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n" +
+                    if (srd.hoveredBone != null) {
+                        "\nBone Select: ${srd.hoveredBone.data.name}\n"
+                    } else { "" },
             30f, Settings.HEIGHT - 300.scale(),
             Color.WHITE
         )
