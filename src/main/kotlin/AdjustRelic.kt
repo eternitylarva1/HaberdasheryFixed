@@ -140,6 +140,21 @@ object AdjustRelic {
             }
         }
 
+        // Draw order
+        skeleton?.let { skeleton ->
+            val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
+            val drawOrder = skeleton.drawOrder
+            val slot = skeleton.findSlot(relicSlotName)
+            val index = drawOrder.indexOf(slot, true)
+            if (index > 0 && Gdx.input.isKeyJustPressed(Input.Keys.J)) {
+                drawOrder.removeValue(slot, true)
+                drawOrder.insert(index - 1, slot)
+            } else if (index < drawOrder.size - 1 && Gdx.input.isKeyJustPressed(Input.Keys.K)) {
+                drawOrder.removeValue(slot, true)
+                drawOrder.insert(index + 1, slot)
+            }
+        }
+
         // Position
         if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
             positioning = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
@@ -226,6 +241,21 @@ object AdjustRelic {
                     "Rotation: ${info.dirtyRotation}\n" +
                     "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n",
             30f.scale(), Settings.HEIGHT - 300.scale(),
+            Color.WHITE
+        )
+
+        val drawOrderMsg = StringBuilder("[Draw Order]\n")
+        skeleton?.drawOrder?.let { drawOrder ->
+            for (i in drawOrder.size-1 downTo 0) {
+                drawOrderMsg.append(drawOrder[i].data.name).append('\n')
+            }
+        }
+
+        FontHelper.renderFontRightTopAligned(
+            sb,
+            FontHelper.tipBodyFont,
+            drawOrderMsg.toString(),
+            Settings.WIDTH - 30f.scale(), Settings.HEIGHT - 300.scale(),
             Color.WHITE
         )
     }
