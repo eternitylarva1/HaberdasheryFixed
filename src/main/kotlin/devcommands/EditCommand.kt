@@ -5,7 +5,7 @@ import basemod.devcommands.relic.Relic
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import haberdashery.AdjustRelic
 
-class AdjustCommand : ConsoleCommand() {
+class EditCommand : ConsoleCommand() {
     init {
         requiresPlayer = true
         minExtraTokens = 0

@@ -6,7 +6,7 @@ class HaberdasheryCommand : ConsoleCommand() {
     init {
         requiresPlayer = true
         followup["test"] = TestCommand::class.java
-        followup["adjust"] = AdjustCommand::class.java
+        followup["edit"] = EditCommand::class.java
         followup["add"] = AddCommand::class.java
     }
 
