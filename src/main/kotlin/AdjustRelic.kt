@@ -36,12 +36,11 @@ object AdjustRelic {
         get() = Gdx.app.applicationListener.getPrivate<OrthographicCamera>("camera", clazz = CardCrawlGame::class.java).combined
     private val skeleton
         get() = AbstractDungeon.player?.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java)
-    private val skeletonStart by lazy {
-        Skeleton(skeleton).apply {
+    private val skeletonStart
+        get() = Skeleton(skeleton).apply {
             setToSetupPose()
             updateWorldTransform()
         }
-    }
     private val srd = BonePickerSkeletonRendererDebug().apply {
         setPremultipliedAlpha(true)
         setBoundingBoxes(false)
@@ -98,6 +97,10 @@ object AdjustRelic {
     }
 
     fun update() {
+        if (AbstractDungeon.player == null) {
+            setRelic(null)
+        }
+
         if (saveTimer > 0f) {
             saveTimer -= Gdx.graphics.rawDeltaTime
         }
