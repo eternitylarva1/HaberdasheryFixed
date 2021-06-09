@@ -380,6 +380,36 @@
         "y": 16.074972
       },
       "boneName": "Leg_R_2"
+    },
+    "Regal Pillow": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 1.0999997,
+        "y": -29.500006
+      },
+      "boneName": "root"
+    },
+    "WarpedTongs": {
+      "drawOrderSlotName": "shirt",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.67980295,
+      "scaleY": 0.67980295,
+      "rotation": 88.096794,
+      "position": {
+        "x": -15.491682,
+        "y": -1.4892442
+      },
+      "boneName": "Leg_R_2"
     }
   }
 }
