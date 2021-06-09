@@ -67,6 +67,7 @@
       "boneName": "Head"
     },
     "Pen Nib": {
+      "drawOrderSlotName": "hand_left",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
       "flipHorizontal": false,
@@ -81,6 +82,7 @@
       "boneName": "Arm_R_3"
     },
     "The Courier": {
+      "drawOrderSlotName": "pauldron_left",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
       "flipHorizontal": false,
@@ -95,6 +97,7 @@
       "boneName": "Arm_R_1"
     },
     "Bronze Scales": {
+      "drawOrderSlotName": "pauldron_right",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
       "flipHorizontal": false,
