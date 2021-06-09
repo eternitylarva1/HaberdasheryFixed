@@ -7,6 +7,6 @@ class MySlotData(
     index: Int,
     name: String,
     boneData: BoneData,
-    val zIndex: Int
+    var zIndex: Int
 ) : SlotData(index, name, boneData) {
 }

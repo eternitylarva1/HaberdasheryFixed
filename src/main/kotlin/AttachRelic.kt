@@ -46,7 +46,11 @@ object AttachRelic {
         skeleton.slots.add(slotClone)
 
         val drawOrder = skeleton.drawOrder
-        var insertIndex = startingDrawOrder(relic.relicId, info, drawOrder, bone) + 1
+        var insertIndex = startingDrawOrder(relic.relicId, info, drawOrder, bone)
+        if (info.drawOrderSlotName == null) {
+            info.drawOrder(drawOrder[insertIndex].data.name, info.drawOrderZIndex)
+        }
+        ++insertIndex
         for (i in insertIndex until drawOrder.size) {
             val slot = drawOrder[i]
             val data = slot.data
@@ -92,7 +96,7 @@ object AttachRelic {
         val ret = if (info.drawOrderSlotName != null) {
             drawOrder.indexOfFirst { it.data.name == info.drawOrderSlotName }
         } else {
-            drawOrder.indexOfLast { it.bone == bone }
+            drawOrder.indexOfLast { it.bone == bone && it.data !is MySlotData }
         }
         if (ret < 0) {
             return 0

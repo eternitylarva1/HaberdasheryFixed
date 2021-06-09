@@ -8,8 +8,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.utils.Array
 import com.esotericsoftware.spine.BonePickerSkeletonRendererDebug
 import com.esotericsoftware.spine.Skeleton
+import com.esotericsoftware.spine.Slot
 import com.esotericsoftware.spine.attachments.Attachment
 import com.esotericsoftware.spine.attachments.RegionAttachment
 import com.megacrit.cardcrawl.core.AbstractCreature
@@ -21,6 +23,7 @@ import com.megacrit.cardcrawl.helpers.RelicLibrary
 import com.megacrit.cardcrawl.helpers.input.InputHelper
 import haberdashery.database.AttachDatabase
 import haberdashery.database.AttachInfo
+import haberdashery.database.MySlotData
 import haberdashery.extensions.flipY
 import haberdashery.extensions.getPrivate
 import haberdashery.extensions.scale
@@ -141,17 +144,27 @@ object AdjustRelic {
         }
 
         // Draw order
-        skeleton?.let { skeleton ->
+        skeleton?.also { skeleton ->
             val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
             val drawOrder = skeleton.drawOrder
             val slot = skeleton.findSlot(relicSlotName)
-            val index = drawOrder.indexOf(slot, true)
-            if (index > 0 && Gdx.input.isKeyJustPressed(Input.Keys.J)) {
-                drawOrder.removeValue(slot, true)
-                drawOrder.insert(index - 1, slot)
-            } else if (index < drawOrder.size - 1 && Gdx.input.isKeyJustPressed(Input.Keys.K)) {
-                drawOrder.removeValue(slot, true)
-                drawOrder.insert(index + 1, slot)
+
+            if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT)) {
+                if (Gdx.input.isKeyJustPressed(Input.Keys.K)) {
+                    info.drawOrder(info.drawOrderSlotName!!, info.drawOrderZIndex - 1)
+                    (slot.data as? MySlotData)?.let { it.zIndex = info.drawOrderZIndex }
+                    moveToZIndex(drawOrder, slot, drawOrder.indexOfFirst { it.data.name == info.drawOrderSlotName }, info.drawOrderZIndex)
+                } else if (Gdx.input.isKeyJustPressed(Input.Keys.J)) {
+                    info.drawOrder(info.drawOrderSlotName!!, info.drawOrderZIndex + 1)
+                    (slot.data as? MySlotData)?.let { it.zIndex = info.drawOrderZIndex }
+                    moveToZIndex(drawOrder, slot, drawOrder.indexOfFirst { it.data.name == info.drawOrderSlotName }, info.drawOrderZIndex)
+                }
+            } else {
+                if (Gdx.input.isKeyJustPressed(Input.Keys.K)) {
+                    moveSlotName(drawOrder, slot, info, false)
+                } else if (Gdx.input.isKeyJustPressed(Input.Keys.J)) {
+                    moveSlotName(drawOrder, slot, info, true)
+                }
             }
         }
 
@@ -244,10 +257,33 @@ object AdjustRelic {
             Color.WHITE
         )
 
+        val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
         val drawOrderMsg = StringBuilder("[Draw Order]\n")
         skeleton?.drawOrder?.let { drawOrder ->
-            for (i in drawOrder.size-1 downTo 0) {
-                drawOrderMsg.append(drawOrder[i].data.name).append('\n')
+            var bottom = 0
+            var top = drawOrder.size-1
+            if (top > 12) {
+                //bottom = top - 12
+                //top = 12
+                //drawOrderMsg.append("...\n")
+            }
+
+            var lastOrigSlot: String? = null
+            for (i in bottom..top) {
+                val data = drawOrder[i].data
+                if (data is MySlotData) {
+                    if (lastOrigSlot != info.drawOrderSlotName) {
+                        continue
+                    }
+                    drawOrderMsg.append("    [").append(data.zIndex).append("] ")
+                } else {
+                    lastOrigSlot = data.name
+                }
+                if (data.name == relicSlotName) {
+                    drawOrderMsg.append("[#${Settings.GOLD_COLOR}]").append(data.name).append("[]\n")
+                } else {//if (!name.startsWith(HaberdasheryMod.makeID(""))) {
+                    drawOrderMsg.append(data.name).append('\n')
+                }
             }
         }
 
@@ -255,7 +291,7 @@ object AdjustRelic {
             sb,
             FontHelper.tipBodyFont,
             drawOrderMsg.toString(),
-            Settings.WIDTH - 30f.scale(), Settings.HEIGHT - 300.scale(),
+            Settings.WIDTH - 30f.scale(), Settings.HEIGHT - 200.scale(),
             Color.WHITE
         )
     }
@@ -391,5 +427,55 @@ object AdjustRelic {
 
             sb.begin()
         }
+    }
+
+    private fun moveSlotName(drawOrder: Array<Slot>, slot: Slot, info: AttachInfo, up: Boolean) {
+        val index = drawOrder.indexOf(slot, true)
+        val range = if (up) {
+            index+1 until drawOrder.size
+        } else {
+            index-1 downTo 0
+        }
+        var find = if (up) {
+            1
+        } else {
+            2
+        }
+
+        var newParentSlotIndex: Int? = null
+        for (i in range) {
+            if (!drawOrder[i].data.name.startsWith(HaberdasheryMod.makeID(""))) {
+                if (--find == 0) {
+                    info.drawOrder(drawOrder[i].data.name, info.drawOrderZIndex)
+                    newParentSlotIndex = i
+                    break
+                }
+            }
+        }
+
+        if (newParentSlotIndex != null) {
+            moveToZIndex(drawOrder, slot, newParentSlotIndex, info.drawOrderZIndex)
+        }
+    }
+
+    private fun moveToZIndex(drawOrder: Array<Slot>, slot: Slot, parentSlotIndex: Int, zIndex: Int) {
+        val origIndex = drawOrder.indexOf(slot, true)
+        drawOrder.removeIndex(origIndex)
+
+        var insertIndex: Int = parentSlotIndex + 1
+        if (parentSlotIndex > origIndex) {
+            --insertIndex
+        }
+        for (i in insertIndex until drawOrder.size) {
+            val data = drawOrder[i].data
+            if (data is MySlotData) {
+                if (zIndex >= data.zIndex) {
+                    insertIndex = i + 1
+                }
+            } else {
+                break
+            }
+        }
+        drawOrder.insert(insertIndex, slot)
     }
 }
