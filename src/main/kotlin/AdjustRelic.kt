@@ -72,6 +72,8 @@ object AdjustRelic {
 
     var renderBones: Boolean = false
 
+    private var saveTimer = 0f
+
     fun addRelic(relicId: String) {
         this.relicId = relicId
         renderBones = true
@@ -95,6 +97,10 @@ object AdjustRelic {
     }
 
     fun update() {
+        if (saveTimer > 0f) {
+            saveTimer -= Gdx.graphics.rawDeltaTime
+        }
+
         val relicId = relicId
         if (DevConsole.visible || relicId == null) {
             return
@@ -124,6 +130,7 @@ object AdjustRelic {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
             AttachDatabase.save(AbstractDungeon.player.chosenClass)
+            saveTimer = 2f
         }
 
         // Reset changes
@@ -252,7 +259,11 @@ object AdjustRelic {
                     "Draw Order: ${info.drawOrderSlotName} [${info.drawOrderZIndex}]\n" +
                     "Position: ${info.dirtyPosition.x}, ${info.dirtyPosition.y}\n" +
                     "Rotation: ${info.dirtyRotation}\n" +
-                    "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n",
+                    "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n" +
+                    if (saveTimer > 0) {
+                        "\nSaved!"
+                    } else { "" }
+            ,
             30f.scale(), Settings.HEIGHT - 300.scale(),
             Color.WHITE
         )
