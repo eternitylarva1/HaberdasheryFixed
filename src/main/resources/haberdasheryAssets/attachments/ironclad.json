@@ -127,8 +127,8 @@
       "boneName": "root"
     },
     "Happy Flower": {
-      "drawOrderSlotName": "shadow",
-      "drawOrderZIndex": 1,
+      "drawOrderSlotName": "boot_left",
+      "drawOrderZIndex": 2,
       "hideSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
@@ -382,7 +382,7 @@
       "boneName": "Leg_R_2"
     },
     "Regal Pillow": {
-      "drawOrderSlotName": "shadow",
+      "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
       "flipHorizontal": false,
@@ -410,6 +410,21 @@
         "y": -1.4892442
       },
       "boneName": "Leg_R_2"
+    },
+    "Bag of Preparation": {
+      "drawOrderSlotName": "boot_left",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.97983193,
+      "scaleY": 0.97983193,
+      "rotation": 0.0,
+      "position": {
+        "x": -63.6,
+        "y": 10.900001
+      },
+      "boneName": "root"
     }
   }
 }
