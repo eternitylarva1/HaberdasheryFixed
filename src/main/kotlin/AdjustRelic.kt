@@ -260,14 +260,8 @@ object AdjustRelic {
         val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
         val drawOrderMsg = StringBuilder("[Draw Order]\n")
         skeleton?.drawOrder?.let { drawOrder ->
-            var bottom = 0
-            var top = drawOrder.size-1
-            if (top > 12) {
-                //bottom = top - 12
-                //top = 12
-                //drawOrderMsg.append("...\n")
-            }
-
+            val bottom = 0
+            val top = drawOrder.size-1
             var lastOrigSlot: String? = null
             for (i in bottom..top) {
                 val data = drawOrder[i].data
@@ -281,7 +275,7 @@ object AdjustRelic {
                 }
                 if (data.name == relicSlotName) {
                     drawOrderMsg.append("[#${Settings.GOLD_COLOR}]").append(data.name).append("[]\n")
-                } else {//if (!name.startsWith(HaberdasheryMod.makeID(""))) {
+                } else {
                     drawOrderMsg.append(data.name).append('\n')
                 }
             }
