@@ -75,6 +75,9 @@ object AdjustRelic {
     private var saveTimer = 0f
 
     fun addRelic(relicId: String) {
+        if (AttachDatabase.getInfo(AbstractDungeon.player.chosenClass, relicId) != null) {
+            return
+        }
         this.relicId = relicId
         renderBones = true
     }
