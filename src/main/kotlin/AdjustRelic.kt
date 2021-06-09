@@ -52,7 +52,8 @@ object AdjustRelic {
     }
     private val attachment: Attachment?
         get() {
-            val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
+            if (relicId == null) return null
+            val relicSlotName = HaberdasheryMod.makeID(relicId!!)
             val slotIndex = skeleton?.findSlotIndex(relicSlotName) ?: return null
             return skeleton?.getAttachment(slotIndex, relicSlotName)
         }
@@ -87,7 +88,7 @@ object AdjustRelic {
 
         val player = AbstractDungeon.player ?: return
 
-        val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
+        val relicSlotName = HaberdasheryMod.makeID(relicId)
         val skeleton = skeleton ?: return
         if (skeleton.findSlotIndex(relicSlotName) < 0) {
             return
@@ -152,7 +153,7 @@ object AdjustRelic {
 
         // Draw order
         skeleton?.also { skeleton ->
-            val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
+            val relicSlotName = HaberdasheryMod.makeID(relicId)
             val drawOrder = skeleton.drawOrder
             val slot = skeleton.findSlot(relicSlotName)
 
@@ -268,7 +269,7 @@ object AdjustRelic {
             Color.WHITE
         )
 
-        val relicSlotName = "${HaberdasheryMod.ID}:${relicId}"
+        val relicSlotName = HaberdasheryMod.makeID(relicId)
         val drawOrderMsg = StringBuilder("[Draw Order]\n")
         skeleton?.drawOrder?.let { drawOrder ->
             val bottom = 0

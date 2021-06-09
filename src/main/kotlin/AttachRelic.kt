@@ -22,7 +22,7 @@ object AttachRelic {
         val player = AbstractDungeon.player ?: return
         val info = AttachDatabase.getInfo(player.chosenClass, relic.relicId) ?: return
 
-        val relicSlotName = "${HaberdasheryMod.ID}:${relic.relicId}"
+        val relicSlotName = HaberdasheryMod.makeID(relic.relicId)
         val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
         if (skeleton.findSlotIndex(relicSlotName) >= 0) {
             return
@@ -54,7 +54,7 @@ object AttachRelic {
         for (i in insertIndex until drawOrder.size) {
             val slot = drawOrder[i]
             val data = slot.data
-            if (data.name.startsWith("${HaberdasheryMod.ID}:") && data is MySlotData) {
+            if (data.name.startsWith(HaberdasheryMod.makeID("")) && data is MySlotData) {
                 if (info.drawOrderZIndex >= data.zIndex) {
                     insertIndex = i + 1
                 }
