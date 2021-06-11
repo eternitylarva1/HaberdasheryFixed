@@ -16,6 +16,8 @@ class AttachInfo(
         private set
     var hideSlotNames: Array<out String> = emptyArray()
         private set
+    @Transient
+    internal val hideSlotAttachmentMemory = mutableMapOf<String, String>()
 
     @Transient
     var scaleX: Float = 1f

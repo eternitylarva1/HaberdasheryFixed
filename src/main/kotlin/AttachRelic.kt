@@ -87,8 +87,30 @@ object AttachRelic {
         skin.addAttachment(slotClone.data.index, attachment.name, attachment)
 
         skeleton.setAttachment(relicSlotName, attachment.name)
-        for (slot in info.hideSlotNames) {
-            skeleton.setAttachment(slot, null)
+        for (slotName in info.hideSlotNames) {
+            val slot = skeleton.findSlot(slotName)
+            info.hideSlotAttachmentMemory[slotName] = slot.attachment.name
+            skeleton.setAttachment(slotName, null)
+        }
+    }
+
+    fun lose(relicId: String) {
+        val player = AbstractDungeon.player ?: return
+        val info = AttachDatabase.getInfo(player.chosenClass, relicId) ?: return
+
+        val relicSlotName = HaberdasheryMod.makeID(relicId)
+        val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
+        val slotIndex = skeleton.findSlotIndex(relicSlotName)
+        if (slotIndex < 0) {
+            return
+        }
+
+        val slot = skeleton.slots.removeIndex(slotIndex)
+        skeleton.drawOrder.removeValue(slot, true)
+
+        // TODO: this shouldn't restore a hidden slot if other relics are hiding it
+        for ((hideSlot, attachment) in info.hideSlotAttachmentMemory) {
+            skeleton.setAttachment(hideSlot, attachment)
         }
     }
 
