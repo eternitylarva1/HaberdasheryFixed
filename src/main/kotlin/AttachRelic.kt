@@ -89,7 +89,7 @@ object AttachRelic {
         skeleton.setAttachment(relicSlotName, attachment.name)
         for (slotName in info.hideSlotNames) {
             val slot = skeleton.findSlot(slotName)
-            info.hideSlotAttachmentMemory[slotName] = slot.attachment.name
+            slot.attachment?.let { info.hideSlotAttachmentMemory[slotName] = it.name }
             skeleton.setAttachment(slotName, null)
         }
     }
