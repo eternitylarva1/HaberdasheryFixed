@@ -425,6 +425,201 @@
         "y": 10.900001
       },
       "boneName": "root"
+    },
+    "Omamori": {
+      "drawOrderSlotName": "pants",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.40814957,
+      "scaleY": 0.40814957,
+      "rotation": 4.0936165,
+      "position": {
+        "x": 19.800001,
+        "y": 9.200001
+      },
+      "boneName": "Hips"
+    },
+    "Potion Belt": {
+      "drawOrderSlotName": "pants",
+      "drawOrderZIndex": -5,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.7212389,
+      "scaleY": 0.7212389,
+      "rotation": 0.90833414,
+      "position": {
+        "x": -2.5,
+        "y": 16.0
+      },
+      "boneName": "Hips"
+    },
+    "Vajra": {
+      "drawOrderSlotName": "hand_right",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.6296296,
+      "scaleY": 0.6296296,
+      "rotation": -147.62874,
+      "position": {
+        "x": 11.707996,
+        "y": -11.220203
+      },
+      "boneName": "Arm_R_3"
+    },
+    "Dream Catcher": {
+      "drawOrderSlotName": "pauldron_right",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.5555556,
+      "scaleY": 0.5555556,
+      "rotation": -109.74358,
+      "position": {
+        "x": 8.19779,
+        "y": 9.58834
+      },
+      "boneName": "Neck_1"
+    },
+    "StrikeDummy": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -5.3573136,
+      "position": {
+        "x": -152.30002,
+        "y": 39.100002
+      },
+      "boneName": "root"
+    },
+    "Kunai": {
+      "drawOrderSlotName": "sword",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": true,
+      "scaleX": 0.6381909,
+      "scaleY": 0.6381909,
+      "rotation": 102.67408,
+      "position": {
+        "x": -4.6781416,
+        "y": 2.999164
+      },
+      "boneName": "Arm_L_3"
+    },
+    "Shuriken": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 5,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.5905512,
+      "scaleY": 0.5905512,
+      "rotation": -72.143776,
+      "position": {
+        "x": -18.282854,
+        "y": -11.313589
+      },
+      "boneName": "Arm_L_1"
+    },
+    "Lizard Tail": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 4,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -7.1832037,
+      "position": {
+        "x": -16.900002,
+        "y": 1.4000003
+      },
+      "boneName": "Hips"
+    },
+    "Dead Branch": {
+      "drawOrderSlotName": "pauldron_right",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.61403507,
+      "scaleY": 0.61403507,
+      "rotation": -79.094284,
+      "position": {
+        "x": -10.71641,
+        "y": 12.899944
+      },
+      "boneName": "Leg_L_2"
+    },
+    "Peace Pipe": {
+      "drawOrderSlotName": "hair",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.6273249,
+      "scaleY": 0.6273249,
+      "rotation": -54.27408,
+      "position": {
+        "x": -37.585308,
+        "y": -1.9608569
+      },
+      "boneName": "Head"
+    },
+    "Ice Cream": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 3,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.8088889,
+      "scaleY": 0.8088889,
+      "rotation": 53.518673,
+      "position": {
+        "x": -18.144083,
+        "y": -1.4464402
+      },
+      "boneName": "Leg_L_"
+    },
+    "Torii": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 129.8,
+        "y": 19.800001
+      },
+      "boneName": "root"
+    },
+    "Ornamental Fan": {
+      "drawOrderSlotName": "sword",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.7756211,
+      "scaleY": 0.7756211,
+      "rotation": 15.9678135,
+      "position": {
+        "x": 15.197937,
+        "y": -9.0764885
+      },
+      "boneName": "Arm_L_3"
     }
   }
 }
