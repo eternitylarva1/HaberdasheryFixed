@@ -48,6 +48,216 @@
         "y": 13.719723
       },
       "boneName": "Neck_3"
+    },
+    "Bag of Preparation": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0702248,
+      "scaleY": 1.0702248,
+      "rotation": -101.897095,
+      "position": {
+        "x": 14.520237,
+        "y": 15.992585
+      },
+      "boneName": "Neck_2"
+    },
+    "Regal Pillow": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.65165365,
+      "position": {
+        "x": 1.0,
+        "y": -23.900002
+      },
+      "boneName": "Hips"
+    },
+    "Juzu Bracelet": {
+      "drawOrderSlotName": "mantle",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.6043866,
+      "scaleY": 0.6043866,
+      "rotation": -111.97884,
+      "position": {
+        "x": -6.39637,
+        "y": -1.4165335
+      },
+      "boneName": "Neck_"
+    },
+    "Potion Belt": {
+      "drawOrderSlotName": "left_quad",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.921875,
+      "scaleY": 0.921875,
+      "rotation": 7.934732,
+      "position": {
+        "x": 2.9000032,
+        "y": -1.2999997
+      },
+      "boneName": "Hips"
+    },
+    "Dream Catcher": {
+      "drawOrderSlotName": "Eye_down",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.57096773,
+      "scaleY": 0.57096773,
+      "rotation": 0.0,
+      "position": {
+        "x": -1.6183778,
+        "y": -25.998863
+      },
+      "boneName": "Eye_down"
+    },
+    "Bronze Scales": {
+      "drawOrderSlotName": "right_shin",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.5880779,
+      "scaleY": 0.5880779,
+      "rotation": -5.3236914,
+      "position": {
+        "x": 0.2429583,
+        "y": 9.401647
+      },
+      "boneName": "Leg_R_2"
+    },
+    "DataDisk": {
+      "drawOrderSlotName": "left_quad",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.5566502,
+      "scaleY": 0.5566502,
+      "rotation": 63.90572,
+      "position": {
+        "x": -7.0294557,
+        "y": 5.0957584
+      },
+      "boneName": "Leg_L_"
+    },
+    "Kunai": {
+      "drawOrderSlotName": "right_hand",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.6370488,
+      "scaleY": 0.6370488,
+      "rotation": 165.71518,
+      "position": {
+        "x": -9.530478,
+        "y": 17.927074
+      },
+      "boneName": "bone3"
+    },
+    "Shuriken": {
+      "drawOrderSlotName": "right_finger_2",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.5857143,
+      "scaleY": 0.5857143,
+      "rotation": -51.80838,
+      "position": {
+        "x": -11.346394,
+        "y": 13.37159
+      },
+      "boneName": "bone3"
+    },
+    "Letter Opener": {
+      "drawOrderSlotName": "right_quad",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.7169811,
+      "scaleY": 0.7169811,
+      "rotation": -103.401924,
+      "position": {
+        "x": 4.7548637,
+        "y": 19.35152
+      },
+      "boneName": "bone3"
+    },
+    "Eternal Feather": {
+      "drawOrderSlotName": "mantle",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": true,
+      "scaleX": 0.6429309,
+      "scaleY": 0.6429309,
+      "rotation": -18.293997,
+      "position": {
+        "x": -47.4,
+        "y": 19.0
+      },
+      "boneName": "Chest"
+    },
+    "Cables": {
+      "drawOrderSlotName": "left_foot",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.7303166,
+      "scaleY": 0.7303166,
+      "rotation": -24.33591,
+      "position": {
+        "x": -19.099998,
+        "y": -9.999999
+      },
+      "boneName": "Chest"
+    },
+    "Ornamental Fan": {
+      "drawOrderSlotName": "right_thumb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 161.16087,
+      "position": {
+        "x": 18.843164,
+        "y": 3.6366467
+      },
+      "boneName": "bone6"
+    },
+    "Meat on the Bone": {
+      "drawOrderSlotName": "wire_main_neck",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.91121,
+      "scaleY": 0.91121,
+      "rotation": -55.10281,
+      "position": {
+        "x": -10.003959,
+        "y": 26.909492
+      },
+      "boneName": "bone7"
     }
   }
 }
