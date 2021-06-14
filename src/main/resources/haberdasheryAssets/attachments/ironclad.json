@@ -905,6 +905,231 @@
         "y": 18.1
       },
       "boneName": "Hips"
+    },
+    "Sundial": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.888,
+      "scaleY": 0.888,
+      "rotation": 0.0,
+      "position": {
+        "x": 7.2,
+        "y": 6.9
+      },
+      "boneName": "root"
+    },
+    "Bird Faced Urn": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 3.3785892,
+      "position": {
+        "x": -89.200005,
+        "y": 48.600002
+      },
+      "boneName": "root"
+    },
+    "Incense Burner": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": -3,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.7800813,
+      "scaleY": 0.7800813,
+      "rotation": 0.0,
+      "position": {
+        "x": 7.2,
+        "y": 35.9
+      },
+      "boneName": "root"
+    },
+    "Charon\u0027s Ashes": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 3,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.5167464,
+      "scaleY": 0.5167464,
+      "rotation": 0.0,
+      "position": {
+        "x": -116.40001,
+        "y": 4.699999
+      },
+      "boneName": "root"
+    },
+    "Magic Flower": {
+      "drawOrderSlotName": "hair",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.3549352,
+      "scaleY": 0.3549352,
+      "rotation": -35.954323,
+      "position": {
+        "x": 16.889168,
+        "y": -2.669468
+      },
+      "boneName": "Head"
+    },
+    "Busted Crown": {
+      "drawOrderSlotName": "eye",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.31937352,
+      "scaleY": 0.31937352,
+      "rotation": -81.62456,
+      "position": {
+        "x": 7.268519,
+        "y": -22.63777
+      },
+      "boneName": "Head"
+    },
+    "Empty Cage": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.8892989,
+      "scaleY": 0.8892989,
+      "rotation": 0.0,
+      "position": {
+        "x": 107.700005,
+        "y": 32.9
+      },
+      "boneName": "root"
+    },
+    "Toolbox": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0005488,
+      "scaleY": 1.0005488,
+      "rotation": 0.0,
+      "position": {
+        "x": -207.90001,
+        "y": 16.699999
+      },
+      "boneName": "root"
+    },
+    "Ectoplasm": {
+      "drawOrderSlotName": "pants",
+      "drawOrderZIndex": -3,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.45940208,
+      "scaleY": 0.45940208,
+      "rotation": 300.12738,
+      "position": {
+        "x": 49.3,
+        "y": -10.7
+      },
+      "boneName": "Hips"
+    },
+    "Tiny House": {
+      "drawOrderSlotName": "boot_left",
+      "drawOrderZIndex": 2,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.52,
+      "scaleY": 0.52,
+      "rotation": 0.0,
+      "position": {
+        "x": -147.49998,
+        "y": -9.400003
+      },
+      "boneName": "root"
+    },
+    "Sozu": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 3,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.6139028,
+      "scaleY": 0.6139028,
+      "rotation": 0.0,
+      "position": {
+        "x": 105.100006,
+        "y": -0.7999995
+      },
+      "boneName": "root"
+    },
+    "Chemical X": {
+      "drawOrderSlotName": "shirt",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.3263158,
+      "scaleY": 0.3263158,
+      "rotation": -102.93198,
+      "position": {
+        "x": 12.471714,
+        "y": 4.532816
+      },
+      "boneName": "Spine_"
+    },
+    "Unceasing Top": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 2,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.5134061,
+      "scaleY": 0.5134061,
+      "rotation": -27.058167,
+      "position": {
+        "x": 129.2,
+        "y": -11.899998
+      },
+      "boneName": "root"
+    },
+    "Du-Vu Doll": {
+      "drawOrderSlotName": "shirt",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.42585552,
+      "scaleY": 0.42585552,
+      "rotation": 28.373865,
+      "position": {
+        "x": 21.3,
+        "y": 16.300001
+      },
+      "boneName": "Hips"
+    },
+    "Prayer Wheel": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.8148148,
+      "scaleY": 0.8148148,
+      "rotation": 0.0,
+      "position": {
+        "x": -103.6,
+        "y": 41.600002
+      },
+      "boneName": "root"
     }
   }
 }
