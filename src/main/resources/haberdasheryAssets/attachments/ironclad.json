@@ -83,7 +83,7 @@
     },
     "The Courier": {
       "drawOrderSlotName": "pauldron_left",
-      "drawOrderZIndex": 0,
+      "drawOrderZIndex": 1,
       "hideSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": true,
@@ -815,6 +815,96 @@
         "y": -11.8
       },
       "boneName": "root"
+    },
+    "Blue Candle": {
+      "drawOrderSlotName": "pauldron_left",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.4802326,
+      "scaleY": 0.4802326,
+      "rotation": 101.70204,
+      "position": {
+        "x": 4.0099406,
+        "y": -21.206612
+      },
+      "boneName": "Arm_R_1"
+    },
+    "Singing Bowl": {
+      "drawOrderSlotName": "boot_left",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.68194044,
+      "scaleY": 0.68194044,
+      "rotation": 0.0,
+      "position": {
+        "x": 48.499996,
+        "y": -15.5
+      },
+      "boneName": "root"
+    },
+    "Letter Opener": {
+      "drawOrderSlotName": "shirt",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.62765956,
+      "scaleY": 0.62765956,
+      "rotation": -113.752716,
+      "position": {
+        "x": -11.917155,
+        "y": 14.609292
+      },
+      "boneName": "Leg_R_2"
+    },
+    "Pantograph": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.8035714,
+      "scaleY": 0.8035714,
+      "rotation": -0.06596762,
+      "position": {
+        "x": 98.9,
+        "y": -16.300001
+      },
+      "boneName": "root"
+    },
+    "Self Forming Clay": {
+      "drawOrderSlotName": "pauldron_left",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.52592075,
+      "scaleY": 0.52592075,
+      "rotation": 127.59978,
+      "position": {
+        "x": 20.66264,
+        "y": -21.662304
+      },
+      "boneName": "Arm_R_1"
+    },
+    "Meat on the Bone": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 3,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.77894735,
+      "scaleY": 0.77894735,
+      "rotation": 54.891403,
+      "position": {
+        "x": 18.9,
+        "y": 18.1
+      },
+      "boneName": "Hips"
     }
   }
 }
