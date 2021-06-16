@@ -1,6 +1,7 @@
 package haberdashery.database
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.files.FileHandle
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -12,7 +13,6 @@ import haberdashery.HaberdasheryMod
 import java.io.Reader
 import java.nio.file.FileSystems
 import java.nio.file.Files
-import java.nio.file.Path
 import java.nio.file.Paths
 
 object AttachDatabase {
@@ -28,7 +28,16 @@ object AttachDatabase {
         }
         Files.walk(path, 1)
             .filter { Files.isRegularFile(it) }
-            .forEach { load(it) }
+            .forEach {
+                // removes the leading /
+                val internal = Gdx.files.internal(it.subpath(0, it.nameCount).toString())
+                val local = Gdx.files.local(it.fileName.toString())
+                if (local.exists()) {
+                    load(local)
+                } else {
+                    load(internal)
+                }
+            }
     }
 
     fun test() {
@@ -60,9 +69,9 @@ object AttachDatabase {
     private inline fun <reified T> Gson.fromJson(reader: Reader) =
         fromJson<T>(reader, object : TypeToken<T>() {}.type)
 
-    private fun load(path: Path) {
+    private fun load(file: FileHandle) {
         val gson = GsonBuilder().create()
-        val reader = Gdx.files.internal(path.subpath(0, path.nameCount).toString()).reader()
+        val reader = file.reader()
         val data = gson.fromJson<LinkedHashMap<AbstractPlayer.PlayerClass, LinkedHashMap<String, AttachInfo>>>(reader)
 
         data.forEach { (character, relics) ->
