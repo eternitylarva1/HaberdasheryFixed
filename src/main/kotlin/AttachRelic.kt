@@ -105,8 +105,7 @@ object AttachRelic {
             return
         }
 
-        val slot = skeleton.slots.removeIndex(slotIndex)
-        skeleton.drawOrder.removeValue(slot, true)
+        skeleton.setAttachment(relicSlotName, null)
 
         // TODO: this shouldn't restore a hidden slot if other relics are hiding it
         for ((hideSlot, attachment) in info.hideSlotAttachmentMemory) {
