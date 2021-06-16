@@ -1130,6 +1130,36 @@
         "y": 41.600002
       },
       "boneName": "root"
+    },
+    "Runic Cube": {
+      "drawOrderSlotName": "boot_left",
+      "drawOrderZIndex": 3,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.5965097,
+      "scaleY": 0.5965097,
+      "rotation": 1.1839459,
+      "position": {
+        "x": -34.699997,
+        "y": -30.099998
+      },
+      "boneName": "root"
+    },
+    "Cursed Key": {
+      "drawOrderSlotName": "pauldron_right",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.4971557,
+      "scaleY": 0.4971557,
+      "rotation": 41.244038,
+      "position": {
+        "x": -8.39807,
+        "y": 5.000242
+      },
+      "boneName": "Leg_L_2"
     }
   }
 }
