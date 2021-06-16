@@ -25,6 +25,10 @@ object AttachRelic {
         val relicSlotName = HaberdasheryMod.makeID(relic.relicId)
         val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
         if (skeleton.findSlotIndex(relicSlotName) >= 0) {
+            val slot = skeleton.findSlot(relicSlotName)
+            if (slot.attachment == null) {
+                skeleton.setAttachment(relicSlotName, relicSlotName)
+            }
             return
         }
         val skeletonStart = Skeleton(skeleton).apply {
