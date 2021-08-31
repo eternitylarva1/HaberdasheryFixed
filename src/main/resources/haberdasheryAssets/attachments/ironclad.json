@@ -638,7 +638,7 @@
     },
     "Orichalcum": {
       "drawOrderSlotName": "boot_left",
-      "drawOrderZIndex": -2,
+      "drawOrderZIndex": -3,
       "hideSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
@@ -998,7 +998,7 @@
     },
     "Empty Cage": {
       "drawOrderSlotName": "shadow",
-      "drawOrderZIndex": -2,
+      "drawOrderZIndex": -3,
       "hideSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
@@ -1160,6 +1160,81 @@
         "y": 5.000242
       },
       "boneName": "Leg_L_2"
+    },
+    "Matryoshka": {
+      "drawOrderSlotName": "boot_left",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.7412541,
+      "scaleY": 0.7412541,
+      "rotation": 0.0,
+      "position": {
+        "x": -83.4,
+        "y": -7.4
+      },
+      "boneName": "root"
+    },
+    "Eternal Feather": {
+      "drawOrderSlotName": "hand_left",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.64835167,
+      "scaleY": 0.64835167,
+      "rotation": -159.86627,
+      "position": {
+        "x": 16.530214,
+        "y": -7.469407
+      },
+      "boneName": "Hair_2"
+    },
+    "White Beast Statue": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 1.0287967,
+      "scaleY": 1.0287967,
+      "rotation": 0.0,
+      "position": {
+        "x": 59.200005,
+        "y": 34.800003
+      },
+      "boneName": "root"
+    },
+    "InkBottle": {
+      "drawOrderSlotName": "boot_left",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.41946137,
+      "scaleY": 0.41946137,
+      "rotation": 0.0,
+      "position": {
+        "x": 68.9,
+        "y": -14.000002
+      },
+      "boneName": "root"
+    },
+    "FossilizedHelix": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.8269908,
+      "scaleY": 0.8269908,
+      "rotation": 0.0,
+      "position": {
+        "x": 139.00002,
+        "y": 23.2
+      },
+      "boneName": "root"
     }
   }
 }
