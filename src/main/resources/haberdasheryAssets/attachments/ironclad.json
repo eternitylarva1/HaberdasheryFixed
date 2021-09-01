@@ -1177,17 +1177,17 @@
       "boneName": "root"
     },
     "Eternal Feather": {
-      "drawOrderSlotName": "hand_left",
-      "drawOrderZIndex": 0,
+      "drawOrderSlotName": "hair",
+      "drawOrderZIndex": -1,
       "hideSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.77802205,
-      "scaleY": 0.77802205,
-      "rotation": -159.86627,
+      "scaleX": 0.4870472,
+      "scaleY": 0.4870472,
+      "rotation": -138.03682,
       "position": {
-        "x": 19.836258,
-        "y": -8.963289
+        "x": 8.675803,
+        "y": 0.26840997
       },
       "boneName": "Hair_2"
     },
