@@ -16,6 +16,7 @@ import haberdashery.database.MySlotData
 import haberdashery.extensions.asRegion
 import haberdashery.extensions.getPrivate
 import haberdashery.extensions.premultiplyAlpha
+import haberdashery.extensions.scale
 
 object AttachRelic {
     fun receive(relic: AbstractRelic) {
@@ -78,11 +79,11 @@ object AttachRelic {
             height = tex.regionHeight.toFloat()
             skeletonStart.findBone(info.boneName)?.let { bone ->
                 val pos = info.position.cpy().rotate(bone.worldRotationX)
-                x = pos.x
-                y = pos.y
+                x = pos.x.scale()
+                y = pos.y.scale()
             }
-            scaleX = info.scaleX
-            scaleY = info.scaleY
+            scaleX = info.scaleX.scale()
+            scaleY = info.scaleY.scale()
             rotation = info.rotation
             updateOffset()
         }
