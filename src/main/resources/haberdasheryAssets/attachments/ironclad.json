@@ -158,7 +158,7 @@
     },
     "Tiny Chest": {
       "drawOrderSlotName": "boot_left",
-      "drawOrderZIndex": 0,
+      "drawOrderZIndex": -2,
       "hideSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
@@ -653,7 +653,7 @@
     },
     "Art of War": {
       "drawOrderSlotName": "pants",
-      "drawOrderZIndex": -2,
+      "drawOrderZIndex": -3,
       "hideSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
@@ -1028,7 +1028,7 @@
     },
     "Ectoplasm": {
       "drawOrderSlotName": "pants",
-      "drawOrderZIndex": -3,
+      "drawOrderZIndex": -4,
       "hideSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
@@ -1073,7 +1073,7 @@
     },
     "Chemical X": {
       "drawOrderSlotName": "shirt",
-      "drawOrderZIndex": 1,
+      "drawOrderZIndex": 2,
       "hideSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
@@ -1235,6 +1235,66 @@
         "y": 23.2
       },
       "boneName": "root"
+    },
+    "Shovel": {
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 3,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 35.980743,
+      "position": {
+        "x": 15.126007,
+        "y": -3.376971
+      },
+      "boneName": "Spine_"
+    },
+    "Pandora\u0027s Box": {
+      "drawOrderSlotName": "boot_left",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.75,
+      "scaleY": 0.75,
+      "rotation": 0.0,
+      "position": {
+        "x": -11.5,
+        "y": -0.8
+      },
+      "boneName": "root"
+    },
+    "Calipers": {
+      "drawOrderSlotName": "shirt",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.4587042,
+      "scaleY": 0.4587042,
+      "rotation": -74.27253,
+      "position": {
+        "x": 20.53301,
+        "y": 20.042347
+      },
+      "boneName": "Spine_"
+    },
+    "Mummified Hand": {
+      "drawOrderSlotName": "pants",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.48492092,
+      "scaleY": 0.48492092,
+      "rotation": -38.990173,
+      "position": {
+        "x": 1.2331957,
+        "y": 4.939559
+      },
+      "boneName": "Leg_L_"
     }
   }
 }
