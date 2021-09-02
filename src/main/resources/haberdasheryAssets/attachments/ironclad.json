@@ -697,7 +697,7 @@
     "Art of War": {
       "large": false,
       "drawOrderSlotName": "pants",
-      "drawOrderZIndex": -3,
+      "drawOrderZIndex": -4,
       "hideSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
@@ -1097,7 +1097,7 @@
     "Ectoplasm": {
       "large": false,
       "drawOrderSlotName": "pants",
-      "drawOrderZIndex": -4,
+      "drawOrderZIndex": -5,
       "hideSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
@@ -1369,7 +1369,7 @@
     "Mummified Hand": {
       "large": false,
       "drawOrderSlotName": "pants",
-      "drawOrderZIndex": -2,
+      "drawOrderZIndex": -3,
       "hideSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
@@ -1381,6 +1381,86 @@
         "y": 5.927471
       },
       "boneName": "Leg_L_"
+    },
+    "Girya": {
+      "large": false,
+      "drawOrderSlotName": "hand_right",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.6737176,
+      "scaleY": 0.6737176,
+      "rotation": -96.922714,
+      "position": {
+        "x": 4.316021,
+        "y": 8.10074
+      },
+      "boneName": "Arm_R_3"
+    },
+    "TungstenRod": {
+      "large": false,
+      "drawOrderSlotName": "sword",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.7400169,
+      "scaleY": 0.7400169,
+      "rotation": 20.577873,
+      "position": {
+        "x": 13.441164,
+        "y": -14.005178
+      },
+      "boneName": "Arm_R_3"
+    },
+    "Odd Mushroom": {
+      "large": false,
+      "drawOrderSlotName": "pauldron_low_right",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.53571427,
+      "scaleY": 0.53571427,
+      "rotation": 36.993206,
+      "position": {
+        "x": -21.231115,
+        "y": -1.4729716
+      },
+      "boneName": "Arm_L_1"
+    },
+    "Membership Card": {
+      "large": false,
+      "drawOrderSlotName": "pants",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.48506033,
+      "scaleY": 0.48506033,
+      "rotation": -61.070873,
+      "position": {
+        "x": 22.800001,
+        "y": 2.9000006
+      },
+      "boneName": "Hips"
+    },
+    "Strange Spoon": {
+      "large": false,
+      "drawOrderSlotName": "pauldron_right",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.6893204,
+      "scaleY": 0.6893204,
+      "rotation": 41.827274,
+      "position": {
+        "x": -5.9927635,
+        "y": 5.254214
+      },
+      "boneName": "Leg_L_2"
     }
   }
 }
