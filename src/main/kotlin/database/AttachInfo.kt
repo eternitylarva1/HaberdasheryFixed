@@ -11,6 +11,7 @@ class AttachInfo(
     private constructor() : this("") {}
 
     var large: Boolean = false
+        private set
     var drawOrderSlotName: String? = null
         private set
     var drawOrderZIndex: Int = 0
@@ -72,6 +73,7 @@ class AttachInfo(
         dirtyPosition.set(position)
     }
 
+    fun large(large: Boolean) = apply { this.large = large }
     fun hideSlots(vararg names: String) = apply { this.hideSlotNames = names }
     fun drawOrder(slotName: String, zIndex: Int = 0) = apply {
         this.drawOrderSlotName = slotName

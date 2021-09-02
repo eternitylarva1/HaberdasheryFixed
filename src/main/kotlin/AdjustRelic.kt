@@ -19,14 +19,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.FontHelper
+import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.helpers.RelicLibrary
 import com.megacrit.cardcrawl.helpers.input.InputHelper
 import haberdashery.database.AttachDatabase
 import haberdashery.database.AttachInfo
 import haberdashery.database.MySlotData
-import haberdashery.extensions.flipY
-import haberdashery.extensions.getPrivate
-import haberdashery.extensions.scale
+import haberdashery.extensions.*
 import kotlin.math.absoluteValue
 import kotlin.math.max
 
@@ -223,6 +222,12 @@ object AdjustRelic {
             info.flipVertical(!info.flipVertical)
             attachmentScale(info)
         }
+
+        // Large
+        if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
+            info.large(!info.large)
+            largeRelicSwap(relicId, info)
+        }
     }
 
     fun render(sb: SpriteBatch) {
@@ -267,6 +272,7 @@ object AdjustRelic {
                     "Position: ${info.dirtyPosition.x}, ${info.dirtyPosition.y}\n" +
                     "Rotation: ${info.dirtyRotation}\n" +
                     "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n" +
+                    "Large: ${info.large}\n" +
                     if (saveTimer > 0) {
                         "\nSaved!"
                     } else { "" }
@@ -489,5 +495,23 @@ object AdjustRelic {
             }
         }
         drawOrder.insert(insertIndex, slot)
+    }
+
+    private fun largeRelicSwap(relicId: String, info: AttachInfo) {
+        val relic = RelicLibrary.getRelic(relicId)
+        val attachment = attachment
+        if (attachment is RegionAttachment) {
+            attachment.region.texture.dispose()
+            attachment.region = (if (info.large) {
+                ImageMaster.loadImage("images/largeRelics/${relic.imgUrl}")
+                    ?.premultiplyAlpha(true)
+            } else {
+                null
+            } ?: ImageMaster.getRelicImg(relic.relicId).premultiplyAlpha()
+                    ).asRegion()
+            attachment.width = attachment.region.regionWidth.toFloat()
+            attachment.height = attachment.region.regionHeight.toFloat()
+            attachment.updateOffset()
+        }
     }
 }
