@@ -12,7 +12,7 @@ fun Texture.asAtlasRegion(): TextureAtlas.AtlasRegion =
 fun Texture.asRegion(): TextureRegion =
     TextureRegion(this)
 
-fun Texture.premultiplyAlpha(): Texture {
+fun Texture.premultiplyAlpha(disposeOriginal: Boolean = false): Texture {
     textureData.prepare()
     val pixmap = textureData.consumePixmap()
     val saveBlending = Pixmap.getBlending()
@@ -27,6 +27,9 @@ fun Texture.premultiplyAlpha(): Texture {
     }
     val newTexture = Texture(pixmap).apply {
         setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear)
+    }
+    if (disposeOriginal) {
+        dispose()
     }
     pixmap.dispose()
     Pixmap.setBlending(saveBlending)

@@ -70,9 +70,13 @@ object AttachRelic {
         drawOrder.insert(insertIndex, slotClone)
         skeleton.drawOrder = drawOrder
 
-        val tex = ImageMaster.getRelicImg(relic.relicId)
-            .premultiplyAlpha()
-            .asRegion()
+        val tex = (if (info.large) {
+            ImageMaster.loadImage("images/largeRelics/${relic.imgUrl}")
+                ?.premultiplyAlpha(true)
+        } else {
+            null
+        } ?: ImageMaster.getRelicImg(relic.relicId).premultiplyAlpha()
+                ).asRegion()
         val attachment = RegionAttachment(relicSlotName).apply {
             region = tex
             width = tex.regionWidth.toFloat()

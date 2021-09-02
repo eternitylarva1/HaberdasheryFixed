@@ -10,6 +10,7 @@ class AttachInfo(
     // for gson initializing
     private constructor() : this("") {}
 
+    var large: Boolean = false
     var drawOrderSlotName: String? = null
         private set
     var drawOrderZIndex: Int = 0
