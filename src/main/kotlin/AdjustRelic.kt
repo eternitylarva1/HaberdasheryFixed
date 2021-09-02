@@ -501,16 +501,21 @@ object AdjustRelic {
         val relic = RelicLibrary.getRelic(relicId)
         val attachment = attachment
         if (attachment is RegionAttachment) {
-            attachment.region.texture.dispose()
-            attachment.region = (if (info.large) {
-                ImageMaster.loadImage("images/largeRelics/${relic.imgUrl}")
+            val newTexture = if (info.large) {
+                val largeTex = ImageMaster.loadImage("images/largeRelics/${relic.imgUrl}")
                     ?.premultiplyAlpha(true)
+                    ?: run {
+                        info.large(false)
+                        return
+                    }
+                largeTex
             } else {
-                null
-            } ?: ImageMaster.getRelicImg(relic.relicId).premultiplyAlpha()
-                    ).asRegion()
-            attachment.width = attachment.region.regionWidth.toFloat()
-            attachment.height = attachment.region.regionHeight.toFloat()
+                ImageMaster.getRelicImg(relic.relicId).premultiplyAlpha()
+            }.asRegion()
+            attachment.region.texture.dispose()
+            attachment.region = newTexture
+            attachment.width = newTexture.regionWidth.toFloat()
+            attachment.height = newTexture.regionHeight.toFloat()
             attachment.updateOffset()
         }
     }
