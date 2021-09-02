@@ -631,18 +631,18 @@
       "boneName": "Leg_L_"
     },
     "Torii": {
-      "large": false,
+      "large": true,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 1.2,
-      "scaleY": 1.2,
+      "scaleX": 0.77172035,
+      "scaleY": 0.77172035,
       "rotation": 0.0,
       "position": {
-        "x": 155.76001,
-        "y": 23.760002
+        "x": 159.36002,
+        "y": 33.36
       },
       "boneName": "root"
     },
