@@ -30,4 +30,4 @@ Draw order is defined first by one of the original slots of the character animat
 **J/K** control which original slot the relic should be assigned to. **Shift+J/K** control the z-index.
 
 ##### Notes
-Be careful when selecting the attachment bone after adding a new relic, some bones may be positioned on top of each other, making it hard to pick one of them instead of the other. The display in the top-left will tell you the name of the bone you are currently hovering over to help with this. (For example, on the Ironclad, the `root` and `shadow` bones are located on top of each other but you almost always want to pick the `root` bone instead of the `shadow`.
+Be careful when selecting the attachment bone after adding a new relic, some bones may be positioned on top of each other, making it hard to pick one of them instead of the other. The display in the top-left will tell you the name of the bone you are currently hovering over to help with this. (For example, on the Ironclad, the `root` and `shadow` bones are located on top of each other but you almost always want to pick the `root` bone instead of the `shadow`).
