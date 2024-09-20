@@ -15,7 +15,7 @@
         <SlayTheSpire.version>12-22-2020</SlayTheSpire.version>
         <ModTheSpire.version>3.21.0</ModTheSpire.version>
 
-        <kotlin.version>1.4.10</kotlin.version>
+        <kotlin.version>1.7.22</kotlin.version>
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     </properties>
 
