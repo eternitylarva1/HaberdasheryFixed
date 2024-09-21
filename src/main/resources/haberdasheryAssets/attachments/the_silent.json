@@ -123,6 +123,38 @@
         "x": -2.5451694,
         "y": 26.861538
       }
+    },
+    "The Specimen": {
+      "boneName": "root",
+      "large": true,
+      "drawOrderSlotName": "tail_spine",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": -95.799995,
+        "y": 53.600002
+      }
+    },
+    "Ninja Scroll": {
+      "boneName": "Hips",
+      "large": false,
+      "drawOrderSlotName": "hand",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.76363635,
+      "scaleY": 0.76363635,
+      "rotation": 17.30398,
+      "position": {
+        "x": 24.0,
+        "y": 48.499992
+      }
     }
   }
 }
