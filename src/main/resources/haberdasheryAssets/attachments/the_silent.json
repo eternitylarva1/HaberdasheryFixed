@@ -155,6 +155,134 @@
         "x": 24.0,
         "y": 48.499992
       }
+    },
+    "Gremlin Horn": {
+      "boneName": "Skull",
+      "large": false,
+      "drawOrderSlotName": "hair2",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.9124424,
+      "scaleY": 0.9124424,
+      "rotation": -37.96344,
+      "position": {
+        "x": 10.245586,
+        "y": -3.3463478
+      }
+    },
+    "Peace Pipe": {
+      "boneName": "Eye",
+      "large": false,
+      "drawOrderSlotName": "eye",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.551813,
+      "scaleY": 0.551813,
+      "rotation": -57.435547,
+      "position": {
+        "x": -31.980919,
+        "y": 0.54862046
+      }
+    },
+    "Old Coin": {
+      "boneName": "Hair_R_6",
+      "large": false,
+      "drawOrderSlotName": "face",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.23975654,
+      "scaleY": 0.23975654,
+      "rotation": 120.270874,
+      "position": {
+        "x": -0.12038374,
+        "y": -5.1337614
+      }
+    },
+    "Gambling Chip": {
+      "boneName": "Hair_R_3",
+      "large": false,
+      "drawOrderSlotName": "face",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.3429035,
+      "scaleY": 0.3429035,
+      "rotation": -33.179493,
+      "position": {
+        "x": 5.071457,
+        "y": 9.825493
+      }
+    },
+    "Paper Crane": {
+      "boneName": "root",
+      "large": false,
+      "drawOrderSlotName": "cape_right",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.72231716,
+      "scaleY": 0.72231716,
+      "rotation": 0.0,
+      "position": {
+        "x": -110.7,
+        "y": -3.1999996
+      }
+    },
+    "Tough Bandages": {
+      "boneName": "Hips",
+      "large": false,
+      "drawOrderSlotName": "hand",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.5032258,
+      "scaleY": 0.5032258,
+      "rotation": 41.37197,
+      "position": {
+        "x": -16.4,
+        "y": 0.70000076
+      }
+    },
+    "Tingsha": {
+      "boneName": "Hair_L_3",
+      "large": false,
+      "drawOrderSlotName": "cape_right",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.3381371,
+      "scaleY": 0.3381371,
+      "rotation": 101.02828,
+      "position": {
+        "x": -4.894667,
+        "y": 11.262428
+      }
+    },
+    "The Courier": {
+      "boneName": "root",
+      "large": false,
+      "drawOrderSlotName": "cape_left",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.7606838,
+      "scaleY": 0.7606838,
+      "rotation": -9.412941,
+      "position": {
+        "x": -26.7,
+        "y": 0.70000076
+      }
     }
   }
 }
