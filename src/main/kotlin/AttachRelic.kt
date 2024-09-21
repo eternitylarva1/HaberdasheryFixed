@@ -97,8 +97,6 @@ object AttachRelic {
 
         skeleton.setAttachment(relicSlotName, attachment.name)
         for (slotName in info.hideSlotNames) {
-            val slot = skeleton.findSlot(slotName)
-            slot.attachment?.let { info.hideSlotAttachmentMemory[slotName] = it.name }
             skeleton.setAttachment(slotName, null)
         }
     }
@@ -117,8 +115,9 @@ object AttachRelic {
         skeleton.setAttachment(relicSlotName, null)
 
         // TODO: this shouldn't restore a hidden slot if other relics are hiding it
-        for ((hideSlot, attachment) in info.hideSlotAttachmentMemory) {
-            skeleton.setAttachment(hideSlot, attachment)
+        for (slotName in info.hideSlotNames) {
+            val slot = skeleton.findSlot(slotName)
+            skeleton.setAttachment(slotName, slot.data.attachmentName)
         }
     }
 
