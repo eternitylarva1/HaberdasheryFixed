@@ -75,11 +75,9 @@
     "Shuriken": {
       "boneName": "Hand_L",
       "large": false,
-      "drawOrderSlotName": "kris",
-      "drawOrderZIndex": -1,
-      "hideSlotNames": [
-        "kris"
-      ],
+      "drawOrderSlotName": "cape_left",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.657154,
