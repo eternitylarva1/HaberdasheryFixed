@@ -7,6 +7,7 @@ class MySlotData(
     index: Int,
     name: String,
     boneData: BoneData,
-    var zIndex: Int
+    var zIndex: Int,
+    val hideSlotNames: Array<out String>,
 ) : SlotData(index, name, boneData) {
 }

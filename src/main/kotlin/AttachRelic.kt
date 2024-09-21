@@ -44,7 +44,8 @@ object AttachRelic {
                 skeleton.slots.size,
                 relicSlotName,
                 bone.data,
-                info.drawOrderZIndex
+                info.drawOrderZIndex,
+                info.hideSlotNames,
             ),
             bone
         )
@@ -113,8 +114,15 @@ object AttachRelic {
 
         skeleton.setAttachment(relicSlotName, null)
 
-        // TODO: this shouldn't restore a hidden slot if other relics are hiding it
+        val hidden = skeleton.slots
+            .asSequence()
+            .filter { it.attachment != null }
+            .map { it.data }
+            .filterIsInstance<MySlotData>()
+            .flatMap { it.hideSlotNames.toList() }
+            .toList()
         for (slotName in info.hideSlotNames) {
+            if (slotName in hidden) continue
             val slot = skeleton.findSlot(slotName)
             skeleton.setAttachment(slotName, slot.data.attachmentName)
         }
