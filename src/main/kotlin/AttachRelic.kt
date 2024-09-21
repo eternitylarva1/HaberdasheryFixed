@@ -30,6 +30,7 @@ object AttachRelic {
             if (slot.attachment == null) {
                 skeleton.setAttachment(relicSlotName, relicSlotName)
             }
+            hideSlots(skeleton, info.hideSlotNames)
             return
         }
         val skeletonStart = Skeleton(skeleton).apply {
@@ -96,9 +97,7 @@ object AttachRelic {
         skin.addAttachment(slotClone.data.index, attachment.name, attachment)
 
         skeleton.setAttachment(relicSlotName, attachment.name)
-        for (slotName in info.hideSlotNames) {
-            skeleton.setAttachment(slotName, null)
-        }
+        hideSlots(skeleton, info.hideSlotNames)
     }
 
     fun lose(relicId: String) {
@@ -131,5 +130,11 @@ object AttachRelic {
             return 0
         }
         return ret
+    }
+
+    private fun hideSlots(skeleton: Skeleton, slotNames: kotlin.Array<out String>) {
+        for (slotName in slotNames) {
+            skeleton.setAttachment(slotName, null)
+        }
     }
 }
