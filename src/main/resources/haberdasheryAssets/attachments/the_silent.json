@@ -1,6 +1,9 @@
 {
   "THE_SILENT": {
     "Runic Dome": {
+      "boneName": "Skull",
+      "large": false,
+      "drawOrderSlotName": "skull",
       "drawOrderZIndex": 0,
       "hideSlotNames": [
         "skull"
@@ -13,10 +16,12 @@
       "position": {
         "x": -6.964468,
         "y": -3.9365196
-      },
-      "boneName": "Skull"
+      }
     },
     "CultistMask": {
+      "boneName": "Skull",
+      "large": false,
+      "drawOrderSlotName": "skull",
       "drawOrderZIndex": 0,
       "hideSlotNames": [
         "skull",
@@ -31,8 +36,77 @@
       "position": {
         "x": -13.893959,
         "y": -11.443685
-      },
-      "boneName": "Skull"
+      }
+    },
+    "Fusion Hammer": {
+      "boneName": "Hand_L",
+      "large": false,
+      "drawOrderSlotName": "cape_left",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 7.70648,
+      "position": {
+        "x": -0.9113564,
+        "y": 23.204943
+      }
+    },
+    "Kunai": {
+      "boneName": "Hand_L",
+      "large": false,
+      "drawOrderSlotName": "kris",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [
+        "kris"
+      ],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 66.339165,
+      "position": {
+        "x": -10.15963,
+        "y": 14.915829
+      }
+    },
+    "Shuriken": {
+      "boneName": "Hand_L",
+      "large": false,
+      "drawOrderSlotName": "kris",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [
+        "kris"
+      ],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.657154,
+      "scaleY": 0.657154,
+      "rotation": 2.3995829,
+      "position": {
+        "x": -3.680995,
+        "y": 15.852454
+      }
+    },
+    "Nunchaku": {
+      "boneName": "Hand_L",
+      "large": false,
+      "drawOrderSlotName": "kris",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "kris"
+      ],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -206.80789,
+      "position": {
+        "x": -17.747543,
+        "y": 12.630311
+      }
     }
   }
 }
