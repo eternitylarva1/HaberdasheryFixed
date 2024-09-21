@@ -24,6 +24,7 @@
 * **K** - Move one slot up the draw order.
 * **Shift+J** - Increase z-index draw order.
 * **Shift+K** - Decrease z-index draw order.
+* **Q** - Toggle large relic art (if it exists).
 
 ##### Draw Order
 Draw order is defined first by one of the original slots of the character animation, then by a z-index. Relics will draw directly in front of whatever original slot they are assigned to and z-index is used to order multiple relics assigned to the same original slot.
