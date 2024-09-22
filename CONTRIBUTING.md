@@ -14,6 +14,7 @@
   
 ## Attachment Editor Controls
 
+* **P** *(while selecting bone)* - Pause player animation.
 * **F** - Saves all attachment info for the current character to a json file in the current working directory (game's directory).
 * **T** - Translate (x, y position). Hold and move mouse. Right-click while active to cancel changes.
 * **R** - Rotation. Hold and move mouse around center of screen. Right-click while active to cancel changes.

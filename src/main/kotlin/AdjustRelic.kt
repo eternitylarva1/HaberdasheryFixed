@@ -69,9 +69,16 @@ object AdjustRelic {
     private var rotating: Vector2? = null
     private var scaling: Float? = null
 
-    var renderBones: Boolean = false
+    private var renderBones: Boolean = false
+    private var pauseAnimation: Boolean = false
 
     private var saveTimer = 0f
+
+    @Suppress("unused")
+    @JvmStatic
+    fun pauseAnimation(): Boolean {
+        return renderBones && pauseAnimation
+    }
 
     fun addRelic(relicId: String) {
         if (AttachDatabase.getInfo(AbstractDungeon.player.chosenClass, relicId) != null) {
@@ -128,6 +135,9 @@ object AdjustRelic {
                 )
 
                 setRelic(relicId)
+            }
+            if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
+                pauseAnimation = !pauseAnimation
             }
             return
         }
