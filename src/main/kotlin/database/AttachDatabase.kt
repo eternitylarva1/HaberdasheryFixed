@@ -31,7 +31,7 @@ object AttachDatabase {
             .forEach {
                 // removes the leading /
                 val internal = Gdx.files.internal(it.subpath(0, it.nameCount).toString())
-                val local = Gdx.files.local(it.fileName.toString())
+                val local = Gdx.files.local(Paths.get(HaberdasheryMod.ID).resolve(it.fileName.toString()).toString())
                 if (local.exists()) {
                     load(local)
                 } else {
@@ -61,8 +61,8 @@ object AttachDatabase {
             val json = gson.toJson(mapOf(character to it))
             val filename = "${character.name.toLowerCase()}.json"
             println(filename)
-            Gdx.files.local(filename).writeString(json, false)
             println("Done")
+            Gdx.files.local(Paths.get(HaberdasheryMod.ID, filename).toString()).writeString(json, false)
         }
     }
 
