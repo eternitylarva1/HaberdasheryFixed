@@ -232,6 +232,11 @@ object AdjustRelic {
 
     fun render(sb: SpriteBatch) {
         if (renderBones) {
+            if (skeleton == null) {
+                renderBones = false
+                return
+            }
+
             sb.end()
             srd.shapeRenderer.projectionMatrix = projection
             srd.draw(skeleton)
