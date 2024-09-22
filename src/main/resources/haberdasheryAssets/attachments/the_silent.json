@@ -283,6 +283,72 @@
         "x": -26.7,
         "y": 0.70000076
       }
+    },
+    "Busted Crown": {
+      "boneName": "Skull",
+      "large": false,
+      "drawOrderSlotName": "skull",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.39063263,
+      "scaleY": 0.39063263,
+      "rotation": 42.69296,
+      "position": {
+        "x": -15.030701,
+        "y": 56.853565
+      }
+    },
+    "Ornamental Fan": {
+      "boneName": "Hand_L",
+      "large": false,
+      "drawOrderSlotName": "cape_left",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [
+        "kris"
+      ],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -168.52454,
+      "position": {
+        "x": -4.0636215,
+        "y": 26.538591
+      }
+    },
+    "Bronze Scales": {
+      "boneName": "Spine_3",
+      "large": false,
+      "drawOrderSlotName": "cape_right",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.71375465,
+      "scaleY": 0.71375465,
+      "rotation": 10.946478,
+      "position": {
+        "x": 19.672626,
+        "y": 6.019784
+      }
+    },
+    "HoveringKite": {
+      "boneName": "Tail_2",
+      "large": true,
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.65816325,
+      "scaleY": 0.65816325,
+      "rotation": 163.1561,
+      "position": {
+        "x": -97.91968,
+        "y": 177.98517
+      }
     }
   }
 }
