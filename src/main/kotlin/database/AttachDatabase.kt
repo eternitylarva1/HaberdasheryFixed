@@ -10,12 +10,15 @@ import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.RelicLibrary
 import haberdashery.HaberdasheryMod
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 import java.io.Reader
 import java.nio.file.FileSystems
 import java.nio.file.Files
 import java.nio.file.Paths
 
 object AttachDatabase {
+    private val logger: Logger = LogManager.getLogger(AttachDatabase::class.java)
     private val database: MutableMap<AbstractPlayer.PlayerClass, MutableMap<String, AttachInfo>> = mutableMapOf()
 
     init {
@@ -33,8 +36,10 @@ object AttachDatabase {
                 val internal = Gdx.files.internal(it.subpath(0, it.nameCount).toString())
                 val local = Gdx.files.local(Paths.get(HaberdasheryMod.ID).resolve(it.fileName.toString()).toString())
                 if (local.exists()) {
+                    logger.info("Loading ${local.name()} (LOCAL)")
                     load(local)
                 } else {
+                    logger.info("Loading ${internal.name()} (INTERNAL)")
                     load(internal)
                 }
             }
@@ -53,15 +58,14 @@ object AttachDatabase {
     }
 
     fun save(character: AbstractPlayer.PlayerClass) {
-        println("Saving attach info...")
+        logger.info("Saving attach info...")
         val gson = GsonBuilder()
             .setPrettyPrinting()
             .create()
         database[character]?.let {
             val json = gson.toJson(mapOf(character to it))
-            val filename = "${character.name.toLowerCase()}.json"
-            println(filename)
-            println("Done")
+            val filename = "${character.name.lowercase()}.json"
+            logger.info(filename)
             Gdx.files.local(Paths.get(HaberdasheryMod.ID, filename).toString()).writeString(json, false)
         }
     }
