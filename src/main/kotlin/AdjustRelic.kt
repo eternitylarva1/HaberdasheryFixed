@@ -264,7 +264,7 @@ object AdjustRelic {
                         } else {
                             "<Select a Bone>"
                         } + "\n",
-                30f, Settings.HEIGHT - 300.scale(),
+                30f.scale(), Settings.HEIGHT - 300.scale(),
                 Color.WHITE
             )
 
