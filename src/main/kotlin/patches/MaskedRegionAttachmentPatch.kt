@@ -37,7 +37,7 @@ object MaskedRegionAttachmentPatch {
     @Suppress("unused")
     @JvmStatic
     fun drawMaskStart(batch: PolygonSpriteBatch, attachment: Attachment) {
-        if (attachment is MaskedRegionAttachment) {
+        if (attachment is MaskedRegionAttachment && attachment.hasMask()) {
             batch.flush()
             batch.shader = shader
             val mask = attachment.getMask()

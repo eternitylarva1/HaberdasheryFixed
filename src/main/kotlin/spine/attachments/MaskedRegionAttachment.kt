@@ -6,6 +6,10 @@ import com.esotericsoftware.spine.attachments.RegionAttachment
 class MaskedRegionAttachment(name: String) : RegionAttachment(name) {
     private var mask: TextureRegion? = null
 
+    fun hasMask(): Boolean {
+        return mask != null
+    }
+
     fun getMask(): TextureRegion {
         mask?.let { return it }
             ?: throw IllegalStateException("Mask has not been set: $this")

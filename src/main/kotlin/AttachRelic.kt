@@ -19,8 +19,12 @@ import haberdashery.extensions.getPrivate
 import haberdashery.extensions.premultiplyAlpha
 import haberdashery.extensions.scale
 import haberdashery.spine.attachments.MaskedRegionAttachment
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 object AttachRelic {
+    private val logger: Logger = LogManager.getLogger(AttachRelic::class.java)
+
     fun receive(relic: AbstractRelic) {
         val player = AbstractDungeon.player ?: return
         val info = AttachDatabase.getInfo(player.chosenClass, relic.relicId) ?: return
@@ -83,7 +87,11 @@ object AttachRelic {
                 ).asRegion()
         val attachment = if (info.mask) {
             MaskedRegionAttachment(relicSlotName).apply {
-                setMask(Texture(HaberdasheryMod.assetPath("attachments/masks/${relic.imgUrl}")).asRegion())
+                try {
+                    setMask(Texture(HaberdasheryMod.assetPath("attachments/masks/${relic.imgUrl}")).asRegion())
+                } catch (e: Exception) {
+                    logger.warn("Failed to load mask: ${e.message}")
+                }
             }
         } else {
             RegionAttachment(relicSlotName)
