@@ -26,6 +26,7 @@ import haberdashery.database.AttachDatabase
 import haberdashery.database.AttachInfo
 import haberdashery.database.MySlotData
 import haberdashery.extensions.*
+import haberdashery.patches.StopOtherKeyboardShortcuts
 import kotlin.math.absoluteValue
 import kotlin.math.max
 
@@ -106,6 +107,8 @@ object AdjustRelic {
     }
 
     fun update() {
+        StopOtherKeyboardShortcuts.clear()
+
         if (AbstractDungeon.player == null) {
             setRelic(null)
         }
@@ -136,7 +139,7 @@ object AdjustRelic {
 
                 setRelic(relicId)
             }
-            if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
+            if (isKeyJustPressed(Input.Keys.P)) {
                 pauseAnimation = !pauseAnimation
             }
             return
@@ -144,7 +147,7 @@ object AdjustRelic {
 
         val info = info ?: return
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
+        if (isKeyJustPressed(Input.Keys.F)) {
             AttachDatabase.save(AbstractDungeon.player.chosenClass)
             saveTimer = 2f
         }
@@ -173,26 +176,26 @@ object AdjustRelic {
             val slot = skeleton.findSlot(relicSlotName)
 
             if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT)) {
-                if (Gdx.input.isKeyJustPressed(Input.Keys.K)) {
+                if (isKeyJustPressed(Input.Keys.K)) {
                     info.drawOrder(info.drawOrderSlotName!!, info.drawOrderZIndex - 1)
                     (slot.data as? MySlotData)?.let { it.zIndex = info.drawOrderZIndex }
                     moveToZIndex(drawOrder, slot, drawOrder.indexOfFirst { it.data.name == info.drawOrderSlotName }, info.drawOrderZIndex)
-                } else if (Gdx.input.isKeyJustPressed(Input.Keys.J)) {
+                } else if (isKeyJustPressed(Input.Keys.J)) {
                     info.drawOrder(info.drawOrderSlotName!!, info.drawOrderZIndex + 1)
                     (slot.data as? MySlotData)?.let { it.zIndex = info.drawOrderZIndex }
                     moveToZIndex(drawOrder, slot, drawOrder.indexOfFirst { it.data.name == info.drawOrderSlotName }, info.drawOrderZIndex)
                 }
             } else {
-                if (Gdx.input.isKeyJustPressed(Input.Keys.K)) {
+                if (isKeyJustPressed(Input.Keys.K)) {
                     moveSlotName(drawOrder, slot, info, false)
-                } else if (Gdx.input.isKeyJustPressed(Input.Keys.J)) {
+                } else if (isKeyJustPressed(Input.Keys.J)) {
                     moveSlotName(drawOrder, slot, info, true)
                 }
             }
         }
 
         // Position
-        if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
+        if (isKeyJustPressed(Input.Keys.T)) {
             positioning = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
         } else if (!Gdx.input.isKeyPressed(Input.Keys.T) && positioning != null) {
             positioning = null
@@ -200,7 +203,7 @@ object AdjustRelic {
         }
 
         // Rotation
-        if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
+        if (isKeyJustPressed(Input.Keys.R)) {
             rotating = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
                 .sub(Settings.WIDTH / 2f, Settings.HEIGHT / 2f)
                 .nor()
@@ -211,7 +214,7 @@ object AdjustRelic {
         }
 
         // Scale
-        if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
+        if (isKeyJustPressed(Input.Keys.S)) {
             val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()).sub(Settings.WIDTH / 2f, Settings.HEIGHT / 2f)
             scaling = if (mouse.x.absoluteValue > mouse.y.absoluteValue) {
                 mouse.x.absoluteValue
@@ -224,17 +227,17 @@ object AdjustRelic {
         }
 
         // Flip
-        if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
+        if (isKeyJustPressed(Input.Keys.X)) {
             info.flipHorizontal(!info.flipHorizontal)
             attachmentScale(info)
         }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.Y)) {
+        if (isKeyJustPressed(Input.Keys.Y)) {
             info.flipVertical(!info.flipVertical)
             attachmentScale(info)
         }
 
         // Large
-        if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
+        if (isKeyJustPressed(Input.Keys.Q)) {
             info.large(!info.large)
             largeRelicSwap(relicId, info)
         }
@@ -532,6 +535,14 @@ object AdjustRelic {
             attachment.width = newTexture.regionWidth.toFloat()
             attachment.height = newTexture.regionHeight.toFloat()
             attachment.updateOffset()
+        }
+    }
+
+    private fun isKeyJustPressed(key: Int): Boolean {
+        return Gdx.input.isKeyJustPressed(key).also {
+            if (it) {
+                StopOtherKeyboardShortcuts.stopForOneFrame(key)
+            }
         }
     }
 }
