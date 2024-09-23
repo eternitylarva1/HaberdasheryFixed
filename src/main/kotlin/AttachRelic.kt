@@ -1,5 +1,6 @@
 package haberdashery
 
+import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.utils.Array
 import com.esotericsoftware.spine.BlendMode
 import com.esotericsoftware.spine.Bone
@@ -17,6 +18,7 @@ import haberdashery.extensions.asRegion
 import haberdashery.extensions.getPrivate
 import haberdashery.extensions.premultiplyAlpha
 import haberdashery.extensions.scale
+import haberdashery.spine.attachments.MaskedRegionAttachment
 
 object AttachRelic {
     fun receive(relic: AbstractRelic) {
@@ -79,7 +81,13 @@ object AttachRelic {
             null
         } ?: ImageMaster.getRelicImg(relic.relicId).premultiplyAlpha()
                 ).asRegion()
-        val attachment = RegionAttachment(relicSlotName).apply {
+        val attachment = if (info.mask) {
+            MaskedRegionAttachment(relicSlotName).apply {
+                setMask(Texture(HaberdasheryMod.assetPath("attachments/masks/${relic.imgUrl}")).asRegion())
+            }
+        } else {
+            RegionAttachment(relicSlotName)
+        }.apply {
             region = tex
             width = tex.regionWidth.toFloat()
             height = tex.regionHeight.toFloat()
