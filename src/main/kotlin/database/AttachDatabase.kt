@@ -2,6 +2,7 @@ package haberdashery.database
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.files.FileHandle
+import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.google.gson.Gson
@@ -116,7 +117,9 @@ object AttachDatabase {
         }
 
         try {
-            return Texture(HaberdasheryMod.assetPath("attachments/masks/${relic.imgUrl}")).asRegion().also {
+            // Use Texture(Pixmap(FileHandle(String))) instead of Texture(String) because the latter
+            // uses FileTextureData, which doesn't let us make changes to the texture/pixmap later
+            return Texture(Pixmap(Gdx.files.internal(HaberdasheryMod.assetPath("attachments/masks/${relic.imgUrl}")))).asRegion().also {
                 maskTextureCache[relic.relicId] = it
             }
         } catch (e: Exception) {

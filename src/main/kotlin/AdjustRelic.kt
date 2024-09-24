@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.OrthographicCamera
+import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
@@ -87,6 +88,8 @@ object AdjustRelic {
     private var saveTimer = 0f
 
     // Mask editing settings
+    private var dirtyMask: Pixmap? = null
+    private var dirtyMaskIsDirty: Boolean = false
     private var brushSize: Int = 8
     private var viewMask: Boolean = false
 
@@ -159,10 +162,28 @@ object AdjustRelic {
             }
             return
         } else if (mode == EditMode.EditingMask) {
+            val attachment = attachment
+            if (attachment !is MaskedRegionAttachment) return
+
             // Exit mask mode
             if (isKeyJustPressed(Input.Keys.M)) {
                 mode = EditMode.Main
+                // Save mask to attachment
+                Pixmap.setBlending(Pixmap.Blending.None)
+                attachment.getMask().texture.textureData.consumePixmap().drawPixmap(dirtyMask, 0, 0)
+                Pixmap.setBlending(Pixmap.Blending.SourceOver)
+
+                dirtyMask?.dispose()
+                dirtyMask = null
                 return
+            }
+
+            // Reset mask from attachment
+            if (isKeyJustPressed(Input.Keys.R)) {
+                Pixmap.setBlending(Pixmap.Blending.None)
+                dirtyMask?.drawPixmap(attachment.getMask().texture.textureData.consumePixmap(), 0, 0)
+                Pixmap.setBlending(Pixmap.Blending.SourceOver)
+                dirtyMaskIsDirty = true
             }
 
             // Brush size
@@ -176,6 +197,33 @@ object AdjustRelic {
             // Toggle mask view
             if (isKeyJustPressed(Input.Keys.N)) {
                 viewMask = !viewMask
+            }
+
+            // Draw on mask
+            if (InputHelper.isMouseDown) {
+                dirtyMask?.apply {
+                    Pixmap.setBlending(Pixmap.Blending.None)
+                    setColor(0)
+                    fillCircle(
+                        InputHelper.mX - Settings.WIDTH / 2,
+                        height - (InputHelper.mY - Settings.HEIGHT / 2),
+                        brushSize / 2
+                    )
+                    Pixmap.setBlending(Pixmap.Blending.SourceOver)
+                    dirtyMaskIsDirty = true
+                }
+            } else if (InputHelper.isMouseDown_R) {
+                dirtyMask?.apply {
+                    Pixmap.setBlending(Pixmap.Blending.None)
+                    setColor(1f, 1f, 1f, 1f)
+                    fillCircle(
+                        InputHelper.mX - Settings.WIDTH / 2,
+                        height - (InputHelper.mY - Settings.HEIGHT / 2),
+                        brushSize / 2
+                    )
+                    Pixmap.setBlending(Pixmap.Blending.SourceOver)
+                    dirtyMaskIsDirty = true
+                }
             }
 
             return
@@ -283,6 +331,14 @@ object AdjustRelic {
             mode = when (mode) {
                 EditMode.Main -> EditMode.EditingMask.also {
                     viewMask = false
+                    // TODO: size
+                    dirtyMask = Pixmap(128, 128, Pixmap.Format.Alpha).apply {
+                        (attachment as? MaskedRegionAttachment)?.let {
+                            Pixmap.setBlending(Pixmap.Blending.None)
+                            drawPixmap(it.getMask().texture.textureData.consumePixmap(), 0, 0)
+                            Pixmap.setBlending(Pixmap.Blending.SourceOver)
+                        }
+                    }
                 }
                 EditMode.EditingMask -> EditMode.Main
                 else -> mode
@@ -403,10 +459,16 @@ object AdjustRelic {
         sb.color = Color.WHITE
         sb.draw(
             attachment.region,
-            x - attachment.region.regionWidth / 2f,
-            y - attachment.region.regionHeight / 2f,
+            // TODO better position
+            x,// - attachment.region.regionWidth / 2f,
+            y,// - attachment.region.regionHeight / 2f,
         )
         sb.shader = origShader
+
+        if (dirtyMaskIsDirty) {
+            dirtyMaskIsDirty = false
+            attachment.getMask().texture.draw(dirtyMask, 0, 0)
+        }
 
         // Info
         FontHelper.renderFontLeftTopAligned(
