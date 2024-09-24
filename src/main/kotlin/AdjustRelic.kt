@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.Array
@@ -27,6 +28,7 @@ import haberdashery.database.AttachInfo
 import haberdashery.database.MySlotData
 import haberdashery.extensions.*
 import haberdashery.patches.StopOtherKeyboardShortcuts
+import haberdashery.spine.attachments.MaskedRegionAttachment
 import kotlin.math.absoluteValue
 import kotlin.math.max
 
@@ -49,6 +51,15 @@ object AdjustRelic {
         setRegionAttachments(false)
         setScale(Settings.scale)
     }
+    private val maskVisualizerShader =
+        ShaderProgram(
+            Gdx.files.internal(HaberdasheryMod.assetPath("shaders/mask.vert")),
+            Gdx.files.internal(HaberdasheryMod.assetPath("shaders/maskVisualizer.frag"))
+        ).apply {
+            if (!isCompiled) {
+                throw RuntimeException(log)
+            }
+        }
     private val attachment: Attachment?
         get() {
             if (relicId == null) return null
@@ -70,15 +81,19 @@ object AdjustRelic {
     private var rotating: Vector2? = null
     private var scaling: Float? = null
 
-    private var renderBones: Boolean = false
+    private var mode: EditMode = EditMode.Main
     private var pauseAnimation: Boolean = false
 
     private var saveTimer = 0f
 
+    // Mask editing settings
+    private var brushSize: Int = 8
+    private var viewMask: Boolean = false
+
     @Suppress("unused")
     @JvmStatic
     fun pauseAnimation(): Boolean {
-        return renderBones && pauseAnimation
+        return mode == EditMode.PickingBone && pauseAnimation
     }
 
     fun addRelic(relicId: String) {
@@ -86,7 +101,7 @@ object AdjustRelic {
             return
         }
         this.relicId = relicId
-        renderBones = true
+        mode = EditMode.PickingBone
     }
 
     fun setRelic(relicId: String?) {
@@ -122,9 +137,9 @@ object AdjustRelic {
             return
         }
 
-        if (renderBones) {
+        if (mode == EditMode.PickingBone) {
             if (InputHelper.justClickedLeft && srd.hoveredBone != null) {
-                renderBones = false
+                mode = EditMode.Main
 
                 val relic = RelicLibrary.getRelic(relicId)?.makeCopy() ?: return
                 AttachDatabase.relic(
@@ -142,6 +157,27 @@ object AdjustRelic {
             if (isKeyJustPressed(Input.Keys.P)) {
                 pauseAnimation = !pauseAnimation
             }
+            return
+        } else if (mode == EditMode.EditingMask) {
+            // Exit mask mode
+            if (isKeyJustPressed(Input.Keys.M)) {
+                mode = EditMode.Main
+                return
+            }
+
+            // Brush size
+            if (InputHelper.scrolledUp) {
+                ++brushSize
+            }
+            if (InputHelper.scrolledDown) {
+                brushSize = (brushSize - 1).coerceAtLeast(1)
+            }
+
+            // Toggle mask view
+            if (isKeyJustPressed(Input.Keys.N)) {
+                viewMask = !viewMask
+            }
+
             return
         }
 
@@ -241,33 +277,27 @@ object AdjustRelic {
             info.large(!info.large)
             largeRelicSwap(relicId, info)
         }
+
+        // Mask
+        if (isKeyJustPressed(Input.Keys.M)) {
+            mode = when (mode) {
+                EditMode.Main -> EditMode.EditingMask.also {
+                    viewMask = false
+                }
+                EditMode.EditingMask -> EditMode.Main
+                else -> mode
+            }
+        }
     }
 
     fun render(sb: SpriteBatch) {
-        if (renderBones) {
+        if (mode == EditMode.PickingBone) {
             if (skeleton == null) {
-                renderBones = false
+                mode = EditMode.Main
                 return
             }
 
-            sb.end()
-            srd.shapeRenderer.projectionMatrix = projection
-            srd.draw(skeleton)
-            sb.begin()
-
-            FontHelper.renderFontLeftTopAligned(
-                sb,
-                FontHelper.tipBodyFont,
-                "[$relicId]\n" +
-                        "Bone: " + if (srd.hoveredBone != null) {
-                            srd.hoveredBone.data.name
-                        } else {
-                            "<Select a Bone>"
-                        } + "\n",
-                30f.scale(), Settings.HEIGHT - 300.scale(),
-                Color.WHITE
-            )
-
+            renderBoneSelection(sb)
             return
         }
 
@@ -277,59 +307,19 @@ object AdjustRelic {
             return
         }
 
+        renderModeInfo(sb)
+
+        if (mode == EditMode.EditingMask) {
+            renderMaskEditing(sb, info)
+            return
+        }
+
         positionWidget(sb, info)
         rotationWidget(sb, info)
         scaleWidget(sb, info)
 
-        FontHelper.renderFontLeftTopAligned(
-            sb,
-            FontHelper.tipBodyFont,
-            "[$relicId]\n" +
-                    "Bone: ${info.boneName}\n" +
-                    "Draw Order: ${info.drawOrderSlotName} [${info.drawOrderZIndex}]\n" +
-                    "Position: ${info.dirtyPosition.x}, ${info.dirtyPosition.y}\n" +
-                    "Rotation: ${info.dirtyRotation}\n" +
-                    "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n" +
-                    "Large: ${info.large}\n" +
-                    if (saveTimer > 0) {
-                        "\nSaved!"
-                    } else { "" }
-            ,
-            30f.scale(), Settings.HEIGHT - 300.scale(),
-            Color.WHITE
-        )
-
-        val relicSlotName = HaberdasheryMod.makeID(relicId)
-        val drawOrderMsg = StringBuilder("[Draw Order]\n")
-        skeleton?.drawOrder?.let { drawOrder ->
-            val bottom = 0
-            val top = drawOrder.size-1
-            var lastOrigSlot: String? = null
-            for (i in bottom..top) {
-                val data = drawOrder[i].data
-                if (data is MySlotData) {
-                    if (lastOrigSlot != info.drawOrderSlotName) {
-                        continue
-                    }
-                    drawOrderMsg.append("    [").append(data.zIndex).append("] ")
-                } else {
-                    lastOrigSlot = data.name
-                }
-                if (data.name == relicSlotName) {
-                    drawOrderMsg.append("[#${Settings.GOLD_COLOR}]").append(data.name).append("[]\n")
-                } else {
-                    drawOrderMsg.append(data.name).append('\n')
-                }
-            }
-        }
-
-        FontHelper.renderFontRightTopAligned(
-            sb,
-            FontHelper.tipBodyFont,
-            drawOrderMsg.toString(),
-            Settings.WIDTH - 30f.scale(), Settings.HEIGHT - 200.scale(),
-            Color.WHITE
-        )
+        renderAttachInfo(sb, info)
+        renderDrawOrder(sb, info)
     }
 
     private fun attachmentPosition(info: AttachInfo) {
@@ -365,6 +355,137 @@ object AdjustRelic {
             }
             attachment.updateOffset()
         }
+    }
+
+    private fun renderModeInfo(sb: SpriteBatch) {
+        FontHelper.renderFontLeftTopAligned(
+            sb,
+            FontHelper.tipBodyFont,
+            "[Mode:$mode]",
+            30f.scale(), Settings.HEIGHT - 270.scale(),
+            Color.WHITE
+        )
+    }
+
+    private fun renderBoneSelection(sb: SpriteBatch) {
+        sb.end()
+        srd.shapeRenderer.projectionMatrix = projection
+        srd.draw(skeleton)
+        sb.begin()
+
+        renderModeInfo(sb)
+        FontHelper.renderFontLeftTopAligned(
+            sb,
+            FontHelper.tipBodyFont,
+            "[$relicId]\n" +
+                    "Bone: " + if (srd.hoveredBone != null) {
+                srd.hoveredBone.data.name
+            } else {
+                "<Select a Bone>"
+            } + "\n",
+            30f.scale(), Settings.HEIGHT - 300.scale(),
+            Color.WHITE
+        )
+    }
+
+    private fun renderMaskEditing(sb: SpriteBatch, info: AttachInfo) {
+        val attachment = attachment
+        if (attachment !is MaskedRegionAttachment) return
+
+        val x = Settings.WIDTH / 2f
+        val y = Settings.HEIGHT / 2f
+
+        // Render mask image
+        val origShader = sb.shader
+        sb.shader = maskVisualizerShader
+        maskVisualizerShader.bind("u_mask", 1, attachment.getMask().texture)
+        maskVisualizerShader.setUniformi("u_viewMask", if (viewMask) 1 else 0)
+        sb.color = Color.WHITE
+        sb.draw(
+            attachment.region,
+            x - attachment.region.regionWidth / 2f,
+            y - attachment.region.regionHeight / 2f,
+        )
+        sb.shader = origShader
+
+        // Info
+        FontHelper.renderFontLeftTopAligned(
+            sb,
+            FontHelper.tipBodyFont,
+            "View Mask: $viewMask\n" +
+                    "Brush Size: $brushSize\n",
+            30.scale(),
+            Settings.HEIGHT - 300.scale(),
+            Color.WHITE
+        )
+
+        // Cursor
+        sb.end()
+
+        val mouse = Vector2(InputHelper.mX.toFloat(), InputHelper.mY.toFloat())
+
+        debugRenderer.projectionMatrix = projection
+        debugRenderer.begin(ShapeRenderer.ShapeType.Filled)
+        debugRenderer.color = Color.BLACK
+        debugRenderer.circle(mouse.x, mouse.y, brushSize.toFloat() / 2f + 0.5f)
+        debugRenderer.end()
+
+        sb.begin()
+    }
+
+    private fun renderAttachInfo(sb: SpriteBatch, info: AttachInfo) {
+        FontHelper.renderFontLeftTopAligned(
+            sb,
+            FontHelper.tipBodyFont,
+            "[$relicId]\n" +
+                    "Bone: ${info.boneName}\n" +
+                    "Draw Order: ${info.drawOrderSlotName} [${info.drawOrderZIndex}]\n" +
+                    "Position: ${info.dirtyPosition.x}, ${info.dirtyPosition.y}\n" +
+                    "Rotation: ${info.dirtyRotation}\n" +
+                    "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n" +
+                    "Large: ${info.large}\n" +
+                    "Mask: ${info.mask}\n" +
+                    if (saveTimer > 0) {
+                        "\nSaved!"
+                    } else { "" }
+            ,
+            30f.scale(), Settings.HEIGHT - 300.scale(),
+            Color.WHITE
+        )
+    }
+
+    private fun renderDrawOrder(sb: SpriteBatch, info: AttachInfo) {
+        val relicSlotName = HaberdasheryMod.makeID(relicId!!)
+        val drawOrderMsg = StringBuilder("[Draw Order]\n")
+        skeleton?.drawOrder?.let { drawOrder ->
+            val bottom = 0
+            val top = drawOrder.size-1
+            var lastOrigSlot: String? = null
+            for (i in bottom..top) {
+                val data = drawOrder[i].data
+                if (data is MySlotData) {
+                    if (lastOrigSlot != info.drawOrderSlotName) {
+                        continue
+                    }
+                    drawOrderMsg.append("    [").append(data.zIndex).append("] ")
+                } else {
+                    lastOrigSlot = data.name
+                }
+                if (data.name == relicSlotName) {
+                    drawOrderMsg.append("[#${Settings.GOLD_COLOR}]").append(data.name).append("[]\n")
+                } else {
+                    drawOrderMsg.append(data.name).append('\n')
+                }
+            }
+        }
+
+        FontHelper.renderFontRightTopAligned(
+            sb,
+            FontHelper.tipBodyFont,
+            drawOrderMsg.toString(),
+            Settings.WIDTH - 30f.scale(), Settings.HEIGHT - 200.scale(),
+            Color.WHITE
+        )
     }
 
     private fun positionWidget(sb: SpriteBatch, info: AttachInfo) {
@@ -544,5 +665,11 @@ object AdjustRelic {
                 StopOtherKeyboardShortcuts.stopForOneFrame(key)
             }
         }
+    }
+
+    private enum class EditMode {
+        Main,
+        PickingBone,
+        EditingMask,
     }
 }

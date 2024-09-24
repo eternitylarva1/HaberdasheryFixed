@@ -1,7 +1,6 @@
 package haberdashery.patches
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.esotericsoftware.spine.Skeleton
@@ -10,6 +9,7 @@ import com.esotericsoftware.spine.attachments.Attachment
 import com.evacipated.cardcrawl.modthespire.lib.SpireInstrumentPatch
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
 import haberdashery.HaberdasheryMod
+import haberdashery.extensions.bind
 import haberdashery.spine.attachments.MaskedRegionAttachment
 import javassist.expr.ExprEditor
 import javassist.expr.MethodCall
@@ -41,9 +41,7 @@ object MaskedRegionAttachmentPatch {
             batch.flush()
             batch.shader = shader
             val mask = attachment.getMask()
-            mask.texture.bind(1)
-            shader.setUniformi("u_mask", 1)
-            Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0)
+            shader.bind("u_mask", 1, mask.texture)
         }
     }
 

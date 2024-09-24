@@ -1,10 +1,13 @@
 package haberdashery.extensions
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
+import com.badlogic.gdx.graphics.glutils.ShaderProgram
 
 fun Texture.asAtlasRegion(): TextureAtlas.AtlasRegion =
     TextureAtlas.AtlasRegion(this, 0, 0, this.width, this.height)
@@ -34,4 +37,10 @@ fun Texture.premultiplyAlpha(disposeOriginal: Boolean = false): Texture {
     pixmap.dispose()
     Pixmap.setBlending(saveBlending)
     return newTexture
+}
+
+fun ShaderProgram.bind(name: String, unit: Int, texture: Texture) {
+    texture.bind(unit)
+    setUniformi(name, unit)
+    Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0)
 }

@@ -2,6 +2,8 @@ package haberdashery.database
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.files.FileHandle
+import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -9,7 +11,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.RelicLibrary
+import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.HaberdasheryMod
+import haberdashery.extensions.asRegion
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import java.io.Reader
@@ -20,6 +24,7 @@ import java.nio.file.Paths
 object AttachDatabase {
     private val logger: Logger = LogManager.getLogger(AttachDatabase::class.java)
     private val database: MutableMap<AbstractPlayer.PlayerClass, MutableMap<String, AttachInfo>> = mutableMapOf()
+    private val maskTextureCache = mutableMapOf<String, TextureRegion>()
 
     init {
         val uri = AttachDatabase::class.java.getResource("/" + HaberdasheryMod.assetPath("attachments")).toURI()
@@ -102,6 +107,21 @@ object AttachDatabase {
         fun relic(relicID: String, info: AttachInfo): CharacterState {
             relic(character, relicID, info)
             return this
+        }
+    }
+
+    fun getMaskImg(relic: AbstractRelic): TextureRegion? {
+        if (maskTextureCache.contains(relic.relicId)) {
+            return maskTextureCache[relic.relicId]
+        }
+
+        try {
+            return Texture(HaberdasheryMod.assetPath("attachments/masks/${relic.imgUrl}")).asRegion().also {
+                maskTextureCache[relic.relicId] = it
+            }
+        } catch (e: Exception) {
+            logger.warn("Failed to load mask: ${e.message}")
+            return null
         }
     }
 }
