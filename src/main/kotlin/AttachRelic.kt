@@ -34,10 +34,6 @@ object AttachRelic {
             hideSlots(skeleton, info.hideSlotNames)
             return
         }
-        val skeletonStart = Skeleton(skeleton).apply {
-            setToSetupPose()
-            updateWorldTransform()
-        }
 
         val bone = skeleton.findBone(info.boneName) ?: return
         val slotClone = Slot(
@@ -73,34 +69,7 @@ object AttachRelic {
         drawOrder.insert(insertIndex, slotClone)
         skeleton.drawOrder = drawOrder
 
-        val tex = (if (info.large) {
-            ImageMaster.loadImage("images/largeRelics/${relic.imgUrl}")
-                ?.premultiplyAlpha(true)
-        } else {
-            null
-        } ?: ImageMaster.getRelicImg(relic.relicId).premultiplyAlpha()
-                ).asRegion()
-        val attachment = if (info.mask) {
-            MaskedRegionAttachment(relicSlotName).apply {
-                AttachDatabase.getMaskImg(relic)?.let { setMask(it) }
-            }
-        } else {
-            RegionAttachment(relicSlotName)
-        }.apply {
-            region = tex
-            width = tex.regionWidth.toFloat()
-            height = tex.regionHeight.toFloat()
-            skeletonStart.findBone(info.boneName)?.let { bone ->
-                val pos = info.position.cpy().rotate(bone.worldRotationX)
-                x = pos.x.scale()
-                y = pos.y.scale()
-            }
-            scaleX = info.scaleX.scale()
-            scaleY = info.scaleY.scale()
-            rotation = info.rotation
-            updateOffset()
-        }
-
+        val attachment = makeAttachment(relicSlotName, relic, skeleton, info)
         val skin = skeleton.data.defaultSkin
         skin.addAttachment(slotClone.data.index, attachment.name, attachment)
 
@@ -132,6 +101,46 @@ object AttachRelic {
             if (slotName in hidden) continue
             val slot = skeleton.findSlot(slotName)
             skeleton.setAttachment(slotName, slot.data.attachmentName)
+        }
+    }
+
+    private fun makeAttachment(relicSlotName: String, relic: AbstractRelic, skeleton: Skeleton, info: AttachInfo): RegionAttachment {
+        val skeletonStart = Skeleton(skeleton).apply {
+            setToSetupPose()
+            updateWorldTransform()
+        }
+
+        val tex = (if (info.large) {
+            ImageMaster.loadImage("images/largeRelics/${relic.imgUrl}")
+                ?.premultiplyAlpha(true)
+        } else {
+            null
+        } ?: ImageMaster.getRelicImg(relic.relicId).premultiplyAlpha()
+                ).asRegion()
+
+        return run {
+            if (info.mask) {
+                val maskRegion = AttachDatabase.getMaskImg(relic)
+                if (maskRegion != null) {
+                    return@run MaskedRegionAttachment(relicSlotName).apply {
+                        setMask(maskRegion)
+                    }
+                }
+            }
+            return@run RegionAttachment(relicSlotName)
+        }.apply {
+            region = tex
+            width = tex.regionWidth.toFloat()
+            height = tex.regionHeight.toFloat()
+            skeletonStart.findBone(info.boneName)?.let { bone ->
+                val pos = info.position.cpy().rotate(bone.worldRotationX)
+                x = pos.x.scale()
+                y = pos.y.scale()
+            }
+            scaleX = info.scaleX.scale()
+            scaleY = info.scaleY.scale()
+            rotation = info.rotation
+            updateOffset()
         }
     }
 
