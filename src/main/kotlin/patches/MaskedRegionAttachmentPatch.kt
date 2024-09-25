@@ -48,7 +48,7 @@ object MaskedRegionAttachmentPatch {
     @Suppress("unused")
     @JvmStatic
     fun drawMaskEnd(batch: PolygonSpriteBatch, attachment: Attachment) {
-        if (attachment is MaskedRegionAttachment) {
+        if (attachment is MaskedRegionAttachment && attachment.hasMask()) {
             batch.flush()
             batch.shader = null
         }

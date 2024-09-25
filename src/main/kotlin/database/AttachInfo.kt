@@ -75,6 +75,7 @@ class AttachInfo(
 
     fun large(large: Boolean) = apply { this.large = large }
     fun hideSlots(vararg names: String) = apply { this.hideSlotNames = names }
+    fun mask(mask: Boolean) = apply { this.mask = mask }
     fun drawOrder(slotName: String, zIndex: Int = 0) = apply {
         this.drawOrderSlotName = slotName
         this.drawOrderZIndex = zIndex
