@@ -95,9 +95,9 @@ object AdjustRelic {
     private var justStartedMaskMode: Boolean = false
     private val dirtyMaskFbo: FrameBuffer = FrameBuffer(Pixmap.Format.Alpha, Gdx.graphics.width, Gdx.graphics.height, false, false)
     private var dirtyMaskIsDirty: Boolean = false
-    private var brushSize: Int = 8
     private val currFillPos: Vector2 = Vector2()
     private var lastFillPos: Vector2? = null
+    private var brushSize: Int = 20
     private var viewMask: Boolean = false
 
     @Suppress("unused")
