@@ -8,10 +8,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.glutils.FrameBuffer
 import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.Array
+import com.badlogic.gdx.utils.ScreenUtils
 import com.esotericsoftware.spine.BonePickerSkeletonRendererDebug
 import com.esotericsoftware.spine.Skeleton
 import com.esotericsoftware.spine.Slot
@@ -89,9 +91,13 @@ object AdjustRelic {
     private var saveTimer = 0f
 
     // Mask editing settings
-    private var dirtyMask: Pixmap? = null
+    private const val DEBUG_TEST_FBO = false
+    private var justStartedMaskMode: Boolean = false
+    private val dirtyMaskFbo: FrameBuffer = FrameBuffer(Pixmap.Format.Alpha, Gdx.graphics.width, Gdx.graphics.height, false, false)
     private var dirtyMaskIsDirty: Boolean = false
     private var brushSize: Int = 8
+    private val currFillPos: Vector2 = Vector2()
+    private var lastFillPos: Vector2? = null
     private var viewMask: Boolean = false
 
     @Suppress("unused")
@@ -174,19 +180,23 @@ object AdjustRelic {
                 mode = EditMode.Main
                 // Save mask to attachment
                 Pixmap.setBlending(Pixmap.Blending.None)
-                attachment.getMask().texture.textureData.consumePixmap().drawPixmap(dirtyMask, 0, 0)
+                dirtyMaskFbo.scope {
+                    val p = ScreenUtils.getFrameBufferPixmap(
+                        Settings.WIDTH / 2,
+                        Settings.HEIGHT / 2 - attachment.getMask().regionHeight,
+                        attachment.getMask().regionWidth,
+                        attachment.getMask().regionHeight,
+                    )
+                    attachment.getMask().texture.textureData.consumePixmap().drawPixmap(p, 0, 0)
+                }
                 Pixmap.setBlending(Pixmap.Blending.SourceOver)
-
-                dirtyMask?.dispose()
-                dirtyMask = null
                 return
             }
 
             // Reset mask from attachment
             if (isKeyJustPressed(Input.Keys.R)) {
-                Pixmap.setBlending(Pixmap.Blending.None)
-                dirtyMask?.drawPixmap(attachment.getMask().texture.textureData.consumePixmap(), 0, 0)
-                Pixmap.setBlending(Pixmap.Blending.SourceOver)
+                attachment.getMask().texture.draw(attachment.getMask().texture.textureData.consumePixmap(), 0, 0)
+                justStartedMaskMode = true
                 dirtyMaskIsDirty = true
             }
 
@@ -204,30 +214,38 @@ object AdjustRelic {
             }
 
             // Draw on mask
-            if (InputHelper.isMouseDown) {
-                dirtyMask?.apply {
-                    Pixmap.setBlending(Pixmap.Blending.None)
-                    setColor(0)
-                    fillCircle(
-                        InputHelper.mX - Settings.WIDTH / 2,
-                        height - (InputHelper.mY - Settings.HEIGHT / 2),
-                        brushSize / 2
+            if (InputHelper.isMouseDown || InputHelper.isMouseDown_R) {
+                dirtyMaskFbo.scope {
+                    debugRenderer.projectionMatrix = projection
+                    debugRenderer.begin(ShapeRenderer.ShapeType.Filled)
+                    if (InputHelper.isMouseDown) {
+                        debugRenderer.setColor(0f, 0f, 0f, 0f)
+                    } else {
+                        debugRenderer.setColor(1f, 1f, 1f, 1f)
+                    }
+
+                    currFillPos.set(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
+                    debugRenderer.circle(
+                        currFillPos.x,
+                        currFillPos.y,
+                        brushSize / 2f
                     )
-                    Pixmap.setBlending(Pixmap.Blending.SourceOver)
-                    dirtyMaskIsDirty = true
+                    // Fill pixels between current and last mouse position
+                    lastFillPos?.let { last ->
+                        if (!last.epsilonEquals(currFillPos, 0.01f)) {
+                            debugRenderer.rectLine(last, currFillPos, brushSize.toFloat())
+                        }
+                    }
+                    if (lastFillPos == null) {
+                        lastFillPos = Vector2(currFillPos)
+                    } else {
+                        lastFillPos!!.set(currFillPos)
+                    }
+                    debugRenderer.end()
                 }
-            } else if (InputHelper.isMouseDown_R) {
-                dirtyMask?.apply {
-                    Pixmap.setBlending(Pixmap.Blending.None)
-                    setColor(1f, 1f, 1f, 1f)
-                    fillCircle(
-                        InputHelper.mX - Settings.WIDTH / 2,
-                        height - (InputHelper.mY - Settings.HEIGHT / 2),
-                        brushSize / 2
-                    )
-                    Pixmap.setBlending(Pixmap.Blending.SourceOver)
-                    dirtyMaskIsDirty = true
-                }
+                dirtyMaskIsDirty = true
+            } else {
+                lastFillPos = null
             }
 
             return
@@ -235,6 +253,7 @@ object AdjustRelic {
 
         val info = info ?: return
 
+        // Save
         if (isKeyJustPressed(Input.Keys.F)) {
             AttachDatabase.save(AbstractDungeon.player.chosenClass)
             saveTimer = 2f
@@ -335,18 +354,24 @@ object AdjustRelic {
             mode = when (mode) {
                 EditMode.Main -> EditMode.EditingMask.also {
                     viewMask = false
-                    // TODO size
-                    dirtyMask = Pixmap(128, 128, Pixmap.Format.Alpha).apply {
-                        (attachment as? MaskedRegionAttachment)?.let { attachment ->
-                            Pixmap.setBlending(Pixmap.Blending.None)
-                            if (!attachment.hasMask()) {
-                                attachment.setMask(Texture(Pixmap(width, height, Pixmap.Format.Alpha).apply {
-                                    setColor(1f, 1f, 1f, 1f)
-                                    fill()
-                                }).asRegion())
-                            }
-                            drawPixmap(attachment.getMask().texture.textureData.consumePixmap(), 0, 0)
-                            Pixmap.setBlending(Pixmap.Blending.SourceOver)
+                    justStartedMaskMode = true
+                    //
+                    (attachment as? MaskedRegionAttachment)?.let { attachment ->
+                        if (!attachment.hasMask()) {
+                            // Initialize empty mask if no mask
+                            attachment.setMask(
+                                Texture(
+                                    Pixmap(
+                                        attachment.region.regionWidth,
+                                        attachment.region.regionHeight,
+                                        Pixmap.Format.Alpha
+                                    ).apply {
+                                        setColor(1f, 1f, 1f, 1f)
+                                        fill()
+                                    }
+                                ).asRegion()
+                            )
+                            info.mask(true)
                         }
                     }
                 }
@@ -461,8 +486,50 @@ object AdjustRelic {
         val x = Settings.WIDTH / 2f
         val y = Settings.HEIGHT / 2f
 
-        // Render mask image
+        if (justStartedMaskMode) {
+            justStartedMaskMode = false
+            sb.flush()
+            // Clear fbo
+            dirtyMaskFbo.clear(1f, 1f, 1f, 1f)
+            // Copy existing mask into fbo
+            dirtyMaskFbo.scope {
+                sb.disableBlending()
+                attachment.getMask().apply {
+                    flip(false, true)
+                    sb.draw(
+                        this,
+                        x,
+                        y - attachment.getMask().regionHeight,
+                    )
+                    flip(false, true)
+                }
+                sb.enableBlending()
+            }
+        }
+
         val origShader = sb.shader
+        if (DEBUG_TEST_FBO) {
+            sb.shader = maskVisualizerShader
+            maskVisualizerShader.bind("u_mask", 1, dirtyMaskFbo.colorBufferTexture)
+            maskVisualizerShader.setUniformi("u_viewMask", 1)
+            sb.draw(dirtyMaskFbo.colorBufferTexture, 0f, 0f)
+            sb.shader = origShader
+        }
+
+        if (dirtyMaskIsDirty) {
+            dirtyMaskIsDirty = false
+            dirtyMaskFbo.scope {
+                val p = ScreenUtils.getFrameBufferPixmap(
+                    Settings.WIDTH / 2,
+                    Settings.HEIGHT / 2 - attachment.getMask().regionHeight,
+                    attachment.getMask().regionWidth,
+                    attachment.getMask().regionHeight,
+                )
+                attachment.getMask().texture.draw(p, 0, 0)
+            }
+        }
+
+        // Render mask image
         sb.shader = maskVisualizerShader
         maskVisualizerShader.bind("u_mask", 1, attachment.getMask().texture)
         maskVisualizerShader.setUniformi("u_viewMask", if (viewMask) 1 else 0)
@@ -474,11 +541,6 @@ object AdjustRelic {
             y,// - attachment.region.regionHeight / 2f,
         )
         sb.shader = origShader
-
-        if (dirtyMaskIsDirty) {
-            dirtyMaskIsDirty = false
-            attachment.getMask().texture.draw(dirtyMask, 0, 0)
-        }
 
         // Info
         FontHelper.renderFontLeftTopAligned(
