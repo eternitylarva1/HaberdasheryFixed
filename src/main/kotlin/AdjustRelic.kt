@@ -567,8 +567,8 @@ object AdjustRelic {
         val mouse = Vector2(InputHelper.mX.toFloat(), InputHelper.mY.toFloat())
 
         debugRenderer.projectionMatrix = projection
-        debugRenderer.begin(ShapeRenderer.ShapeType.Filled)
-        debugRenderer.color = Color.BLACK
+        debugRenderer.begin(ShapeRenderer.ShapeType.Line)
+        debugRenderer.color = Color.LIGHT_GRAY
         debugRenderer.circle(mouse.x, mouse.y, brushSize.toFloat() / 2f + 0.5f)
         debugRenderer.end()
 
