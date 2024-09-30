@@ -190,12 +190,18 @@ object AdjustRelic {
                     attachment.getMask().texture.textureData.consumePixmap().drawPixmap(p, 0, 0)
                 }
                 Pixmap.setBlending(Pixmap.Blending.SourceOver)
+                info?.let { info ->
+                    if (info.maskChanged) {
+                        info.mask(true)
+                    }
+                }
                 return
             }
 
             // Reset mask from attachment
             if (isKeyJustPressed(Input.Keys.R)) {
                 attachment.getMask().texture.draw(attachment.getMask().texture.textureData.consumePixmap(), 0, 0)
+                info?.maskChanged(false)
                 justStartedMaskMode = true
                 dirtyMaskIsDirty = true
             }
@@ -243,6 +249,7 @@ object AdjustRelic {
                     }
                     debugRenderer.end()
                 }
+                info?.maskChanged(true)
                 dirtyMaskIsDirty = true
             } else {
                 lastFillPos = null
@@ -255,7 +262,7 @@ object AdjustRelic {
 
         // Save
         if (isKeyJustPressed(Input.Keys.F)) {
-            AttachDatabase.save(AbstractDungeon.player.chosenClass)
+            AttachDatabase.save(AbstractDungeon.player.chosenClass, skeleton!!)
             saveTimer = 2f
         }
 
@@ -371,7 +378,8 @@ object AdjustRelic {
                                     }
                                 ).asRegion()
                             )
-                            info.mask(true)
+                            // TODO?
+                            //info.mask(true)
                         }
                     }
                 }

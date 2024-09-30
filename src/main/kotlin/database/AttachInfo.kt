@@ -20,6 +20,9 @@ class AttachInfo(
         private set
     var mask: Boolean = false
         private set
+    @Transient
+    internal var maskChanged: Boolean = false
+        private set
 
     @Transient
     var scaleX: Float = 1f
@@ -75,7 +78,10 @@ class AttachInfo(
 
     fun large(large: Boolean) = apply { this.large = large }
     fun hideSlots(vararg names: String) = apply { this.hideSlotNames = names }
-    fun mask(mask: Boolean) = apply { this.mask = mask }
+    fun mask(mask: Boolean) = apply {
+        this.mask = mask
+    }
+    fun maskChanged(changed: Boolean) = apply { this.maskChanged = changed }
     fun drawOrder(slotName: String, zIndex: Int = 0) = apply {
         this.drawOrderSlotName = slotName
         this.drawOrderZIndex = zIndex

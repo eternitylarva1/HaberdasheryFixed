@@ -5,6 +5,7 @@ import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
+import com.esotericsoftware.spine.Skeleton
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -15,12 +16,17 @@ import com.megacrit.cardcrawl.helpers.RelicLibrary
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.HaberdasheryMod
 import haberdashery.extensions.asRegion
+import haberdashery.spine.attachments.MaskedRegionAttachment
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import java.awt.image.BufferedImage
+import java.awt.image.DataBufferByte
+import java.awt.image.Raster
 import java.io.Reader
 import java.nio.file.FileSystems
 import java.nio.file.Files
 import java.nio.file.Paths
+import javax.imageio.ImageIO
 
 object AttachDatabase {
     private val logger: Logger = LogManager.getLogger(AttachDatabase::class.java)
@@ -63,7 +69,7 @@ object AttachDatabase {
         }
     }
 
-    fun save(character: AbstractPlayer.PlayerClass) {
+    fun save(character: AbstractPlayer.PlayerClass, skeleton: Skeleton) {
         logger.info("Saving attach info...")
         val gson = GsonBuilder()
             .setPrettyPrinting()
@@ -73,6 +79,33 @@ object AttachDatabase {
             val filename = "${character.name.lowercase()}.json"
             logger.info(filename)
             Gdx.files.local(Paths.get(HaberdasheryMod.ID, filename).toString()).writeString(json, false)
+
+            logger.info("Saving masks...")
+            it.forEach { (relicId, info) ->
+                if (info.mask && info.maskChanged) {
+                    val relicSlotName = HaberdasheryMod.makeID(relicId)
+                    val slot = skeleton.findSlot(relicSlotName)
+                    (slot.attachment as? MaskedRegionAttachment)?.also { attachment ->
+                        val pixmap = attachment.getMask().texture.textureData.consumePixmap()
+                        try {
+                            val img = BufferedImage(pixmap.width, pixmap.height, BufferedImage.TYPE_BYTE_GRAY)
+                            val pixels = pixmap.pixels
+                            val bytes = ByteArray(pixels.limit())
+                            pixels.position(0)
+                            pixels.get(bytes)
+                            img.data = Raster.createRaster(img.sampleModel, DataBufferByte(bytes, bytes.size), null)
+                            val imgUrl = RelicLibrary.getRelic(relicId).imgUrl
+                            if (ImageIO.write(img, "png", Paths.get(HaberdasheryMod.ID, "masks", imgUrl).toFile())) {
+                                logger.info("  $relicId: $imgUrl")
+                            } else {
+                                logger.warn("  $relicId: Couldn't write png")
+                            }
+                        } catch (e: Exception) {
+                            logger.error("  $relicId: Failed to save mask", e)
+                        }
+                    }
+                }
+            }
         }
     }
 
