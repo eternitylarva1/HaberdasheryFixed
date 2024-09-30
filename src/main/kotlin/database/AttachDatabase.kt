@@ -23,6 +23,7 @@ import java.awt.image.BufferedImage
 import java.awt.image.DataBufferByte
 import java.awt.image.Raster
 import java.io.Reader
+import java.nio.file.FileSystem
 import java.nio.file.FileSystems
 import java.nio.file.Files
 import java.nio.file.Paths
@@ -30,14 +31,15 @@ import javax.imageio.ImageIO
 
 object AttachDatabase {
     private val logger: Logger = LogManager.getLogger(AttachDatabase::class.java)
+    private val internalFS: FileSystem
     private val database: MutableMap<AbstractPlayer.PlayerClass, MutableMap<String, AttachInfo>> = mutableMapOf()
     private val maskTextureCache = mutableMapOf<String, TextureRegion>()
 
     init {
         val uri = AttachDatabase::class.java.getResource("/" + HaberdasheryMod.assetPath("attachments")).toURI()
+        internalFS = FileSystems.newFileSystem(uri, emptyMap<String, Any?>())
         val path = if (uri.scheme == "jar") {
-            val fs = FileSystems.newFileSystem(uri, emptyMap<String, Any?>())
-            fs.getPath("/" + HaberdasheryMod.assetPath("attachments"))
+            internalFS.getPath("/" + HaberdasheryMod.assetPath("attachments"))
         } else {
             Paths.get(uri)
         }
@@ -150,14 +152,31 @@ object AttachDatabase {
         }
 
         try {
+            val internal = Gdx.files.internal(HaberdasheryMod.assetPath("attachments/masks/${relic.imgUrl}"))
+            val local = Gdx.files.local(Paths.get(HaberdasheryMod.ID, "masks", relic.imgUrl).toString())
+            val file = newestFile(internal, local)
+
+            logger.info("Loading mask ${relic.imgUrl} (${if (file == local) "LOCAL" else "INTERNAL"})")
+
             // Use Texture(Pixmap(FileHandle(String))) instead of Texture(String) because the latter
             // uses FileTextureData, which doesn't let us make changes to the texture/pixmap later
-            return Texture(Pixmap(Gdx.files.internal(HaberdasheryMod.assetPath("attachments/masks/${relic.imgUrl}")))).asRegion().also {
+            return Texture(Pixmap(file)).asRegion().also {
                 maskTextureCache[relic.relicId] = it
             }
         } catch (e: Exception) {
-            logger.warn("Failed to load mask: ${e.message}")
+            logger.warn("Failed to load mask", e)
             return null
         }
+    }
+
+    private fun newestFile(internal: FileHandle, local: FileHandle): FileHandle {
+        if (!local.exists()) {
+            return internal
+        }
+
+        val internalTime = Files.getLastModifiedTime(internalFS.getPath(internal.path())).toInstant()
+        val localTime = Files.getLastModifiedTime(local.file().toPath()).toInstant()
+
+        return if (localTime.isAfter(internalTime)) local else internal
     }
 }
