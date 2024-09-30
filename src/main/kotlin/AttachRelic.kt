@@ -117,7 +117,7 @@ object AttachRelic {
             null
         } ?: ImageMaster.getRelicImg(relic.relicId).premultiplyAlpha()
                 ).asRegion()
-        val maskRegion = AttachDatabase.getMaskImg(relic)
+        val maskRegion = if (info.mask) AttachDatabase.getMaskImg(relic) else null
 
         return MaskedRegionAttachment(relicSlotName).apply {
             if (maskRegion != null) {
