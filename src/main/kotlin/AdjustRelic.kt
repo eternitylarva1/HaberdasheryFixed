@@ -191,8 +191,8 @@ object AdjustRelic {
                 }
                 Pixmap.setBlending(Pixmap.Blending.SourceOver)
                 info?.let { info ->
-                    if (info.maskChanged) {
-                        info.mask(true)
+                    if (info.maskChanged && info.mask == null) {
+                        info.mask(AttachDatabase.makeRelicMaskFilename(relicId))
                     }
                 }
                 return

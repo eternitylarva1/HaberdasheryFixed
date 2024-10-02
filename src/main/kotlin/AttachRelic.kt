@@ -117,13 +117,13 @@ object AttachRelic {
             null
         } ?: ImageMaster.getRelicImg(relic.relicId).premultiplyAlpha()
                 ).asRegion()
-        val maskRegion = if (info.mask) AttachDatabase.getMaskImg(relic) else null
+        val maskRegion = AttachDatabase.getMaskImg(relic, info)
 
         return MaskedRegionAttachment(relicSlotName).apply {
             if (maskRegion != null) {
                 setMask(maskRegion)
             } else {
-                info.mask(false)
+                info.mask(null)
             }
             region = tex
             width = tex.regionWidth.toFloat()

@@ -18,7 +18,7 @@ class AttachInfo(
         private set
     var hideSlotNames: Array<out String> = emptyArray()
         private set
-    var mask: Boolean = false
+    var mask: String? = null
         private set
     @Transient
     internal var maskChanged: Boolean = false
@@ -78,7 +78,7 @@ class AttachInfo(
 
     fun large(large: Boolean) = apply { this.large = large }
     fun hideSlots(vararg names: String) = apply { this.hideSlotNames = names }
-    fun mask(mask: Boolean) = apply {
+    fun mask(mask: String?) = apply {
         this.mask = mask
     }
     fun maskChanged(changed: Boolean) = apply { this.maskChanged = changed }

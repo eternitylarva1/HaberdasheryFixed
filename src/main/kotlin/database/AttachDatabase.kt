@@ -27,7 +27,9 @@ import java.nio.file.FileSystem
 import java.nio.file.FileSystems
 import java.nio.file.Files
 import java.nio.file.Paths
+import java.util.*
 import javax.imageio.ImageIO
+import kotlin.streams.asSequence
 
 object AttachDatabase {
     private val logger: Logger = LogManager.getLogger(AttachDatabase::class.java)
@@ -84,7 +86,7 @@ object AttachDatabase {
 
             logger.info("Saving masks...")
             it.forEach { (relicId, info) ->
-                if (info.mask && info.maskChanged) {
+                if (info.mask != null && info.maskChanged) {
                     val relicSlotName = HaberdasheryMod.makeID(relicId)
                     val slot = skeleton.findSlot(relicSlotName)
                     (slot.attachment as? MaskedRegionAttachment)?.also { attachment ->
@@ -96,7 +98,7 @@ object AttachDatabase {
                             pixels.position(0)
                             pixels.get(bytes)
                             img.data = Raster.createRaster(img.sampleModel, DataBufferByte(bytes, bytes.size), null)
-                            val imgUrl = RelicLibrary.getRelic(relicId).imgUrl
+                            val imgUrl = info.mask!!
                             if (ImageIO.write(img, "png", Paths.get(HaberdasheryMod.ID, "masks", imgUrl).toFile())) {
                                 logger.info("  $relicId: $imgUrl")
                             } else {
@@ -146,17 +148,19 @@ object AttachDatabase {
         }
     }
 
-    fun getMaskImg(relic: AbstractRelic): TextureRegion? {
+    fun getMaskImg(relic: AbstractRelic, info: AttachInfo): TextureRegion? {
+        val filename = info.mask ?: return null
+
         if (maskTextureCache.contains(relic.relicId)) {
             return maskTextureCache[relic.relicId]
         }
 
         try {
-            val internal = Gdx.files.internal(HaberdasheryMod.assetPath("attachments/masks/${relic.imgUrl}"))
-            val local = Gdx.files.local(Paths.get(HaberdasheryMod.ID, "masks", relic.imgUrl).toString())
+            val internal = Gdx.files.internal(HaberdasheryMod.assetPath("attachments/masks/${filename}"))
+            val local = Gdx.files.local(Paths.get(HaberdasheryMod.ID, "masks", filename).toString())
             val file = newestFile(internal, local)
 
-            logger.info("Loading mask ${relic.imgUrl} (${if (file == local) "LOCAL" else "INTERNAL"})")
+            logger.info("Loading mask $filename (${if (file == local) "LOCAL" else "INTERNAL"})")
 
             // Use Texture(Pixmap(FileHandle(String))) instead of Texture(String) because the latter
             // uses FileTextureData, which doesn't let us make changes to the texture/pixmap later
@@ -173,10 +177,24 @@ object AttachDatabase {
         if (!local.exists()) {
             return internal
         }
+        if (!internal.exists()) {
+            return local
+        }
 
         val internalTime = Files.getLastModifiedTime(internalFS.getPath(internal.path())).toInstant()
         val localTime = Files.getLastModifiedTime(local.file().toPath()).toInstant()
 
         return if (localTime.isAfter(internalTime)) local else internal
+    }
+
+    fun makeRelicMaskFilename(id: String): String {
+        // Generate random suffix to reduce possible filename conflicts
+        val randChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+        val suffix = Random().ints(4, 0, randChars.size)
+            .asSequence()
+            .map(randChars::get)
+            .joinToString("")
+        // Remove illegal characters from filename
+        return id.replace(Regex("""[<>:"/\\|?*]"""), "_") + "_$suffix.png"
     }
 }
