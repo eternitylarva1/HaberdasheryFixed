@@ -178,22 +178,24 @@
       "drawOrderSlotName": "eye",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "mask": "Peace Pipe_F3Go.png",
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.551813,
       "scaleY": 0.551813,
       "rotation": -57.435547,
       "position": {
-        "x": -31.980919,
-        "y": 0.54862046
+        "x": -29.114769,
+        "y": 0.22428834
       }
     },
     "Old Coin": {
       "boneName": "Hair_R_6",
       "large": false,
-      "drawOrderSlotName": "face",
+      "drawOrderSlotName": "hair",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "mask": "Old Coin_LkYu.png",
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.23975654,
