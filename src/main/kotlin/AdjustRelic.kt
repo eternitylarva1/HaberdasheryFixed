@@ -194,6 +194,9 @@ object AdjustRelic {
                     if (info.maskChanged && info.mask == null) {
                         info.mask(AttachDatabase.makeRelicMaskFilename(relicId))
                     }
+                    if (info.maskChanged) {
+                        info.maskRequiresSave()
+                    }
                 }
                 return
             }
@@ -378,8 +381,6 @@ object AdjustRelic {
                                     }
                                 ).asRegion()
                             )
-                            // TODO?
-                            //info.mask(true)
                         }
                     }
                 }

@@ -86,7 +86,7 @@ object AttachDatabase {
 
             logger.info("Saving masks...")
             it.forEach { (relicId, info) ->
-                if (info.mask != null && info.maskChanged) {
+                if (info.mask != null && info.maskRequiresSave) {
                     val relicSlotName = HaberdasheryMod.makeID(relicId)
                     val slot = skeleton.findSlot(relicSlotName)
                     (slot.attachment as? MaskedRegionAttachment)?.also { attachment ->
@@ -101,7 +101,7 @@ object AttachDatabase {
                             val imgUrl = info.mask!!
                             if (ImageIO.write(img, "png", Paths.get(HaberdasheryMod.ID, "masks", imgUrl).toFile())) {
                                 logger.info("  $relicId: $imgUrl")
-                                info.maskChanged(false)
+                                info.maskSaved()
                             } else {
                                 logger.warn("  $relicId: Couldn't write png")
                             }
@@ -109,6 +109,9 @@ object AttachDatabase {
                             logger.error("  $relicId: Failed to save mask", e)
                         }
                     }
+                } else {
+                    // Reset maskChanged and maskRequiresSave
+                    info.maskSaved()
                 }
             }
         }

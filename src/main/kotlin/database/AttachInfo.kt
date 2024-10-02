@@ -23,6 +23,9 @@ class AttachInfo(
     @Transient
     internal var maskChanged: Boolean = false
         private set
+    @Transient
+    internal var maskRequiresSave: Boolean = false
+        private set
 
     @Transient
     var scaleX: Float = 1f
@@ -81,7 +84,14 @@ class AttachInfo(
     fun mask(mask: String?) = apply {
         this.mask = mask
     }
-    fun maskChanged(changed: Boolean) = apply { this.maskChanged = changed }
+    fun maskChanged(changed: Boolean) = apply {
+        this.maskChanged = changed
+    }
+    fun maskRequiresSave() = apply { this.maskRequiresSave = true }
+    fun maskSaved() = apply {
+        this.maskRequiresSave = false
+        this.maskChanged = false
+    }
     fun drawOrder(slotName: String, zIndex: Int = 0) = apply {
         this.drawOrderSlotName = slotName
         this.drawOrderZIndex = zIndex
