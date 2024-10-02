@@ -323,8 +323,8 @@
     "Bronze Scales": {
       "boneName": "Spine_3",
       "large": false,
-      "drawOrderSlotName": "cape_right",
-      "drawOrderZIndex": 0,
+      "drawOrderSlotName": "cape_left",
+      "drawOrderZIndex": -9,
       "hideSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
