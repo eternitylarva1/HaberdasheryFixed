@@ -101,6 +101,7 @@ object AttachDatabase {
                             val imgUrl = info.mask!!
                             if (ImageIO.write(img, "png", Paths.get(HaberdasheryMod.ID, "masks", imgUrl).toFile())) {
                                 logger.info("  $relicId: $imgUrl")
+                                info.maskChanged(false)
                             } else {
                                 logger.warn("  $relicId: Couldn't write png")
                             }
