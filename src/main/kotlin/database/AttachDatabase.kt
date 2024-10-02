@@ -102,6 +102,7 @@ object AttachDatabase {
                             if (ImageIO.write(img, "png", Paths.get(HaberdasheryMod.ID, "masks", imgUrl).toFile())) {
                                 logger.info("  $relicId: $imgUrl")
                                 info.maskSaved()
+                                pixels.position(0)
                             } else {
                                 logger.warn("  $relicId: Couldn't write png")
                             }
