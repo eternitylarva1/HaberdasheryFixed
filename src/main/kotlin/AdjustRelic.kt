@@ -587,7 +587,7 @@ object AdjustRelic {
                     "Rotation: ${info.dirtyRotation}\n" +
                     "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n" +
                     "Large: ${info.large}\n" +
-                    "Mask: ${info.mask}\n" +
+                    "Mask: ${info.mask}" + if (info.maskRequiresSave) "*" else "" + "\n" +
                     if (saveTimer > 0) {
                         "\nSaved!"
                     } else { "" }
