@@ -349,6 +349,55 @@
         "x": -97.91968,
         "y": 177.98517
       }
+    },
+    "Blue Candle": {
+      "boneName": "Skull",
+      "large": false,
+      "drawOrderSlotName": "skull",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.42484304,
+      "scaleY": 0.42484304,
+      "rotation": -46.38592,
+      "position": {
+        "x": 18.572369,
+        "y": -8.007312
+      }
+    },
+    "Lantern": {
+      "boneName": "Leg_L_1",
+      "large": false,
+      "drawOrderSlotName": "cape_right",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.66839296,
+      "scaleY": 0.66839296,
+      "rotation": 58.46035,
+      "position": {
+        "x": 28.60283,
+        "y": 11.016723
+      }
+    },
+    "Lizard Tail": {
+      "boneName": "Hips",
+      "large": false,
+      "drawOrderSlotName": "tail_spine",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "mask": "Lizard Tail_SpnY.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -126.86832,
+      "position": {
+        "x": -38.900005,
+        "y": 30.200003
+      }
     }
   }
 }
