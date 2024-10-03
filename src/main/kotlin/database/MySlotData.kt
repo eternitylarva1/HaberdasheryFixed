@@ -10,6 +10,7 @@ class MySlotData(
     var zIndex: Int,
     val hideSlotNames: Array<out String>,
     val requiredSlotNames: Array<out String>,
+    val exclusionGroup: String?,
 ) : SlotData(index, name, boneData) {
     var visible = true
 }

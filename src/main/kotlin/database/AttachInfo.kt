@@ -20,6 +20,8 @@ class AttachInfo(
         private set
     var requiredSlotNames: Array<out String> = emptyArray()
         private set
+    var exclusionGroup: String? = null
+        private set
     var mask: String? = null
         private set
     @Transient

@@ -28,12 +28,8 @@ object AttachRelic {
         val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
         if (skeleton.findSlotIndex(relicSlotName) >= 0) {
             val slot = skeleton.findSlot(relicSlotName)
-            if (slot.attachment == null) {
-                skeleton.setAttachment(relicSlotName, relicSlotName)
-                (slot.data as MySlotData).visible = true
-            }
-            hideSlots(skeleton, info.hideSlotNames)
-            checkSlotUpdates(skeleton)
+            (slot.data as MySlotData).visible = true
+            updateSlotVisibilities(skeleton)
             return
         }
 
@@ -46,6 +42,7 @@ object AttachRelic {
                 info.drawOrderZIndex,
                 info.hideSlotNames,
                 info.requiredSlotNames,
+                info.exclusionGroup,
             ),
             bone
         )
@@ -73,41 +70,27 @@ object AttachRelic {
         skeleton.drawOrder = drawOrder
 
         val attachment = makeAttachment(relicSlotName, relic, skeleton, info)
+        slotClone.data.attachmentName = attachment.name
         val skin = skeleton.data.defaultSkin
         skin.addAttachment(slotClone.data.index, attachment.name, attachment)
 
-        skeleton.setAttachment(relicSlotName, attachment.name)
-        hideSlots(skeleton, info.hideSlotNames)
-        checkSlotUpdates(skeleton)
+        updateSlotVisibilities(skeleton)
     }
 
     fun lose(relicId: String) {
         val player = AbstractDungeon.player ?: return
-        val info = AttachDatabase.getInfo(player.chosenClass, relicId) ?: return
 
         val relicSlotName = HaberdasheryMod.makeID(relicId)
         val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
-        val slotIndex = skeleton.findSlotIndex(relicSlotName)
-        if (slotIndex < 0) {
-            return
-        }
+        val slot = skeleton.findSlot(relicSlotName)
 
-        skeleton.setAttachment(relicSlotName, null)
-        (skeleton.findSlot(relicSlotName).data as MySlotData).visible = false
-
-        val hidden = skeleton.slots
-            .asSequence()
-            .filter { it.attachment != null }
-            .map { it.data }
-            .filterIsInstance<MySlotData>()
-            .flatMap { it.hideSlotNames.toList() }
-            .toList()
-        for (slotName in info.hideSlotNames) {
-            if (slotName in hidden) continue
-            val slot = skeleton.findSlot(slotName)
-            skeleton.setAttachment(slotName, slot.data.attachmentName)
+        if (slot != null) {
+            val data = slot.data
+            if (data is MySlotData) {
+                data.visible = false
+                updateSlotVisibilities(skeleton)
+            }
         }
-        checkSlotUpdates(skeleton)
     }
 
     private fun makeAttachment(relicSlotName: String, relic: AbstractRelic, skeleton: Skeleton, info: AttachInfo): RegionAttachment {
@@ -158,16 +141,52 @@ object AttachRelic {
         return ret
     }
 
-    private fun hideSlots(skeleton: Skeleton, slotNames: kotlin.Array<out String>) {
-        for (slotName in slotNames) {
-            skeleton.setAttachment(slotName, null)
-        }
-    }
+    private fun updateSlotVisibilities(skeleton: Skeleton) {
+        val exclusionCount = mutableMapOf<String, MutableList<String>>()
+        for (slot in skeleton.slots) {
+            val data = slot.data
+            // Make all slots visible
+            skeleton.setAttachment(data.name, data.attachmentName)
+            if (data !is MySlotData) continue
 
-    private fun checkSlotUpdates(skeleton: Skeleton) {
+            // Hide non-visible relics (relics player doesn't currently have)
+            if (!data.visible) {
+                skeleton.setAttachment(data.name, null)
+            }
+
+            // Collate exclusion groups
+            if (data.exclusionGroup != null && data.visible) {
+                exclusionCount.compute(data.exclusionGroup) { _, set ->
+                    (set ?: mutableListOf()).apply {
+                        add(data.name)
+                    }
+                }
+            }
+        }
+
+        // Hide relics based on exclusion group
+        for ((_, set) in exclusionCount) {
+            for (i in 1 until set.size) {
+                skeleton.setAttachment(set[i], null)
+            }
+        }
+
+        // Hide slots requested by visible relics
         for (slot in skeleton.slots) {
             val data = slot.data
             if (data !is MySlotData) continue
+            if (!data.visible || slot.attachment == null) continue
+
+            for (slotName in data.hideSlotNames) {
+                skeleton.setAttachment(slotName, null)
+            }
+        }
+
+        // Hide relics if required slot(s) aren't visible
+        for (slot in skeleton.slots) {
+            val data = slot.data
+            if (data !is MySlotData) continue
+            if (!data.visible || slot.attachment == null) continue
 
             var hide = false
             for (slotName in data.requiredSlotNames) {
