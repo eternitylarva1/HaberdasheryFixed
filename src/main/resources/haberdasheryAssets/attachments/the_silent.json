@@ -11,17 +11,17 @@
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 1.0,
-      "scaleY": 1.0,
-      "rotation": -55.0,
+      "scaleX": 1.031496,
+      "scaleY": 1.031496,
+      "rotation": -60.87984,
       "position": {
-        "x": -6.964468,
-        "y": -3.9365196
+        "x": -8.831835,
+        "y": -6.862771
       }
     },
     "CultistMask": {
       "boneName": "Skull",
-      "large": false,
+      "large": true,
       "drawOrderSlotName": "skull",
       "drawOrderZIndex": 0,
       "hideSlotNames": [
@@ -32,12 +32,12 @@
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 1.0,
-      "scaleY": 1.0,
+      "scaleX": 0.6448864,
+      "scaleY": 0.6448864,
       "rotation": -40.0,
       "position": {
-        "x": -13.893959,
-        "y": -11.443685
+        "x": -17.04482,
+        "y": -12.648705
       }
     },
     "Fusion Hammer": {
