@@ -32,6 +32,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.*
 import javax.imageio.ImageIO
+import kotlin.io.path.createDirectories
 import kotlin.streams.asSequence
 
 object AttachDatabase {
@@ -109,7 +110,9 @@ object AttachDatabase {
                             pixels.get(bytes)
                             img.data = Raster.createRaster(img.sampleModel, DataBufferByte(bytes, bytes.size), null)
                             val imgUrl = info.mask!!
-                            if (ImageIO.write(img, "png", Paths.get(HaberdasheryMod.ID, "masks", imgUrl).toFile())) {
+                            val filepath = Paths.get(HaberdasheryMod.ID, "masks", imgUrl)
+                            filepath.parent.createDirectories()
+                            if (ImageIO.write(img, "png", filepath.toFile())) {
                                 logger.info("  $relicId: $imgUrl")
                                 info.maskSaved()
                                 pixels.position(0)
