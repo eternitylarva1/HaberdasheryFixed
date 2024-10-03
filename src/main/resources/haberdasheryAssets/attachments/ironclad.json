@@ -1,12 +1,14 @@
 {
   "IRONCLAD": {
     "Runic Dome": {
+      "boneName": "Head",
       "large": false,
       "drawOrderSlotName": "eye",
       "drawOrderZIndex": -3,
       "hideSlotNames": [
         "helmet"
       ],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.116,
@@ -15,10 +17,10 @@
       "position": {
         "x": 2.007787,
         "y": -6.9143906
-      },
-      "boneName": "Head"
+      }
     },
     "CultistMask": {
+      "boneName": "Head",
       "large": false,
       "drawOrderSlotName": "eye",
       "drawOrderZIndex": -2,
@@ -27,6 +29,7 @@
         "eye",
         "hair"
       ],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.14,
@@ -35,14 +38,15 @@
       "position": {
         "x": -12.040729,
         "y": -5.409332
-      },
-      "boneName": "Head"
+      }
     },
     "Smiling Mask": {
+      "boneName": "Head",
       "large": false,
       "drawOrderSlotName": "eye",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.72,
@@ -51,14 +55,15 @@
       "position": {
         "x": 9.943865,
         "y": -16.42436
-      },
-      "boneName": "Head"
+      }
     },
     "Gremlin Horn": {
+      "boneName": "Head",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.84000003,
@@ -67,14 +72,15 @@
       "position": {
         "x": -0.9464373,
         "y": -29.98507
-      },
-      "boneName": "Head"
+      }
     },
     "Pen Nib": {
+      "boneName": "Arm_R_3",
       "large": false,
       "drawOrderSlotName": "hand_left",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": true,
       "scaleX": 1.2,
@@ -83,14 +89,15 @@
       "position": {
         "x": 154.90921,
         "y": -65.016464
-      },
-      "boneName": "Arm_R_3"
+      }
     },
     "The Courier": {
+      "boneName": "Arm_R_1",
       "large": false,
       "drawOrderSlotName": "pauldron_left",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": true,
       "scaleX": 0.72,
@@ -99,14 +106,15 @@
       "position": {
         "x": 23.228561,
         "y": -12.54568
-      },
-      "boneName": "Arm_R_1"
+      }
     },
     "Bronze Scales": {
+      "boneName": "Arm_L_1",
       "large": false,
       "drawOrderSlotName": "pauldron_right",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.6,
@@ -115,14 +123,15 @@
       "position": {
         "x": -13.798264,
         "y": -7.277907
-      },
-      "boneName": "Arm_L_1"
+      }
     },
     "Bag of Marbles": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.84000003,
@@ -131,14 +140,15 @@
       "position": {
         "x": 168.0,
         "y": 0.0
-      },
-      "boneName": "root"
+      }
     },
     "Happy Flower": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": 2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.96000004,
@@ -147,14 +157,15 @@
       "position": {
         "x": -2.6226834E-7,
         "y": -6.0
-      },
-      "boneName": "root"
+      }
     },
     "Ancient Tea Set": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.08,
@@ -163,14 +174,15 @@
       "position": {
         "x": -33.941128,
         "y": 33.941128
-      },
-      "boneName": "root"
+      }
     },
     "Tiny Chest": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": -2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.48000002,
@@ -179,14 +191,15 @@
       "position": {
         "x": -46.686,
         "y": 3.264603
-      },
-      "boneName": "root"
+      }
     },
     "War Paint": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.84000003,
@@ -195,14 +208,15 @@
       "position": {
         "x": -126.88654,
         "y": 36.384132
-      },
-      "boneName": "root"
+      }
     },
     "Whetstone": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.72,
@@ -211,14 +225,15 @@
       "position": {
         "x": -107.19499,
         "y": 13.161882
-      },
-      "boneName": "root"
+      }
     },
     "Lantern": {
+      "boneName": "Hips",
       "large": false,
       "drawOrderSlotName": "pants",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.6,
@@ -227,14 +242,15 @@
       "position": {
         "x": 37.091553,
         "y": 9.938652
-      },
-      "boneName": "Hips"
+      }
     },
     "Centennial Puzzle": {
+      "boneName": "Neck_1",
       "large": false,
       "drawOrderSlotName": "pauldron_right",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.48000002,
@@ -243,14 +259,15 @@
       "position": {
         "x": -1.2257695,
         "y": 11.937232
-      },
-      "boneName": "Neck_1"
+      }
     },
     "Anchor": {
+      "boneName": "Leg_R_2",
       "large": false,
       "drawOrderSlotName": "shirt",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.72,
@@ -259,14 +276,15 @@
       "position": {
         "x": -5.9421883,
         "y": -4.06576
-      },
-      "boneName": "Leg_R_2"
+      }
     },
     "HornCleat": {
+      "boneName": "Leg_R_",
       "large": false,
       "drawOrderSlotName": "shirt",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.66,
@@ -275,14 +293,15 @@
       "position": {
         "x": -1.9214871,
         "y": 33.545013
-      },
-      "boneName": "Leg_R_"
+      }
     },
     "CaptainsWheel": {
+      "boneName": "Hips",
       "large": false,
       "drawOrderSlotName": "shirt",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.72,
@@ -291,14 +310,15 @@
       "position": {
         "x": 3.6000001,
         "y": 0.0
-      },
-      "boneName": "Hips"
+      }
     },
     "MealTicket": {
+      "boneName": "Hips",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 5,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.6,
@@ -307,14 +327,15 @@
       "position": {
         "x": -32.17387,
         "y": 26.997084
-      },
-      "boneName": "Hips"
+      }
     },
     "Molten Egg 2": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.8906667,
@@ -323,14 +344,15 @@
       "position": {
         "x": -172.08002,
         "y": 17.400002
-      },
-      "boneName": "root"
+      }
     },
     "Toxic Egg 2": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 3,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.0172589,
@@ -339,14 +361,15 @@
       "position": {
         "x": -194.28,
         "y": 13.8
-      },
-      "boneName": "root"
+      }
     },
     "Frozen Egg 2": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.7885715,
@@ -355,14 +378,15 @@
       "position": {
         "x": -215.64003,
         "y": 19.2
-      },
-      "boneName": "root"
+      }
     },
     "Akabeko": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.96804124,
@@ -371,14 +395,15 @@
       "position": {
         "x": 95.52001,
         "y": 18.840002
-      },
-      "boneName": "root"
+      }
     },
     "MawBank": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.9079179,
@@ -387,14 +412,15 @@
       "position": {
         "x": -75.12,
         "y": -7.680001
-      },
-      "boneName": "root"
+      }
     },
     "Nunchaku": {
+      "boneName": "Leg_R_2",
       "large": false,
       "drawOrderSlotName": "shirt",
       "drawOrderZIndex": 2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.70095015,
@@ -403,14 +429,15 @@
       "position": {
         "x": -12.200837,
         "y": 19.289967
-      },
-      "boneName": "Leg_R_2"
+      }
     },
     "Regal Pillow": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.2,
@@ -419,14 +446,15 @@
       "position": {
         "x": 1.3199997,
         "y": -35.40001
-      },
-      "boneName": "root"
+      }
     },
     "WarpedTongs": {
+      "boneName": "Leg_R_2",
       "large": false,
       "drawOrderSlotName": "shirt",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.8157636,
@@ -435,14 +463,15 @@
       "position": {
         "x": -18.59002,
         "y": -1.7870932
-      },
-      "boneName": "Leg_R_2"
+      }
     },
     "Bag of Preparation": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.1757983,
@@ -451,14 +480,15 @@
       "position": {
         "x": -76.32,
         "y": 13.080001
-      },
-      "boneName": "root"
+      }
     },
     "Omamori": {
+      "boneName": "Hips",
       "large": false,
       "drawOrderSlotName": "pants",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.4897795,
@@ -467,14 +497,15 @@
       "position": {
         "x": 23.760002,
         "y": 11.040001
-      },
-      "boneName": "Hips"
+      }
     },
     "Potion Belt": {
+      "boneName": "Hips",
       "large": false,
       "drawOrderSlotName": "pants",
       "drawOrderZIndex": -5,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.86548674,
@@ -483,14 +514,15 @@
       "position": {
         "x": -3.0,
         "y": 19.2
-      },
-      "boneName": "Hips"
+      }
     },
     "Vajra": {
+      "boneName": "Arm_R_3",
       "large": false,
       "drawOrderSlotName": "hand_right",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.75555557,
@@ -499,14 +531,15 @@
       "position": {
         "x": 14.049596,
         "y": -13.464245
-      },
-      "boneName": "Arm_R_3"
+      }
     },
     "Dream Catcher": {
+      "boneName": "Neck_1",
       "large": false,
       "drawOrderSlotName": "pauldron_right",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.6666667,
@@ -515,14 +548,15 @@
       "position": {
         "x": 9.837349,
         "y": 11.506008
-      },
-      "boneName": "Neck_1"
+      }
     },
     "StrikeDummy": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.2,
@@ -531,14 +565,15 @@
       "position": {
         "x": -182.76003,
         "y": 46.920006
-      },
-      "boneName": "root"
+      }
     },
     "Kunai": {
+      "boneName": "Arm_L_3",
       "large": false,
       "drawOrderSlotName": "sword",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": true,
       "scaleX": 0.76582915,
@@ -547,14 +582,15 @@
       "position": {
         "x": -5.61377,
         "y": 3.598997
-      },
-      "boneName": "Arm_L_3"
+      }
     },
     "Shuriken": {
+      "boneName": "Arm_L_1",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 5,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.70866144,
@@ -563,14 +599,15 @@
       "position": {
         "x": -21.939426,
         "y": -13.576307
-      },
-      "boneName": "Arm_L_1"
+      }
     },
     "Lizard Tail": {
+      "boneName": "Hips",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 4,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 1.2,
@@ -579,14 +616,15 @@
       "position": {
         "x": -20.280003,
         "y": 1.6800004
-      },
-      "boneName": "Hips"
+      }
     },
     "Dead Branch": {
+      "boneName": "Leg_L_2",
       "large": false,
       "drawOrderSlotName": "pauldron_right",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.7368421,
@@ -595,14 +633,15 @@
       "position": {
         "x": -12.859693,
         "y": 15.479934
-      },
-      "boneName": "Leg_L_2"
+      }
     },
     "Peace Pipe": {
+      "boneName": "Head",
       "large": false,
       "drawOrderSlotName": "hair",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.75278986,
@@ -611,14 +650,15 @@
       "position": {
         "x": -45.10237,
         "y": -2.3530283
-      },
-      "boneName": "Head"
+      }
     },
     "Ice Cream": {
+      "boneName": "Leg_L_",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 3,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.9706667,
@@ -627,14 +667,15 @@
       "position": {
         "x": -21.7729,
         "y": -1.7357284
-      },
-      "boneName": "Leg_L_"
+      }
     },
     "Torii": {
+      "boneName": "root",
       "large": true,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.77172035,
@@ -643,14 +684,15 @@
       "position": {
         "x": 159.36002,
         "y": 33.36
-      },
-      "boneName": "root"
+      }
     },
     "Ornamental Fan": {
+      "boneName": "Arm_L_3",
       "large": false,
       "drawOrderSlotName": "sword",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.93074536,
@@ -659,14 +701,15 @@
       "position": {
         "x": 18.237526,
         "y": -10.891787
-      },
-      "boneName": "Arm_L_3"
+      }
     },
     "Oddly Smooth Stone": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.6584071,
@@ -675,14 +718,15 @@
       "position": {
         "x": 34.320004,
         "y": -13.56
-      },
-      "boneName": "root"
+      }
     },
     "Orichalcum": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": -3,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.68666667,
@@ -691,14 +735,15 @@
       "position": {
         "x": 59.760002,
         "y": -5.4
-      },
-      "boneName": "root"
+      }
     },
     "Art of War": {
+      "boneName": "Leg_L_",
       "large": false,
       "drawOrderSlotName": "pants",
       "drawOrderZIndex": -4,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.57174015,
@@ -707,14 +752,15 @@
       "position": {
         "x": -8.46829,
         "y": 30.88759
-      },
-      "boneName": "Leg_L_"
+      }
     },
     "Juzu Bracelet": {
+      "boneName": "Leg_R_",
       "large": false,
       "drawOrderSlotName": "pants",
       "drawOrderZIndex": -6,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.5681633,
@@ -723,14 +769,15 @@
       "position": {
         "x": 7.441993,
         "y": 5.8035107
-      },
-      "boneName": "Leg_R_"
+      }
     },
     "Boot": {
+      "boneName": "Head",
       "large": false,
       "drawOrderSlotName": "eye",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.75789475,
@@ -739,14 +786,15 @@
       "position": {
         "x": 13.885777,
         "y": -35.291245
-      },
-      "boneName": "Head"
+      }
     },
     "Red Skull": {
+      "boneName": "Neck_1",
       "large": false,
       "drawOrderSlotName": "pauldron_right",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.2683706,
@@ -755,14 +803,15 @@
       "position": {
         "x": -1.7202462,
         "y": 10.042429
-      },
-      "boneName": "Neck_1"
+      }
     },
     "Toy Ornithopter": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.8988764,
@@ -771,14 +820,15 @@
       "position": {
         "x": -147.48001,
         "y": -11.760006
-      },
-      "boneName": "root"
+      }
     },
     "Blood Vial": {
+      "boneName": "Spine_",
       "large": false,
       "drawOrderSlotName": "shirt",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.40282175,
@@ -787,14 +837,15 @@
       "position": {
         "x": 21.018099,
         "y": 0.6372143
-      },
-      "boneName": "Spine_"
+      }
     },
     "PreservedInsect": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.8571429,
@@ -803,14 +854,15 @@
       "position": {
         "x": 50.400005,
         "y": 25.440002
-      },
-      "boneName": "root"
+      }
     },
     "CeramicFish": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": 2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.8408163,
@@ -819,14 +871,15 @@
       "position": {
         "x": -89.52001,
         "y": -24.36
-      },
-      "boneName": "root"
+      }
     },
     "Pear": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 5,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.6578681,
@@ -835,14 +888,15 @@
       "position": {
         "x": -231.48003,
         "y": -8.52
-      },
-      "boneName": "root"
+      }
     },
     "Mango": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 3,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.6701817,
@@ -851,14 +905,15 @@
       "position": {
         "x": -213.12,
         "y": -4.200001
-      },
-      "boneName": "root"
+      }
     },
     "Strawberry": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 4,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.523746,
@@ -867,14 +922,15 @@
       "position": {
         "x": -208.8,
         "y": -14.160001
-      },
-      "boneName": "root"
+      }
     },
     "Blue Candle": {
+      "boneName": "Arm_R_1",
       "large": false,
       "drawOrderSlotName": "pauldron_left",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.5762791,
@@ -883,14 +939,15 @@
       "position": {
         "x": 4.8119287,
         "y": -25.447935
-      },
-      "boneName": "Arm_R_1"
+      }
     },
     "Singing Bowl": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.81832856,
@@ -899,14 +956,15 @@
       "position": {
         "x": 58.199997,
         "y": -18.6
-      },
-      "boneName": "root"
+      }
     },
     "Letter Opener": {
+      "boneName": "Leg_R_2",
       "large": false,
       "drawOrderSlotName": "shirt",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.7531915,
@@ -915,14 +973,15 @@
       "position": {
         "x": -14.300587,
         "y": 17.53115
-      },
-      "boneName": "Leg_R_2"
+      }
     },
     "Pantograph": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.96428573,
@@ -931,14 +990,15 @@
       "position": {
         "x": 118.68001,
         "y": -19.560001
-      },
-      "boneName": "root"
+      }
     },
     "Self Forming Clay": {
+      "boneName": "Arm_R_1",
       "large": false,
       "drawOrderSlotName": "pauldron_left",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.6311049,
@@ -947,14 +1007,15 @@
       "position": {
         "x": 24.795168,
         "y": -25.994766
-      },
-      "boneName": "Arm_R_1"
+      }
     },
     "Meat on the Bone": {
+      "boneName": "Hips",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 3,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.93473685,
@@ -963,14 +1024,15 @@
       "position": {
         "x": 22.68,
         "y": 21.720001
-      },
-      "boneName": "Hips"
+      }
     },
     "Sundial": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.0656,
@@ -979,14 +1041,15 @@
       "position": {
         "x": 8.64,
         "y": 8.280001
-      },
-      "boneName": "root"
+      }
     },
     "Bird Faced Urn": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": -2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 1.2,
@@ -995,14 +1058,15 @@
       "position": {
         "x": -107.04001,
         "y": 58.320004
-      },
-      "boneName": "root"
+      }
     },
     "Incense Burner": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": -3,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.93609756,
@@ -1011,14 +1075,15 @@
       "position": {
         "x": 8.64,
         "y": 43.08
-      },
-      "boneName": "root"
+      }
     },
     "Charon\u0027s Ashes": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 3,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.6200957,
@@ -1027,14 +1092,15 @@
       "position": {
         "x": -139.68002,
         "y": 5.639999
-      },
-      "boneName": "root"
+      }
     },
     "Magic Flower": {
+      "boneName": "Head",
       "large": false,
       "drawOrderSlotName": "hair",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.42592224,
@@ -1043,14 +1109,15 @@
       "position": {
         "x": 20.267002,
         "y": -3.2033617
-      },
-      "boneName": "Head"
+      }
     },
     "Busted Crown": {
+      "boneName": "Head",
       "large": false,
       "drawOrderSlotName": "eye",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.38324824,
@@ -1059,14 +1126,15 @@
       "position": {
         "x": 8.722223,
         "y": -27.165325
-      },
-      "boneName": "Head"
+      }
     },
     "Empty Cage": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": -3,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.0671587,
@@ -1075,14 +1143,15 @@
       "position": {
         "x": 129.24,
         "y": 39.480003
-      },
-      "boneName": "root"
+      }
     },
     "Toolbox": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.2006587,
@@ -1091,14 +1160,15 @@
       "position": {
         "x": -249.48003,
         "y": 20.039999
-      },
-      "boneName": "root"
+      }
     },
     "Ectoplasm": {
+      "boneName": "Hips",
       "large": false,
       "drawOrderSlotName": "pants",
       "drawOrderZIndex": -5,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.5512825,
@@ -1107,14 +1177,15 @@
       "position": {
         "x": 59.16,
         "y": -12.84
-      },
-      "boneName": "Hips"
+      }
     },
     "Tiny House": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": 2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.624,
@@ -1123,14 +1194,15 @@
       "position": {
         "x": -176.99998,
         "y": -11.2800045
-      },
-      "boneName": "root"
+      }
     },
     "Sozu": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 3,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.73668337,
@@ -1139,14 +1211,15 @@
       "position": {
         "x": 126.12001,
         "y": -0.9599994
-      },
-      "boneName": "root"
+      }
     },
     "Chemical X": {
+      "boneName": "Spine_",
       "large": false,
       "drawOrderSlotName": "shirt",
       "drawOrderZIndex": 2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.39157897,
@@ -1155,14 +1228,15 @@
       "position": {
         "x": 14.966058,
         "y": 5.439379
-      },
-      "boneName": "Spine_"
+      }
     },
     "Unceasing Top": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.6160873,
@@ -1171,14 +1245,15 @@
       "position": {
         "x": 155.04001,
         "y": -14.279998
-      },
-      "boneName": "root"
+      }
     },
     "Du-Vu Doll": {
+      "boneName": "Hips",
       "large": false,
       "drawOrderSlotName": "shirt",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.5110266,
@@ -1187,14 +1262,15 @@
       "position": {
         "x": 25.56,
         "y": 19.560001
-      },
-      "boneName": "Hips"
+      }
     },
     "Prayer Wheel": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.9777778,
@@ -1203,14 +1279,15 @@
       "position": {
         "x": -124.32,
         "y": 49.920006
-      },
-      "boneName": "root"
+      }
     },
     "Runic Cube": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": 3,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.71581167,
@@ -1219,14 +1296,15 @@
       "position": {
         "x": -41.64,
         "y": -36.12
-      },
-      "boneName": "root"
+      }
     },
     "Cursed Key": {
+      "boneName": "Leg_L_2",
       "large": false,
       "drawOrderSlotName": "pauldron_right",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.5965868,
@@ -1235,14 +1313,15 @@
       "position": {
         "x": -10.077684,
         "y": 6.000291
-      },
-      "boneName": "Leg_L_2"
+      }
     },
     "Matryoshka": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.8895049,
@@ -1251,14 +1330,15 @@
       "position": {
         "x": -100.08001,
         "y": -8.88
-      },
-      "boneName": "root"
+      }
     },
     "Eternal Feather": {
+      "boneName": "Hair_2",
       "large": false,
       "drawOrderSlotName": "hair",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.4870472,
@@ -1267,14 +1347,15 @@
       "position": {
         "x": 8.675803,
         "y": 0.26840997
-      },
-      "boneName": "Hair_2"
+      }
     },
     "White Beast Statue": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": -2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 1.2345561,
@@ -1283,14 +1364,15 @@
       "position": {
         "x": 71.04001,
         "y": 41.760006
-      },
-      "boneName": "root"
+      }
     },
     "InkBottle": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": -2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.50335366,
@@ -1299,14 +1381,15 @@
       "position": {
         "x": 82.68001,
         "y": -16.800003
-      },
-      "boneName": "root"
+      }
     },
     "FossilizedHelix": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": -2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.99238896,
@@ -1315,14 +1398,15 @@
       "position": {
         "x": 166.80002,
         "y": 27.840002
-      },
-      "boneName": "root"
+      }
     },
     "Shovel": {
+      "boneName": "Spine_",
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 3,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.2,
@@ -1331,14 +1415,15 @@
       "position": {
         "x": 18.151209,
         "y": -4.0523653
-      },
-      "boneName": "Spine_"
+      }
     },
     "Pandora\u0027s Box": {
+      "boneName": "root",
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.90000004,
@@ -1347,14 +1432,15 @@
       "position": {
         "x": -13.8,
         "y": -0.96000004
-      },
-      "boneName": "root"
+      }
     },
     "Calipers": {
+      "boneName": "Spine_",
       "large": false,
       "drawOrderSlotName": "shirt",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.5504451,
@@ -1363,14 +1449,15 @@
       "position": {
         "x": 24.639614,
         "y": 24.050817
-      },
-      "boneName": "Spine_"
+      }
     },
     "Mummified Hand": {
+      "boneName": "Leg_L_",
       "large": false,
       "drawOrderSlotName": "pants",
       "drawOrderZIndex": -3,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.5819051,
@@ -1379,14 +1466,15 @@
       "position": {
         "x": 1.4798348,
         "y": 5.927471
-      },
-      "boneName": "Leg_L_"
+      }
     },
     "Girya": {
+      "boneName": "Arm_R_3",
       "large": false,
       "drawOrderSlotName": "hand_right",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.6737176,
@@ -1395,14 +1483,15 @@
       "position": {
         "x": 4.316021,
         "y": 8.10074
-      },
-      "boneName": "Arm_R_3"
+      }
     },
     "TungstenRod": {
+      "boneName": "Arm_R_3",
       "large": false,
       "drawOrderSlotName": "sword",
       "drawOrderZIndex": -2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.7400169,
@@ -1411,14 +1500,15 @@
       "position": {
         "x": 13.441164,
         "y": -14.005178
-      },
-      "boneName": "Arm_R_3"
+      }
     },
     "Odd Mushroom": {
+      "boneName": "Arm_L_1",
       "large": false,
       "drawOrderSlotName": "pauldron_low_right",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.53571427,
@@ -1427,14 +1517,15 @@
       "position": {
         "x": -21.231115,
         "y": -1.4729716
-      },
-      "boneName": "Arm_L_1"
+      }
     },
     "Membership Card": {
+      "boneName": "Hips",
       "large": false,
       "drawOrderSlotName": "pants",
       "drawOrderZIndex": -2,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.48506033,
@@ -1443,14 +1534,15 @@
       "position": {
         "x": 22.800001,
         "y": 2.9000006
-      },
-      "boneName": "Hips"
+      }
     },
     "Strange Spoon": {
+      "boneName": "Leg_L_2",
       "large": false,
       "drawOrderSlotName": "pauldron_right",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.6893204,
@@ -1459,8 +1551,7 @@
       "position": {
         "x": -5.9927635,
         "y": 5.254214
-      },
-      "boneName": "Leg_L_2"
+      }
     }
   }
 }

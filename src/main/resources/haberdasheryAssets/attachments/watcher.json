@@ -1,9 +1,12 @@
 {
   "WATCHER": {
     "Runic Dome": {
+      "boneName": "Head",
+      "large": false,
       "drawOrderSlotName": "ear",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.8,
@@ -12,10 +15,11 @@
       "position": {
         "x": -3.022396,
         "y": -9.532319
-      },
-      "boneName": "Head"
+      }
     },
     "CultistMask": {
+      "boneName": "Head",
+      "large": false,
       "drawOrderSlotName": "ear",
       "drawOrderZIndex": 0,
       "hideSlotNames": [
@@ -24,6 +28,7 @@
         "hair_fg",
         "face"
       ],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.9,
@@ -32,8 +37,7 @@
       "position": {
         "x": -9.991171,
         "y": -0.42012155
-      },
-      "boneName": "Head"
+      }
     }
   }
 }
