@@ -10,12 +10,15 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.megacrit.cardcrawl.characters.AbstractPlayer
+import com.megacrit.cardcrawl.core.AbstractCreature
+import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.RelicLibrary
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.HaberdasheryMod
 import haberdashery.extensions.asRegion
+import haberdashery.extensions.getPrivate
 import haberdashery.spine.attachments.MaskedRegionAttachment
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -70,6 +73,13 @@ object AttachDatabase {
                     relic
                 )
             }
+        }
+    }
+
+    fun saveAll() {
+        for (player in CardCrawlGame.characterManager.allCharacters) {
+            val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: continue
+            save(player.chosenClass, skeleton)
         }
     }
 
