@@ -18,6 +18,8 @@ class AttachInfo(
         private set
     var hideSlotNames: Array<out String> = emptyArray()
         private set
+    var requiredSlotNames: Array<out String> = emptyArray()
+        private set
     var mask: String? = null
         private set
     @Transient

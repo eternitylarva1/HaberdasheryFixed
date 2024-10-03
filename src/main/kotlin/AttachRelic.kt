@@ -30,8 +30,10 @@ object AttachRelic {
             val slot = skeleton.findSlot(relicSlotName)
             if (slot.attachment == null) {
                 skeleton.setAttachment(relicSlotName, relicSlotName)
+                (slot.data as MySlotData).visible = true
             }
             hideSlots(skeleton, info.hideSlotNames)
+            checkSlotUpdates(skeleton)
             return
         }
 
@@ -43,6 +45,7 @@ object AttachRelic {
                 bone.data,
                 info.drawOrderZIndex,
                 info.hideSlotNames,
+                info.requiredSlotNames,
             ),
             bone
         )
@@ -75,6 +78,7 @@ object AttachRelic {
 
         skeleton.setAttachment(relicSlotName, attachment.name)
         hideSlots(skeleton, info.hideSlotNames)
+        checkSlotUpdates(skeleton)
     }
 
     fun lose(relicId: String) {
@@ -89,6 +93,7 @@ object AttachRelic {
         }
 
         skeleton.setAttachment(relicSlotName, null)
+        (skeleton.findSlot(relicSlotName).data as MySlotData).visible = false
 
         val hidden = skeleton.slots
             .asSequence()
@@ -102,6 +107,7 @@ object AttachRelic {
             val slot = skeleton.findSlot(slotName)
             skeleton.setAttachment(slotName, slot.data.attachmentName)
         }
+        checkSlotUpdates(skeleton)
     }
 
     private fun makeAttachment(relicSlotName: String, relic: AbstractRelic, skeleton: Skeleton, info: AttachInfo): RegionAttachment {
@@ -155,6 +161,26 @@ object AttachRelic {
     private fun hideSlots(skeleton: Skeleton, slotNames: kotlin.Array<out String>) {
         for (slotName in slotNames) {
             skeleton.setAttachment(slotName, null)
+        }
+    }
+
+    private fun checkSlotUpdates(skeleton: Skeleton) {
+        for (slot in skeleton.slots) {
+            val data = slot.data
+            if (data !is MySlotData) continue
+
+            var hide = false
+            for (slotName in data.requiredSlotNames) {
+                if (skeleton.findSlot(slotName)?.attachment == null) {
+                    hide = true
+                    break
+                }
+            }
+            if (hide) {
+                skeleton.setAttachment(data.name, null)
+            } else if (data.visible) {
+                skeleton.setAttachment(data.name, data.name)
+            }
         }
     }
 }
