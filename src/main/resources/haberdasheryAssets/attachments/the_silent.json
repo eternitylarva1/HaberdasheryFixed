@@ -8,6 +8,7 @@
       "hideSlotNames": [
         "skull"
       ],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.0,
@@ -28,6 +29,7 @@
         "hair",
         "hair2"
       ],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.0,
@@ -44,6 +46,7 @@
       "drawOrderSlotName": "cape_left",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.0,
@@ -62,6 +65,7 @@
       "hideSlotNames": [
         "kris"
       ],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.0,
@@ -78,6 +82,7 @@
       "drawOrderSlotName": "cape_left",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.657154,
@@ -96,6 +101,7 @@
       "hideSlotNames": [
         "kris"
       ],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 1.0,
@@ -114,6 +120,7 @@
       "hideSlotNames": [
         "kris"
       ],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.8542857,
@@ -130,6 +137,7 @@
       "drawOrderSlotName": "tail_spine",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 1.0,
@@ -146,6 +154,7 @@
       "drawOrderSlotName": "hand",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.76363635,
@@ -162,6 +171,7 @@
       "drawOrderSlotName": "hair2",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.9124424,
@@ -178,6 +188,7 @@
       "drawOrderSlotName": "eye",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "mask": "Peace Pipe_F3Go.png",
       "flipHorizontal": true,
       "flipVertical": false,
@@ -195,6 +206,9 @@
       "drawOrderSlotName": "hair",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [
+        "hair"
+      ],
       "mask": "Old Coin_LkYu.png",
       "flipHorizontal": false,
       "flipVertical": false,
@@ -212,6 +226,9 @@
       "drawOrderSlotName": "face",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [
+        "hair"
+      ],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.3429035,
@@ -228,6 +245,7 @@
       "drawOrderSlotName": "cape_right",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.72231716,
@@ -244,6 +262,7 @@
       "drawOrderSlotName": "hand",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.5032258,
@@ -260,6 +279,7 @@
       "drawOrderSlotName": "cape_right",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.3381371,
@@ -276,6 +296,7 @@
       "drawOrderSlotName": "cape_left",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.7606838,
@@ -292,6 +313,9 @@
       "drawOrderSlotName": "skull",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [
+        "skull"
+      ],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.39063263,
@@ -310,6 +334,7 @@
       "hideSlotNames": [
         "kris"
       ],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.0,
@@ -326,6 +351,7 @@
       "drawOrderSlotName": "cape_left",
       "drawOrderZIndex": -9,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.71375465,
@@ -342,6 +368,7 @@
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.65816325,
@@ -358,6 +385,7 @@
       "drawOrderSlotName": "skull",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.42484304,
@@ -374,6 +402,7 @@
       "drawOrderSlotName": "cape_right",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.66839296,
@@ -390,6 +419,7 @@
       "drawOrderSlotName": "tail_spine",
       "drawOrderZIndex": -1,
       "hideSlotNames": [],
+      "requiredSlotNames": [],
       "mask": "Lizard Tail_SpnY.png",
       "flipHorizontal": false,
       "flipVertical": false,
