@@ -9,6 +9,7 @@
         "helmet"
       ],
       "requiredSlotNames": [],
+      "exclusionGroup": "Head",
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.116,
@@ -30,6 +31,7 @@
         "hair"
       ],
       "requiredSlotNames": [],
+      "exclusionGroup": "Head",
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 1.14,

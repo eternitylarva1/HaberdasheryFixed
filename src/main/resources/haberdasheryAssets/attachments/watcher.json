@@ -7,14 +7,15 @@
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
       "requiredSlotNames": [],
+      "exclusionGroup": "Head",
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.8,
-      "scaleY": 0.8,
+      "scaleX": 0.937445,
+      "scaleY": 0.937445,
       "rotation": -100.0,
       "position": {
-        "x": -3.022396,
-        "y": -9.532319
+        "x": -4.223275,
+        "y": -13.145889
       }
     },
     "CultistMask": {
@@ -29,6 +30,7 @@
         "face"
       ],
       "requiredSlotNames": [],
+      "exclusionGroup": "Head",
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.9,
