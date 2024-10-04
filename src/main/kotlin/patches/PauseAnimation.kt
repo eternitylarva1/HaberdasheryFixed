@@ -3,14 +3,22 @@ package haberdashery.patches
 import com.esotericsoftware.spine.AnimationState
 import com.evacipated.cardcrawl.modthespire.lib.SpireInstrumentPatch
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatches2
 import com.megacrit.cardcrawl.characters.AbstractPlayer
+import com.megacrit.cardcrawl.characters.Watcher
 import haberdashery.AdjustRelic
 import javassist.expr.ExprEditor
 import javassist.expr.MethodCall
 
-@SpirePatch2(
-    clz = AbstractPlayer::class,
-    method = "renderPlayerImage"
+@SpirePatches2(
+    SpirePatch2(
+        clz = AbstractPlayer::class,
+        method = "renderPlayerImage"
+    ),
+    SpirePatch2(
+        clz = Watcher::class,
+        method = "renderPlayerImage"
+    ),
 )
 object PauseAnimation {
     @JvmStatic
