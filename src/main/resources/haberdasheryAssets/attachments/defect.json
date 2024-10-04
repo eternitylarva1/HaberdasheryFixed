@@ -294,6 +294,193 @@
         "x": -10.003959,
         "y": 26.909492
       }
+    },
+    "Runic Capacitor": {
+      "boneName": "Hips",
+      "large": false,
+      "drawOrderSlotName": "left_shin",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "mask": "Runic Capacitor_u7Qu.png",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.63083744,
+      "scaleY": 0.63083744,
+      "rotation": 70.70022,
+      "position": {
+        "x": -21.1,
+        "y": -8.199999
+      }
+    },
+    "FrozenCore": {
+      "boneName": "Hips",
+      "large": false,
+      "drawOrderSlotName": "crackedOrb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "crackedOrb"
+      ],
+      "requiredSlotNames": [],
+      "mask": "FrozenCore_ESj0.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 1.4,
+        "y": 0.90000004
+      }
+    },
+    "Emotion Chip": {
+      "boneName": "Neck_2",
+      "large": false,
+      "drawOrderSlotName": "wire_neck_l",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.39395335,
+      "scaleY": 0.39395335,
+      "rotation": -100.04703,
+      "position": {
+        "x": -14.724202,
+        "y": 0.13373816
+      }
+    },
+    "Snecko Eye": {
+      "boneName": "Eye_down",
+      "large": false,
+      "drawOrderSlotName": "Eye_down",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "Eye_down"
+      ],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": true,
+      "scaleX": 0.45260173,
+      "scaleY": 0.45260173,
+      "rotation": -317.45346,
+      "position": {
+        "x": -2.2008476,
+        "y": -1.1984446
+      }
+    },
+    "Velvet Choker": {
+      "boneName": "Neck_2",
+      "large": false,
+      "drawOrderSlotName": "wire_neck_l",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.4449277,
+      "scaleY": 0.4449277,
+      "rotation": -77.39875,
+      "position": {
+        "x": 1.0242275,
+        "y": -9.937854
+      }
+    },
+    "WingedGreaves": {
+      "boneName": "root",
+      "large": false,
+      "drawOrderSlotName": "left_foot",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.84435797,
+      "scaleY": 0.84435797,
+      "rotation": -13.717964,
+      "position": {
+        "x": -62.800003,
+        "y": 14.499999
+      }
+    },
+    "TungstenRod": {
+      "boneName": "Arm_L_",
+      "large": false,
+      "drawOrderSlotName": "left_arm",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "left_arm"
+      ],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.7236236,
+      "scaleY": 0.7236236,
+      "rotation": 162.3504,
+      "position": {
+        "x": -11.111048,
+        "y": 7.4501467
+      }
+    },
+    "The Courier": {
+      "boneName": "Leg_R_",
+      "large": false,
+      "drawOrderSlotName": "right_quad",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.5849448,
+      "scaleY": 0.5849448,
+      "rotation": 44.993195,
+      "position": {
+        "x": 2.6775427,
+        "y": 18.604591
+      }
+    },
+    "Mummified Hand": {
+      "boneName": "Arm_R_3",
+      "large": false,
+      "drawOrderSlotName": "right_hand",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "right_thumb",
+        "right_finger_1",
+        "right_hand",
+        "right_finger_2"
+      ],
+      "requiredSlotNames": [],
+      "mask": "Mummified Hand_e9T3.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.4982049,
+      "scaleY": 0.4982049,
+      "rotation": -42.029823,
+      "position": {
+        "x": 6.574832,
+        "y": 9.234262
+      }
+    },
+    "CaptainsWheel": {
+      "boneName": "Neck_3",
+      "large": false,
+      "drawOrderSlotName": "mantle",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [
+        "head"
+      ],
+      "mask": "CaptainsWheel_N3es.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -170.76938,
+      "position": {
+        "x": 25.259666,
+        "y": 1.6701162
+      }
     }
   }
 }
