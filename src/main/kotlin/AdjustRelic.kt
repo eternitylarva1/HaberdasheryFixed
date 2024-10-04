@@ -615,9 +615,9 @@ object AdjustRelic {
                     lastOrigSlot = data.name
                 }
                 if (data.name == relicSlotName) {
-                    drawOrderMsg.append("[#${Settings.GOLD_COLOR}]").append(data.name).append("[]\n")
+                    drawOrderMsg.append("[#${Settings.GOLD_COLOR}]").append(data.name.removeIDPrefix()).append("[]\n")
                 } else {
-                    drawOrderMsg.append(data.name).append('\n')
+                    drawOrderMsg.append(data.name.removeIDPrefix()).append('\n')
                 }
             }
         }
@@ -629,6 +629,10 @@ object AdjustRelic {
             Settings.WIDTH - 30f.scale(), Settings.HEIGHT - 200.scale(),
             Color.WHITE
         )
+    }
+
+    private fun String.removeIDPrefix(): String {
+        return this.removePrefix("${HaberdasheryMod.ID}:")
     }
 
     private fun positionWidget(sb: SpriteBatch, info: AttachInfo) {
