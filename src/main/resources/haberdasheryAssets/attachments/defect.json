@@ -481,6 +481,84 @@
         "x": 25.259666,
         "y": 1.6701162
       }
+    },
+    "Omamori": {
+      "boneName": "Chest",
+      "large": false,
+      "drawOrderSlotName": "mantle",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "mask": "Omamori_X5Yj.png",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.5404531,
+      "scaleY": 0.5404531,
+      "rotation": 0.0,
+      "position": {
+        "x": 6.2000027,
+        "y": -5.700002
+      }
+    },
+    "Darkstone Periapt": {
+      "boneName": "Chest",
+      "large": false,
+      "drawOrderSlotName": "mantle",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "mask": "Darkstone Periapt_9Aau.png",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.52073026,
+      "scaleY": 0.52073026,
+      "rotation": -33.453827,
+      "position": {
+        "x": 0.49999985,
+        "y": -5.3999996
+      }
+    },
+    "Calipers": {
+      "boneName": "Arm_L_3",
+      "large": false,
+      "drawOrderSlotName": "left_forearm",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "left_thumb",
+        "left_finger_2",
+        "left_finger_1",
+        "left_finger_3"
+      ],
+      "requiredSlotNames": [],
+      "mask": "Calipers_KBaR.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.93061227,
+      "scaleY": 0.93061227,
+      "rotation": 153.54482,
+      "position": {
+        "x": -9.310123,
+        "y": 8.181785
+      }
+    },
+    "Dead Branch": {
+      "boneName": "Leg_R_2",
+      "large": false,
+      "drawOrderSlotName": "right_shin",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [
+        "right_shin"
+      ],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -136.72652,
+      "position": {
+        "x": 11.526812,
+        "y": 11.528772
+      }
     }
   }
 }
