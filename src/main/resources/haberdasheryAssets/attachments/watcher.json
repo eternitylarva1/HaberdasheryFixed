@@ -295,6 +295,76 @@
         "x": -9.471931,
         "y": 5.223268
       }
+    },
+    "Astrolabe": {
+      "boneName": "eye_anchor",
+      "large": false,
+      "drawOrderSlotName": "eye_anchor",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": -42.958546,
+      "position": {
+        "x": -0.29813862,
+        "y": -0.64118046
+      }
+    },
+    "Lantern": {
+      "boneName": "Ribbon_",
+      "large": false,
+      "drawOrderSlotName": "sash",
+      "drawOrderZIndex": 2,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "mask": "Lantern_FC6z.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.511579,
+      "scaleY": 0.511579,
+      "rotation": -179.29008,
+      "position": {
+        "x": -7.349835,
+        "y": -19.995749
+      }
+    },
+    "Nunchaku": {
+      "boneName": "Ribbon_",
+      "large": false,
+      "drawOrderSlotName": "sash",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "mask": "Nunchaku_IckR.png",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.75524473,
+      "scaleY": 0.75524473,
+      "rotation": 151.34628,
+      "position": {
+        "x": -11.788372,
+        "y": -2.3588731
+      }
+    },
+    "Kunai": {
+      "boneName": "Ribbon_",
+      "large": false,
+      "drawOrderSlotName": "sleeve_right",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.6411483,
+      "scaleY": 0.6411483,
+      "rotation": 66.515625,
+      "position": {
+        "x": 6.045439,
+        "y": -4.975207
+      }
     }
   }
 }
