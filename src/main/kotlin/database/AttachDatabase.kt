@@ -140,12 +140,14 @@ object AttachDatabase {
     private fun load(file: FileHandle) {
         val gson = GsonBuilder().create()
         val reader = file.reader()
-        val data = gson.fromJson<LinkedHashMap<AbstractPlayer.PlayerClass, LinkedHashMap<String, AttachInfo>>>(reader)
+        val data = gson.fromJson<LinkedHashMap<AbstractPlayer.PlayerClass?, LinkedHashMap<String, AttachInfo>>>(reader)
 
         data.forEach { (character, relics) ->
-            val state = character(character)
-            relics.forEach { (relicId, info) ->
-                state.relic(relicId, info)
+            if (character != null) {
+                val state = character(character)
+                relics.forEach { (relicId, info) ->
+                    state.relic(relicId, info)
+                }
             }
         }
     }
