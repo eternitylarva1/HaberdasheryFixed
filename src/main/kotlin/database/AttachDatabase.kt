@@ -37,6 +37,7 @@ import kotlin.streams.asSequence
 object AttachDatabase {
     private val logger: Logger = LogManager.getLogger(AttachDatabase::class.java)
     private val internalFS: FileSystem
+    private val localFS: FileSystem
     private val database: MutableMap<AbstractPlayer.PlayerClass, MutableMap<String, AttachInfo>> = mutableMapOf()
     private val maskTextureCache = mutableMapOf<String, TextureRegion>()
 
@@ -48,19 +49,25 @@ object AttachDatabase {
         } else {
             Paths.get(uri)
         }
+        localFS = FileSystems.getDefault()
+
+        // Load internal json
         Files.walk(path, 1)
-            .filter { Files.isRegularFile(it) }
+            .filter(Files::isRegularFile)
             .forEach {
                 // removes the leading /
                 val internal = Gdx.files.internal(it.subpath(0, it.nameCount).toString())
-                val local = Gdx.files.local(Paths.get(HaberdasheryMod.ID).resolve(it.fileName.toString()).toString())
-                if (local.exists()) {
-                    logger.info("Loading ${local.name()} (LOCAL)")
-                    load(local)
-                } else {
-                    logger.info("Loading ${internal.name()} (INTERNAL)")
-                    load(internal)
-                }
+                logger.info("Loading ${internal.name()} (INTERNAL)")
+                load(internal)
+            }
+
+        // Load local json
+        Files.walk(localFS.getPath(HaberdasheryMod.ID), 1)
+            .filter(Files::isRegularFile)
+            .forEach {
+                val local = Gdx.files.local(it.toString())
+                logger.info("Loading ${local.name()} (LOCAL)")
+                load(local)
             }
     }
 
