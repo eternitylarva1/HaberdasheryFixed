@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
+import com.badlogic.gdx.graphics.glutils.PixmapTextureData
 import com.badlogic.gdx.graphics.glutils.ShaderProgram
 
 fun Texture.asAtlasRegion(): TextureAtlas.AtlasRegion =
@@ -15,19 +16,31 @@ fun Texture.asAtlasRegion(): TextureAtlas.AtlasRegion =
 fun Texture.asRegion(): TextureRegion =
     TextureRegion(this)
 
-fun Texture.premultiplyAlpha(disposeOriginal: Boolean = false): Texture {
-    textureData.prepare()
-    val pixmap = textureData.consumePixmap()
+fun Pixmap.premultiplyAlpha() {
     val saveBlending = Pixmap.getBlending()
     Pixmap.setBlending(Pixmap.Blending.None)
     val color = Color()
-    for (y in 0 until pixmap.height) {
-        for (x in 0 until pixmap.width) {
-            Color.rgba8888ToColor(color, pixmap.getPixel(x, y))
+    for (y in 0 until height) {
+        for (x in 0 until width) {
+            Color.rgba8888ToColor(color, getPixel(x, y))
             color.premultiplyAlpha()
-            pixmap.drawPixel(x, y, Color.rgba8888(color))
+            drawPixel(x, y, Color.rgba8888(color))
         }
     }
+    Pixmap.setBlending(saveBlending)
+}
+
+fun Texture.premultiplyAlpha() {
+    textureData.prepare()
+    val pixmap = textureData.consumePixmap()
+    pixmap.premultiplyAlpha()
+    load(PixmapTextureData(pixmap, null, false, false, true))
+}
+
+fun Texture.asPremultiplyAlpha(disposeOriginal: Boolean = false): Texture {
+    textureData.prepare()
+    val pixmap = textureData.consumePixmap()
+    pixmap.premultiplyAlpha()
     val newTexture = Texture(pixmap).apply {
         setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear)
     }
@@ -37,8 +50,11 @@ fun Texture.premultiplyAlpha(disposeOriginal: Boolean = false): Texture {
     if (textureData.disposePixmap()) {
         pixmap.dispose()
     }
-    Pixmap.setBlending(saveBlending)
     return newTexture
+}
+
+fun TextureAtlas.premultiplyAlpha() {
+    textures.forEach(Texture::premultiplyAlpha)
 }
 
 fun ShaderProgram.bind(name: String, unit: Int, texture: Texture) {

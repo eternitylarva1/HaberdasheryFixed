@@ -16,6 +16,7 @@ import haberdashery.database.MySlotData
 import haberdashery.extensions.asRegion
 import haberdashery.extensions.getPrivate
 import haberdashery.extensions.premultiplyAlpha
+import haberdashery.extensions.asPremultiplyAlpha
 import haberdashery.extensions.scale
 import haberdashery.spine.attachments.MaskedRegionAttachment
 
@@ -101,10 +102,10 @@ object AttachRelic {
 
         val tex = (if (info.large) {
             ImageMaster.loadImage("images/largeRelics/${relic.imgUrl}")
-                ?.premultiplyAlpha(true)
+                ?.asPremultiplyAlpha(true)
         } else {
             null
-        } ?: ImageMaster.getRelicImg(relic.relicId).premultiplyAlpha()
+        } ?: ImageMaster.getRelicImg(relic.relicId).asPremultiplyAlpha()
                 ).asRegion()
         val maskRegion = AttachDatabase.getMaskImg(relic, info)
 

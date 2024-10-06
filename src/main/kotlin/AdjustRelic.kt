@@ -789,14 +789,14 @@ object AdjustRelic {
         if (attachment is RegionAttachment) {
             val newTexture = if (info.large) {
                 val largeTex = ImageMaster.loadImage("images/largeRelics/${relic.imgUrl}")
-                    ?.premultiplyAlpha(true)
+                    ?.asPremultiplyAlpha(true)
                     ?: run {
                         info.large(false)
                         return
                     }
                 largeTex
             } else {
-                ImageMaster.getRelicImg(relic.relicId).premultiplyAlpha()
+                ImageMaster.getRelicImg(relic.relicId).asPremultiplyAlpha()
             }.asRegion()
             attachment.region.texture.dispose()
             attachment.region = newTexture
