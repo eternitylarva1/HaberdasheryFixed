@@ -34,7 +34,9 @@ fun Texture.premultiplyAlpha(disposeOriginal: Boolean = false): Texture {
     if (disposeOriginal) {
         dispose()
     }
-    pixmap.dispose()
+    if (textureData.disposePixmap()) {
+        pixmap.dispose()
+    }
     Pixmap.setBlending(saveBlending)
     return newTexture
 }
