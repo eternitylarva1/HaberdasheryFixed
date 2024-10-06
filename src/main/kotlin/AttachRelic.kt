@@ -27,10 +27,12 @@ object AttachRelic {
 
         val relicSlotName = HaberdasheryMod.makeID(relic.relicId)
         val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
+        skeleton.setFlip(false, false)
         if (skeleton.findSlotIndex(relicSlotName) >= 0) {
             val slot = skeleton.findSlot(relicSlotName)
             (slot.data as MySlotData).visible = true
             updateSlotVisibilities(skeleton)
+            skeleton.setFlip(player.flipHorizontal, player.flipVertical)
             return
         }
 
@@ -76,6 +78,7 @@ object AttachRelic {
         skin.addAttachment(slotClone.data.index, attachment.name, attachment)
 
         updateSlotVisibilities(skeleton)
+        skeleton.setFlip(player.flipHorizontal, player.flipVertical)
     }
 
     fun lose(relicId: String) {
