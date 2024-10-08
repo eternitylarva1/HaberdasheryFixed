@@ -423,9 +423,20 @@
       }
     },
     "The Courier": {
-      "boneName": "Leg_R_",
+      "boneName": "Chest",
+      "skeleton": {
+        "name": "Courier",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "tail1",
+          "tail2",
+          "tail3",
+          "ear"
+        ],
+        "randomStartTime": true
+      },
       "large": false,
-      "drawOrderSlotName": "right_quad",
+      "drawOrderSlotName": "head",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
       "requiredSlotNames": [],
@@ -433,10 +444,10 @@
       "flipVertical": false,
       "scaleX": 0.5849448,
       "scaleY": 0.5849448,
-      "rotation": 44.993195,
+      "rotation": 25.083267,
       "position": {
-        "x": 2.6775427,
-        "y": 18.604591
+        "x": -37.422455,
+        "y": -27.895409
       }
     },
     "Mummified Hand": {
