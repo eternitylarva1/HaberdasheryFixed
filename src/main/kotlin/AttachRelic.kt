@@ -1,11 +1,15 @@
 package haberdashery
 
+import basemod.ReflectionHacks
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.TextureAtlasData
+import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.utils.Array
-import com.esotericsoftware.spine.BlendMode
-import com.esotericsoftware.spine.Bone
-import com.esotericsoftware.spine.Skeleton
-import com.esotericsoftware.spine.Slot
-import com.esotericsoftware.spine.attachments.RegionAttachment
+import com.esotericsoftware.spine.*
+import com.esotericsoftware.spine.attachments.Attachment
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.ImageMaster
@@ -13,12 +17,11 @@ import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.database.AttachDatabase
 import haberdashery.database.AttachInfo
 import haberdashery.database.MySlotData
-import haberdashery.extensions.asRegion
-import haberdashery.extensions.getPrivate
-import haberdashery.extensions.premultiplyAlpha
-import haberdashery.extensions.asPremultiplyAlpha
-import haberdashery.extensions.scale
+import haberdashery.extensions.*
+import haberdashery.patches.SubSkeleton
+import haberdashery.patches.subSkeletons
 import haberdashery.spine.attachments.MaskedRegionAttachment
+import haberdashery.spine.attachments.OffsetSkeletonAttachment
 
 object AttachRelic {
     fun receive(relic: AbstractRelic) {
@@ -97,19 +100,55 @@ object AttachRelic {
         }
     }
 
-    private fun makeAttachment(relicSlotName: String, relic: AbstractRelic, skeleton: Skeleton, info: AttachInfo): RegionAttachment {
+    private fun makeAttachment(relicSlotName: String, relic: AbstractRelic, skeleton: Skeleton, info: AttachInfo): Attachment {
         val skeletonStart = Skeleton(skeleton).apply {
             setToSetupPose()
             updateWorldTransform()
         }
 
-        val tex = (if (info.large) {
-            ImageMaster.loadImage("images/largeRelics/${relic.imgUrl}")
-                ?.asPremultiplyAlpha(true)
-        } else {
-            null
-        } ?: ImageMaster.getRelicImg(relic.relicId).asPremultiplyAlpha()
-                ).asRegion()
+        info.skeletonInfo?.let { skeletonInfo ->
+            val atlasFile = Gdx.files.internal(HaberdasheryMod.assetPath("attachments/skeletons/${skeletonInfo.name}/skeleton.atlas"))
+            val atlas = if (skeletonInfo.useRelicAsAtlas) {
+                val atlasData = TextureAtlasData(atlasFile, atlasFile.parent(), false)
+                if (atlasData.pages.size > 1) {
+                    throw IllegalStateException("Cannot use relic as atlas: ${atlasFile.path()}")
+                }
+                val page = atlasData.pages[0]
+                ReflectionHacks.setPrivateFinal(page, TextureAtlasData.Page::class.java, "textureFile", null)
+                page.texture = getTexture(relic, info)
+                TextureAtlas(atlasData)
+            } else {
+                TextureAtlas(atlasFile).apply {
+                    premultiplyAlpha()
+                }
+            }
+            val json = SkeletonJson(atlas)
+            val skeletonData = json.readSkeletonData(Gdx.files.internal(HaberdasheryMod.assetPath("attachments/skeletons/${skeletonInfo.name}/skeleton.json")))
+            val subSkeleton = Skeleton(skeletonData)
+            subSkeleton.color = Color.WHITE
+            val stateData = AnimationStateData(skeletonData)
+            val state = AnimationState(stateData)
+            for ((i, animationName) in skeletonInfo.animations.withIndex()) {
+                skeletonData.findAnimation(animationName)?.let { animation ->
+                    val e = state.setAnimation(i, animation, true)
+                    if (skeletonInfo.randomStartTime) {
+                        e.time = e.endTime * MathUtils.random()
+                    }
+                }
+            }
+
+            AbstractDungeon.player.subSkeletons.add(SubSkeleton(subSkeleton, state, atlas))
+
+            return OffsetSkeletonAttachment(relicSlotName).apply {
+                this.skeleton = subSkeleton
+                position.set(info.position)
+                scaleX = info.scaleX.scale()
+                scaleY = info.scaleY.scale()
+                rotation = info.rotation
+            }
+        }
+
+        val tex = getTexture(relic, info).asRegion()
         val maskRegion = AttachDatabase.getMaskImg(relic, info)
 
         return MaskedRegionAttachment(relicSlotName).apply {
@@ -131,6 +170,15 @@ object AttachRelic {
             rotation = info.rotation
             updateOffset()
         }
+    }
+
+    private fun getTexture(relic: AbstractRelic, info: AttachInfo): Texture {
+        return if (info.large) {
+            ImageMaster.loadImage("images/largeRelics/${relic.imgUrl}")
+                ?.asPremultiplyAlpha(true)
+        } else {
+            null
+        } ?: ImageMaster.getRelicImg(relic.relicId).asPremultiplyAlpha(false)
     }
 
     private fun startingDrawOrder(relicId: String, info: AttachInfo, drawOrder: Array<Slot>, bone: Bone): Int {

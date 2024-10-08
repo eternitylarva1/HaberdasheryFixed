@@ -30,5 +30,7 @@ object DisposePlayer {
                 }
             }
         }
+
+        __instance.subSkeletons.forEach { it.atlas.dispose() }
     }
 }

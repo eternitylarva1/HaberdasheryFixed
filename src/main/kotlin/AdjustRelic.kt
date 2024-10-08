@@ -33,6 +33,7 @@ import haberdashery.database.MySlotData
 import haberdashery.extensions.*
 import haberdashery.patches.StopOtherKeyboardShortcuts
 import haberdashery.spine.attachments.MaskedRegionAttachment
+import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import kotlin.math.absoluteValue
 import kotlin.math.max
 
@@ -431,6 +432,8 @@ object AdjustRelic {
                 attachment.y = pos.y
                 attachment.updateOffset()
             }
+        } else if (attachment is OffsetSkeletonAttachment) {
+            attachment.position.set(info.dirtyPosition)
         }
     }
 
@@ -439,6 +442,8 @@ object AdjustRelic {
         if (attachment is RegionAttachment) {
             attachment.rotation = info.dirtyRotation
             attachment.updateOffset()
+        } else if (attachment is OffsetSkeletonAttachment) {
+            attachment.rotation = info.dirtyRotation
         }
     }
 
@@ -454,6 +459,15 @@ object AdjustRelic {
                 attachment.scaleY *= -1
             }
             attachment.updateOffset()
+        } else if (attachment is OffsetSkeletonAttachment) {
+            attachment.scaleX = info.dirtyScaleX
+            if (info.flipHorizontal) {
+                attachment.scaleX *= -1
+            }
+            attachment.scaleY = info.dirtyScaleY
+            if (info.flipVertical) {
+                attachment.scaleY *= -1
+            }
         }
     }
 
@@ -642,8 +656,10 @@ object AdjustRelic {
 
             val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
             val diff = mouse.cpy().sub(startPosition).scl(0.1f)
-            skeletonStart.findBone(info.boneName)?.let { bone ->
-                diff.rotate(bone.worldRotationX).scl(1f, -1f).rotate(-bone.worldRotationX)
+            if (attachment is RegionAttachment) {
+                skeletonStart.findBone(info.boneName)?.let { bone ->
+                    diff.rotate(bone.worldRotationX).scl(1f, -1f).rotate(-bone.worldRotationX)
+                }
             }
 
             info.relativePosition(diff.x , diff.y)

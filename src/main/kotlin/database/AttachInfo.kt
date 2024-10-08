@@ -10,6 +10,8 @@ class AttachInfo(
     // for gson initializing
     private constructor() : this("") {}
 
+    @SerializedName("skeleton")
+    val skeletonInfo: SkeletonInfo? = null
     var large: Boolean = false
         private set
     var drawOrderSlotName: String? = null
@@ -126,4 +128,11 @@ class AttachInfo(
     internal fun relativePosition(x: Float, y: Float) = apply {
         this.dirtyPosition.set(position.x + x, position.y + y)
     }
+
+    data class SkeletonInfo(
+        val name: String,
+        val useRelicAsAtlas: Boolean,
+        val animations: Array<String>,
+        val randomStartTime: Boolean,
+    )
 }
