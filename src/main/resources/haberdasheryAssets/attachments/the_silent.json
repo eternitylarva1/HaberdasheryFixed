@@ -365,7 +365,16 @@
       }
     },
     "HoveringKite": {
-      "boneName": "Tail_2",
+      "boneName": "root",
+      "skeleton": {
+        "name": "HoveringKite",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "translate",
+          "rotate"
+        ],
+        "randomStartTime": true
+      },
       "large": true,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 0,
@@ -375,10 +384,10 @@
       "flipVertical": false,
       "scaleX": 0.65816325,
       "scaleY": 0.65816325,
-      "rotation": 163.1561,
+      "rotation": 0.0,
       "position": {
-        "x": -97.91968,
-        "y": 177.98517
+        "x": -125.299995,
+        "y": -204.20001
       }
     },
     "Blue Candle": {
