@@ -95,8 +95,19 @@
     },
     "The Courier": {
       "boneName": "Arm_R_1",
+      "skeleton": {
+        "name": "Courier",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "tail1",
+          "tail2",
+          "tail3",
+          "ear"
+        ],
+        "randomStartTime": true
+      },
       "large": false,
-      "drawOrderSlotName": "pauldron_left",
+      "drawOrderSlotName": "eye",
       "drawOrderZIndex": 1,
       "hideSlotNames": [],
       "requiredSlotNames": [],
@@ -104,10 +115,10 @@
       "flipVertical": true,
       "scaleX": 0.72,
       "scaleY": 0.72,
-      "rotation": 14.0,
+      "rotation": -66.505875,
       "position": {
-        "x": 23.228561,
-        "y": -12.54568
+        "x": 2.2285614,
+        "y": -16.84568
       }
     },
     "Bronze Scales": {
