@@ -94,6 +94,15 @@
     },
     "Unceasing Top": {
       "boneName": "eye_anchor",
+      "skeleton": {
+        "name": "UnceasingTop",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "translate",
+          "rotate"
+        ],
+        "randomStartTime": true
+      },
       "large": false,
       "drawOrderSlotName": "eye_anchor",
       "drawOrderZIndex": 0,
@@ -101,12 +110,12 @@
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.44988865,
-      "scaleY": 0.44988865,
-      "rotation": -20.909706,
+      "scaleX": 0.45306122,
+      "scaleY": 0.45306122,
+      "rotation": 28.676992,
       "position": {
-        "x": -6.56594,
-        "y": 19.417728
+        "x": -3.2523274,
+        "y": -10.47076
       }
     },
     "Dead Branch": {
