@@ -431,7 +431,9 @@
           "tail1",
           "tail2",
           "tail3",
-          "ear"
+          "ear_l",
+          "ear_r",
+          "blink"
         ],
         "randomStartTime": true
       },
