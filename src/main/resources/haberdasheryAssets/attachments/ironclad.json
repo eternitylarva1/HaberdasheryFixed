@@ -159,6 +159,14 @@
     },
     "Happy Flower": {
       "boneName": "root",
+      "skeleton": {
+        "name": "HappyFlower",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "headbob"
+        ],
+        "randomStartTime": true
+      },
       "large": false,
       "drawOrderSlotName": "boot_left",
       "drawOrderZIndex": 2,
@@ -170,8 +178,8 @@
       "scaleY": 0.96000004,
       "rotation": 0.0,
       "position": {
-        "x": -2.6226834E-7,
-        "y": -6.0
+        "x": 0.29999977,
+        "y": 28.400002
       }
     },
     "Ancient Tea Set": {

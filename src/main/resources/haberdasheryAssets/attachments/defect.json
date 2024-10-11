@@ -42,6 +42,14 @@
     },
     "Happy Flower": {
       "boneName": "Neck_3",
+      "skeleton": {
+        "name": "HappyFlower",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "headbob"
+        ],
+        "randomStartTime": true
+      },
       "large": false,
       "drawOrderSlotName": "mantle",
       "drawOrderZIndex": 0,
@@ -53,8 +61,8 @@
       "scaleY": 1.0,
       "rotation": -21.972147,
       "position": {
-        "x": 40.844822,
-        "y": 13.719723
+        "x": 10.444821,
+        "y": -6.9802785
       }
     },
     "Bag of Preparation": {
