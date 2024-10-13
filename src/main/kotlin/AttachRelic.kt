@@ -105,6 +105,7 @@ object AttachRelic {
             setToSetupPose()
             updateWorldTransform()
         }
+        val bone = skeletonStart.findBone(info.boneName)
 
         info.skeletonInfo?.let { skeletonInfo ->
             val atlasFile = Gdx.files.internal(HaberdasheryMod.assetPath("attachments/skeletons/${skeletonInfo.name}/skeleton.atlas"))
@@ -141,7 +142,11 @@ object AttachRelic {
 
             return OffsetSkeletonAttachment(relicSlotName).apply {
                 this.skeleton = subSkeleton
-                position.set(info.position)
+                val pos = info.dirtyPosition.cpy()
+                    .scl(1f, -1f)
+                    .add(bone.worldX, bone.worldY)
+                bone.worldToLocal(pos)
+                position.set(pos)
                 scaleX = info.scaleX.scale()
                 scaleY = info.scaleY.scale()
                 rotation = info.rotation
@@ -160,11 +165,9 @@ object AttachRelic {
             region = tex
             width = tex.regionWidth.toFloat()
             height = tex.regionHeight.toFloat()
-            skeletonStart.findBone(info.boneName)?.let { bone ->
-                val pos = info.position.cpy().rotate(bone.worldRotationX)
-                x = pos.x.scale()
-                y = pos.y.scale()
-            }
+            val pos = info.position.cpy().rotate(bone.worldRotationX)
+            x = pos.x.scale()
+            y = pos.y.scale()
             scaleX = info.scaleX.scale()
             scaleY = info.scaleY.scale()
             rotation = info.rotation

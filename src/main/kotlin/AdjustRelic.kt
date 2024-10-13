@@ -425,15 +425,18 @@ object AdjustRelic {
 
     private fun attachmentPosition(info: AttachInfo) {
         val attachment = attachment
+        val bone = skeletonStart.findBone(info.boneName) ?: return
         if (attachment is RegionAttachment) {
-            skeletonStart.findBone(info.boneName)?.let { bone ->
-                val pos = info.dirtyPosition.cpy().rotate(bone.worldRotationX)
-                attachment.x = pos.x
-                attachment.y = pos.y
-                attachment.updateOffset()
-            }
+            val pos = info.dirtyPosition.cpy().rotate(bone.worldRotationX)
+            attachment.x = pos.x
+            attachment.y = pos.y
+            attachment.updateOffset()
         } else if (attachment is OffsetSkeletonAttachment) {
-            attachment.position.set(info.dirtyPosition)
+            val pos = info.dirtyPosition.cpy()
+                .scl(1f, -1f)
+                .add(bone.worldX, bone.worldY)
+            bone.worldToLocal(pos)
+            attachment.position.set(pos)
         }
     }
 

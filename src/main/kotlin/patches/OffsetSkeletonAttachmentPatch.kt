@@ -31,25 +31,7 @@ object OffsetSkeletonAttachmentPatch {
     fun offset(skeleton: Skeleton, attachment: Attachment, bone: Bone, rootBone: Bone, oldRotation: Float) {
         if (attachment !is OffsetSkeletonAttachment) return
 
-        var offsetX = attachment.position.x
-        var offsetY = attachment.position.y
-        if (skeleton.flipX) {
-            offsetX *= -1
-        }
-        if (skeleton.flipY) {
-            offsetY *= -1
-        }
-        attachment.skeleton.setPosition(
-            skeleton.x + bone.worldX + offsetX,
-            skeleton.y + bone.worldY - offsetY,
-        )
-        var boneRotation = bone.worldRotationX
-        if (skeleton.flipX xor skeleton.flipY) {
-            boneRotation = 180f - boneRotation
-        }
-        rootBone.rotation = oldRotation + boneRotation + attachment.rotation
-        rootBone.setScale(attachment.scaleX, attachment.scaleY)
-        attachment.skeleton.setFlip(skeleton.flipX, skeleton.flipY)
+        attachment.apply(skeleton, bone, oldRotation)
     }
 
     private class Locator : SpireInsertLocator() {
