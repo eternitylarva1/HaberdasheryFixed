@@ -1017,6 +1017,15 @@
     },
     "Self Forming Clay": {
       "boneName": "Arm_R_1",
+      "skeleton": {
+        "name": "SelfFormingClay",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "morph",
+          "wiggle"
+        ],
+        "randomStartTime": true
+      },
       "large": false,
       "drawOrderSlotName": "pauldron_left",
       "drawOrderZIndex": -1,
@@ -1028,8 +1037,8 @@
       "scaleY": 0.6311049,
       "rotation": 127.59978,
       "position": {
-        "x": 24.795168,
-        "y": -25.994766
+        "x": -3.4048328,
+        "y": -14.994766
       }
     },
     "Meat on the Bone": {
