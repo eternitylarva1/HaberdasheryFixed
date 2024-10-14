@@ -1,13 +1,12 @@
 package haberdashery
 
-import basemod.ReflectionHacks
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.TextureAtlasData
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.utils.Array
+import com.badlogic.gdx.utils.Disposable
 import com.esotericsoftware.spine.*
 import com.esotericsoftware.spine.attachments.Attachment
 import com.megacrit.cardcrawl.core.AbstractCreature
@@ -22,6 +21,7 @@ import haberdashery.patches.SubSkeleton
 import haberdashery.patches.subSkeletons
 import haberdashery.spine.attachments.MaskedRegionAttachment
 import haberdashery.spine.attachments.OffsetSkeletonAttachment
+import haberdashery.spine.attachments.RelicAttachmentLoader
 
 object AttachRelic {
     fun receive(relic: AbstractRelic) {
@@ -108,22 +108,17 @@ object AttachRelic {
         val bone = skeletonStart.findBone(info.boneName)
 
         info.skeletonInfo?.let { skeletonInfo ->
-            val atlasFile = Gdx.files.internal(HaberdasheryMod.assetPath("attachments/skeletons/${skeletonInfo.name}/skeleton.atlas"))
-            val atlas = if (skeletonInfo.useRelicAsAtlas) {
-                val atlasData = TextureAtlasData(atlasFile, atlasFile.parent(), false)
-                if (atlasData.pages.size > 1) {
-                    throw IllegalStateException("Cannot use relic as atlas: ${atlasFile.path()}")
-                }
-                val page = atlasData.pages[0]
-                ReflectionHacks.setPrivateFinal(page, TextureAtlasData.Page::class.java, "textureFile", null)
-                page.texture = getTexture(relic, info)
-                TextureAtlas(atlasData)
+            val toDispose: Disposable
+            val json = if (skeletonInfo.useRelicAsAtlas) {
+                toDispose = getTexture(relic, info)
+                SkeletonJson(RelicAttachmentLoader(toDispose))
             } else {
-                TextureAtlas(atlasFile).apply {
+                val atlasFile = Gdx.files.internal(HaberdasheryMod.assetPath("attachments/skeletons/${skeletonInfo.name}/skeleton.atlas"))
+                toDispose = TextureAtlas(atlasFile).apply {
                     premultiplyAlpha()
                 }
+                SkeletonJson(toDispose)
             }
-            val json = SkeletonJson(atlas)
             val skeletonData = json.readSkeletonData(Gdx.files.internal(HaberdasheryMod.assetPath("attachments/skeletons/${skeletonInfo.name}/skeleton.json")))
             val subSkeleton = Skeleton(skeletonData)
             subSkeleton.color = Color.WHITE
@@ -138,7 +133,7 @@ object AttachRelic {
                 }
             }
 
-            AbstractDungeon.player.subSkeletons.add(SubSkeleton(subSkeleton, state, atlas))
+            AbstractDungeon.player.subSkeletons.add(SubSkeleton(subSkeleton, state, toDispose))
 
             return OffsetSkeletonAttachment(relicSlotName).apply {
                 this.skeleton = subSkeleton

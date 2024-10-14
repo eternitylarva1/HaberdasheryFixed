@@ -1,6 +1,6 @@
 package haberdashery.patches
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.badlogic.gdx.utils.Disposable
 import com.esotericsoftware.spine.AnimationState
 import com.esotericsoftware.spine.Skeleton
 import com.evacipated.cardcrawl.modthespire.lib.SpireField
@@ -23,5 +23,5 @@ val AbstractPlayer.subSkeletons: MutableList<SubSkeleton>
 data class SubSkeleton(
     val skeleton: Skeleton,
     val anim: AnimationState,
-    val atlas: TextureAtlas,
+    val toDispose: Disposable,
 )
