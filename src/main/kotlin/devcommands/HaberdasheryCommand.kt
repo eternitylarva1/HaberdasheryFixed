@@ -9,6 +9,7 @@ class HaberdasheryCommand : ConsoleCommand() {
         followup["edit"] = EditCommand::class.java
         followup["add"] = AddCommand::class.java
         followup["saveall"] = SaveAllCommand::class.java
+        followup["debug"] = DebugCommand::class.java
     }
 
     override fun execute(tokens: Array<out String>, depth: Int) {}

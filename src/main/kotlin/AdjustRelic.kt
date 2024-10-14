@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.ScreenUtils
 import com.esotericsoftware.spine.BonePickerSkeletonRendererDebug
 import com.esotericsoftware.spine.Skeleton
+import com.esotericsoftware.spine.SkeletonRendererDebug
 import com.esotericsoftware.spine.Slot
 import com.esotericsoftware.spine.attachments.Attachment
 import com.esotericsoftware.spine.attachments.RegionAttachment
@@ -48,12 +49,22 @@ object AdjustRelic {
             setToSetupPose()
             updateWorldTransform()
         }
-    private val srd = BonePickerSkeletonRendererDebug().apply {
+    private val bonePicker = BonePickerSkeletonRendererDebug().apply {
         setPremultipliedAlpha(true)
         setBoundingBoxes(false)
         setMeshHull(false)
         setMeshTriangles(false)
         setRegionAttachments(false)
+        setPaths(false)
+        setScale(Settings.scale)
+    }
+    private val srd = SkeletonRendererDebug().apply {
+        setPremultipliedAlpha(true)
+        setBoundingBoxes(true)
+        setMeshHull(true)
+        setMeshTriangles(false)
+        setRegionAttachments(false)
+        setPaths(false)
         setScale(Settings.scale)
     }
     private val maskVisualizerShader =
@@ -100,6 +111,8 @@ object AdjustRelic {
     private var lastFillPos: Vector2? = null
     private var brushSize: Int = 20
     private var viewMask: Boolean = false
+
+    internal var DEBUG_RENDER_SKELETON = false
 
     @Suppress("unused")
     @JvmStatic
@@ -149,14 +162,14 @@ object AdjustRelic {
         }
 
         if (mode == EditMode.PickingBone) {
-            if (InputHelper.justClickedLeft && srd.hoveredBone != null) {
+            if (InputHelper.justClickedLeft && bonePicker.hoveredBone != null) {
                 mode = EditMode.Main
 
                 val relic = RelicLibrary.getRelic(relicId)?.makeCopy() ?: return
                 AttachDatabase.relic(
                     AbstractDungeon.player.chosenClass,
                     relicId,
-                    AttachInfo(srd.hoveredBone.data.name)
+                    AttachInfo(bonePicker.hoveredBone.data.name)
                 )
                 AbstractDungeon.getCurrRoom().spawnRelicAndObtain(
                     Settings.WIDTH / 2f, Settings.HEIGHT / 2f,
@@ -401,6 +414,7 @@ object AdjustRelic {
             renderBoneSelection(sb)
             return
         }
+        renderSkeletonDebug(sb)
 
         val relicId = relicId
         val info = info
@@ -486,8 +500,8 @@ object AdjustRelic {
 
     private fun renderBoneSelection(sb: SpriteBatch) {
         sb.end()
-        srd.shapeRenderer.projectionMatrix = projection
-        srd.draw(skeleton)
+        bonePicker.shapeRenderer.projectionMatrix = projection
+        bonePicker.draw(skeleton)
         sb.begin()
 
         renderModeInfo(sb)
@@ -495,14 +509,38 @@ object AdjustRelic {
             sb,
             FontHelper.tipBodyFont,
             "[$relicId]\n" +
-                    "Bone: " + if (srd.hoveredBone != null) {
-                srd.hoveredBone.data.name
+                    "Bone: " + if (bonePicker.hoveredBone != null) {
+                bonePicker.hoveredBone.data.name
             } else {
                 "<Select a Bone>"
             } + "\n",
             30f.scale(), Settings.HEIGHT - 300.scale(),
             Color.WHITE
         )
+    }
+
+    private fun renderSkeletonDebug(sb: SpriteBatch) {
+        if (!DEBUG_RENDER_SKELETON) return
+        val skeleton = skeleton ?: return
+
+        sb.end()
+        srd.shapeRenderer.projectionMatrix = projection
+        srd.setMeshHull(false)
+        srd.setRegionAttachments(false)
+        srd.setPaths(false)
+        srd.draw(skeleton)
+        srd.setMeshHull(true)
+        srd.setRegionAttachments(true)
+        srd.setPaths(true)
+        for (slot in skeleton.drawOrder) {
+            val attachment = slot.attachment
+            if (attachment is OffsetSkeletonAttachment) {
+                attachment.apply(skeleton, slot.bone)
+                srd.draw(attachment.skeleton)
+                attachment.reset()
+            }
+        }
+        sb.begin()
     }
 
     private fun renderMaskEditing(sb: SpriteBatch, info: AttachInfo) {
