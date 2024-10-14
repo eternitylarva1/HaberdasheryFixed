@@ -1255,6 +1255,15 @@
     },
     "Unceasing Top": {
       "boneName": "root",
+      "skeleton": {
+        "name": "UnceasingTop",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "translate",
+          "rotate"
+        ],
+        "randomStartTime": true
+      },
       "large": false,
       "drawOrderSlotName": "shadow",
       "drawOrderZIndex": 2,
@@ -1264,10 +1273,10 @@
       "flipVertical": false,
       "scaleX": 0.6160873,
       "scaleY": 0.6160873,
-      "rotation": -27.058167,
+      "rotation": 0.0,
       "position": {
         "x": 155.04001,
-        "y": -14.279998
+        "y": 29.52
       }
     },
     "Du-Vu Doll": {
