@@ -4,8 +4,10 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.Gdx2DPixmap
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.esotericsoftware.spine.Skeleton
+import com.evacipated.cardcrawl.modthespire.Loader
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -25,49 +27,50 @@ import java.awt.image.BufferedImage
 import java.awt.image.DataBufferByte
 import java.awt.image.Raster
 import java.io.Reader
-import java.nio.file.FileSystem
-import java.nio.file.FileSystems
-import java.nio.file.Files
-import java.nio.file.Paths
+import java.net.URI
+import java.nio.file.*
 import java.util.*
 import javax.imageio.ImageIO
-import kotlin.io.path.createDirectories
+import kotlin.io.path.*
 import kotlin.streams.asSequence
 
 object AttachDatabase {
     private val logger: Logger = LogManager.getLogger(AttachDatabase::class.java)
-    private val internalFS: FileSystem
-    private val localFS: FileSystem
     private val database: MutableMap<AbstractPlayer.PlayerClass, MutableMap<String, AttachInfo>> = mutableMapOf()
     private val maskTextureCache = mutableMapOf<String, TextureRegion>()
 
     init {
-        val uri = AttachDatabase::class.java.getResource("/" + HaberdasheryMod.assetPath("attachments")).toURI()
-        internalFS = FileSystems.newFileSystem(uri, emptyMap<String, Any?>())
-        val path = if (uri.scheme == "jar") {
-            internalFS.getPath("/" + HaberdasheryMod.assetPath("attachments"))
-        } else {
-            Paths.get(uri)
-        }
-        localFS = FileSystems.getDefault()
-
-        // Load internal json
-        Files.walk(path, 1)
-            .filter(Files::isRegularFile)
-            .forEach {
-                // removes the leading /
-                val internal = Gdx.files.internal(it.subpath(0, it.nameCount).toString())
-                logger.info("Loading ${internal.name()} (INTERNAL)")
-                load(internal)
+        // Load mod jsons
+        for (modInfo in Loader.MODINFOS) {
+            val uri = modInfo.jarURL?.toURI()?.let { URI.create("jar:$it") } ?: continue
+            val fs = try {
+                FileSystems.newFileSystem(uri, emptyMap<String, Any?>())
+            } catch (e: FileSystemAlreadyExistsException) {
+                FileSystems.getFileSystem(uri)
+            } catch (e: Exception) {
+                logger.error("Failed to make FileSystem: $uri", e)
+                continue
             }
 
+            val path = fs.getPath("/${HaberdasheryMod.ID}")
+            if (path.notExists()) continue
+            Files.walk(path, 1)
+                .filter(Files::isRegularFile)
+                .peek { println(it) }
+                .filter { it.fileName?.toString()?.substringAfterLast(".", "") == "json" }
+                .forEach {
+                    logger.info("Loading ${it.fileName} (MOD:${modInfo.ID})")
+                    load(it)
+                }
+        }
+
         // Load local json
+        val localFS = FileSystems.getDefault()
         Files.walk(localFS.getPath(HaberdasheryMod.ID), 1)
             .filter(Files::isRegularFile)
             .forEach {
-                val local = Gdx.files.local(it.toString())
-                logger.info("Loading ${local.name()} (LOCAL)")
-                load(local)
+                logger.info("Loading ${it.fileName} (LOCAL)")
+                load(it)
             }
     }
 
@@ -137,15 +140,17 @@ object AttachDatabase {
     private inline fun <reified T> Gson.fromJson(reader: Reader) =
         fromJson<T>(reader, object : TypeToken<T>() {}.type)
 
-    private fun load(file: FileHandle) {
+    private fun load(path: Path) {
         val gson = GsonBuilder().create()
-        val reader = file.reader()
+        val reader = path.reader()
         val data = gson.fromJson<LinkedHashMap<AbstractPlayer.PlayerClass?, LinkedHashMap<String, AttachInfo>>>(reader)
+        reader.close()
 
         data.forEach { (character, relics) ->
             if (character != null) {
                 val state = character(character)
                 relics.forEach { (relicId, info) ->
+                    info.path = path
                     state.relic(relicId, info)
                 }
             }
@@ -179,21 +184,37 @@ object AttachDatabase {
         }
 
         try {
-            val internal = Gdx.files.internal(HaberdasheryMod.assetPath("attachments/masks/${filename}"))
-            val local = Gdx.files.local(Paths.get(HaberdasheryMod.ID, "masks", filename).toString())
+            val internal = info.path.fileSystem.getPath(HaberdasheryMod.ID, "masks", filename)
+            val local = Paths.get(HaberdasheryMod.ID, "masks", filename)
             val file = newestFile(internal, local)
 
             logger.info("Loading mask $filename (${if (file == local) "LOCAL" else "INTERNAL"})")
 
-            // Use Texture(Pixmap(FileHandle(String))) instead of Texture(String) because the latter
+            val bytes = file.readBytes()
+            val pix2d = Gdx2DPixmap(bytes, 0, bytes.size, 0)
+            // Use Texture(Pixmap(...)) instead of Texture(String) because the latter
             // uses FileTextureData, which doesn't let us make changes to the texture/pixmap later
-            return Texture(Pixmap(file)).asRegion().also {
+            return Texture(Pixmap(pix2d)).asRegion().also {
                 maskTextureCache[relic.relicId] = it
             }
         } catch (e: Exception) {
             logger.warn("Failed to load mask", e)
             return null
         }
+    }
+
+    private fun newestFile(internal: Path, local: Path): Path {
+        if (local.notExists()) {
+            return internal
+        }
+        if (internal.notExists()) {
+            return local
+        }
+
+        val internalTime = internal.getLastModifiedTime().toInstant()
+        val localTime = local.getLastModifiedTime().toInstant()
+
+        return if (localTime.isAfter(internalTime)) local else internal
     }
 
     private fun newestFile(internal: FileHandle, local: FileHandle): FileHandle {
@@ -204,10 +225,13 @@ object AttachDatabase {
             return local
         }
 
-        val internalTime = Files.getLastModifiedTime(internalFS.getPath(internal.path())).toInstant()
-        val localTime = Files.getLastModifiedTime(local.file().toPath()).toInstant()
+        // TODO
+        return local
 
-        return if (localTime.isAfter(internalTime)) local else internal
+//        val internalTime = Files.getLastModifiedTime(internalFS.getPath(internal.path())).toInstant()
+//        val localTime = Files.getLastModifiedTime(local.file().toPath()).toInstant()
+//
+//        return if (localTime.isAfter(internalTime)) local else internal
     }
 
     fun makeRelicMaskFilename(id: String): String {

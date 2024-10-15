@@ -2,6 +2,7 @@ package haberdashery.database
 
 import com.badlogic.gdx.math.Vector2
 import com.google.gson.annotations.SerializedName
+import java.nio.file.Path
 import kotlin.math.absoluteValue
 
 class AttachInfo(
@@ -9,6 +10,10 @@ class AttachInfo(
 ) {
     // for gson initializing
     private constructor() : this("") {}
+
+    @Transient
+    lateinit var path: Path
+        internal set
 
     @SerializedName("skeleton")
     val skeletonInfo: SkeletonInfo? = null
