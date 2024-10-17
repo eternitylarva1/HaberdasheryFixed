@@ -1,10 +1,10 @@
 {
     "skeleton": {
-		"spine": "asdf",
         "width": 256,
         "height": 256,
         "hash": " ",
-        "name": "Armature"
+        "name": "Armature",
+        "pathBeforeIk": true
     },
     "bones": [
         {
