@@ -1,6 +1,5 @@
 package haberdashery
 
-import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
@@ -19,6 +18,7 @@ import haberdashery.database.MySlotData
 import haberdashery.extensions.*
 import haberdashery.patches.SubSkeleton
 import haberdashery.patches.subSkeletons
+import haberdashery.spine.FSFileHandle
 import haberdashery.spine.attachments.MaskedRegionAttachment
 import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import haberdashery.spine.attachments.RelicAttachmentLoader
@@ -108,18 +108,19 @@ object AttachRelic {
         val bone = skeletonStart.findBone(info.boneName)
 
         info.skeletonInfo?.let { skeletonInfo ->
+            val skeletonDir = info.path.parent.resolve("skeletons").resolve(skeletonInfo.name)
             val toDispose: Disposable
             val json = if (skeletonInfo.useRelicAsAtlas) {
                 toDispose = getTexture(relic, info)
                 SkeletonJson(RelicAttachmentLoader(toDispose))
             } else {
-                val atlasFile = Gdx.files.internal(HaberdasheryMod.assetPath("attachments/skeletons/${skeletonInfo.name}/skeleton.atlas"))
+                val atlasFile = FSFileHandle(skeletonDir.resolve("skeleton.atlas"))
                 toDispose = TextureAtlas(atlasFile).apply {
                     premultiplyAlpha()
                 }
                 SkeletonJson(toDispose)
             }
-            val skeletonData = json.readSkeletonData(Gdx.files.internal(HaberdasheryMod.assetPath("attachments/skeletons/${skeletonInfo.name}/skeleton.json")))
+            val skeletonData = json.readSkeletonData(FSFileHandle(skeletonDir.resolve("skeleton.json")))
             val subSkeleton = Skeleton(skeletonData)
             subSkeleton.color = Color.WHITE
             val stateData = AnimationStateData(skeletonData)
