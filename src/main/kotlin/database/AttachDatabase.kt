@@ -56,7 +56,6 @@ object AttachDatabase {
             if (path.notExists()) continue
             Files.walk(path, 1)
                 .filter(Files::isRegularFile)
-                .peek { println(it) }
                 .filter { it.fileName?.toString()?.substringAfterLast(".", "") == "json" }
                 .forEach {
                     logger.info("Loading ${it.fileName} (MOD:${modInfo.ID})")
