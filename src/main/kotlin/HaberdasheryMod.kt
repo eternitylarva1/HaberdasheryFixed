@@ -55,6 +55,7 @@ class HaberdasheryMod :
     }
 
     override fun receivePreUpdate() {
+        AttachRelic.checkForChanges()
         AdjustRelic.update()
     }
 

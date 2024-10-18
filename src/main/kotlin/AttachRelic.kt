@@ -22,8 +22,9 @@ import haberdashery.spine.FSFileHandle
 import haberdashery.spine.attachments.MaskedRegionAttachment
 import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import haberdashery.spine.attachments.RelicAttachmentLoader
+import haberdashery.utils.ObservableArrayList
 
-object AttachRelic {
+object AttachRelic : ObservableArrayList.Listener {
     fun receive(relic: AbstractRelic) {
         val player = AbstractDungeon.player ?: return
         val info = AttachDatabase.getInfo(player.chosenClass, relic.relicId) ?: return
@@ -193,6 +194,9 @@ object AttachRelic {
     }
 
     private fun updateSlotVisibilities(skeleton: Skeleton) {
+        changes = false
+        changesJustMade = true
+
         val exclusionCount = mutableMapOf<String, MutableList<String>>()
         for (slot in skeleton.slots) {
             val data = slot.data
@@ -216,7 +220,15 @@ object AttachRelic {
         }
 
         // Hide relics based on exclusion group
+        val relics = AbstractDungeon.player?.relics
         for ((_, set) in exclusionCount) {
+            if (relics != null) {
+                set.sortBy { slotName ->
+                    relics.indexOfFirst { r -> slotName == HaberdasheryMod.makeID(r.relicId) }.let {
+                        if (it < 0) Int.MAX_VALUE else it
+                    }
+                }
+            }
             for (i in 1 until set.size) {
                 skeleton.setAttachment(set[i], null)
             }
@@ -251,6 +263,25 @@ object AttachRelic {
             } else if (data.visible) {
                 skeleton.setAttachment(data.name, data.name)
             }
+        }
+    }
+
+    private var changes = false
+    private var changesJustMade = false
+
+    override fun onChange() {
+        changes = true
+    }
+
+    fun checkForChanges() {
+        if (changesJustMade) {
+            changes = false
+            changesJustMade = false
+        }
+        if (changes) {
+            val player = AbstractDungeon.player ?: return
+            val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
+            updateSlotVisibilities(skeleton)
         }
     }
 }
