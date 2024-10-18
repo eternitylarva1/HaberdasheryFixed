@@ -1593,6 +1593,84 @@
         "x": -5.9927635,
         "y": 5.254214
       }
+    },
+    "FaceOfCleric": {
+      "boneName": "Head",
+      "large": true,
+      "drawOrderSlotName": "eye",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [
+        "helmet",
+        "eye",
+        "hair"
+      ],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.65064836,
+      "scaleY": 0.65064836,
+      "rotation": -73.057076,
+      "position": {
+        "x": 4.6784334,
+        "y": -8.996237
+      }
+    },
+    "NlothsMask": {
+      "boneName": "Head",
+      "large": true,
+      "drawOrderSlotName": "eye",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [
+        "helmet"
+      ],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.5939533,
+      "scaleY": 0.5939533,
+      "rotation": -73.9697,
+      "position": {
+        "x": -4.1763,
+        "y": -14.806029
+      }
+    },
+    "SsserpentHead": {
+      "boneName": "Head",
+      "large": false,
+      "drawOrderSlotName": "eye",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.93223655,
+      "scaleY": 0.93223655,
+      "rotation": -87.66886,
+      "position": {
+        "x": -6.2816153,
+        "y": -10.481953
+      }
+    },
+    "Red Mask": {
+      "boneName": "Head",
+      "large": false,
+      "drawOrderSlotName": "eye",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.91812867,
+      "scaleY": 0.91812867,
+      "rotation": -81.102554,
+      "position": {
+        "x": -4.540682,
+        "y": -15.496845
+      }
     }
   }
 }
