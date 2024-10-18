@@ -87,6 +87,8 @@ object AttachRelic : ObservableArrayList.Listener {
 
     fun lose(relicId: String) {
         val player = AbstractDungeon.player ?: return
+        // Don't remove attachment if player still has relic (i.e. they had multiple copies of the relic)
+        if (player.relics.any { it.relicId == relicId }) return
 
         val relicSlotName = HaberdasheryMod.makeID(relicId)
         val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
