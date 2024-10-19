@@ -4,7 +4,7 @@ import basemod.devcommands.ConsoleCommand
 
 class HaberdasheryCommand : ConsoleCommand() {
     init {
-        requiresPlayer = true
+        requiresPlayer = false
         followup["test"] = TestCommand::class.java
         followup["edit"] = EditCommand::class.java
         followup["add"] = AddCommand::class.java
