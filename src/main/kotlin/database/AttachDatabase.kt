@@ -40,6 +40,21 @@ object AttachDatabase {
     private val maskTextureCache = mutableMapOf<String, TextureRegion>()
 
     init {
+        load()
+    }
+
+    fun test() {
+        val character = AbstractDungeon.player?.chosenClass ?: return
+        database.getOrDefault(character, mutableMapOf()).keys.forEach { id ->
+            RelicLibrary.getRelic(id)?.makeCopy()?.let { relic ->
+                relic.instantObtain(AbstractDungeon.player, AbstractDungeon.player.relics.size, false)
+            }
+        }
+    }
+
+    fun load() {
+        database.clear()
+
         // Load mod jsons
         for (modInfo in Loader.MODINFOS) {
             val uri = modInfo.jarURL?.toURI()?.let { URI.create("jar:$it") } ?: continue
@@ -71,15 +86,6 @@ object AttachDatabase {
                 logger.info("Loading ${it.fileName} (LOCAL)")
                 load(it)
             }
-    }
-
-    fun test() {
-        val character = AbstractDungeon.player?.chosenClass ?: return
-        database.getOrDefault(character, mutableMapOf()).keys.forEach { id ->
-            RelicLibrary.getRelic(id)?.makeCopy()?.let { relic ->
-                relic.instantObtain(AbstractDungeon.player, AbstractDungeon.player.relics.size, false)
-            }
-        }
     }
 
     fun saveAll() {

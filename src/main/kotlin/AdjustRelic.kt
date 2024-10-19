@@ -145,6 +145,10 @@ object AdjustRelic {
         this.relicId = relicId
     }
 
+    fun reload() {
+        setRelic(relicId)
+    }
+
     fun update() {
         StopOtherKeyboardShortcuts.clear()
 
