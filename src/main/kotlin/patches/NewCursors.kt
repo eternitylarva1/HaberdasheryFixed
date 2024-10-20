@@ -118,6 +118,8 @@ object NewCursors {
         fun postfix() {
             if (DragRelicToAdjustExcludes.grabbedRelic != null) {
                 CardCrawlGame.cursor.changeType(GRAB)
+            } else if (DragRelicToAdjustExcludes.droppedTimer > 0f) {
+                CardCrawlGame.cursor.changeType(HAND)
             }
         }
     }

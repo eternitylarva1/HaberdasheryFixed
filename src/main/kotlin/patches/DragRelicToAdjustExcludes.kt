@@ -1,9 +1,11 @@
 package haberdashery.patches
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.Vector2
 import com.evacipated.cardcrawl.modthespire.lib.*
 import com.megacrit.cardcrawl.core.AbstractCreature
+import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.GameCursor
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.ShaderHelper
@@ -18,9 +20,23 @@ import javassist.expr.ExprEditor
 import javassist.expr.MethodCall
 
 object DragRelicToAdjustExcludes {
-    @JvmField
-    var grabbedRelic: AbstractRelic? = null
+    internal var grabbedRelic: AbstractRelic? = null
+    internal var droppedTimer = 0f
     private var grabOffset = Vector2()
+
+    @SpirePatch2(
+        clz = CardCrawlGame::class,
+        method = "update"
+    )
+    object DropTimer {
+        @JvmStatic
+        @SpirePrefixPatch
+        fun prefix() {
+            if (droppedTimer > 0) {
+                droppedTimer -= Gdx.graphics.deltaTime
+            }
+        }
+    }
 
     @SpirePatch2(
         clz = AbstractRelic::class,
@@ -46,6 +62,7 @@ object DragRelicToAdjustExcludes {
             if (relic != null) {
                 relic.scale = 1.25f.scale()
                 if (!InputHelper.isMouseDown) {
+                    droppedTimer = 0.15f
                     if (InputHelper.justReleasedClickLeft && AbstractDungeon.player.hb.hovered) {
                         val info = AttachDatabase.getInfo(AbstractDungeon.player.chosenClass, relic.relicId)
                         if (info?.exclusionGroup != null) {
