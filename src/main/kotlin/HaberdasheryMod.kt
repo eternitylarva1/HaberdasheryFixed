@@ -2,6 +2,7 @@ package haberdashery
 
 import basemod.BaseMod
 import basemod.ModPanel
+import basemod.abstracts.CustomSavable
 import basemod.devcommands.ConsoleCommand
 import basemod.interfaces.PostInitializeSubscriber
 import basemod.interfaces.PostRenderSubscriber
@@ -9,9 +10,11 @@ import basemod.interfaces.PreUpdateSubscriber
 import basemod.interfaces.RelicGetSubscriber
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.devcommands.HaberdasheryCommand
+import haberdashery.patches.chosenExclusions
 
 @SpireInitializer
 class HaberdasheryMod :
@@ -46,6 +49,19 @@ class HaberdasheryMod :
         )
 
         ConsoleCommand.addCommand("haberdashery", HaberdasheryCommand::class.java)
+
+        BaseMod.addSaveField<Any>(makeID("chosenExclusions"), object : CustomSavable<Map<String, String>> {
+            override fun onSave(): Map<String, String>? {
+                return AbstractDungeon.player?.chosenExclusions
+            }
+
+            override fun onLoad(save: Map<String, String>?) {
+                if (save != null) {
+                    AbstractDungeon.player?.chosenExclusions?.putAll(save)
+                    AttachRelic.onChange()
+                }
+            }
+        })
     }
 
     override fun receiveRelicGet(relic: AbstractRelic?) {
@@ -55,7 +71,6 @@ class HaberdasheryMod :
     }
 
     override fun receivePreUpdate() {
-        AttachRelic.checkForChanges()
         AdjustRelic.update()
     }
 

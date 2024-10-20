@@ -15,10 +15,15 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 object PlayerFields {
     @JvmField
     val subSkeletons: SpireField<MutableList<SubSkeleton>> = SpireField { mutableListOf() }
+    @JvmField
+    val chosenExclusions: SpireField<MutableMap<String, String>> = SpireField { mutableMapOf() }
 }
 
 val AbstractPlayer.subSkeletons: MutableList<SubSkeleton>
     get() = PlayerFields.subSkeletons.get(this)
+
+val AbstractPlayer.chosenExclusions: MutableMap<String, String>
+    get() = PlayerFields.chosenExclusions.get(this)
 
 data class SubSkeleton(
     val skeleton: Skeleton,

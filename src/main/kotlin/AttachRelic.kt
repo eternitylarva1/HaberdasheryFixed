@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.Disposable
 import com.esotericsoftware.spine.*
 import com.esotericsoftware.spine.attachments.Attachment
+import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.ImageMaster
@@ -17,25 +18,29 @@ import haberdashery.database.AttachInfo
 import haberdashery.database.MySlotData
 import haberdashery.extensions.*
 import haberdashery.patches.SubSkeleton
+import haberdashery.patches.chosenExclusions
 import haberdashery.patches.subSkeletons
 import haberdashery.spine.FSFileHandle
 import haberdashery.spine.attachments.MaskedRegionAttachment
 import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import haberdashery.spine.attachments.RelicAttachmentLoader
-import haberdashery.utils.ObservableArrayList
 
-object AttachRelic : ObservableArrayList.Listener {
+object AttachRelic {
     fun receive(relic: AbstractRelic) {
         val player = AbstractDungeon.player ?: return
         val info = AttachDatabase.getInfo(player.chosenClass, relic.relicId) ?: return
 
         val relicSlotName = HaberdasheryMod.makeID(relic.relicId)
+        // Always wear newly picked up exclusion relics
+        info.exclusionGroup?.let { group ->
+            player.chosenExclusions[group] = relicSlotName
+        }
         val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
         skeleton.setFlip(false, false)
         if (skeleton.findSlotIndex(relicSlotName) >= 0) {
             val slot = skeleton.findSlot(relicSlotName)
             (slot.data as MySlotData).visible = true
-            updateSlotVisibilities(skeleton)
+            updateSlotVisibilities(player, skeleton)
             skeleton.setFlip(player.flipHorizontal, player.flipVertical)
             return
         }
@@ -81,7 +86,7 @@ object AttachRelic : ObservableArrayList.Listener {
         val skin = skeleton.data.defaultSkin
         skin.addAttachment(slotClone.data.index, attachment.name, attachment)
 
-        updateSlotVisibilities(skeleton)
+        updateSlotVisibilities(player, skeleton)
         skeleton.setFlip(player.flipHorizontal, player.flipVertical)
     }
 
@@ -98,7 +103,7 @@ object AttachRelic : ObservableArrayList.Listener {
             val data = slot.data
             if (data is MySlotData) {
                 data.visible = false
-                updateSlotVisibilities(skeleton)
+                updateSlotVisibilities(player, skeleton)
             }
         }
     }
@@ -195,10 +200,7 @@ object AttachRelic : ObservableArrayList.Listener {
         return ret
     }
 
-    private fun updateSlotVisibilities(skeleton: Skeleton) {
-        changes = false
-        changesJustMade = true
-
+    private fun updateSlotVisibilities(player: AbstractPlayer, skeleton: Skeleton) {
         val exclusionCount = mutableMapOf<String, MutableList<String>>()
         for (slot in skeleton.slots) {
             val data = slot.data
@@ -222,17 +224,18 @@ object AttachRelic : ObservableArrayList.Listener {
         }
 
         // Hide relics based on exclusion group
-        val relics = AbstractDungeon.player?.relics
-        for ((_, set) in exclusionCount) {
-            if (relics != null) {
-                set.sortBy { slotName ->
-                    relics.indexOfFirst { r -> slotName == HaberdasheryMod.makeID(r.relicId) }.let {
-                        if (it < 0) Int.MAX_VALUE else it
-                    }
+        for ((exclusionGroup, set) in exclusionCount) {
+            val chosen = player.chosenExclusions[exclusionGroup]
+            if (chosen != null) {
+                for (i in 0 until set.size) {
+                    if (set[i] == chosen) continue
+                    skeleton.setAttachment(set[i], null)
                 }
-            }
-            for (i in 1 until set.size) {
-                skeleton.setAttachment(set[i], null)
+            } else {
+                // Show latest relic if none were specifically chosen
+                for (i in 0 until set.size-1) {
+                    skeleton.setAttachment(set[i], null)
+                }
             }
         }
 
@@ -268,22 +271,9 @@ object AttachRelic : ObservableArrayList.Listener {
         }
     }
 
-    private var changes = false
-    private var changesJustMade = false
-
-    override fun onChange() {
-        changes = true
-    }
-
-    fun checkForChanges() {
-        if (changesJustMade) {
-            changes = false
-            changesJustMade = false
-        }
-        if (changes) {
-            val player = AbstractDungeon.player ?: return
-            val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
-            updateSlotVisibilities(skeleton)
-        }
+    fun onChange() {
+        val player = AbstractDungeon.player ?: return
+        val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
+        updateSlotVisibilities(player, skeleton)
     }
 }
