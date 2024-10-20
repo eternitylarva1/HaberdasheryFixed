@@ -6,7 +6,6 @@ import com.evacipated.cardcrawl.modthespire.lib.*
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.GameCursor
 import com.megacrit.cardcrawl.core.GameCursor.CursorType
-import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.helpers.input.InputHelper
 import com.megacrit.cardcrawl.relics.AbstractRelic
@@ -52,38 +51,16 @@ object NewCursors {
                 img,
                 InputHelper.mX - 32f - SHADOW_OFFSET_X,
                 InputHelper.mY - 32f - SHADOW_OFFSET_Y,
-                32f,
-                32f,
-                64f,
-                64f,
-                Settings.scale,
-                Settings.scale,
-                0f,
-                0,
-                0,
-                64,
-                64,
-                false,
-                false,
+                img.width.scale()*0.8f,
+                img.height.scale()*0.8f,
             )
             sb.color = Color.WHITE
             sb.draw(
                 img,
                 InputHelper.mX - 32f,
                 InputHelper.mY - 32f,
-                32f,
-                32f,
-                64f,
-                64f,
-                Settings.scale,
-                Settings.scale,
-                0f,
-                0,
-                0,
-                64,
-                64,
-                false,
-                false,
+                img.width.scale()*0.8f,
+                img.height.scale()*0.8f,
             )
         }
 
