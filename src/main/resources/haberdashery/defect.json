@@ -123,6 +123,7 @@
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
       "requiredSlotNames": [],
+      "mask": "Potion Belt_P5Cy.png",
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.921875,
