@@ -35,6 +35,7 @@ import haberdashery.extensions.*
 import haberdashery.patches.StopOtherKeyboardShortcuts
 import haberdashery.spine.attachments.MaskedRegionAttachment
 import haberdashery.spine.attachments.OffsetSkeletonAttachment
+import java.util.*
 import kotlin.math.absoluteValue
 import kotlin.math.max
 
@@ -110,6 +111,7 @@ object AdjustRelic {
     private val currFillPos: Vector2 = Vector2()
     private var lastFillPos: Vector2? = null
     private var brushSize: Int = 20
+    private var zoomLevel: Float = 1f
     private var viewMask: Boolean = false
 
     internal var DEBUG_RENDER_SKELETON = false
@@ -227,12 +229,22 @@ object AdjustRelic {
                 dirtyMaskIsDirty = true
             }
 
-            // Brush size
-            if (InputHelper.scrolledUp) {
-                ++brushSize
-            }
-            if (InputHelper.scrolledDown) {
-                brushSize = (brushSize - 1).coerceAtLeast(1)
+            if (Gdx.input.isKeyPressed(Input.Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Input.Keys.CONTROL_RIGHT)) {
+                // Zoom
+                if (InputHelper.scrolledUp) {
+                    zoomLevel += 0.1f
+                }
+                if (InputHelper.scrolledDown) {
+                    zoomLevel = (zoomLevel - 0.1f).coerceAtLeast(1f)
+                }
+            } else {
+                // Brush size
+                if (InputHelper.scrolledUp) {
+                    ++brushSize
+                }
+                if (InputHelper.scrolledDown) {
+                    brushSize = (brushSize - 1).coerceAtLeast(1)
+                }
             }
 
             // Toggle mask view
@@ -252,6 +264,9 @@ object AdjustRelic {
                     }
 
                     currFillPos.set(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
+                    currFillPos.sub(Settings.WIDTH / 2f, Settings.HEIGHT / 2f)
+                    currFillPos.scl(1f / zoomLevel)
+                    currFillPos.add(Settings.WIDTH / 2f, Settings.HEIGHT / 2f)
                     debugRenderer.circle(
                         currFillPos.x,
                         currFillPos.y,
@@ -551,8 +566,8 @@ object AdjustRelic {
         val attachment = attachment
         if (attachment !is MaskedRegionAttachment) return
 
-        val x = Settings.WIDTH / 2f
-        val y = Settings.HEIGHT / 2f
+        val x = Settings.WIDTH / 2f - attachment.region.regionWidth / 2f
+        val y = Settings.HEIGHT / 2f - attachment.region.regionHeight / 2f
 
         if (justStartedMaskMode) {
             justStartedMaskMode = false
@@ -567,7 +582,7 @@ object AdjustRelic {
                     sb.draw(
                         this,
                         x,
-                        y - attachment.getMask().regionHeight,
+                        y,
                     )
                     flip(false, true)
                 }
@@ -588,8 +603,8 @@ object AdjustRelic {
             dirtyMaskIsDirty = false
             dirtyMaskFbo.scope {
                 val p = ScreenUtils.getFrameBufferPixmap(
-                    Settings.WIDTH / 2,
-                    Settings.HEIGHT / 2 - attachment.getMask().regionHeight,
+                    x.toInt(),
+                    y.toInt(),
                     attachment.getMask().regionWidth,
                     attachment.getMask().regionHeight,
                 )
@@ -604,9 +619,15 @@ object AdjustRelic {
         sb.color = Color.WHITE
         sb.draw(
             attachment.region,
-            // TODO better position
-            x,// - attachment.region.regionWidth / 2f,
-            y,// - attachment.region.regionHeight / 2f,
+            x,
+            y,
+            attachment.region.regionWidth / 2f,
+            attachment.region.regionHeight / 2f,
+            attachment.region.regionWidth.toFloat(),
+            attachment.region.regionHeight.toFloat(),
+            zoomLevel,
+            zoomLevel,
+            0f
         )
         sb.shader = origShader
 
@@ -615,7 +636,8 @@ object AdjustRelic {
             sb,
             FontHelper.tipBodyFont,
             "View Mask: $viewMask\n" +
-                    "Brush Size: $brushSize\n",
+                    "Brush Size: $brushSize\n" +
+                    "Zoom: ${"%.0f".format(Locale.ROOT, zoomLevel * 100)}%",
             30.scale(),
             Settings.HEIGHT - 300.scale(),
             Color.WHITE
@@ -629,7 +651,7 @@ object AdjustRelic {
         debugRenderer.projectionMatrix = projection
         debugRenderer.begin(ShapeRenderer.ShapeType.Line)
         debugRenderer.color = Color.LIGHT_GRAY
-        debugRenderer.circle(mouse.x, mouse.y, brushSize.toFloat() / 2f + 0.5f)
+        debugRenderer.circle(mouse.x, mouse.y, brushSize.toFloat() / 2f * zoomLevel + 0.5f)
         debugRenderer.end()
 
         sb.begin()

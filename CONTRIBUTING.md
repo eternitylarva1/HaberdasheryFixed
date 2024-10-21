@@ -50,3 +50,5 @@ Be careful when selecting the attachment bone after adding a new relic, some bon
 * **Right click** - Draw white on mask (adds parts of relic image).
 * **Scroll Up** - Increase brush size.
 * **Scroll Down** - Decrease brush size.
+* **Ctrl+Scroll Up** - Zoom in.
+* **Ctrl+Scroll Down** - Zoom out.
