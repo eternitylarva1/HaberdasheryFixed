@@ -331,6 +331,7 @@
         "crackedOrb"
       ],
       "requiredSlotNames": [],
+      "exclusionGroup": "Core",
       "mask": "FrozenCore_ESj0.png",
       "flipHorizontal": false,
       "flipVertical": false,
@@ -580,6 +581,27 @@
       "position": {
         "x": 11.526812,
         "y": 11.528772
+      }
+    },
+    "Nuclear Battery": {
+      "boneName": "Hips",
+      "large": false,
+      "drawOrderSlotName": "crackedOrb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "crackedOrb"
+      ],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Core",
+      "mask": "Nuclear Battery_ekI5.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 0.0,
+        "y": 0.0
       }
     }
   }
