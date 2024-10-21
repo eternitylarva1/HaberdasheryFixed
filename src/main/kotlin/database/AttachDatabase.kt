@@ -1,7 +1,6 @@
 package haberdashery.database
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Gdx2DPixmap
@@ -226,23 +225,6 @@ object AttachDatabase {
         val localTime = local.getLastModifiedTime().toInstant()
 
         return if (localTime.isAfter(internalTime)) local else internal
-    }
-
-    private fun newestFile(internal: FileHandle, local: FileHandle): FileHandle {
-        if (!local.exists()) {
-            return internal
-        }
-        if (!internal.exists()) {
-            return local
-        }
-
-        // TODO
-        return local
-
-//        val internalTime = Files.getLastModifiedTime(internalFS.getPath(internal.path())).toInstant()
-//        val localTime = Files.getLastModifiedTime(local.file().toPath()).toInstant()
-//
-//        return if (localTime.isAfter(internalTime)) local else internal
     }
 
     fun makeRelicMaskFilename(id: String): String {
