@@ -9,10 +9,18 @@ import haberdashery.AttachRelic
     method = "loseRelic"
 )
 object LoseRelic {
+    var losingRelic = false
+
     @JvmStatic
     fun Postfix(__result: Boolean, targetID: String) {
         if (__result) {
             AttachRelic.lose(targetID)
         }
+        losingRelic = false
+    }
+
+    @JvmStatic
+    fun Prefix() {
+        losingRelic = true
     }
 }

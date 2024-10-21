@@ -17,6 +17,7 @@ import haberdashery.database.AttachDatabase
 import haberdashery.database.AttachInfo
 import haberdashery.database.MySlotData
 import haberdashery.extensions.*
+import haberdashery.patches.LoseRelic
 import haberdashery.patches.SubSkeleton
 import haberdashery.patches.chosenExclusions
 import haberdashery.patches.subSkeletons
@@ -27,6 +28,8 @@ import haberdashery.spine.attachments.RelicAttachmentLoader
 
 object AttachRelic {
     fun receive(relic: AbstractRelic) {
+        if (LoseRelic.losingRelic) return
+
         val player = AbstractDungeon.player ?: return
         val info = AttachDatabase.getInfo(player.chosenClass, relic.relicId) ?: return
 
