@@ -202,8 +202,8 @@ object AdjustRelic {
                 Pixmap.setBlending(Pixmap.Blending.None)
                 dirtyMaskFbo.scope {
                     val p = ScreenUtils.getFrameBufferPixmap(
-                        Settings.WIDTH / 2,
-                        Settings.HEIGHT / 2 - attachment.getMask().regionHeight,
+                        Settings.WIDTH / 2 - attachment.getMask().regionWidth / 2,
+                        Settings.HEIGHT / 2 - attachment.getMask().regionHeight / 2,
                         attachment.getMask().regionWidth,
                         attachment.getMask().regionHeight,
                     )
