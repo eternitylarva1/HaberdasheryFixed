@@ -24,6 +24,16 @@ object DragRelicToAdjustExcludes {
     internal var droppedTimer = 0f
     private var grabOffset = Vector2()
 
+    fun canDragRelic(relic: AbstractRelic): Boolean {
+        AbstractDungeon.player?.let { player ->
+            val info = AttachDatabase.getInfo(player.chosenClass, relic.relicId)
+            if (info?.exclusionGroup != null) {
+                return true
+            }
+        }
+        return false
+    }
+
     @SpirePatch2(
         clz = CardCrawlGame::class,
         method = "update"
@@ -49,9 +59,11 @@ object DragRelicToAdjustExcludes {
         )
         fun startDrag(__instance: AbstractRelic) {
             if (InputHelper.justClickedLeft) {
-                grabOffset.x = __instance.currentX - InputHelper.mX
-                grabOffset.y = __instance.currentY - InputHelper.mY
-                grabbedRelic = __instance
+                if (canDragRelic(__instance)) {
+                    grabOffset.x = __instance.currentX - InputHelper.mX
+                    grabOffset.y = __instance.currentY - InputHelper.mY
+                    grabbedRelic = __instance
+                }
             }
         }
 

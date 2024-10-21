@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.helpers.input.InputHelper
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.HaberdasheryMod
+import haberdashery.extensions.inst
 import haberdashery.extensions.scale
 import javassist.CtBehavior
 import javassist.expr.ExprEditor
@@ -76,15 +77,15 @@ object NewCursors {
         clz = AbstractRelic::class,
         method = "update"
     )
-    object Test {
+    object GrabCursor {
         @JvmStatic
         @SpireInstrumentPatch
         fun instrument() = object : ExprEditor() {
             override fun edit(m: MethodCall) {
                 if (m.className == GameCursor::class.qualifiedName && m.methodName == "changeType") {
                     m.replace(
-                        "\$1 = ${NewCursors::class.qualifiedName}.HAND;" +
-                                "\$_ = \$proceed(\$\$);"
+                        "\$_ = \$proceed(\$\$);" +
+                                "${GrabCursor::changeCursorOnHover.inst}(this);"
                     )
                 }
             }
@@ -96,6 +97,13 @@ object NewCursors {
             if (DragRelicToAdjustExcludes.grabbedRelic != null) {
                 CardCrawlGame.cursor.changeType(GRAB)
             } else if (DragRelicToAdjustExcludes.droppedTimer > 0f) {
+                CardCrawlGame.cursor.changeType(HAND)
+            }
+        }
+
+        @JvmStatic
+        fun changeCursorOnHover(relic: AbstractRelic) {
+            if (DragRelicToAdjustExcludes.canDragRelic(relic)) {
                 CardCrawlGame.cursor.changeType(HAND)
             }
         }
