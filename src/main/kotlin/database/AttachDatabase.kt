@@ -26,6 +26,7 @@ import org.apache.logging.log4j.Logger
 import java.awt.image.BufferedImage
 import java.awt.image.DataBufferByte
 import java.awt.image.Raster
+import java.io.FileNotFoundException
 import java.io.Reader
 import java.net.URI
 import java.nio.file.*
@@ -155,7 +156,7 @@ object AttachDatabase {
             if (character != null) {
                 val state = character(character)
                 relics.forEach { (relicId, info) ->
-                    info.path = path
+                    info.paths.add(0, path)
                     state.relic(relicId, info)
                 }
             }
@@ -167,7 +168,8 @@ object AttachDatabase {
     }
 
     fun relic(character: AbstractPlayer.PlayerClass, relicID: String, info: AttachInfo) {
-        database.getOrPut(character) { mutableMapOf() }[relicID] = info.finalize()
+        val map = database.getOrPut(character) { mutableMapOf() }
+        map.merge(relicID, info.finalize()) { old, new -> new.merge(old) }
     }
 
     fun character(character: AbstractPlayer.PlayerClass): CharacterState {
@@ -189,19 +191,23 @@ object AttachDatabase {
         }
 
         try {
-            val internal = info.path.fileSystem.getPath(HaberdasheryMod.ID, "masks", filename)
-            val local = Paths.get(HaberdasheryMod.ID, "masks", filename)
-            val file = newestFile(internal, local)
+            for (path in info.paths) {
+                val internal = path.fileSystem.getPath(HaberdasheryMod.ID, "masks", filename)
+                val local = Paths.get(HaberdasheryMod.ID, "masks", filename)
+                val file = newestFile(internal, local)
+                if (!file.exists()) continue
 
-            logger.info("Loading mask $filename (${if (file == local) "LOCAL" else "INTERNAL"})")
+                logger.info("Loading mask $filename (${if (file == local) "LOCAL" else "INTERNAL"})")
 
-            val bytes = file.readBytes()
-            val pix2d = Gdx2DPixmap(bytes, 0, bytes.size, 0)
-            // Use Texture(Pixmap(...)) instead of Texture(String) because the latter
-            // uses FileTextureData, which doesn't let us make changes to the texture/pixmap later
-            return Texture(Pixmap(pix2d)).asRegion().also {
-                maskTextureCache[relic.relicId] = it
+                val bytes = file.readBytes()
+                val pix2d = Gdx2DPixmap(bytes, 0, bytes.size, 0)
+                // Use Texture(Pixmap(...)) instead of Texture(String) because the latter
+                // uses FileTextureData, which doesn't let us make changes to the texture/pixmap later
+                return Texture(Pixmap(pix2d)).asRegion().also {
+                    maskTextureCache[relic.relicId] = it
+                }
             }
+            throw FileNotFoundException()
         } catch (e: Exception) {
             logger.warn("Failed to load mask", e)
             return null

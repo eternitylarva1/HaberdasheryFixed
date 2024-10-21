@@ -12,8 +12,7 @@ class AttachInfo(
     private constructor() : this("") {}
 
     @Transient
-    lateinit var path: Path
-        internal set
+    val paths: MutableList<Path> = mutableListOf()
 
     @SerializedName("skeleton")
     val skeletonInfo: SkeletonInfo? = null
@@ -88,6 +87,10 @@ class AttachInfo(
         dirtyScaleY = scaleY.absoluteValue
         dirtyRotation = rotation
         dirtyPosition.set(position)
+    }
+
+    internal fun merge(other: AttachInfo) = apply {
+        paths.addAll(other.paths)
     }
 
     fun large(large: Boolean) = apply { this.large = large }
