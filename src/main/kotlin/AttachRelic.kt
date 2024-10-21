@@ -105,6 +105,11 @@ object AttachRelic {
         if (slot != null) {
             val data = slot.data
             if (data is MySlotData) {
+                data.exclusionGroup?.let { group ->
+                    if (player.chosenExclusions[group] == relicSlotName) {
+                        player.chosenExclusions.remove(group)
+                    }
+                }
                 data.visible = false
                 updateSlotVisibilities(player, skeleton)
             }
