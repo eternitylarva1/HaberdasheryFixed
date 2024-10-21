@@ -25,13 +25,19 @@ object DragRelicToAdjustExcludes {
     private var grabOffset = Vector2()
 
     fun canDragRelic(relic: AbstractRelic): Boolean {
-        AbstractDungeon.player?.let { player ->
-            val info = AttachDatabase.getInfo(player.chosenClass, relic.relicId)
-            if (info?.exclusionGroup != null) {
-                return true
+        val player = AbstractDungeon.player ?: return false
+        val exclusionGroup = AttachDatabase.getInfo(player.chosenClass, relic.relicId)?.exclusionGroup
+            ?: return false
+
+        var count = 0
+        for (r in player.relics) {
+            val group = AttachDatabase.getInfo(player.chosenClass, r.relicId)?.exclusionGroup
+            if (group == exclusionGroup) {
+                count++
             }
         }
-        return false
+
+        return count > 1
     }
 
     @SpirePatch2(
