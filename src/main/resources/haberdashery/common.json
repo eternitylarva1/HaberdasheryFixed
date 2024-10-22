@@ -1,0 +1,22 @@
+{
+  "HABERDASHERY_COMMON": {
+    "Shovel": {
+      "boneName": "root",
+      "large": true,
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "mask": "Shovel_fANG.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.7090909,
+      "scaleY": 0.7090909,
+      "rotation": 33.990044,
+      "position": {
+        "x": 74.8,
+        "y": 55.100002
+      }
+    }
+  }
+}
