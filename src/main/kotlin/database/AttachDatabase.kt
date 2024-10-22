@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Gdx2DPixmap
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.esotericsoftware.spine.Skeleton
 import com.evacipated.cardcrawl.modthespire.Loader
+import com.evacipated.cardcrawl.modthespire.lib.SpireEnum
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -164,6 +165,7 @@ object AttachDatabase {
 
     fun getInfo(character: AbstractPlayer.PlayerClass, relicID: String): AttachInfo? {
         return database[character]?.get(relicID)
+            ?: database[Enums.COMMON]?.get(relicID)
     }
 
     fun relic(character: AbstractPlayer.PlayerClass, relicID: String, info: AttachInfo) {
@@ -236,5 +238,11 @@ object AttachDatabase {
             .joinToString("")
         // Remove illegal characters from filename
         return id.replace(Regex("""[<>:"/\\|?*]"""), "_") + "_$suffix.png"
+    }
+
+    private object Enums {
+        @JvmStatic
+        @SpireEnum(name = "HABERDASHERY_COMMON")
+        lateinit var COMMON: AbstractPlayer.PlayerClass
     }
 }
