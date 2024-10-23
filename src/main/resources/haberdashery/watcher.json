@@ -105,7 +105,7 @@
       },
       "large": false,
       "drawOrderSlotName": "eye_anchor",
-      "drawOrderZIndex": 0,
+      "drawOrderZIndex": 1,
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
@@ -238,20 +238,30 @@
       }
     },
     "Strange Spoon": {
-      "boneName": "Cloth_R_5",
+      "boneName": "root",
+      "skeleton": {
+        "name": "StrangeSpoon",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "headBend",
+          "hover",
+          "rotate"
+        ],
+        "randomStartTime": false
+      },
       "large": false,
-      "drawOrderSlotName": "threads_left_1",
-      "drawOrderZIndex": -1,
+      "drawOrderSlotName": "ear",
+      "drawOrderZIndex": 0,
       "hideSlotNames": [],
       "requiredSlotNames": [],
-      "flipHorizontal": false,
+      "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.6866995,
       "scaleY": 0.6866995,
-      "rotation": 147.67442,
+      "rotation": 0,
       "position": {
-        "x": 0.3939342,
-        "y": 5.44195
+        "x": 68.09394,
+        "y": -235.45807
       }
     },
     "WarpedTongs": {
