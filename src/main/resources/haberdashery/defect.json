@@ -185,40 +185,6 @@
         "y": 5.0957584
       }
     },
-    "Kunai": {
-      "boneName": "bone3",
-      "large": false,
-      "drawOrderSlotName": "right_hand",
-      "drawOrderZIndex": 0,
-      "hideSlotNames": [],
-      "requiredSlotNames": [],
-      "flipHorizontal": false,
-      "flipVertical": false,
-      "scaleX": 0.6370488,
-      "scaleY": 0.6370488,
-      "rotation": 165.71518,
-      "position": {
-        "x": -9.530478,
-        "y": 17.927074
-      }
-    },
-    "Shuriken": {
-      "boneName": "bone3",
-      "large": false,
-      "drawOrderSlotName": "right_finger_2",
-      "drawOrderZIndex": 0,
-      "hideSlotNames": [],
-      "requiredSlotNames": [],
-      "flipHorizontal": false,
-      "flipVertical": false,
-      "scaleX": 0.5857143,
-      "scaleY": 0.5857143,
-      "rotation": -51.80838,
-      "position": {
-        "x": -11.346394,
-        "y": 13.37159
-      }
-    },
     "Letter Opener": {
       "boneName": "bone3",
       "large": false,
@@ -686,6 +652,72 @@
             "rotation": 10,
             "scaleX": 0.65,
             "scaleY": 0.65
+          }
+        ]
+      },
+      "large": false,
+      "drawOrderSlotName": "left_thumb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 3.6729193,
+        "y": -98.079346
+      }
+    },
+    "Kunai": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Orbit",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "orbit",
+          "rotate"
+        ],
+        "randomStartTime": true,
+        "boneTransforms": [
+          {
+            "name": "relic",
+            "rotation": 37,
+            "scaleX": -1.0
+          }
+        ]
+      },
+      "large": false,
+      "drawOrderSlotName": "left_thumb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 3.6729193,
+        "y": -98.079346
+      }
+    },
+    "Shuriken": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Orbit",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "orbit",
+          "spin"
+        ],
+        "randomStartTime": true,
+        "boneTransforms": [
+          {
+            "name": "relic",
+            "scaleX": 0.585,
+            "scaleY": 0.585
           }
         ]
       },
