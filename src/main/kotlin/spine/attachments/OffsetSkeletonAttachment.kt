@@ -40,10 +40,8 @@ class OffsetSkeletonAttachment(name: String) : SkeletonAttachment(name) {
         boneTransforms?.forEach { transform ->
             val bone = skeleton.findBone(transform.name) ?: return@forEach
             transform.rotation?.let { bone.rotation += it }
-            transform.scale?.let {
-                bone.scaleX *= it
-                bone.scaleY *= it
-            }
+            transform.scaleX?.let { bone.scaleX *= it }
+            transform.scaleY?.let { bone.scaleY *= it }
         }
     }
 
@@ -59,10 +57,8 @@ class OffsetSkeletonAttachment(name: String) : SkeletonAttachment(name) {
         boneTransforms?.forEach { transform ->
             val bone = skeleton.findBone(transform.name) ?: return@forEach
             transform.rotation?.let { bone.rotation -= it }
-            transform.scale?.let {
-                bone.scaleX /= it
-                bone.scaleY /= it
-            }
+            transform.scaleX?.let { bone.scaleX /= it }
+            transform.scaleY?.let { bone.scaleY /= it }
         }
     }
 }

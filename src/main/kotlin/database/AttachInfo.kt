@@ -148,6 +148,7 @@ class AttachInfo(
     data class BoneTransform(
         val name: String,
         val rotation: Float?,
-        val scale: Float?,
+        val scaleX: Float?,
+        val scaleY: Float?,
     )
 }
