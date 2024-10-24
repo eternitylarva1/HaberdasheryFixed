@@ -1,0 +1,86 @@
+{
+"skeleton": { "hash": " ", "x": -64.01, "y": -64.18, "width": 128, "height": 128 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "relic", "parent": "root" }
+],
+"slots": [
+	{ "name": "orbit", "bone": "root", "attachment": "orbit" },
+	{ "name": "relic", "bone": "relic", "attachment": "relic" }
+],
+"path": [
+	{
+		"name": "orbitConstraint",
+		"bones": [ "relic" ],
+		"target": "orbit",
+		"rotateMix": 0
+	}
+],
+"skins": {
+	"default": {
+		"orbit": {
+			"orbit": {
+				"type": "path",
+				"closed": true,
+				"lengths": [ 157.2, 313.19, 469.08, 595.63 ],
+				"vertexCount": 12,
+				"vertices": [ -30.9, -31.81, -1.16, -31.78, 34.85, -31.74, 149.03, -25.4, 148.83, 0.16, 148.66, 20.39, 36.45, 32.58, -0.97, 32.52, -33.29, 32.47, -150.55, 23.57, -150.57, 1.07, -150.59, -21.57 ]
+			}
+		},
+		"relic": {
+			"relic": { "width": 128, "height": 128 },
+			"largeRelic": { "width": 256, "height": 256 }
+		}
+	}
+},
+"events": {
+	"drawOrder": {}
+},
+"animations": {
+	"largeRelic": {
+		"slots": {
+			"relic": {
+				"attachment": [
+					{ "time": 0, "name": "largeRelic" }
+				]
+			}
+		}
+	},
+	"orbit": {
+		"paths": {
+			"orbitConstraint": {
+				"position": [
+					{ "time": 0, "position": 0 },
+					{ "time": 10, "position": 1 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 2.5333, "name": "drawOrder", "string": "back" },
+			{ "time": 7.5333, "name": "drawOrder", "string": "front" }
+		]
+	},
+	"rotate": {
+		"bones": {
+			"relic": {
+				"rotate": [
+					{ "time": 0, "angle": -8.82, "curve": 0.25, "c3": 0.75 },
+					{ "time": 3, "angle": 9.73, "curve": 0.25, "c3": 0.75 },
+					{ "time": 6, "angle": -8.82 }
+				]
+			}
+		}
+	},
+	"spin": {
+		"bones": {
+			"relic": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 180 },
+					{ "time": 1.3333, "angle": 360 }
+				]
+			}
+		}
+	}
+}
+}
