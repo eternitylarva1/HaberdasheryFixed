@@ -142,5 +142,12 @@ class AttachInfo(
         val useRelicAsAtlas: Boolean,
         val animations: Array<String>,
         val randomStartTime: Boolean,
+        val boneTransforms: Array<BoneTransform>?,
+    )
+
+    data class BoneTransform(
+        val name: String,
+        val rotation: Float?,
+        val scale: Float?,
     )
 }

@@ -20,7 +20,7 @@ import javassist.CtBehavior
 object OffsetSkeletonAttachmentPatch {
     @JvmStatic
     @SpireInsertPatch(
-        locator = Locator::class,
+        locator = LocatorStart::class,
         localvars = [
             "attachment",
             "bone",
@@ -34,9 +34,32 @@ object OffsetSkeletonAttachmentPatch {
         attachment.apply(skeleton, bone, oldRotation)
     }
 
-    private class Locator : SpireInsertLocator() {
+    @JvmStatic
+    @SpireInsertPatch(
+        locator = LocatorEnd::class,
+        localvars = [
+            "attachment",
+            "bone",
+            "rootBone",
+            "oldRotation"
+        ]
+    )
+    fun reset(skeleton: Skeleton, attachment: Attachment, bone: Bone, rootBone: Bone, oldRotation: Float) {
+        if (attachment !is OffsetSkeletonAttachment) return
+
+        attachment.undoBoneTransforms()
+    }
+
+    private class LocatorStart : SpireInsertLocator() {
         override fun Locate(ctBehavior: CtBehavior): IntArray {
             val finalMatcher = Matcher.MethodCallMatcher(Skeleton::class.java, "updateWorldTransform")
+            return LineFinder.findInOrder(ctBehavior, finalMatcher)
+        }
+    }
+
+    private class LocatorEnd : SpireInsertLocator() {
+        override fun Locate(ctBehavior: CtBehavior): IntArray {
+            val finalMatcher = Matcher.MethodCallMatcher(Bone::class.java, "setScaleX")
             return LineFinder.findInOrder(ctBehavior, finalMatcher)
         }
     }

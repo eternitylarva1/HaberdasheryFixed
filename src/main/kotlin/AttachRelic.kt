@@ -139,6 +139,7 @@ object AttachRelic {
                 scaleX = info.scaleX.scale()
                 scaleY = info.scaleY.scale()
                 rotation = info.rotation
+                boneTransforms = skeletonInfo.boneTransforms
             }
         }
 
