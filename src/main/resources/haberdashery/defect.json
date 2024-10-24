@@ -603,6 +603,106 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Strange Spoon": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Orbit",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "orbit",
+          "rotate"
+        ],
+        "randomStartTime": true,
+        "boneTransforms": [
+          {
+            "name": "relic",
+            "rotation": -38,
+            "scaleX": 0.68,
+            "scaleY": 0.68
+          }
+        ]
+      },
+      "large": false,
+      "drawOrderSlotName": "left_thumb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 3.6729193,
+        "y": -98.079346
+      }
+    },
+    "Anchor": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Orbit",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "orbit",
+          "rotate"
+        ],
+        "randomStartTime": true,
+        "boneTransforms": [
+          {
+            "name": "relic",
+            "rotation": 30
+          }
+        ]
+      },
+      "large": false,
+      "drawOrderSlotName": "left_thumb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 3.6729193,
+        "y": -98.079346
+      }
+    },
+    "Mercury Hourglass": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Orbit",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "orbit",
+          "rotate"
+        ],
+        "randomStartTime": true,
+        "boneTransforms": [
+          {
+            "name": "relic",
+            "rotation": 10,
+            "scaleX": 0.65,
+            "scaleY": 0.65
+          }
+        ]
+      },
+      "large": false,
+      "drawOrderSlotName": "left_thumb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 3.6729193,
+        "y": -98.079346
+      }
     }
   }
 }
