@@ -21,6 +21,7 @@ import haberdashery.patches.LoseRelic
 import haberdashery.patches.SubSkeleton
 import haberdashery.patches.chosenExclusions
 import haberdashery.patches.subSkeletons
+import haberdashery.spine.AnimationEventListener
 import haberdashery.spine.FSFileHandle
 import haberdashery.spine.attachments.MaskedRegionAttachment
 import haberdashery.spine.attachments.OffsetSkeletonAttachment
@@ -125,7 +126,7 @@ object AttachRelic {
         val bone = skeletonStart.findBone(info.boneName)
 
         info.skeletonInfo?.let { skeletonInfo ->
-            val subSkeleton = loadSubSkeleton(relic, info, skeletonInfo)
+            val subSkeleton = loadSubSkeleton(relic, info, skeletonInfo, skeleton)
             AbstractDungeon.player.subSkeletons.add(subSkeleton)
 
             return OffsetSkeletonAttachment(relicSlotName).apply {
@@ -172,7 +173,7 @@ object AttachRelic {
         } ?: ImageMaster.getRelicImg(relic.relicId).asPremultiplyAlpha(false)
     }
 
-    private fun loadSubSkeleton(relic: AbstractRelic, info: AttachInfo, skeletonInfo: AttachInfo.SkeletonInfo): SubSkeleton {
+    private fun loadSubSkeleton(relic: AbstractRelic, info: AttachInfo, skeletonInfo: AttachInfo.SkeletonInfo, parentSkeleton: Skeleton): SubSkeleton {
         for (path in info.paths) {
             val skeletonDir = path.parent.resolve("skeletons").resolve(skeletonInfo.name)
             val skeletonJsonPath = skeletonDir.resolve("skeleton.json")
@@ -196,6 +197,7 @@ object AttachRelic {
             subSkeleton.color = Color.WHITE
             val stateData = AnimationStateData(skeletonData)
             val state = AnimationState(stateData)
+            state.addListener(AnimationEventListener(parentSkeleton, HaberdasheryMod.makeID(relic.relicId)))
             for ((i, animationName) in skeletonInfo.animations.withIndex()) {
                 skeletonData.findAnimation(animationName)?.let { animation ->
                     val e = state.setAnimation(i, animation, true)
