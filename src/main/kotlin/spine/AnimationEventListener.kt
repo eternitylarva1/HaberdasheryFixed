@@ -11,12 +11,12 @@ class AnimationEventListener(
     override fun event(trackIndex: Int, event: Event) {
         val slot = parent.findSlot(slotName) ?: return
         when (event.data.name) {
-            "drawOrder" -> when (event.string) {
-                BACK -> {
+            DRAW_ORDER -> when (event.string) {
+                DRAW_ORDER_BACK -> {
                     parent.drawOrder.removeValue(slot, true)
                     parent.drawOrder.insert(0, slot)
                 }
-                FRONT -> {
+                DRAW_ORDER_FRONT -> {
                     parent.drawOrder.removeValue(slot, true)
                     parent.drawOrder.add(slot)
                 }
@@ -34,7 +34,8 @@ class AnimationEventListener(
     }
 
     companion object {
-        private const val BACK = "<BACK>"
-        private const val FRONT = "<FRONT>"
+        private const val DRAW_ORDER = "drawOrder"
+        private const val DRAW_ORDER_BACK = "back"
+        private const val DRAW_ORDER_FRONT = "front"
     }
 }
