@@ -298,6 +298,7 @@ object AdjustRelic {
 
         // Save
         if (isKeyJustPressed(Input.Keys.F)) {
+            AttachDatabase.save(AttachDatabase.Enums.COMMON, skeleton!!)
             AttachDatabase.save(AbstractDungeon.player.chosenClass, skeleton!!)
             saveTimer = 2f
         }

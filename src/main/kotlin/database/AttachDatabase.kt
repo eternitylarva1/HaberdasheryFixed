@@ -90,25 +90,31 @@ object AttachDatabase {
     }
 
     fun saveAll() {
+        save(Enums.COMMON, AbstractDungeon.player?.getPrivate("skeleton", clazz = AbstractCreature::class.java))
         for (player in CardCrawlGame.characterManager.allCharacters) {
             val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: continue
             save(player.chosenClass, skeleton)
         }
     }
 
-    fun save(character: AbstractPlayer.PlayerClass, skeleton: Skeleton) {
+    fun save(character: AbstractPlayer.PlayerClass, skeleton: Skeleton?) {
         logger.info("Saving attach info...")
         val gson = GsonBuilder()
             .setPrettyPrinting()
             .create()
         database[character]?.let {
             val json = gson.toJson(mapOf(character to it))
-            val filename = "${character.name.lowercase()}.json"
+            val filename = if (character == Enums.COMMON) {
+                "common.json"
+            } else {
+                "${character.name.lowercase()}.json"
+            }
             logger.info(filename)
             Gdx.files.local(Paths.get(HaberdasheryMod.ID, filename).toString()).writeString(json, false)
 
             logger.info("Saving masks...")
             it.forEach { (relicId, info) ->
+                if (skeleton == null) return@forEach
                 if (info.mask != null && info.maskRequiresSave) {
                     val relicSlotName = HaberdasheryMod.makeID(relicId)
                     val slot = skeleton.findSlot(relicSlotName)
@@ -240,7 +246,7 @@ object AttachDatabase {
         return id.replace(Regex("""[<>:"/\\|?*]"""), "_") + "_$suffix.png"
     }
 
-    private object Enums {
+    internal object Enums {
         @JvmStatic
         @SpireEnum(name = "HABERDASHERY_COMMON")
         lateinit var COMMON: AbstractPlayer.PlayerClass
