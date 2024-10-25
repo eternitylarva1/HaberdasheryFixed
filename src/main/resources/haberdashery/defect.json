@@ -583,7 +583,7 @@
         "boneTransforms": [
           {
             "name": "relic",
-            "rotation": -38,
+            "rotation": -38.0,
             "scaleX": 0.68,
             "scaleY": 0.68
           }
@@ -617,7 +617,7 @@
         "boneTransforms": [
           {
             "name": "relic",
-            "rotation": 30
+            "rotation": 30.0
           }
         ]
       },
@@ -649,7 +649,7 @@
         "boneTransforms": [
           {
             "name": "relic",
-            "rotation": 10,
+            "rotation": 10.0,
             "scaleX": 0.65,
             "scaleY": 0.65
           }
@@ -683,7 +683,7 @@
         "boneTransforms": [
           {
             "name": "relic",
-            "rotation": 37,
+            "rotation": 37.0,
             "scaleX": -1.0
           }
         ]
@@ -734,6 +734,58 @@
       "position": {
         "x": 3.6729193,
         "y": -98.079346
+      }
+    },
+    "ClockworkSouvenir": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Orbit",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "orbit",
+          "tickTock"
+        ],
+        "randomStartTime": true,
+        "boneTransforms": [
+          {
+            "name": "relic",
+            "scaleX": 0.6,
+            "scaleY": 0.6
+          }
+        ]
+      },
+      "large": false,
+      "drawOrderSlotName": "left_thumb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 3.6729193,
+        "y": -98.079346
+      }
+    },
+    "Frozen Eye": {
+      "boneName": "Eye_up",
+      "large": false,
+      "drawOrderSlotName": "Eye_up",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [
+        "Eye_up"
+      ],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.33603677,
+      "scaleY": 0.33603677,
+      "rotation": -42.309425,
+      "position": {
+        "x": 0.0,
+        "y": 0.0
       }
     }
   }

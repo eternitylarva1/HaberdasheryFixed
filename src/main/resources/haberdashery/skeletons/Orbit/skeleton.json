@@ -81,6 +81,75 @@
 				]
 			}
 		}
+	},
+	"tickTock": {
+		"bones": {
+			"relic": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": -6, "curve": "stepped" },
+					{ "time": 2, "angle": -12, "curve": "stepped" },
+					{ "time": 3, "angle": -18, "curve": "stepped" },
+					{ "time": 4, "angle": -24, "curve": "stepped" },
+					{ "time": 5, "angle": -30, "curve": "stepped" },
+					{ "time": 6, "angle": -36, "curve": "stepped" },
+					{ "time": 7, "angle": -42, "curve": "stepped" },
+					{ "time": 8, "angle": -48, "curve": "stepped" },
+					{ "time": 9, "angle": -54, "curve": "stepped" },
+					{ "time": 10, "angle": -60, "curve": "stepped" },
+					{ "time": 11, "angle": -66, "curve": "stepped" },
+					{ "time": 12, "angle": -72, "curve": "stepped" },
+					{ "time": 13, "angle": -78, "curve": "stepped" },
+					{ "time": 14, "angle": -84, "curve": "stepped" },
+					{ "time": 15, "angle": -90, "curve": "stepped" },
+					{ "time": 16, "angle": -96, "curve": "stepped" },
+					{ "time": 17, "angle": -102, "curve": "stepped" },
+					{ "time": 18, "angle": -108, "curve": "stepped" },
+					{ "time": 19, "angle": -114, "curve": "stepped" },
+					{ "time": 20, "angle": -120, "curve": "stepped" },
+					{ "time": 21, "angle": -126, "curve": "stepped" },
+					{ "time": 22, "angle": -132, "curve": "stepped" },
+					{ "time": 23, "angle": -138, "curve": "stepped" },
+					{ "time": 24, "angle": -144, "curve": "stepped" },
+					{ "time": 25, "angle": -150, "curve": "stepped" },
+					{ "time": 26, "angle": -156, "curve": "stepped" },
+					{ "time": 27, "angle": -162, "curve": "stepped" },
+					{ "time": 28, "angle": -168, "curve": "stepped" },
+					{ "time": 29, "angle": -174, "curve": "stepped" },
+					{ "time": 30, "angle": 180, "curve": "stepped" },
+					{ "time": 31, "angle": 174, "curve": "stepped" },
+					{ "time": 32, "angle": 168, "curve": "stepped" },
+					{ "time": 33, "angle": 162, "curve": "stepped" },
+					{ "time": 34, "angle": 156, "curve": "stepped" },
+					{ "time": 35, "angle": 150, "curve": "stepped" },
+					{ "time": 36, "angle": 144, "curve": "stepped" },
+					{ "time": 37, "angle": 138, "curve": "stepped" },
+					{ "time": 38, "angle": 132, "curve": "stepped" },
+					{ "time": 39, "angle": 126, "curve": "stepped" },
+					{ "time": 40, "angle": 120, "curve": "stepped" },
+					{ "time": 41, "angle": 114, "curve": "stepped" },
+					{ "time": 42, "angle": 108, "curve": "stepped" },
+					{ "time": 43, "angle": 102, "curve": "stepped" },
+					{ "time": 44, "angle": 96, "curve": "stepped" },
+					{ "time": 45, "angle": 90, "curve": "stepped" },
+					{ "time": 46, "angle": 84, "curve": "stepped" },
+					{ "time": 47, "angle": 78, "curve": "stepped" },
+					{ "time": 48, "angle": 72, "curve": "stepped" },
+					{ "time": 49, "angle": 66, "curve": "stepped" },
+					{ "time": 50, "angle": 60, "curve": "stepped" },
+					{ "time": 51, "angle": 54, "curve": "stepped" },
+					{ "time": 52, "angle": 48, "curve": "stepped" },
+					{ "time": 53, "angle": 42, "curve": "stepped" },
+					{ "time": 54, "angle": 36, "curve": "stepped" },
+					{ "time": 55, "angle": 30, "curve": "stepped" },
+					{ "time": 56, "angle": 24, "curve": "stepped" },
+					{ "time": 57, "angle": 18, "curve": "stepped" },
+					{ "time": 58, "angle": 12, "curve": "stepped" },
+					{ "time": 59, "angle": 6, "curve": "stepped" },
+					{ "time": 60, "angle": 0 }
+				]
+			}
+		}
 	}
 }
 }
