@@ -636,6 +636,40 @@
         "y": -98.079346
       }
     },
+    "HornCleat": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Orbit",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "orbit",
+          "rotate"
+        ],
+        "randomStartTime": true,
+        "boneTransforms": [
+          {
+            "name": "relic",
+            "rotation": -91.0,
+            "scaleX": 0.9,
+            "scaleY": 0.9
+          }
+        ]
+      },
+      "large": false,
+      "drawOrderSlotName": "left_thumb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 3.6729193,
+        "y": -98.079346
+      }
+    },
     "Mercury Hourglass": {
       "boneName": "root",
       "skeleton": {
@@ -786,6 +820,72 @@
       "position": {
         "x": 0.0,
         "y": 0.0
+      }
+    },
+    "Lantern": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Orbit",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "orbit",
+          "rotate"
+        ],
+        "randomStartTime": true,
+        "boneTransforms": [
+          {
+            "name": "relic",
+            "scaleX": -0.7,
+            "scaleY": 0.7
+          }
+        ]
+      },
+      "large": false,
+      "drawOrderSlotName": "left_thumb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 3.6729193,
+        "y": -98.079346
+      }
+    },
+    "Astrolabe": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Orbit",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "orbit",
+          "rotate"
+        ],
+        "randomStartTime": true,
+        "boneTransforms": [
+          {
+            "name": "relic",
+            "scaleX": 0.78,
+            "scaleY": 0.78
+          }
+        ]
+      },
+      "large": false,
+      "drawOrderSlotName": "left_thumb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 3.6729193,
+        "y": -98.079346
       }
     }
   }
