@@ -43,6 +43,42 @@
         "x": 124.62001,
         "y": 22.740002
       }
+    },
+    "Golden Idol": {
+      "boneName": "root",
+      "large": false,
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Idol",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": -81.6,
+        "y": 41.300003
+      }
+    },
+    "Bloody Idol": {
+      "boneName": "root",
+      "large": false,
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": -1,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Idol",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": -81.6,
+        "y": 41.300003
+      }
     }
   }
 }
