@@ -9,6 +9,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.characters.Watcher
 import haberdashery.AdjustRelic
+import haberdashery.Config
 import javassist.expr.ExprEditor
 import javassist.expr.MethodCall
 
@@ -44,7 +45,9 @@ object PauseAnimation {
         if (AdjustRelic.pauseAnimation()) return
 
         __instance.subSkeletons.forEach {
-            it.anim.update(Gdx.graphics.deltaTime)
+            if (Config.animatedRelics) {
+                it.anim.update(Gdx.graphics.deltaTime)
+            }
             it.anim.apply(it.skeleton)
             it.skeleton.updateWorldTransform()
             it.skeleton.color = __instance.tint.color
