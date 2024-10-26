@@ -887,6 +887,56 @@
         "x": 3.6729193,
         "y": -98.079346
       }
+    },
+    "Girya": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Orbit",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "orbit",
+          "rotate"
+        ],
+        "randomStartTime": true,
+        "boneTransforms": [
+          {
+            "name": "relic",
+            "scaleX": -0.74,
+            "scaleY": 0.74
+          }
+        ]
+      },
+      "large": false,
+      "drawOrderSlotName": "left_thumb",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 0.0,
+      "position": {
+        "x": 3.6729193,
+        "y": -98.079346
+      }
+    },
+    "Symbiotic Virus": {
+      "boneName": "Hips",
+      "large": false,
+      "drawOrderSlotName": "crackedOrb",
+      "drawOrderZIndex": 1,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.92944175,
+      "scaleY": 0.92944175,
+      "rotation": -22.520325,
+      "position": {
+        "x": 0.20000003,
+        "y": -2.2
+      }
     }
   }
 }
