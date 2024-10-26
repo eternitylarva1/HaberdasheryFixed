@@ -4,10 +4,7 @@ import basemod.BaseMod
 import basemod.ModPanel
 import basemod.abstracts.CustomSavable
 import basemod.devcommands.ConsoleCommand
-import basemod.interfaces.PostInitializeSubscriber
-import basemod.interfaces.PostRenderSubscriber
-import basemod.interfaces.PreUpdateSubscriber
-import basemod.interfaces.RelicGetSubscriber
+import basemod.interfaces.*
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
@@ -19,6 +16,7 @@ import haberdashery.patches.chosenExclusions
 @SpireInitializer
 class HaberdasheryMod :
     PostInitializeSubscriber,
+    AddAudioSubscriber,
     RelicGetSubscriber,
     PreUpdateSubscriber,
     PostRenderSubscriber
@@ -62,6 +60,10 @@ class HaberdasheryMod :
                 }
             }
         })
+    }
+
+    override fun receiveAddAudio() {
+        BaseMod.addAudio(makeID("SOZU"), assetPath("audio/sozu.ogg"))
     }
 
     override fun receiveRelicGet(relic: AbstractRelic?) {

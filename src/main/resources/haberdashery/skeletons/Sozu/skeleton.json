@@ -1,0 +1,44 @@
+{
+"skeleton": { "hash": " ", "x": -69.94, "y": -37.68, "width": 128, "height": 128 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "relic", "parent": "root" },
+	{ "name": "top", "parent": "relic", "length": 31.89, "rotation": -142.8, "x": -0.43, "y": 23.93 }
+],
+"slots": [
+	{ "name": "base", "bone": "relic", "attachment": "sozuBase" },
+	{ "name": "top", "bone": "top", "attachment": "sozuTop" }
+],
+"skins": {
+	"default": {
+		"base": {
+			"sozuBase": { "x": -5.94, "y": 26.32, "width": 128, "height": 128 }
+		},
+		"top": {
+			"sozuTop": { "x": 2.95, "y": -5.23, "rotation": 142.8, "width": 128, "height": 128 }
+		}
+	}
+},
+"events": {
+	"sfx": {}
+},
+"animations": {
+	"animation": {
+		"bones": {
+			"top": {
+				"rotate": [
+					{ "time": 0, "angle": -79.43 },
+					{ "time": 26.6667, "angle": -76.49, "curve": 0.798, "c4": 0.84 },
+					{ "time": 27.3333, "angle": -10.87, "curve": 0.25, "c4": 0.84 },
+					{ "time": 27.6, "angle": -79.43, "curve": 0.25, "c3": 0.75 },
+					{ "time": 27.6667, "angle": -74.77, "curve": 0.25, "c3": 0.75 },
+					{ "time": 27.7333, "angle": -79.43 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 27.6, "name": "sfx", "float": 0.2, "string": "haberdashery:SOZU" }
+		]
+	}
+}
+}

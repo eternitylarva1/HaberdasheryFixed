@@ -1229,23 +1229,6 @@
         "y": -11.2800045
       }
     },
-    "Sozu": {
-      "boneName": "root",
-      "large": false,
-      "drawOrderSlotName": "shadow",
-      "drawOrderZIndex": 3,
-      "hideSlotNames": [],
-      "requiredSlotNames": [],
-      "flipHorizontal": true,
-      "flipVertical": false,
-      "scaleX": 0.73668337,
-      "scaleY": 0.73668337,
-      "rotation": 0.0,
-      "position": {
-        "x": 126.12001,
-        "y": -0.9599994
-      }
-    },
     "Chemical X": {
       "boneName": "Spine_",
       "large": false,

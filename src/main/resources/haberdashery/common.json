@@ -17,6 +17,32 @@
         "x": 74.8,
         "y": 55.100002
       }
+    },
+    "Sozu": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Sozu",
+        "useRelicAsAtlas": false,
+        "animations": [
+          "animation"
+        ],
+        "randomStartTime": false,
+        "boneTransforms": []
+      },
+      "large": false,
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 3,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.73668337,
+      "scaleY": 0.73668337,
+      "rotation": 0.0,
+      "position": {
+        "x": 124.62001,
+        "y": 22.740002
+      }
     }
   }
 }
