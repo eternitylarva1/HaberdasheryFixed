@@ -456,6 +456,23 @@
         "x": -38.900005,
         "y": 30.200003
       }
+    },
+    "Snake Skull": {
+      "boneName": "root",
+      "large": false,
+      "drawOrderSlotName": "skull",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "rotation": 41.763927,
+      "position": {
+        "x": 35.20001,
+        "y": -3.8999996
+      }
     }
   }
 }
