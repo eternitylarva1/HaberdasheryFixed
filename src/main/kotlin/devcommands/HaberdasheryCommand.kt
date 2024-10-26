@@ -11,6 +11,7 @@ class HaberdasheryCommand : ConsoleCommand() {
         followup["saveall"] = SaveAllCommand::class.java
         followup["reload"] = ReloadCommand::class.java
         followup["debug"] = DebugCommand::class.java
+        followup["config"] = ConfigCommand::class.java
     }
 
     override fun execute(tokens: Array<out String>, depth: Int) {}
