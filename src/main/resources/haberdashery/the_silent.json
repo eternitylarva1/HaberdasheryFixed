@@ -281,7 +281,9 @@
       "drawOrderSlotName": "cape_right",
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
-      "requiredSlotNames": [],
+      "requiredSlotNames": [
+		"hair2"
+	  ],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.3381371,
