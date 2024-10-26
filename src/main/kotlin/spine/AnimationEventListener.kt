@@ -4,6 +4,7 @@ import com.esotericsoftware.spine.AnimationState.AnimationStateListener
 import com.esotericsoftware.spine.Event
 import com.esotericsoftware.spine.Skeleton
 import com.megacrit.cardcrawl.core.CardCrawlGame
+import haberdashery.Config
 
 class AnimationEventListener(
     private val parent: Skeleton,
@@ -23,11 +24,13 @@ class AnimationEventListener(
                 }
             }
             PLAY_SFX -> {
-                event.string?.let { key ->
-                    CardCrawlGame.sound.playV(
-                        key,
-                        if (event.float == 0f) 1f else event.float
-                    )
+                if (Config.playSfx) {
+                    event.string?.let { key ->
+                        CardCrawlGame.sound.playV(
+                            key,
+                            if (event.float == 0f) 1f else event.float
+                        )
+                    }
                 }
             }
         }
