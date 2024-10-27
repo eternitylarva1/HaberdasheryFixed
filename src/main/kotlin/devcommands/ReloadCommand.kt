@@ -3,20 +3,16 @@ package haberdashery.devcommands
 import basemod.ReflectionHacks
 import basemod.devcommands.ConsoleCommand
 import com.badlogic.gdx.utils.ObjectMap
-import com.esotericsoftware.spine.Skeleton
 import com.esotericsoftware.spine.Skin
 import com.esotericsoftware.spine.attachments.Attachment
-import com.megacrit.cardcrawl.characters.AbstractPlayer
-import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import haberdashery.AdjustRelic
 import haberdashery.AttachRelic
 import haberdashery.HaberdasheryMod
 import haberdashery.database.AttachDatabase
 import haberdashery.database.MySlotData
-import haberdashery.extensions.getPrivate
-import haberdashery.extensions.setPrivate
-import haberdashery.patches.subSkeletons
+import haberdashery.extensions.skeleton
+import haberdashery.extensions.subSkeletons
 
 class ReloadCommand : ConsoleCommand() {
     override fun execute(tokens: Array<out String>, depth: Int) {
@@ -37,8 +33,4 @@ class ReloadCommand : ConsoleCommand() {
         }
         AdjustRelic.reload()
     }
-
-    private var AbstractPlayer.skeleton
-        get() = this.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java)
-        set(value) = this.setPrivate("skeleton", clazz = AbstractCreature::class.java, value = value)
 }

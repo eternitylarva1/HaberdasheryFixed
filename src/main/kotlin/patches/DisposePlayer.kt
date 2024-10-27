@@ -1,14 +1,13 @@
 package haberdashery.patches
 
 import com.badlogic.gdx.graphics.glutils.PixmapTextureData
-import com.esotericsoftware.spine.Skeleton
 import com.esotericsoftware.spine.attachments.RegionAttachment
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
 import com.megacrit.cardcrawl.characters.AbstractPlayer
-import com.megacrit.cardcrawl.core.AbstractCreature
 import haberdashery.HaberdasheryMod
 import haberdashery.database.MySlotData
-import haberdashery.extensions.getPrivate
+import haberdashery.extensions.skeleton
+import haberdashery.extensions.subSkeletons
 
 @SpirePatch2(
     clz = AbstractPlayer::class,
@@ -17,7 +16,7 @@ import haberdashery.extensions.getPrivate
 object DisposePlayer {
     @JvmStatic
     fun Postfix(__instance: AbstractPlayer) {
-        val skeleton = __instance.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
+        val skeleton = __instance.skeleton ?: return
 
         skeleton.slots.forEach { slot ->
             if (slot.data.name.startsWith(HaberdasheryMod.makeID("")) && slot.data is MySlotData) {

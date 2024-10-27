@@ -19,12 +19,6 @@ object PlayerFields {
     val chosenExclusions: SpireField<MutableMap<String, String>> = SpireField { mutableMapOf() }
 }
 
-val AbstractPlayer.subSkeletons: MutableList<SubSkeleton>
-    get() = PlayerFields.subSkeletons.get(this)
-
-val AbstractPlayer.chosenExclusions: MutableMap<String, String>
-    get() = PlayerFields.chosenExclusions.get(this)
-
 data class SubSkeleton(
     val skeleton: Skeleton,
     val anim: AnimationState,

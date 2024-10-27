@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.devcommands.HaberdasheryCommand
-import haberdashery.patches.chosenExclusions
+import haberdashery.extensions.chosenExclusions
 
 @SpireInitializer
 class HaberdasheryMod :

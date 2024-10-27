@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.HaberdasheryMod
 import haberdashery.extensions.asRegion
 import haberdashery.extensions.getPrivate
+import haberdashery.extensions.skeleton
 import haberdashery.spine.attachments.MaskedRegionAttachment
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -92,7 +93,7 @@ object AttachDatabase {
     fun saveAll() {
         save(Enums.COMMON, AbstractDungeon.player?.getPrivate("skeleton", clazz = AbstractCreature::class.java))
         for (player in CardCrawlGame.characterManager.allCharacters) {
-            val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: continue
+            val skeleton = player.skeleton ?: continue
             save(player.chosenClass, skeleton)
         }
     }

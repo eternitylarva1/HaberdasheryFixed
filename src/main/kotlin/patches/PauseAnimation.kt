@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.characters.Watcher
 import haberdashery.AdjustRelic
 import haberdashery.Config
+import haberdashery.extensions.subSkeletons
 import javassist.expr.ExprEditor
 import javassist.expr.MethodCall
 

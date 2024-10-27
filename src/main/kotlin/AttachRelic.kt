@@ -9,7 +9,6 @@ import com.badlogic.gdx.utils.Disposable
 import com.esotericsoftware.spine.*
 import com.esotericsoftware.spine.attachments.Attachment
 import com.megacrit.cardcrawl.characters.AbstractPlayer
-import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.relics.AbstractRelic
@@ -19,8 +18,6 @@ import haberdashery.database.MySlotData
 import haberdashery.extensions.*
 import haberdashery.patches.LoseRelic
 import haberdashery.patches.SubSkeleton
-import haberdashery.patches.chosenExclusions
-import haberdashery.patches.subSkeletons
 import haberdashery.spine.AnimationEventListener
 import haberdashery.spine.FSFileHandle
 import haberdashery.spine.attachments.MaskedRegionAttachment
@@ -40,7 +37,7 @@ object AttachRelic {
         info.exclusionGroup?.let { group ->
             player.chosenExclusions[group] = relicSlotName
         }
-        val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
+        val skeleton = player.skeleton ?: return
         skeleton.setFlip(false, false)
         if (skeleton.findSlotIndex(relicSlotName) >= 0) {
             val slot = skeleton.findSlot(relicSlotName)
@@ -101,7 +98,7 @@ object AttachRelic {
         if (player.relics.any { it.relicId == relicId }) return
 
         val relicSlotName = HaberdasheryMod.makeID(relicId)
-        val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
+        val skeleton = player.skeleton ?: return
         val slot = skeleton.findSlot(relicSlotName)
 
         if (slot != null) {
@@ -298,7 +295,7 @@ object AttachRelic {
 
     fun onChange() {
         val player = AbstractDungeon.player ?: return
-        val skeleton = player.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java) ?: return
+        val skeleton = player.skeleton ?: return
         updateSlotVisibilities(player, skeleton)
     }
 }

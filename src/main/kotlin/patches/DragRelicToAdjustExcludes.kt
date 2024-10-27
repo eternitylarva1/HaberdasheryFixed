@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.AttachRelic
 import haberdashery.HaberdasheryMod
 import haberdashery.database.AttachDatabase
+import haberdashery.extensions.chosenExclusions
 import haberdashery.extensions.scale
 import javassist.CtBehavior
 import javassist.expr.ExprEditor

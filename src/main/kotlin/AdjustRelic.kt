@@ -20,7 +20,6 @@ import com.esotericsoftware.spine.SkeletonRendererDebug
 import com.esotericsoftware.spine.Slot
 import com.esotericsoftware.spine.attachments.Attachment
 import com.esotericsoftware.spine.attachments.RegionAttachment
-import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
@@ -44,7 +43,7 @@ object AdjustRelic {
     private val projection
         get() = Gdx.app.applicationListener.getPrivate<OrthographicCamera>("camera", clazz = CardCrawlGame::class.java).combined
     private val skeleton
-        get() = AbstractDungeon.player?.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java)
+        get() = AbstractDungeon.player?.skeleton
     private val skeletonStart
         get() = Skeleton(skeleton).apply {
             setToSetupPose()
