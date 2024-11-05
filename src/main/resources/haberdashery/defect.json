@@ -937,6 +937,35 @@
         "x": 0.20000003,
         "y": -2.2
       }
+    },
+    "Inserter": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Inserter",
+        "useRelicAsAtlas": false,
+        "animations": [],
+        "onFlash": {
+          "animation": "insert",
+          "beforeAction": "com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction"
+        },
+        "speed": 1.5,
+        "randomStartTime": true,
+        "boneTransforms": []
+      },
+      "large": true,
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.70454544,
+      "scaleY": 0.70454544,
+      "rotation": 0.0,
+      "position": {
+        "x": -71.3,
+        "y": -25.999996
+      }
     }
   }
 }
