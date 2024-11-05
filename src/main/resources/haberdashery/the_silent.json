@@ -282,8 +282,8 @@
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
       "requiredSlotNames": [
-		"hair2"
-	  ],
+        "hair2"
+      ],
       "flipHorizontal": true,
       "flipVertical": false,
       "scaleX": 0.3381371,
@@ -472,6 +472,24 @@
       "position": {
         "x": 35.20001,
         "y": -3.8999996
+      }
+    },
+    "WristBlade": {
+      "boneName": "Hand_L",
+      "large": false,
+      "drawOrderSlotName": "hand",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "mask": "WristBlade_yLUJ.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.65217394,
+      "scaleY": 0.65217394,
+      "rotation": 12.846411,
+      "position": {
+        "x": -7.713631,
+        "y": -3.5832834
       }
     }
   }
