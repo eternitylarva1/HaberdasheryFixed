@@ -30,6 +30,6 @@ object DisposePlayer {
             }
         }
 
-        __instance.subSkeletons.forEach { it.toDispose.dispose() }
+        __instance.subSkeletons.forEach { it.value.toDispose.dispose() }
     }
 }

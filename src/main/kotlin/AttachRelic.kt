@@ -124,7 +124,7 @@ object AttachRelic {
 
         info.skeletonInfo?.let { skeletonInfo ->
             val subSkeleton = loadSubSkeleton(relic, info, skeletonInfo, skeleton)
-            AbstractDungeon.player.subSkeletons.add(subSkeleton)
+            AbstractDungeon.player.subSkeletons[relic.relicId] = subSkeleton
 
             return OffsetSkeletonAttachment(relicSlotName).apply {
                 this.skeleton = subSkeleton.skeleton
@@ -195,7 +195,8 @@ object AttachRelic {
             subSkeleton.color = Color.WHITE
             val stateData = AnimationStateData(skeletonData)
             val state = AnimationState(stateData)
-            state.addListener(AnimationEventListener(parentSkeleton, HaberdasheryMod.makeID(relic.relicId)))
+            skeletonInfo.speed?.let { state.timeScale = it }
+            state.addListener(AnimationEventListener(state, parentSkeleton, HaberdasheryMod.makeID(relic.relicId)))
             for ((i, animationName) in skeletonInfo.animations.withIndex()) {
                 skeletonData.findAnimation(animationName)?.let { animation ->
                     val e = state.setAnimation(i, animation, true)

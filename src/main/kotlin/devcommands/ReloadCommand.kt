@@ -25,7 +25,7 @@ class ReloadCommand : ConsoleCommand() {
         skeleton.drawOrder.removeAll { slot -> slot.data.name.startsWith(HaberdasheryMod.makeID("")) && slot.data is MySlotData }
         val attachments = ReflectionHacks.getPrivate<ObjectMap<Any, Attachment>>(skeleton.data.defaultSkin, Skin::class.java, "attachments")
         attachments.removeAll { it.value.name.startsWith(HaberdasheryMod.makeID("")) }
-        player.subSkeletons.forEach { it.toDispose.dispose() }
+        player.subSkeletons.forEach { it.value.toDispose.dispose() }
         player.subSkeletons.clear()
         AttachRelic.onChange()
         player.relics.forEach { relic ->

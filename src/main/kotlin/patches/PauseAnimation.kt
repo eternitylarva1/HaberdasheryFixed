@@ -45,7 +45,7 @@ object PauseAnimation {
     fun animateAttachments(__instance: AbstractPlayer) {
         if (AdjustRelic.pauseAnimation()) return
 
-        __instance.subSkeletons.forEach {
+        __instance.subSkeletons.forEach { (_, it) ->
             if (Config.animatedRelics) {
                 it.anim.update(Gdx.graphics.deltaTime)
             }

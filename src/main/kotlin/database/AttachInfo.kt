@@ -141,6 +141,8 @@ class AttachInfo(
         val name: String,
         val useRelicAsAtlas: Boolean,
         val animations: Array<String>,
+        val onFlash: OnFlashInfo?,
+        val speed: Float?,
         val randomStartTime: Boolean,
         val boneTransforms: Array<BoneTransform>?,
     )
@@ -150,5 +152,10 @@ class AttachInfo(
         val rotation: Float?,
         val scaleX: Float?,
         val scaleY: Float?,
+    )
+
+    data class OnFlashInfo(
+        val animation: String,
+        val beforeAction: String?,
     )
 }

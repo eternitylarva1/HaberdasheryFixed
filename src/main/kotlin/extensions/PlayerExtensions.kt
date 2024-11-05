@@ -11,7 +11,7 @@ val AbstractPlayer.skeleton
     get() = this.getPrivate<Skeleton?>("skeleton", clazz = AbstractCreature::class.java)
 
 val AbstractPlayer.subSkeletons
-    by SpireFieldDelegate<AbstractPlayer, MutableList<SubSkeleton>>(PlayerFields.subSkeletons)
+    by SpireFieldDelegate<AbstractPlayer, MutableMap<String, SubSkeleton>>(PlayerFields.subSkeletons)
 
 val AbstractPlayer.chosenExclusions: MutableMap<String, String>
     by SpireFieldDelegate<AbstractPlayer, MutableMap<String, String>>(PlayerFields.chosenExclusions)
