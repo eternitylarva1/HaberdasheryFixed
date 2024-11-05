@@ -258,7 +258,7 @@
       "flipVertical": false,
       "scaleX": 0.6866995,
       "scaleY": 0.6866995,
-      "rotation": 0,
+      "rotation": 0.0,
       "position": {
         "x": 68.09394,
         "y": -235.45807
@@ -383,6 +383,26 @@
       "position": {
         "x": 6.045439,
         "y": -4.975207
+      }
+    },
+    "VioletLotus": {
+      "boneName": "Hair",
+      "large": false,
+      "drawOrderSlotName": "hair_accessory copy",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [
+		"hair_accessory copy",
+        "hair_fg"
+	  ],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.29418126,
+      "scaleY": 0.29418126,
+      "rotation": 0.0,
+      "position": {
+        "x": 14.563064,
+        "y": 3.434697
       }
     }
   }
