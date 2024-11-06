@@ -492,6 +492,81 @@
         "x": 0.0,
         "y": 11.0
       }
+    },
+    "WingedGreaves": {
+      "boneName": "root",
+      "large": false,
+      "drawOrderSlotName": "leg_left",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.84816754,
+      "scaleY": 0.84816754,
+      "rotation": 12.732089,
+      "position": {
+        "x": -1.3,
+        "y": 16.7
+      },
+      "shear": {
+        "x": -8.5,
+        "y": 0.0
+      }
+    },
+    "Bronze Scales": {
+      "boneName": "Arm_R_",
+      "large": false,
+      "drawOrderSlotName": "shoulder",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.5469607,
+      "scaleY": 0.5469607,
+      "rotation": 138.11278,
+      "position": {
+        "x": -9.049999,
+        "y": -2.527353
+      },
+      "shear": {
+        "x": -0.09999955,
+        "y": 20.6
+      }
+    },
+    "The Courier": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Courier",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "tail1",
+          "tail2",
+          "tail3",
+          "ear_l",
+          "ear_r",
+          "blink"
+        ],
+        "randomStartTime": true
+      },
+      "large": false,
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scaleX": 0.7470588,
+      "scaleY": 0.7470588,
+      "rotation": 15.601698,
+      "position": {
+        "x": 7.9000006,
+        "y": -17.2
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
       }
     }
   }
