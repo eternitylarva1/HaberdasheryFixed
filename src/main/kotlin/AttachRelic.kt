@@ -158,6 +158,7 @@ object AttachRelic {
             scaleX = info.scaleX.scale()
             scaleY = info.scaleY.scale()
             rotation = info.rotation
+            shearFactor.set(info.shearFactor)
             updateOffset()
         }
     }

@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.FrameBuffer
 import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.badlogic.gdx.math.Affine2
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.ScreenUtils
@@ -96,6 +97,8 @@ object AdjustRelic {
     private var positioning: Vector2? = null
     private var rotating: Vector2? = null
     private var scaling: Float? = null
+    private var shearing: Vector2? = null
+    private var shearAxis: Axis? = null
 
     private var mode: EditMode = EditMode.Main
     private var pauseAnimation: Boolean = false
@@ -317,6 +320,11 @@ object AdjustRelic {
                 attachmentScale(info)
                 scaling = null
             }
+            if (shearing != null) {
+                attachmentShear(info)
+                shearing = null
+                shearAxis = null
+            }
         }
 
         // Draw order
@@ -373,6 +381,22 @@ object AdjustRelic {
             }
         } else if (!Gdx.input.isKeyPressed(Input.Keys.S) && scaling != null) {
             scaling = null
+            info.finalize()
+        }
+
+        // Shear
+        if (isKeyJustPressed(Input.Keys.C) && shearing == null) {
+            shearing = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
+            shearAxis = Axis.X
+        } else if (isKeyJustPressed(Input.Keys.V) && shearing == null) {
+            shearing = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
+            shearAxis = Axis.Y
+        } else if (shearing != null
+            && (shearAxis == Axis.X && !Gdx.input.isKeyPressed(Input.Keys.C))
+            || (shearAxis == Axis.Y && !Gdx.input.isKeyPressed(Input.Keys.V))
+            ) {
+            shearing = null
+            shearAxis = null
             info.finalize()
         }
 
@@ -451,6 +475,7 @@ object AdjustRelic {
         positionWidget(sb, info)
         rotationWidget(sb, info)
         scaleWidget(sb, info)
+        shearWidget(sb, info)
 
         renderAttachInfo(sb, info)
         renderDrawOrder(sb, info)
@@ -507,6 +532,14 @@ object AdjustRelic {
         }
     }
 
+    private fun attachmentShear(info: AttachInfo) {
+        val attachment = attachment
+        if (attachment is MaskedRegionAttachment) {
+            attachment.shearFactor.set(info.dirtyShearFactor)
+            attachment.updateOffset() // TODO not necessary?
+        }
+    }
+
     private fun renderModeInfo(sb: SpriteBatch) {
         FontHelper.renderFontLeftTopAligned(
             sb,
@@ -545,7 +578,7 @@ object AdjustRelic {
         sb.end()
         srd.shapeRenderer.projectionMatrix = projection
         srd.setMeshHull(false)
-        srd.setRegionAttachments(false)
+        srd.setRegionAttachments(true)
         srd.setPaths(false)
         srd.draw(skeleton)
         srd.setMeshHull(true)
@@ -667,6 +700,7 @@ object AdjustRelic {
                     "Position: ${info.dirtyPosition.x}, ${info.dirtyPosition.y}\n" +
                     "Rotation: ${info.dirtyRotation}\n" +
                     "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n" +
+                    "Shear: ${info.dirtyShear.x}, ${info.dirtyShear.y}\n" +
                     "Large: ${info.large}\n" +
                     "Mask: ${info.mask}" + if (info.maskRequiresSave) "*" else "" + "\n" +
                     if (saveTimer > 0) {
@@ -816,6 +850,73 @@ object AdjustRelic {
         }
     }
 
+    private fun shearWidget(sb: SpriteBatch, info: AttachInfo) {
+        val startPosition = shearing
+        if (startPosition != null) {
+            sb.end()
+
+            val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
+            val diff = mouse.cpy().sub(startPosition).scl(0.1f)
+
+            when (shearAxis) {
+                Axis.X -> info.relativeShear(Axis.X, diff.x)
+                Axis.Y -> info.relativeShear(Axis.Y, diff.y)
+                else -> {}
+            }
+
+            if (info.dirtyShear != info.shear) {
+                attachmentShear(info)
+            }
+
+            val affine = Affine2()
+            val dirtyAffine = Affine2()
+            affine.translate(Settings.WIDTH / 2f, Settings.HEIGHT / 2f)
+//            affine.scale(Settings.scale, Settings.scale)
+            dirtyAffine.set(affine)
+            affine.shear(info.shearFactor.x, info.shearFactor.y)
+            dirtyAffine.shear(info.dirtyShearFactor.x, info.dirtyShearFactor.y)
+
+            val a = Vector2(-200f, -200f)
+            val b = Vector2(-200f, +200f)
+            val c = Vector2(+200f, +200f)
+            val d = Vector2(+200f, -200f)
+            val da = a.cpy()
+            val db = b.cpy()
+            val dc = c.cpy()
+            val dd = d.cpy()
+            affine.applyTo(a)
+            affine.applyTo(b)
+            affine.applyTo(c)
+            affine.applyTo(d)
+            dirtyAffine.applyTo(da)
+            dirtyAffine.applyTo(db)
+            dirtyAffine.applyTo(dc)
+            dirtyAffine.applyTo(dd)
+
+            Gdx.gl.glLineWidth(2f)
+            debugRenderer.projectionMatrix = projection
+            debugRenderer.begin(ShapeRenderer.ShapeType.Line)
+            debugRenderer.color = Color.WHITE
+            debugRenderer.polygon(floatArrayOf(
+                a.x, a.y,
+                b.x, b.y,
+                c.x, c.y,
+                d.x, d.y,
+            ))
+            debugRenderer.color = Color.RED
+            debugRenderer.polygon(floatArrayOf(
+                da.x, da.y,
+                db.x, db.y,
+                dc.x, dc.y,
+                dd.x, dd.y,
+            ))
+            debugRenderer.end()
+            Gdx.gl.glLineWidth(1f)
+
+            sb.begin()
+        }
+    }
+
     private fun moveSlotName(drawOrder: Array<Slot>, slot: Slot, info: AttachInfo, up: Boolean) {
         val index = drawOrder.indexOf(slot, true)
         val range = if (up) {
@@ -901,5 +1002,10 @@ object AdjustRelic {
         Main,
         PickingBone,
         EditingMask,
+    }
+
+    internal enum class Axis {
+        X,
+        Y,
     }
 }

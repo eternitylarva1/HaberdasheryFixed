@@ -1,7 +1,9 @@
 package haberdashery.database
 
+import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
 import com.google.gson.annotations.SerializedName
+import haberdashery.AdjustRelic
 import java.nio.file.Path
 import kotlin.math.absoluteValue
 
@@ -53,7 +55,11 @@ class AttachInfo(
     @Transient
     var position: Vector2 = Vector2()
         private set
-
+    @Transient
+    var shear: Vector2 = Vector2()
+        private set
+    val shearFactor: Vector2
+        get() = Vector2(calcShearFactor(shear.x), calcShearFactor(shear.y))
 
     @SerializedName("scaleX")
     internal var dirtyScaleX: Float = scaleX
@@ -69,6 +75,11 @@ class AttachInfo(
     @SerializedName("position")
     internal var dirtyPosition: Vector2 = Vector2()
         private set
+    @SerializedName("shear")
+    internal var dirtyShear: Vector2 = Vector2()
+        private set
+    internal val dirtyShearFactor: Vector2
+        get() = Vector2(calcShearFactor(dirtyShear.x), calcShearFactor(dirtyShear.y))
 
     internal fun finalize() = apply {
         scaleX = dirtyScaleX
@@ -81,12 +92,14 @@ class AttachInfo(
         }
         rotation = dirtyRotation
         position.set(dirtyPosition)
+        shear.set(dirtyShear)
     }
     internal fun clean() = apply {
         dirtyScaleX = scaleX.absoluteValue
         dirtyScaleY = scaleY.absoluteValue
         dirtyRotation = rotation
         dirtyPosition.set(position)
+        dirtyShear.set(shear)
     }
 
     internal fun merge(other: AttachInfo) = apply {
@@ -135,6 +148,23 @@ class AttachInfo(
     }
     internal fun relativePosition(x: Float, y: Float) = apply {
         this.dirtyPosition.set(position.x + x, position.y + y)
+    }
+    internal fun relativeShear(axis: AdjustRelic.Axis, v: Float) = apply {
+        when (axis) {
+            AdjustRelic.Axis.X -> dirtyShear.x = shear.x + v
+            AdjustRelic.Axis.Y -> dirtyShear.y = shear.y + v
+        }
+    }
+
+    companion object {
+        private fun calcShearFactor(shearDeg: Float): Float {
+            val tmp = 90f + shearDeg
+            return if (tmp == 0f) {
+                0f
+            } else {
+                MathUtils.cosDeg(tmp) / MathUtils.sinDeg(tmp)
+            }
+        }
     }
 
     data class SkeletonInfo(
