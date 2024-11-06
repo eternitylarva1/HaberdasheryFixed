@@ -476,9 +476,9 @@
       "drawOrderZIndex": 0,
       "hideSlotNames": [],
       "requiredSlotNames": [
-		"hair_accessory copy",
+        "hair_accessory copy",
         "hair_fg"
-	  ],
+      ],
       "flipHorizontal": false,
       "flipVertical": false,
       "scaleX": 0.29418126,
@@ -487,6 +487,11 @@
       "position": {
         "x": 14.563064,
         "y": 3.434697
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 11.0
+      }
       }
     }
   }
