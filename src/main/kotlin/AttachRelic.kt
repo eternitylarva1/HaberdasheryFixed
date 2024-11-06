@@ -173,8 +173,8 @@ object AttachRelic {
     }
 
     private fun loadSubSkeleton(relic: AbstractRelic, info: AttachInfo, skeletonInfo: AttachInfo.SkeletonInfo, parentSkeleton: Skeleton): SubSkeleton {
-        for (path in info.paths) {
-            val skeletonDir = path.parent.resolve("skeletons").resolve(skeletonInfo.name)
+        for (path in AttachDatabase.getPaths(info)) {
+            val skeletonDir = path.resolve("skeletons").resolve(skeletonInfo.name)
             val skeletonJsonPath = skeletonDir.resolve("skeleton.json")
             if (!skeletonDir.exists()) continue
             if (!skeletonJsonPath.exists()) continue

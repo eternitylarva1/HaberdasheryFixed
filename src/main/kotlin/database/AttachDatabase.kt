@@ -40,6 +40,7 @@ object AttachDatabase {
     private val logger: Logger = LogManager.getLogger(AttachDatabase::class.java)
     private val database: MutableMap<AbstractPlayer.PlayerClass, MutableMap<String, AttachInfo>> = mutableMapOf()
     private val maskTextureCache = mutableMapOf<String, TextureRegion>()
+    private val paths: LinkedHashSet<Path> = linkedSetOf()
 
     init {
         load()
@@ -56,6 +57,15 @@ object AttachDatabase {
 
     fun load() {
         database.clear()
+
+        // Load local json
+        val localFS = FileSystems.getDefault()
+        Files.walk(localFS.getPath(HaberdasheryMod.ID), 1)
+            .filter(Files::isRegularFile)
+            .forEach {
+                logger.info("Loading ${it.fileName} (LOCAL)")
+                load(it)
+            }
 
         // Load mod jsons
         for (modInfo in Loader.MODINFOS) {
@@ -79,15 +89,6 @@ object AttachDatabase {
                     load(it)
                 }
         }
-
-        // Load local json
-        val localFS = FileSystems.getDefault()
-        Files.walk(localFS.getPath(HaberdasheryMod.ID), 1)
-            .filter(Files::isRegularFile)
-            .forEach {
-                logger.info("Loading ${it.fileName} (LOCAL)")
-                load(it)
-            }
     }
 
     fun saveAll() {
@@ -111,10 +112,12 @@ object AttachDatabase {
                 "${character.name.lowercase()}.json"
             }
             logger.info(filename)
-            Gdx.files.local(Paths.get(HaberdasheryMod.ID, filename).toString()).writeString(json, false)
+            val path = Paths.get(HaberdasheryMod.ID, filename)
+            Gdx.files.local(path.toString()).writeString(json, false)
 
             logger.info("Saving masks...")
             it.forEach { (relicId, info) ->
+                info.path = path
                 if (skeleton == null) return@forEach
                 if (info.mask != null && info.maskRequiresSave) {
                     val relicSlotName = HaberdasheryMod.makeID(relicId)
@@ -159,11 +162,13 @@ object AttachDatabase {
         val data = gson.fromJson<LinkedHashMap<AbstractPlayer.PlayerClass?, LinkedHashMap<String, AttachInfo>>>(reader)
         reader.close()
 
+        paths.add(path.parent)
+
         data.forEach { (character, relics) ->
             if (character != null) {
                 val state = character(character)
                 relics.forEach { (relicId, info) ->
-                    info.paths.add(0, path)
+                    info.path = path
                     state.relic(relicId, info)
                 }
             }
@@ -177,7 +182,7 @@ object AttachDatabase {
 
     fun relic(character: AbstractPlayer.PlayerClass, relicID: String, info: AttachInfo) {
         val map = database.getOrPut(character) { mutableMapOf() }
-        map.merge(relicID, info.finalize()) { old, new -> new.merge(old) }
+        map.putIfAbsent(relicID, info.finalize())
     }
 
     fun character(character: AbstractPlayer.PlayerClass): CharacterState {
@@ -191,6 +196,10 @@ object AttachDatabase {
         }
     }
 
+    fun getPaths(info: AttachInfo?): Iterable<Path> {
+        return info?.path?.let { listOf(it.parent) + paths } ?: paths
+    }
+
     fun getMaskImg(relic: AbstractRelic, info: AttachInfo): TextureRegion? {
         val filename = info.mask ?: return null
 
@@ -199,7 +208,7 @@ object AttachDatabase {
         }
 
         try {
-            for (path in info.paths) {
+            for (path in getPaths(info)) {
                 val internal = path.fileSystem.getPath(HaberdasheryMod.ID, "masks", filename)
                 val local = Paths.get(HaberdasheryMod.ID, "masks", filename)
                 val file = newestFile(internal, local)
