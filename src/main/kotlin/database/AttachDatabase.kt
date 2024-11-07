@@ -48,10 +48,13 @@ object AttachDatabase {
 
     fun test() {
         val character = AbstractDungeon.player?.chosenClass ?: return
-        database.getOrDefault(character, mutableMapOf()).keys.forEach { id ->
-            RelicLibrary.getRelic(id)?.makeCopy()?.let { relic ->
-                relic.instantObtain(AbstractDungeon.player, AbstractDungeon.player.relics.size, false)
-            }
+        val ids = mutableSetOf<String>()
+        ids.addAll(database.getOrDefault(Enums.COMMON, mutableMapOf()).keys)
+        ids.addAll(database.getOrDefault(character, mutableMapOf()).keys)
+        ids.forEach { id ->
+            RelicLibrary.getRelic(id)
+                ?.makeCopy()
+                ?.instantObtain(AbstractDungeon.player, AbstractDungeon.player.relics.size, false)
         }
     }
 
