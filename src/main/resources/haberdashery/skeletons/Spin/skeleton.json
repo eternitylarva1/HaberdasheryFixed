@@ -1,0 +1,55 @@
+{
+"skeleton": { "hash": " ", "x": -64, "y": -64, "width": 128, "height": 128 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "relic", "parent": "root" }
+],
+"slots": [
+	{ "name": "relic", "bone": "relic", "attachment": "small" }
+],
+"skins": {
+	"default": {
+		"relic": {
+			"large": { "width": 256, "height": 256 },
+			"small": { "width": 128, "height": 128 }
+		}
+	}
+},
+"animations": {
+	"ccw": {
+		"bones": {
+			"relic": {
+				"rotate": [
+					{ "time": 0, "angle": 0},
+					{ "time": 0.5, "angle": 90 },
+					{ "time": 1, "angle": 180 },
+					{ "time": 1.5, "angle": -90 },
+					{ "time": 2, "angle": 0 }
+				]
+			}
+		}
+	},
+	"cw": {
+		"bones": {
+			"relic": {
+				"rotate": [
+					{ "time": 0, "angle": 0},
+					{ "time": 0.5, "angle": -90 },
+					{ "time": 1, "angle": 180 },
+					{ "time": 1.5, "angle": 90 },
+					{ "time": 2, "angle": 0 }
+				]
+			}
+		}
+	},
+	"large": {
+		"slots": {
+			"relic": {
+				"attachment": [
+					{ "time": 0, "name": "large" }
+				]
+			}
+		}
+	}
+}
+}
