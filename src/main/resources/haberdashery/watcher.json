@@ -568,6 +568,37 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Yang": {
+      "boneName": "Head",
+      "skeleton": {
+        "name": "Spin",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "large",
+          "ccw"
+        ],
+        "speed": 0.1,
+        "randomStartTime": true
+      },
+      "large": true,
+      "drawOrderSlotName": "shadow",
+      "drawOrderZIndex": 0,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 0.5873016,
+      "scaleY": 0.5873016,
+      "rotation": -95.89604,
+      "position": {
+        "x": 4.1865234,
+        "y": -9.3174
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }

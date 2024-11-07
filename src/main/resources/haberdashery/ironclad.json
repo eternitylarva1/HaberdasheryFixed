@@ -2031,6 +2031,28 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Champion Belt": {
+      "boneName": "Spine_",
+      "large": false,
+      "drawOrderSlotName": "shirt",
+      "drawOrderZIndex": -2,
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "mask": "Champion Belt_R41P.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scaleX": 1.0470779,
+      "scaleY": 1.0470779,
+      "rotation": -88.740105,
+      "position": {
+        "x": -2.8104742,
+        "y": -2.437465
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
