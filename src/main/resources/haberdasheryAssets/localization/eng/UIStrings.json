@@ -1,5 +1,5 @@
 {
-  "${ModID}:TODO": {
+  "${mod.id}:TODO": {
     "TEXT": [
     ]
   }
