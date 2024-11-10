@@ -486,12 +486,12 @@ object AdjustRelic {
         val bone = skeletonStart.findBone(info.boneName) ?: return
         if (attachment is RegionAttachment) {
             val pos = info.dirtyPosition.cpy().rotate(bone.worldRotationX)
-            attachment.x = pos.x
-            attachment.y = pos.y
+            attachment.x = pos.x.renderScale()
+            attachment.y = pos.y.renderScale()
             attachment.updateOffset()
         } else if (attachment is OffsetSkeletonAttachment) {
             val pos = info.dirtyPosition.cpy()
-                .scl(1f, -1f)
+                .scl(Settings.renderScale, -Settings.renderScale)
                 .add(bone.worldX, bone.worldY)
             bone.worldToLocal(pos)
             attachment.position.set(pos)
@@ -511,21 +511,21 @@ object AdjustRelic {
     private fun attachmentScale(info: AttachInfo) {
         val attachment = attachment
         if (attachment is RegionAttachment) {
-            attachment.scaleX = info.dirtyScaleX
+            attachment.scaleX = info.dirtyScaleX.renderScale()
             if (info.flipHorizontal) {
                 attachment.scaleX *= -1
             }
-            attachment.scaleY = info.dirtyScaleY
+            attachment.scaleY = info.dirtyScaleY.renderScale()
             if (info.flipVertical) {
                 attachment.scaleY *= -1
             }
             attachment.updateOffset()
         } else if (attachment is OffsetSkeletonAttachment) {
-            attachment.scaleX = info.dirtyScaleX
+            attachment.scaleX = info.dirtyScaleX.renderScale()
             if (info.flipHorizontal) {
                 attachment.scaleX *= -1
             }
-            attachment.scaleY = info.dirtyScaleY
+            attachment.scaleY = info.dirtyScaleY.renderScale()
             if (info.flipVertical) {
                 attachment.scaleY *= -1
             }
