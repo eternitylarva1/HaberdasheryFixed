@@ -48,8 +48,9 @@ tasks.processResources {
 }
 
 tasks.jar {
-    archiveBaseName = "Haberdashery"
-    archiveFileName = "Haberdashery.jar"
+    archiveBaseName = project.extra["name"].toString()
+    archiveClassifier = ""
+    archiveVersion = ""
     from(sourceSets.main.get().output)
 
     finalizedBy("copyJarToMods")
