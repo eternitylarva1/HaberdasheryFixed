@@ -25,6 +25,8 @@
 * **T** - Translate (x, y position). Hold and move mouse. Right-click while active to cancel changes.
 * **R** - Rotation. Hold and move mouse around center of screen. Right-click while active to cancel changes.
 * **S** - Scale. Hold and move mouse. Right-click while active to cancel changes.
+* **C** - Shear along x-axis. Hold and move mouse. Right-click while active to cancel changes.
+* **V** - Shear along y-axis. Hold and move mouse. Right-click while active to cancel changes.
 * **X** - Flip horizontally.
 * **Y** - Flip vertically.
 * **J** - Move one slot down the draw order.
