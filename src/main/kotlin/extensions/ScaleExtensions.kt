@@ -10,6 +10,12 @@ fun Int.scale(): Float =
 fun Float.scale(): Float =
     this * Settings.scale
 
+fun Int.renderScale(): Float =
+    this * Settings.renderScale
+
+fun Float.renderScale(): Float =
+    this * Settings.renderScale
+
 fun Int.timeScale(): Float =
     this * Gdx.graphics.deltaTime
 

@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.Disposable
 import com.esotericsoftware.spine.*
 import com.esotericsoftware.spine.attachments.Attachment
 import com.megacrit.cardcrawl.characters.AbstractPlayer
+import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.relics.AbstractRelic
@@ -129,12 +130,12 @@ object AttachRelic {
             return OffsetSkeletonAttachment(relicSlotName).apply {
                 this.skeleton = subSkeleton.skeleton
                 val pos = info.dirtyPosition.cpy()
-                    .scl(1f, -1f)
+                    .scl(Settings.renderScale, -Settings.renderScale)
                     .add(bone.worldX, bone.worldY)
                 bone.worldToLocal(pos)
                 position.set(pos)
-                scaleX = info.scaleX.scale()
-                scaleY = info.scaleY.scale()
+                scaleX = info.scaleX.renderScale()
+                scaleY = info.scaleY.renderScale()
                 rotation = info.rotation
                 boneTransforms = skeletonInfo.boneTransforms
             }
@@ -153,10 +154,10 @@ object AttachRelic {
             width = tex.regionWidth.toFloat()
             height = tex.regionHeight.toFloat()
             val pos = info.position.cpy().rotate(bone.worldRotationX)
-            x = pos.x.scale()
-            y = pos.y.scale()
-            scaleX = info.scaleX.scale()
-            scaleY = info.scaleY.scale()
+            x = pos.x.renderScale()
+            y = pos.y.renderScale()
+            scaleX = info.scaleX.renderScale()
+            scaleY = info.scaleY.renderScale()
             rotation = info.rotation
             shearFactor.set(info.shearFactor)
             updateOffset()
