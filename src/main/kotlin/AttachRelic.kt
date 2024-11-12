@@ -61,7 +61,7 @@ object AttachRelic {
                 skeleton.slots.size,
                 relicSlotName,
                 bone.data,
-                info.drawOrderZIndex,
+                info.drawOrder.zIndex,
                 info.hideSlotNames,
                 info.requiredSlotNames,
                 info.exclusionGroup,
@@ -73,15 +73,15 @@ object AttachRelic {
 
         val drawOrder = skeleton.drawOrder
         var insertIndex = startingDrawOrder(relic.relicId, info, drawOrder, bone)
-        if (info.drawOrderSlotName == null) {
-            info.drawOrder(drawOrder[insertIndex].data.name, info.drawOrderZIndex)
+        if (info.drawOrder.slotName == null) {
+            info.drawOrder(drawOrder[insertIndex].data.name, info.drawOrder.zIndex)
         }
         ++insertIndex
         for (i in insertIndex until drawOrder.size) {
             val slot = drawOrder[i]
             val data = slot.data
             if (data.name.startsWith(HaberdasheryMod.makeID("")) && data is MySlotData) {
-                if (info.drawOrderZIndex >= data.zIndex) {
+                if (info.drawOrder.zIndex >= data.zIndex) {
                     insertIndex = i + 1
                 }
             } else {
@@ -141,8 +141,8 @@ object AttachRelic {
                     .add(bone.worldX, bone.worldY)
                 bone.worldToLocal(pos)
                 position.set(pos)
-                scaleX = info.scaleX.renderScale()
-                scaleY = info.scaleY.renderScale()
+                scaleX = info.scale.x.renderScale()
+                scaleY = info.scale.y.renderScale()
                 rotation = info.rotation
                 boneTransforms = skeletonInfo.boneTransforms
             }
@@ -163,8 +163,8 @@ object AttachRelic {
             val pos = info.position.cpy().rotate(bone.worldRotationX)
             x = pos.x.renderScale()
             y = pos.y.renderScale()
-            scaleX = info.scaleX.renderScale()
-            scaleY = info.scaleY.renderScale()
+            scaleX = info.scale.x.renderScale()
+            scaleY = info.scale.y.renderScale()
             rotation = info.rotation
             shearFactor.set(info.shearFactor)
             updateOffset()
@@ -221,14 +221,14 @@ object AttachRelic {
     }
 
     private fun startingDrawOrder(relicId: String, info: AttachInfo, drawOrder: Array<Slot>, bone: Bone): Int {
-        val ret = if (info.drawOrderSlotName != null) {
-            drawOrder.indexOfFirst { it.data.name == info.drawOrderSlotName }
+        val ret = if (info.drawOrder.slotName != null) {
+            drawOrder.indexOfFirst { it.data.name == info.drawOrder.slotName }
         } else {
             drawOrder.indexOfLast { it.bone == bone && it.data !is MySlotData }
         }
         if (ret < 0) {
-            if (info.drawOrderSlotName != null) {
-                logger.warn("Failed to find drawOrderSlotName[\"${info.drawOrderSlotName}\"]")
+            if (info.drawOrder.slotName != null) {
+                logger.warn("Failed to find drawOrder.slotName[\"${info.drawOrder.slotName}\"]")
             }
             return 0
         }

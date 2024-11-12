@@ -3,15 +3,19 @@
     "Runic Dome": {
       "boneName": "Head",
       "large": false,
-      "drawOrderSlotName": "ear",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "ear",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "exclusionGroup": "Head",
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.937445,
-      "scaleY": 0.937445,
+      "scale": {
+        "x": 0.937445,
+        "y": 0.937445
+      },
       "rotation": -100.0,
       "position": {
         "x": -4.223275,
@@ -25,8 +29,10 @@
     "CultistMask": {
       "boneName": "Head",
       "large": false,
-      "drawOrderSlotName": "ear",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "ear",
+        "zIndex": 0
+      },
       "hideSlotNames": [
         "ear",
         "hair_accessory copy",
@@ -37,8 +43,10 @@
       "exclusionGroup": "Head",
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.9,
-      "scaleY": 0.9,
+      "scale": {
+        "x": 0.9,
+        "y": 0.9
+      },
       "rotation": -78.0,
       "position": {
         "x": -9.991171,
@@ -52,14 +60,18 @@
     "Anchor": {
       "boneName": "Arm_R_2",
       "large": false,
-      "drawOrderSlotName": "sleeve_left",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "sleeve_left",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
-      "scaleX": 0.722449,
-      "scaleY": 0.722449,
+      "scale": {
+        "x": 0.722449,
+        "y": 0.722449
+      },
       "rotation": 50.39515,
       "position": {
         "x": 209.84477,
@@ -73,14 +85,18 @@
     "CloakClasp": {
       "boneName": "Spine_3",
       "large": false,
-      "drawOrderSlotName": "robe_upper",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "robe_upper",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.24050479,
-      "scaleY": 0.24050479,
+      "scale": {
+        "x": 0.24050479,
+        "y": 0.24050479
+      },
       "rotation": -37.25471,
       "position": {
         "x": -18.396364,
@@ -94,14 +110,18 @@
     "Membership Card": {
       "boneName": "Cloth_L_15",
       "large": false,
-      "drawOrderSlotName": "threads_right_2",
-      "drawOrderZIndex": 2,
+      "drawOrder": {
+        "slotName": "threads_right_2",
+        "zIndex": 2
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.5046296,
-      "scaleY": 0.5046296,
+      "scale": {
+        "x": 0.5046296,
+        "y": 0.5046296
+      },
       "rotation": -19.416979,
       "position": {
         "x": 3.7067175,
@@ -124,14 +144,18 @@
         "randomStartTime": true
       },
       "large": false,
-      "drawOrderSlotName": "eye_anchor",
-      "drawOrderZIndex": 1,
+      "drawOrder": {
+        "slotName": "eye_anchor",
+        "zIndex": 1
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.45306122,
-      "scaleY": 0.45306122,
+      "scale": {
+        "x": 0.45306122,
+        "y": 0.45306122
+      },
       "rotation": 28.676992,
       "position": {
         "x": -3.2523274,
@@ -145,14 +169,18 @@
     "Dead Branch": {
       "boneName": "Cloth_R_8",
       "large": false,
-      "drawOrderSlotName": "threads_left_1",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "threads_left_1",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.6692607,
-      "scaleY": 0.6692607,
+      "scale": {
+        "x": 0.6692607,
+        "y": 0.6692607
+      },
       "rotation": -78.53935,
       "position": {
         "x": 3.9412465,
@@ -166,14 +194,18 @@
     "Old Coin": {
       "boneName": "Cloth_L_13",
       "large": false,
-      "drawOrderSlotName": "threads_right_2",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "threads_right_2",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.33788395,
-      "scaleY": 0.33788395,
+      "scale": {
+        "x": 0.33788395,
+        "y": 0.33788395
+      },
       "rotation": -265.59747,
       "position": {
         "x": 3.920013,
@@ -187,14 +219,18 @@
     "Mango": {
       "boneName": "Cloth_L_6",
       "large": false,
-      "drawOrderSlotName": "threads_left_3",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "threads_left_3",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.47163317,
-      "scaleY": 0.47163317,
+      "scale": {
+        "x": 0.47163317,
+        "y": 0.47163317
+      },
       "rotation": -60.007835,
       "position": {
         "x": -3.7509499,
@@ -208,14 +244,18 @@
     "Pear": {
       "boneName": "Cloth_L_7",
       "large": false,
-      "drawOrderSlotName": "threads_right_1",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "threads_right_1",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.5161291,
-      "scaleY": 0.5161291,
+      "scale": {
+        "x": 0.5161291,
+        "y": 0.5161291
+      },
       "rotation": 5.714473,
       "position": {
         "x": -1.4924228,
@@ -229,14 +269,18 @@
     "Strawberry": {
       "boneName": "Cloth_L_10",
       "large": false,
-      "drawOrderSlotName": "threads_right_1",
-      "drawOrderZIndex": 1,
+      "drawOrder": {
+        "slotName": "threads_right_1",
+        "zIndex": 1
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.40816328,
-      "scaleY": 0.40816328,
+      "scale": {
+        "x": 0.40816328,
+        "y": 0.40816328
+      },
       "rotation": -138.94502,
       "position": {
         "x": 3.4752421,
@@ -250,14 +294,18 @@
     "Vajra": {
       "boneName": "Cloth_R_11",
       "large": false,
-      "drawOrderSlotName": "threads_left_2",
-      "drawOrderZIndex": 2,
+      "drawOrder": {
+        "slotName": "threads_left_2",
+        "zIndex": 2
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.45121953,
-      "scaleY": 0.45121953,
+      "scale": {
+        "x": 0.45121953,
+        "y": 0.45121953
+      },
       "rotation": -73.48762,
       "position": {
         "x": 0.11504695,
@@ -271,14 +319,18 @@
     "Cursed Key": {
       "boneName": "Cloth_R_10",
       "large": false,
-      "drawOrderSlotName": "threads_left_2",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "threads_left_2",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.4476042,
-      "scaleY": 0.4476042,
+      "scale": {
+        "x": 0.4476042,
+        "y": 0.4476042
+      },
       "rotation": -9.588783,
       "position": {
         "x": 2.0146453,
@@ -302,14 +354,18 @@
         "randomStartTime": false
       },
       "large": false,
-      "drawOrderSlotName": "ear",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "ear",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
-      "scaleX": 0.6866995,
-      "scaleY": 0.6866995,
+      "scale": {
+        "x": 0.6866995,
+        "y": 0.6866995
+      },
       "rotation": 0.0,
       "position": {
         "x": 68.09394,
@@ -323,14 +379,18 @@
     "WarpedTongs": {
       "boneName": "Cloth_R_3",
       "large": false,
-      "drawOrderSlotName": "leg_left",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "leg_left",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.86738664,
-      "scaleY": 0.86738664,
+      "scale": {
+        "x": 0.86738664,
+        "y": 0.86738664
+      },
       "rotation": 76.007835,
       "position": {
         "x": 2.9899554,
@@ -344,14 +404,18 @@
     "TungstenRod": {
       "boneName": "Cloth_R_4",
       "large": false,
-      "drawOrderSlotName": "threads_left_1",
-      "drawOrderZIndex": -2,
+      "drawOrder": {
+        "slotName": "threads_left_1",
+        "zIndex": -2
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
-      "scaleX": 0.75581396,
-      "scaleY": 0.75581396,
+      "scale": {
+        "x": 0.75581396,
+        "y": 0.75581396
+      },
       "rotation": -46.912846,
       "position": {
         "x": 0.12304507,
@@ -365,14 +429,18 @@
     "Velvet Choker": {
       "boneName": "Head",
       "large": false,
-      "drawOrderSlotName": "shoulder",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "shoulder",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.3620594,
-      "scaleY": 0.3620594,
+      "scale": {
+        "x": 0.3620594,
+        "y": 0.3620594
+      },
       "rotation": -143.71321,
       "position": {
         "x": -9.471931,
@@ -386,14 +454,18 @@
     "Astrolabe": {
       "boneName": "eye_anchor",
       "large": false,
-      "drawOrderSlotName": "eye_anchor",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "eye_anchor",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 1.0,
-      "scaleY": 1.0,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
       "rotation": -42.958546,
       "position": {
         "x": -0.29813862,
@@ -407,15 +479,19 @@
     "Lantern": {
       "boneName": "Ribbon_",
       "large": false,
-      "drawOrderSlotName": "sash",
-      "drawOrderZIndex": 2,
+      "drawOrder": {
+        "slotName": "sash",
+        "zIndex": 2
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "mask": "Lantern_FC6z.png",
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.511579,
-      "scaleY": 0.511579,
+      "scale": {
+        "x": 0.511579,
+        "y": 0.511579
+      },
       "rotation": -179.29008,
       "position": {
         "x": -7.349835,
@@ -429,15 +505,19 @@
     "Nunchaku": {
       "boneName": "Ribbon_",
       "large": false,
-      "drawOrderSlotName": "sash",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "sash",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "mask": "Nunchaku_IckR.png",
       "flipHorizontal": true,
       "flipVertical": false,
-      "scaleX": 0.75524473,
-      "scaleY": 0.75524473,
+      "scale": {
+        "x": 0.75524473,
+        "y": 0.75524473
+      },
       "rotation": 151.34628,
       "position": {
         "x": -11.788372,
@@ -451,14 +531,18 @@
     "Kunai": {
       "boneName": "Ribbon_",
       "large": false,
-      "drawOrderSlotName": "sleeve_right",
-      "drawOrderZIndex": 1,
+      "drawOrder": {
+        "slotName": "sleeve_right",
+        "zIndex": 1
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.6411483,
-      "scaleY": 0.6411483,
+      "scale": {
+        "x": 0.6411483,
+        "y": 0.6411483
+      },
       "rotation": 66.515625,
       "position": {
         "x": 6.045439,
@@ -472,8 +556,10 @@
     "VioletLotus": {
       "boneName": "Hair",
       "large": false,
-      "drawOrderSlotName": "hair_accessory copy",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "hair_accessory copy",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [
         "hair_accessory copy",
@@ -481,8 +567,10 @@
       ],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.29418126,
-      "scaleY": 0.29418126,
+      "scale": {
+        "x": 0.29418126,
+        "y": 0.29418126
+      },
       "rotation": 0.0,
       "position": {
         "x": 14.563064,
@@ -496,14 +584,18 @@
     "WingedGreaves": {
       "boneName": "root",
       "large": false,
-      "drawOrderSlotName": "leg_left",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "leg_left",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.84816754,
-      "scaleY": 0.84816754,
+      "scale": {
+        "x": 0.84816754,
+        "y": 0.84816754
+      },
       "rotation": 12.732089,
       "position": {
         "x": -1.3,
@@ -517,14 +609,18 @@
     "Bronze Scales": {
       "boneName": "Arm_R_",
       "large": false,
-      "drawOrderSlotName": "shoulder",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "shoulder",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
-      "scaleX": 0.5469607,
-      "scaleY": 0.5469607,
+      "scale": {
+        "x": 0.5469607,
+        "y": 0.5469607
+      },
       "rotation": 138.11278,
       "position": {
         "x": -9.049999,
@@ -551,14 +647,18 @@
         "randomStartTime": true
       },
       "large": false,
-      "drawOrderSlotName": "shadow",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
-      "scaleX": 0.7470588,
-      "scaleY": 0.7470588,
+      "scale": {
+        "x": 0.7470588,
+        "y": 0.7470588
+      },
       "rotation": 15.601698,
       "position": {
         "x": 7.9000006,
@@ -582,14 +682,18 @@
         "randomStartTime": true
       },
       "large": true,
-      "drawOrderSlotName": "shadow",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.5873016,
-      "scaleY": 0.5873016,
+      "scale": {
+        "x": 0.5873016,
+        "y": 0.5873016
+      },
       "rotation": -95.89604,
       "position": {
         "x": 4.1865234,

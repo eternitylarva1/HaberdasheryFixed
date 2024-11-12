@@ -20,10 +20,7 @@ class AttachInfo(
     val skeletonInfo: SkeletonInfo? = null
     var large: Boolean = false
         private set
-    var drawOrderSlotName: String? = null
-        private set
-    var drawOrderZIndex: Int = 0
-        private set
+    val drawOrder: DrawOrder = DrawOrder()
     var hideSlotNames: Array<out String> = emptyArray()
         private set
     var requiredSlotNames: Array<out String> = emptyArray()
@@ -40,10 +37,7 @@ class AttachInfo(
         private set
 
     @Transient
-    var scaleX: Float = 1f
-        private set
-    @Transient
-    var scaleY: Float = 1f
+    var scale: Vector2 = Vector2()
         private set
     var flipHorizontal: Boolean = false
         private set
@@ -61,11 +55,8 @@ class AttachInfo(
     val shearFactor: Vector2
         get() = Vector2(calcShearFactor(shear.x), calcShearFactor(shear.y))
 
-    @SerializedName("scaleX")
-    internal var dirtyScaleX: Float = scaleX
-        private set
-    @SerializedName("scaleY")
-    internal var dirtyScaleY: Float = scaleY
+    @SerializedName("scale")
+    internal var dirtyScale: Vector2 = Vector2()
         private set
     @SerializedName("rotation")
     internal var dirtyRotation: Float = rotation
@@ -82,21 +73,20 @@ class AttachInfo(
         get() = Vector2(calcShearFactor(dirtyShear.x), calcShearFactor(dirtyShear.y))
 
     internal fun finalize() = apply {
-        scaleX = dirtyScaleX
+        scale.set(dirtyScale)
         if (flipHorizontal) {
-            scaleX *= -1
+            scale.x *= -1
         }
-        scaleY = dirtyScaleY
         if (flipVertical) {
-            scaleY *= -1
+            scale.y *= -1
         }
         rotation = dirtyRotation
         position.set(dirtyPosition)
         shear.set(dirtyShear)
     }
     internal fun clean() = apply {
-        dirtyScaleX = scaleX.absoluteValue
-        dirtyScaleY = scaleY.absoluteValue
+        dirtyScale.x = scale.x.absoluteValue
+        dirtyScale.y = scale.y.absoluteValue
         dirtyRotation = rotation
         dirtyPosition.set(position)
         dirtyShear.set(shear)
@@ -116,22 +106,22 @@ class AttachInfo(
         this.maskChanged = false
     }
     fun drawOrder(slotName: String, zIndex: Int = 0) = apply {
-        this.drawOrderSlotName = slotName
-        this.drawOrderZIndex = zIndex
+        this.drawOrder.slotName = slotName
+        this.drawOrder.zIndex = zIndex
     }
     fun scale(scale: Float) = apply { scaleX(scale).scaleY(scale) }
-    internal fun relativeScale(scale: Float) = apply { scaleX(this.scaleX * scale).scaleY(this.scaleY * scale) }
+    internal fun relativeScale(scale: Float) = apply { scaleX(this.scale.x * scale).scaleY(this.scale.y * scale) }
     fun scaleX(scale: Float) = apply {
-        this.dirtyScaleX = scale
+        this.dirtyScale.x = scale
         if (scale < 0) {
-            this.dirtyScaleX *= -1
+            this.dirtyScale.x *= -1
             flipHorizontal(true)
         }
     }
     fun scaleY(scale: Float) = apply {
-        this.dirtyScaleY = scale
+        this.dirtyScale.y = scale
         if (scale < 0) {
-            this.dirtyScaleY *= -1
+            this.dirtyScale.y *= -1
             flipVertical(true)
         }
     }
@@ -166,6 +156,15 @@ class AttachInfo(
             } else {
                 MathUtils.cosDeg(tmp) / MathUtils.sinDeg(tmp)
             }
+        }
+    }
+
+    data class DrawOrder(
+        var slotName: String? = null,
+        var zIndex: Int = 0,
+    ) {
+        override fun toString(): String {
+            return "$slotName [$zIndex]"
         }
     }
 

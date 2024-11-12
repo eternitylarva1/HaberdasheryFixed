@@ -3,15 +3,19 @@
     "Shovel": {
       "boneName": "root",
       "large": true,
-      "drawOrderSlotName": "shadow",
-      "drawOrderZIndex": 0,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": 0
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "mask": "Shovel_fANG.png",
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 0.7090909,
-      "scaleY": 0.7090909,
+      "scale": {
+        "x": 0.7090909,
+        "y": 0.7090909
+      },
       "rotation": 33.990044,
       "position": {
         "x": 74.8,
@@ -34,14 +38,18 @@
         "boneTransforms": []
       },
       "large": false,
-      "drawOrderSlotName": "shadow",
-      "drawOrderZIndex": 3,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": 3
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "flipHorizontal": true,
       "flipVertical": false,
-      "scaleX": 0.73668337,
-      "scaleY": 0.73668337,
+      "scale": {
+        "x": 0.73668337,
+        "y": 0.73668337
+      },
       "rotation": 0.0,
       "position": {
         "x": 124.62001,
@@ -55,15 +63,19 @@
     "Golden Idol": {
       "boneName": "root",
       "large": false,
-      "drawOrderSlotName": "shadow",
-      "drawOrderZIndex": -1,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": -1
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "exclusionGroup": "Idol",
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 1.0,
-      "scaleY": 1.0,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
       "rotation": 0.0,
       "position": {
         "x": -81.6,
@@ -77,15 +89,19 @@
     "Bloody Idol": {
       "boneName": "root",
       "large": false,
-      "drawOrderSlotName": "shadow",
-      "drawOrderZIndex": -1,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": -1
+      },
       "hideSlotNames": [],
       "requiredSlotNames": [],
       "exclusionGroup": "Idol",
       "flipHorizontal": false,
       "flipVertical": false,
-      "scaleX": 1.0,
-      "scaleY": 1.0,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
       "rotation": 0.0,
       "position": {
         "x": -81.6,

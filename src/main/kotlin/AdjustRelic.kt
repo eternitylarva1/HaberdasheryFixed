@@ -335,13 +335,13 @@ object AdjustRelic {
 
             if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT)) {
                 if (isKeyJustPressed(Input.Keys.K)) {
-                    info.drawOrder(info.drawOrderSlotName!!, info.drawOrderZIndex - 1)
-                    (slot.data as? MySlotData)?.let { it.zIndex = info.drawOrderZIndex }
-                    moveToZIndex(drawOrder, slot, drawOrder.indexOfFirst { it.data.name == info.drawOrderSlotName }, info.drawOrderZIndex)
+                    info.drawOrder(info.drawOrder.slotName!!, info.drawOrder.zIndex - 1)
+                    (slot.data as? MySlotData)?.let { it.zIndex = info.drawOrder.zIndex }
+                    moveToZIndex(drawOrder, slot, drawOrder.indexOfFirst { it.data.name == info.drawOrder.slotName }, info.drawOrder.zIndex)
                 } else if (isKeyJustPressed(Input.Keys.J)) {
-                    info.drawOrder(info.drawOrderSlotName!!, info.drawOrderZIndex + 1)
-                    (slot.data as? MySlotData)?.let { it.zIndex = info.drawOrderZIndex }
-                    moveToZIndex(drawOrder, slot, drawOrder.indexOfFirst { it.data.name == info.drawOrderSlotName }, info.drawOrderZIndex)
+                    info.drawOrder(info.drawOrder.slotName!!, info.drawOrder.zIndex + 1)
+                    (slot.data as? MySlotData)?.let { it.zIndex = info.drawOrder.zIndex }
+                    moveToZIndex(drawOrder, slot, drawOrder.indexOfFirst { it.data.name == info.drawOrder.slotName }, info.drawOrder.zIndex)
                 }
             } else {
                 if (isKeyJustPressed(Input.Keys.K)) {
@@ -511,21 +511,21 @@ object AdjustRelic {
     private fun attachmentScale(info: AttachInfo) {
         val attachment = attachment
         if (attachment is RegionAttachment) {
-            attachment.scaleX = info.dirtyScaleX.renderScale()
+            attachment.scaleX = info.dirtyScale.x.renderScale()
             if (info.flipHorizontal) {
                 attachment.scaleX *= -1
             }
-            attachment.scaleY = info.dirtyScaleY.renderScale()
+            attachment.scaleY = info.dirtyScale.y.renderScale()
             if (info.flipVertical) {
                 attachment.scaleY *= -1
             }
             attachment.updateOffset()
         } else if (attachment is OffsetSkeletonAttachment) {
-            attachment.scaleX = info.dirtyScaleX.renderScale()
+            attachment.scaleX = info.dirtyScale.x.renderScale()
             if (info.flipHorizontal) {
                 attachment.scaleX *= -1
             }
-            attachment.scaleY = info.dirtyScaleY.renderScale()
+            attachment.scaleY = info.dirtyScale.y.renderScale()
             if (info.flipVertical) {
                 attachment.scaleY *= -1
             }
@@ -696,10 +696,10 @@ object AdjustRelic {
             FontHelper.tipBodyFont,
             "[$relicId]\n" +
                     "Bone: ${info.boneName}\n" +
-                    "Draw Order: ${info.drawOrderSlotName} [${info.drawOrderZIndex}]\n" +
+                    "Draw Order: ${info.drawOrder}\n" +
                     "Position: ${info.dirtyPosition.x}, ${info.dirtyPosition.y}\n" +
                     "Rotation: ${info.dirtyRotation}\n" +
-                    "Scale: ${info.dirtyScaleX}, ${info.dirtyScaleY}\n" +
+                    "Scale: ${info.dirtyScale.x}, ${info.dirtyScale.y}\n" +
                     "Shear: ${info.dirtyShear.x}, ${info.dirtyShear.y}\n" +
                     "Large: ${info.large}\n" +
                     "Mask: ${info.mask}" + if (info.maskRequiresSave) "*" else "" + "\n" +
@@ -722,7 +722,7 @@ object AdjustRelic {
             for (i in bottom..top) {
                 val data = drawOrder[i].data
                 if (data is MySlotData) {
-                    if (lastOrigSlot != info.drawOrderSlotName) {
+                    if (lastOrigSlot != info.drawOrder.slotName) {
                         continue
                     }
                     drawOrderMsg.append("    [").append(data.zIndex).append("] ")
@@ -832,7 +832,7 @@ object AdjustRelic {
 
             info.relativeScale(longSide / startScale)
 
-            if (info.dirtyScaleX != info.scaleX) {
+            if (info.dirtyScale != info.scale) {
                 attachmentScale(info)
             }
 
@@ -971,7 +971,7 @@ object AdjustRelic {
         for (i in range) {
             if (!drawOrder[i].data.name.startsWith(HaberdasheryMod.makeID(""))) {
                 if (--find == 0) {
-                    info.drawOrder(drawOrder[i].data.name, info.drawOrderZIndex)
+                    info.drawOrder(drawOrder[i].data.name, info.drawOrder.zIndex)
                     newParentSlotIndex = i
                     break
                 }
@@ -979,7 +979,7 @@ object AdjustRelic {
         }
 
         if (newParentSlotIndex != null) {
-            moveToZIndex(drawOrder, slot, newParentSlotIndex, info.drawOrderZIndex)
+            moveToZIndex(drawOrder, slot, newParentSlotIndex, info.drawOrder.zIndex)
         }
     }
 
