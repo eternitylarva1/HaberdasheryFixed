@@ -386,10 +386,10 @@ object AdjustRelic {
 
         // Shear
         if (isKeyJustPressed(Input.Keys.C) && shearing == null) {
-            shearing = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
+            shearing = Vector2(Gdx.input.x.toFloat(), Settings.HEIGHT - Gdx.input.y.toFloat())
             shearAxis = Axis.X
         } else if (isKeyJustPressed(Input.Keys.V) && shearing == null) {
-            shearing = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
+            shearing = Vector2(Gdx.input.x.toFloat(), Settings.HEIGHT - Gdx.input.y.toFloat())
             shearAxis = Axis.Y
         } else if (shearing != null
             && (shearAxis == Axis.X && !Gdx.input.isKeyPressed(Input.Keys.C))
@@ -852,34 +852,48 @@ object AdjustRelic {
 
     private fun shearWidget(sb: SpriteBatch, info: AttachInfo) {
         val startPosition = shearing
-        if (startPosition != null) {
+        val axis = shearAxis
+        if (startPosition != null && axis != null) {
             sb.end()
 
-            val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
-            val diff = mouse.cpy().sub(startPosition).scl(0.1f)
-
-            when (shearAxis) {
-                Axis.X -> info.relativeShear(Axis.X, diff.x)
-                Axis.Y -> info.relativeShear(Axis.Y, diff.y)
-                else -> {}
+            val affine = Affine2()
+            affine.shear(info.shearFactor)
+            val test = Vector2().apply {
+                when (axis) {
+                    Axis.X -> y = -1f
+                    Axis.Y -> x = -1f
+                }
             }
+            affine.applyTo(test)
+            test.setLength(200f)
+
+            val center = startPosition.cpy().add(test)
+            val mouse = Vector2(Gdx.input.x.toFloat(), Settings.HEIGHT - Gdx.input.y.toFloat()).sub(center)
+
+            val axisVec = Vector2().apply {
+                when (axis) {
+                    Axis.X -> y = 1f
+                    Axis.Y -> x = 1f
+                }
+            }
+            val angle = mouse.angle(axisVec) * if (axis == Axis.X) -1 else 1
+            info.shear(axis, angle)
 
             if (info.dirtyShear != info.shear) {
                 attachmentShear(info)
             }
 
-            val affine = Affine2()
+            affine.idt()
             val dirtyAffine = Affine2()
-            affine.translate(Settings.WIDTH / 2f, Settings.HEIGHT / 2f)
-//            affine.scale(Settings.scale, Settings.scale)
+            affine.translate(center)
             dirtyAffine.set(affine)
-            affine.shear(info.shearFactor.x, info.shearFactor.y)
-            dirtyAffine.shear(info.dirtyShearFactor.x, info.dirtyShearFactor.y)
+            affine.shear(info.shearFactor)
+            dirtyAffine.shear(info.dirtyShearFactor)
 
-            val a = Vector2(-200f, -200f)
-            val b = Vector2(-200f, +200f)
-            val c = Vector2(+200f, +200f)
-            val d = Vector2(+200f, -200f)
+            val a = Vector2(-100f, -100f)
+            val b = Vector2(-100f, +100f)
+            val c = Vector2(+100f, +100f)
+            val d = Vector2(+100f, -100f)
             val da = a.cpy()
             val db = b.cpy()
             val dc = c.cpy()
@@ -892,6 +906,25 @@ object AdjustRelic {
             dirtyAffine.applyTo(db)
             dirtyAffine.applyTo(dc)
             dirtyAffine.applyTo(dd)
+
+            dirtyAffine.setToShearing(info.dirtyShearFactor)
+            val x1 = Vector2(0f, 1f)
+            val x2 = Vector2(0f, -1f)
+            val y1 = Vector2(1f, 0f)
+            val y2 = Vector2(-1f, 0f)
+            dirtyAffine.applyTo(x1)
+            dirtyAffine.applyTo(x2)
+            dirtyAffine.applyTo(y1)
+            dirtyAffine.applyTo(y2)
+            x1.setLength(200f)
+            x2.setLength(200f)
+            y1.setLength(200f)
+            y2.setLength(200f)
+            dirtyAffine.setToTranslation(center)
+            dirtyAffine.applyTo(x1)
+            dirtyAffine.applyTo(x2)
+            dirtyAffine.applyTo(y1)
+            dirtyAffine.applyTo(y2)
 
             Gdx.gl.glLineWidth(2f)
             debugRenderer.projectionMatrix = projection
@@ -910,6 +943,10 @@ object AdjustRelic {
                 dc.x, dc.y,
                 dd.x, dd.y,
             ))
+            debugRenderer.color = if (axis == Axis.X) Color.GREEN else Color.WHITE
+            debugRenderer.line(x1, x2)
+            debugRenderer.color = if (axis == Axis.Y) Color.GREEN else Color.WHITE
+            debugRenderer.line(y1, y2)
             debugRenderer.end()
             Gdx.gl.glLineWidth(1f)
 

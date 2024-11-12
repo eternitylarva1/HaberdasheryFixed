@@ -145,6 +145,12 @@ class AttachInfo(
     internal fun relativePosition(x: Float, y: Float) = apply {
         this.dirtyPosition.set(position.x + x, position.y + y)
     }
+    internal fun shear(axis: AdjustRelic.Axis, degrees: Float) = apply {
+        when (axis) {
+            AdjustRelic.Axis.X -> dirtyShear.x = degrees
+            AdjustRelic.Axis.Y -> dirtyShear.y = degrees
+        }
+    }
     internal fun relativeShear(axis: AdjustRelic.Axis, v: Float) = apply {
         when (axis) {
             AdjustRelic.Axis.X -> dirtyShear.x = shear.x + v
