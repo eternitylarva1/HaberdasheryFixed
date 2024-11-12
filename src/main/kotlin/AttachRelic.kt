@@ -24,9 +24,13 @@ import haberdashery.spine.FSFileHandle
 import haberdashery.spine.attachments.MaskedRegionAttachment
 import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import haberdashery.spine.attachments.RelicAttachmentLoader
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 import kotlin.io.path.exists
 
 object AttachRelic {
+    private val logger: Logger = LogManager.getLogger(AttachRelic::class.java)
+
     fun receive(relic: AbstractRelic) {
         if (LoseRelic.losingRelic) return
 
@@ -48,7 +52,10 @@ object AttachRelic {
             return
         }
 
-        val bone = skeleton.findBone(info.boneName) ?: return
+        val bone = skeleton.findBone(info.boneName) ?: run {
+            logger.warn("Failed to find bone[\"${info.boneName}\"]")
+            return
+        }
         val slotClone = Slot(
             MySlotData(
                 skeleton.slots.size,
@@ -220,6 +227,9 @@ object AttachRelic {
             drawOrder.indexOfLast { it.bone == bone && it.data !is MySlotData }
         }
         if (ret < 0) {
+            if (info.drawOrderSlotName != null) {
+                logger.warn("Failed to find drawOrderSlotName[\"${info.drawOrderSlotName}\"]")
+            }
             return 0
         }
         return ret
