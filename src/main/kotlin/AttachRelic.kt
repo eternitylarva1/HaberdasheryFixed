@@ -209,7 +209,7 @@ object AttachRelic {
             for ((i, animationName) in skeletonInfo.animations.withIndex()) {
                 skeletonData.findAnimation(animationName)?.let { animation ->
                     val e = state.setAnimation(i, animation, true)
-                    if (skeletonInfo.randomStartTime) {
+                    if (skeletonInfo.animationStartTime == AttachInfo.StartType.RANDOM) {
                         e.time = e.endTime * MathUtils.random()
                     }
                 }

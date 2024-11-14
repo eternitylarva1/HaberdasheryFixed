@@ -141,7 +141,7 @@
           "translate",
           "rotate"
         ],
-        "randomStartTime": true
+        "animationStartTime": "RANDOM"
       },
       "large": false,
       "drawOrder": {
@@ -351,7 +351,7 @@
           "hover",
           "rotate"
         ],
-        "randomStartTime": false
+        "animationStartTime": "DEFAULT"
       },
       "large": false,
       "drawOrder": {
@@ -644,7 +644,7 @@
           "ear_r",
           "blink"
         ],
-        "randomStartTime": true
+        "animationStartTime": "RANDOM"
       },
       "large": false,
       "drawOrder": {
@@ -679,7 +679,7 @@
           "ccw"
         ],
         "speed": 0.1,
-        "randomStartTime": true
+        "animationStartTime": "RANDOM"
       },
       "large": true,
       "drawOrder": {

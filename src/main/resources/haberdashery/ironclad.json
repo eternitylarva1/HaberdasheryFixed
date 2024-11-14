@@ -146,7 +146,7 @@
           "ear_r",
           "blink"
         ],
-        "randomStartTime": true
+        "animationStartTime": "RANDOM"
       },
       "large": false,
       "drawOrder": {
@@ -229,7 +229,7 @@
         "animations": [
           "headbob"
         ],
-        "randomStartTime": true
+        "animationStartTime": "RANDOM"
       },
       "large": false,
       "drawOrder": {
@@ -1489,7 +1489,7 @@
           "morph",
           "wiggle"
         ],
-        "randomStartTime": true
+        "animationStartTime": "RANDOM"
       },
       "large": false,
       "drawOrder": {
@@ -1823,7 +1823,7 @@
           "translate",
           "rotate"
         ],
-        "randomStartTime": true
+        "animationStartTime": "RANDOM"
       },
       "large": false,
       "drawOrder": {

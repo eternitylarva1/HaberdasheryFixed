@@ -174,9 +174,14 @@ class AttachInfo(
         val animations: Array<String>,
         val onFlash: OnFlashInfo?,
         val speed: Float?,
-        val randomStartTime: Boolean,
+        val animationStartTime: StartType = StartType.DEFAULT,
         val boneTransforms: Array<BoneTransform>?,
     )
+
+    enum class StartType {
+        DEFAULT,
+        RANDOM,
+    }
 
     data class BoneTransform(
         val name: String,

@@ -34,7 +34,7 @@
         "animations": [
           "animation"
         ],
-        "randomStartTime": false,
+        "animationStartTime": "DEFAULT",
         "boneTransforms": []
       },
       "large": false,
