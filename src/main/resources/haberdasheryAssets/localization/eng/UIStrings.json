@@ -1,6 +1,12 @@
 {
-  "${mod.id}:TODO": {
-    "TEXT": [
-    ]
+  "${mod.id}:Config": {
+    "TEXT_DICT": {
+      "title": "Haberdashery",
+      "settings": "Settings",
+      "animatedRelics": "Animated Relics",
+      "animatedRelics_tooltip": "Some relics are animated on the character.",
+      "playSfx": "Play Sound Effects",
+      "playSfx_tooltip": "A few relics will occasionally play sounds."
+    }
   }
 }

@@ -1,7 +1,6 @@
 package haberdashery
 
 import basemod.BaseMod
-import basemod.ModPanel
 import basemod.abstracts.CustomSavable
 import basemod.devcommands.ConsoleCommand
 import basemod.interfaces.*
@@ -9,13 +8,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.ImageMaster
+import com.megacrit.cardcrawl.localization.UIStrings
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.devcommands.HaberdasheryCommand
 import haberdashery.extensions.chosenExclusions
+import haberdashery.extensions.panel
 
 @SpireInitializer
 class HaberdasheryMod :
     PostInitializeSubscriber,
+    EditStringsSubscriber,
     AddAudioSubscriber,
     RelicGetSubscriber,
     PreUpdateSubscriber,
@@ -36,7 +38,19 @@ class HaberdasheryMod :
     }
 
     override fun receivePostInitialize() {
-        val settingsPanel = ModPanel()
+        val settingsPanel = panel {
+            loadStrings(makeID("Config"))
+            spacing = 5f
+            title {
+                textID = "title"
+            }
+            h2 {
+                textID = "settings"
+            }
+            indent {
+                fromConfig(Config)
+            }
+        }
 
         BaseMod.registerModBadge(
             ImageMaster.loadImage(assetPath("images/modBadge.png")),
@@ -60,6 +74,11 @@ class HaberdasheryMod :
                 }
             }
         })
+    }
+
+    override fun receiveEditStrings() {
+        // TODO
+        BaseMod.loadCustomStringsFile(UIStrings::class.java, assetPath("localization/eng/UIStrings.json"))
     }
 
     override fun receiveAddAudio() {
