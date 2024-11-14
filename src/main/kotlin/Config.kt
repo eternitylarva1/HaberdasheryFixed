@@ -16,7 +16,7 @@ object Config {
 
     // Config properties
     var animatedRelics by BooleanValue(true)
-    var playSfx by BooleanValue(false)
+    var playSfx by BooleanValue(true)
 
     init {
         config = try {
