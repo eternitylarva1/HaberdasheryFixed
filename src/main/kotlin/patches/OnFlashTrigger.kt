@@ -8,6 +8,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch
 import com.megacrit.cardcrawl.actions.AbstractGameAction
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.relics.AbstractRelic
+import haberdashery.Config
 import haberdashery.database.AttachDatabase
 import haberdashery.extensions.getPrivate
 import haberdashery.extensions.subSkeletons
@@ -21,6 +22,7 @@ object OnFlashTrigger {
     @JvmStatic
     @SpirePrefixPatch
     fun onFlash(__instance: AbstractRelic) {
+        if (!Config.animatedRelics) return
         val player = AbstractDungeon.player ?: return
         val info = AttachDatabase.getInfo(player.chosenClass, __instance.relicId)?.skeletonInfo ?: return
         if (info.onFlash == null) return
