@@ -29,7 +29,8 @@ object OnFlashTrigger {
         val subSkeleton = player.subSkeletons[__instance.relicId] ?: return
 
         subSkeleton.skeleton.data.findAnimation(info.onFlash.animation.name)?.let { animation ->
-            subSkeleton.anim.addAnimation(0, animation, false, 0f)
+            val e = subSkeleton.anim.addAnimation(0, animation, false, 0f)
+            info.onFlash.animation.speed?.let { e.timeScale = it }
             if (info.onFlash.beforeAction != null) {
                 val listeners = subSkeleton.anim.getPrivate<Array<AnimationStateListener>>("listeners", clazz = AnimationState::class.java)
                 val action = object : AbstractGameAction() {
