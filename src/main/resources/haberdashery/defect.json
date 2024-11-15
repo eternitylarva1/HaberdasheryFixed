@@ -1360,7 +1360,7 @@
         "onFlash": {
           "animation": {
             "name": "insert",
-            "startTime": "EVENLY_SPACED"
+            "startTime": "DEFAULT"
           },
           "beforeAction": "com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction"
         },
