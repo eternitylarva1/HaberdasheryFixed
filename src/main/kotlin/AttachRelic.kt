@@ -213,13 +213,14 @@ object AttachRelic {
                     animationInfo.speed?.let { e.timeScale = it }
                     when (animationInfo.startTime) {
                         RANDOM -> e.time = e.endTime * MathUtils.random()
-                        EVENLY_SPACED -> if (animation.name == "orbit") { // TODO unhardcode
+                        EVENLY_SPACED -> {
                             e.time = 0f
                             val others = AbstractDungeon.player.subSkeletons.values
                                 .filter { it.skeleton.data.name == skeletonData.name }
                             val count = others.size + 1
-                            others.forEachIndexed { ii, (skeleton, anim) ->
+                            others.forEachIndexed { ii, (_, anim) ->
                                     anim.tracks
+                                        .filterNotNull()
                                         .firstOrNull { it.animation.name == animation.name }
                                         ?.let {
                                             it.time = (ii+1) * (it.endTime / count)
