@@ -819,7 +819,7 @@
           "orbit",
           "rotate"
         ],
-        "animationStartTime": "RANDOM",
+        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -861,7 +861,7 @@
           "orbit",
           "rotate"
         ],
-        "animationStartTime": "RANDOM",
+        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -901,7 +901,7 @@
           "orbit",
           "rotate"
         ],
-        "animationStartTime": "RANDOM",
+        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -943,7 +943,7 @@
           "orbit",
           "rotate"
         ],
-        "animationStartTime": "RANDOM",
+        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -985,7 +985,7 @@
           "orbit",
           "rotate"
         ],
-        "animationStartTime": "RANDOM",
+        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -1026,7 +1026,7 @@
           "orbit",
           "spin"
         ],
-        "animationStartTime": "RANDOM",
+        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -1067,7 +1067,7 @@
           "orbit",
           "tickTock"
         ],
-        "animationStartTime": "RANDOM",
+        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -1135,7 +1135,7 @@
           "orbit",
           "rotate"
         ],
-        "animationStartTime": "RANDOM",
+        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -1176,7 +1176,7 @@
           "orbit",
           "rotate"
         ],
-        "animationStartTime": "RANDOM",
+        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -1217,7 +1217,7 @@
           "orbit",
           "rotate"
         ],
-        "animationStartTime": "RANDOM",
+        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -1285,7 +1285,7 @@
           "beforeAction": "com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction"
         },
         "speed": 1.5,
-        "animationStartTime": "RANDOM",
+        "animationStartTime": "DEFAULT",
         "boneTransforms": []
       },
       "large": true,

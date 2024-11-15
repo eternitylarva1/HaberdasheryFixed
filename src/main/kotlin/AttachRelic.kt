@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.database.AttachDatabase
 import haberdashery.database.AttachInfo
+import haberdashery.database.AttachInfo.StartType.*
 import haberdashery.database.MySlotData
 import haberdashery.extensions.*
 import haberdashery.patches.LoseRelic
@@ -200,6 +201,7 @@ object AttachRelic {
                 SkeletonJson(toDispose)
             }
             val skeletonData = json.readSkeletonData(FSFileHandle(skeletonJsonPath))
+            skeletonData.name = skeletonInfo.name
             val subSkeleton = Skeleton(skeletonData)
             subSkeleton.color = Color.WHITE
             val stateData = AnimationStateData(skeletonData)
@@ -209,8 +211,22 @@ object AttachRelic {
             for ((i, animationName) in skeletonInfo.animations.withIndex()) {
                 skeletonData.findAnimation(animationName)?.let { animation ->
                     val e = state.setAnimation(i, animation, true)
-                    if (skeletonInfo.animationStartTime == AttachInfo.StartType.RANDOM) {
-                        e.time = e.endTime * MathUtils.random()
+                    when (skeletonInfo.animationStartTime) {
+                        RANDOM -> e.time = e.endTime * MathUtils.random()
+                        EVENLY_SPACED -> if (animation.name == "orbit") { // TODO unhardcode
+                            e.time = 0f
+                            val others = AbstractDungeon.player.subSkeletons.values
+                                .filter { it.skeleton.data.name == skeletonData.name }
+                            val count = others.size + 1
+                            others.forEachIndexed { ii, (skeleton, anim) ->
+                                    anim.tracks
+                                        .firstOrNull { it.animation.name == animation.name }
+                                        ?.let {
+                                            it.time = (ii+1) * (it.endTime / count)
+                                        }
+                                }
+                        }
+                        DEFAULT -> {}
                     }
                 }
             }

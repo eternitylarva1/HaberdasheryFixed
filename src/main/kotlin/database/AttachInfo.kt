@@ -181,6 +181,7 @@ class AttachInfo(
     enum class StartType {
         DEFAULT,
         RANDOM,
+        EVENLY_SPACED,
     }
 
     data class BoneTransform(
