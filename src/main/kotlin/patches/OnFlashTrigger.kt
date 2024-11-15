@@ -29,7 +29,7 @@ object OnFlashTrigger {
         val subSkeleton = player.subSkeletons[__instance.relicId] ?: return
 
         subSkeleton.skeleton.data.findAnimation(info.onFlash.animation.name)?.let { animation ->
-            val e = subSkeleton.anim.addAnimation(0, animation, false, 0f)
+            val e = subSkeleton.anim.addAnimation(lastEmptyTrackIndex(subSkeleton.anim), animation, false, 0f)
             info.onFlash.animation.speed?.let { e.timeScale = it }
             if (info.onFlash.beforeAction != null) {
                 val listeners = subSkeleton.anim.getPrivate<Array<AnimationStateListener>>("listeners", clazz = AnimationState::class.java)
@@ -63,5 +63,17 @@ object OnFlashTrigger {
                 AbstractDungeon.actionManager.addToBottom(action)
             }
         }
+    }
+
+    private fun lastEmptyTrackIndex(anim: AnimationState): Int {
+        if (anim.tracks.size == 0) {
+            return 0
+        }
+        for (i in (anim.tracks.size - 1) downTo 0) {
+            if (anim.tracks[i] != null) {
+                return i+1
+            }
+        }
+        return 0
     }
 }
