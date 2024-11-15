@@ -171,11 +171,15 @@ class AttachInfo(
     data class SkeletonInfo(
         val name: String,
         val useRelicAsAtlas: Boolean,
-        val animations: Array<String>,
+        var animations: Array<AnimationInfo>,
         val onFlash: OnFlashInfo?,
-        val speed: Float?,
-        val animationStartTime: StartType = StartType.DEFAULT,
         val boneTransforms: Array<BoneTransform>?,
+    )
+
+    data class AnimationInfo(
+        val name: String,
+        val speed: Float?,
+        val startTime: StartType = StartType.DEFAULT,
     )
 
     enum class StartType {
@@ -192,7 +196,7 @@ class AttachInfo(
     )
 
     data class OnFlashInfo(
-        val animation: String,
+        val animation: AnimationInfo,
         val beforeAction: String?,
     )
 }

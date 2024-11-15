@@ -62,9 +62,11 @@
         "name": "HappyFlower",
         "useRelicAsAtlas": true,
         "animations": [
-          "headbob"
-        ],
-        "animationStartTime": "RANDOM"
+          {
+            "name": "headbob",
+            "startTime": "RANDOM"
+          }
+        ]
       },
       "large": false,
       "drawOrder": {
@@ -580,14 +582,31 @@
         "name": "Courier",
         "useRelicAsAtlas": true,
         "animations": [
-          "tail1",
-          "tail2",
-          "tail3",
-          "ear_l",
-          "ear_r",
-          "blink"
-        ],
-        "animationStartTime": "RANDOM"
+          {
+            "name": "tail1",
+            "startTime": "RANDOM"
+          },
+          {
+            "name": "tail2",
+            "startTime": "RANDOM"
+          },
+          {
+            "name": "tail3",
+            "startTime": "RANDOM"
+          },
+          {
+            "name": "ear_l",
+            "startTime": "RANDOM"
+          },
+          {
+            "name": "ear_r",
+            "startTime": "RANDOM"
+          },
+          {
+            "name": "blink",
+            "startTime": "RANDOM"
+          }
+        ]
       },
       "large": false,
       "drawOrder": {
@@ -816,10 +835,15 @@
         "name": "Orbit",
         "useRelicAsAtlas": true,
         "animations": [
-          "orbit",
-          "rotate"
+          {
+            "name": "orbit",
+            "startTime": "EVENLY_SPACED"
+          },
+          {
+            "name": "rotate",
+            "startTime": "EVENLY_SPACED"
+          }
         ],
-        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -858,10 +882,15 @@
         "name": "Orbit",
         "useRelicAsAtlas": true,
         "animations": [
-          "orbit",
-          "rotate"
+          {
+            "name": "orbit",
+            "startTime": "EVENLY_SPACED"
+          },
+          {
+            "name": "rotate",
+            "startTime": "EVENLY_SPACED"
+          }
         ],
-        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -898,10 +927,15 @@
         "name": "Orbit",
         "useRelicAsAtlas": true,
         "animations": [
-          "orbit",
-          "rotate"
+          {
+            "name": "orbit",
+            "startTime": "EVENLY_SPACED"
+          },
+          {
+            "name": "rotate",
+            "startTime": "EVENLY_SPACED"
+          }
         ],
-        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -940,10 +974,15 @@
         "name": "Orbit",
         "useRelicAsAtlas": true,
         "animations": [
-          "orbit",
-          "rotate"
+          {
+            "name": "orbit",
+            "startTime": "EVENLY_SPACED"
+          },
+          {
+            "name": "rotate",
+            "startTime": "EVENLY_SPACED"
+          }
         ],
-        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -982,10 +1021,15 @@
         "name": "Orbit",
         "useRelicAsAtlas": true,
         "animations": [
-          "orbit",
-          "rotate"
+          {
+            "name": "orbit",
+            "startTime": "EVENLY_SPACED"
+          },
+          {
+            "name": "rotate",
+            "startTime": "EVENLY_SPACED"
+          }
         ],
-        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -1023,10 +1067,15 @@
         "name": "Orbit",
         "useRelicAsAtlas": true,
         "animations": [
-          "orbit",
-          "spin"
+          {
+            "name": "orbit",
+            "startTime": "EVENLY_SPACED"
+          },
+          {
+            "name": "spin",
+            "startTime": "EVENLY_SPACED"
+          }
         ],
-        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -1064,10 +1113,15 @@
         "name": "Orbit",
         "useRelicAsAtlas": true,
         "animations": [
-          "orbit",
-          "tickTock"
+          {
+            "name": "orbit",
+            "startTime": "EVENLY_SPACED"
+          },
+          {
+            "name": "tickTock",
+            "startTime": "EVENLY_SPACED"
+          }
         ],
-        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -1132,10 +1186,15 @@
         "name": "Orbit",
         "useRelicAsAtlas": true,
         "animations": [
-          "orbit",
-          "rotate"
+          {
+            "name": "orbit",
+            "startTime": "EVENLY_SPACED"
+          },
+          {
+            "name": "rotate",
+            "startTime": "EVENLY_SPACED"
+          }
         ],
-        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -1173,10 +1232,15 @@
         "name": "Orbit",
         "useRelicAsAtlas": true,
         "animations": [
-          "orbit",
-          "rotate"
+          {
+            "name": "orbit",
+            "startTime": "EVENLY_SPACED"
+          },
+          {
+            "name": "rotate",
+            "startTime": "EVENLY_SPACED"
+          }
         ],
-        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -1214,10 +1278,15 @@
         "name": "Orbit",
         "useRelicAsAtlas": true,
         "animations": [
-          "orbit",
-          "rotate"
+          {
+            "name": "orbit",
+            "startTime": "EVENLY_SPACED"
+          },
+          {
+            "name": "rotate",
+            "startTime": "EVENLY_SPACED"
+          }
         ],
-        "animationStartTime": "EVENLY_SPACED",
         "boneTransforms": [
           {
             "name": "relic",
@@ -1281,11 +1350,12 @@
         "useRelicAsAtlas": false,
         "animations": [],
         "onFlash": {
-          "animation": "insert",
+          "animation": {
+            "name": "insert",
+            "startTime": "EVENLY_SPACED"
+          },
           "beforeAction": "com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction"
         },
-        "speed": 1.5,
-        "animationStartTime": "DEFAULT",
         "boneTransforms": []
       },
       "large": true,

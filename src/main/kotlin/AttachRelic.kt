@@ -206,12 +206,12 @@ object AttachRelic {
             subSkeleton.color = Color.WHITE
             val stateData = AnimationStateData(skeletonData)
             val state = AnimationState(stateData)
-            skeletonInfo.speed?.let { state.timeScale = it }
             state.addListener(AnimationEventListener(state, parentSkeleton, HaberdasheryMod.makeID(relic.relicId)))
-            for ((i, animationName) in skeletonInfo.animations.withIndex()) {
-                skeletonData.findAnimation(animationName)?.let { animation ->
+            for ((i, animationInfo) in skeletonInfo.animations.withIndex()) {
+                skeletonData.findAnimation(animationInfo.name)?.let { animation ->
                     val e = state.setAnimation(i, animation, true)
-                    when (skeletonInfo.animationStartTime) {
+                    animationInfo.speed?.let { e.timeScale = it }
+                    when (animationInfo.startTime) {
                         RANDOM -> e.time = e.endTime * MathUtils.random()
                         EVENLY_SPACED -> if (animation.name == "orbit") { // TODO unhardcode
                             e.time = 0f

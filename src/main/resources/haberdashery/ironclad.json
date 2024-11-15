@@ -139,14 +139,31 @@
         "name": "Courier",
         "useRelicAsAtlas": true,
         "animations": [
-          "tail1",
-          "tail2",
-          "tail3",
-          "ear_l",
-          "ear_r",
-          "blink"
-        ],
-        "animationStartTime": "RANDOM"
+          {
+            "name": "tail1",
+            "startTime": "RANDOM"
+          },
+          {
+            "name": "tail2",
+            "startTime": "RANDOM"
+          },
+          {
+            "name": "tail3",
+            "startTime": "RANDOM"
+          },
+          {
+            "name": "ear_l",
+            "startTime": "RANDOM"
+          },
+          {
+            "name": "ear_r",
+            "startTime": "RANDOM"
+          },
+          {
+            "name": "blink",
+            "startTime": "RANDOM"
+          }
+        ]
       },
       "large": false,
       "drawOrder": {
@@ -227,9 +244,11 @@
         "name": "HappyFlower",
         "useRelicAsAtlas": true,
         "animations": [
-          "headbob"
-        ],
-        "animationStartTime": "RANDOM"
+          {
+            "name": "headbob",
+            "startTime": "RANDOM"
+          }
+        ]
       },
       "large": false,
       "drawOrder": {
@@ -1486,10 +1505,15 @@
         "name": "SelfFormingClay",
         "useRelicAsAtlas": true,
         "animations": [
-          "morph",
-          "wiggle"
-        ],
-        "animationStartTime": "RANDOM"
+          {
+            "name": "morph",
+            "startTime": "RANDOM"
+          },
+          {
+            "name": "wiggle",
+            "startTime": "RANDOM"
+          }
+        ]
       },
       "large": false,
       "drawOrder": {
@@ -1820,10 +1844,15 @@
         "name": "UnceasingTop",
         "useRelicAsAtlas": true,
         "animations": [
-          "translate",
-          "rotate"
-        ],
-        "animationStartTime": "RANDOM"
+          {
+            "name": "translate",
+            "startTime": "RANDOM"
+          },
+          {
+            "name": "rotate",
+            "startTime": "RANDOM"
+          }
+        ]
       },
       "large": false,
       "drawOrder": {
