@@ -353,16 +353,13 @@
         "useRelicAsAtlas": true,
         "animations": [
           {
-            "name": "headBend",
-            "startTime": "DEFAULT"
+            "name": "headBend"
           },
           {
-            "name": "hover",
-            "startTime": "DEFAULT"
+            "name": "hover"
           },
           {
-            "name": "rotate",
-            "startTime": "DEFAULT"
+            "name": "rotate"
           }
         ]
       },
@@ -706,8 +703,7 @@
         "useRelicAsAtlas": true,
         "animations": [
           {
-            "name": "large",
-            "startTime": "DEFAULT"
+            "name": "large"
           },
           {
             "name": "ccw",

@@ -2,8 +2,10 @@ package haberdashery.database
 
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
+import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
 import haberdashery.AdjustRelic
+import haberdashery.database.adapters.StartTypeAdapter
 import java.nio.file.Path
 import kotlin.math.absoluteValue
 
@@ -182,6 +184,7 @@ class AttachInfo(
         val startTime: StartType = StartType.DEFAULT,
     )
 
+    @JsonAdapter(StartTypeAdapter::class)
     enum class StartType {
         DEFAULT,
         RANDOM,

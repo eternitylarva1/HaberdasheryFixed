@@ -33,8 +33,7 @@
         "useRelicAsAtlas": false,
         "animations": [
           {
-            "name": "animation",
-            "startTime": "DEFAULT"
+            "name": "animation"
           }
         ],
         "boneTransforms": []

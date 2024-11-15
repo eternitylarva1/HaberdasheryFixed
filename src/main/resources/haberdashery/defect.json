@@ -1080,8 +1080,7 @@
         "onFlash": {
           "animation": {
             "name": "spin",
-            "speed": 1.5,
-            "startTime": "DEFAULT"
+            "speed": 1.5
           }
         },
         "boneTransforms": [
@@ -1359,8 +1358,7 @@
         "animations": [],
         "onFlash": {
           "animation": {
-            "name": "insert",
-            "startTime": "DEFAULT"
+            "name": "insert"
           },
           "beforeAction": "com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction"
         },
