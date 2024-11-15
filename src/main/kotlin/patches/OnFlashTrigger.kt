@@ -23,6 +23,7 @@ object OnFlashTrigger {
     @SpirePrefixPatch
     fun onFlash(__instance: AbstractRelic) {
         if (!Config.animatedRelics) return
+        if (!__instance.isObtained || !__instance.isDone) return
         val player = AbstractDungeon.player ?: return
         val info = AttachDatabase.getInfo(player.chosenClass, __instance.relicId)?.skeletonInfo ?: return
         if (info.onFlash == null) return
