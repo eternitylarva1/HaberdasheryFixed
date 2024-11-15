@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.characters.Watcher
 import haberdashery.HaberdasheryMod
 import haberdashery.database.MySlotData
+import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import kotlin.reflect.KFunction
 import kotlin.reflect.full.declaredMemberFunctions
 
@@ -34,7 +35,7 @@ object LightsOutSupport {
             val slot = ___skeleton.findSlot(HaberdasheryMod.makeID(relic.relicId)) ?: continue
             val data = slot.data as? MySlotData ?: continue
             if (!data.visible) continue
-            val attachment = slot.attachment as? RegionAttachment ?: continue
+            val attachment = slot.attachment ?: continue
 
             try {
                 if (!methodsCache.contains(relic::class.java)) {
@@ -47,13 +48,27 @@ object LightsOutSupport {
                 if (methods?.color == null || methods.xyri == null) continue
                 val color: Array<Color> = methods.color.call(relic)
                 val xyri: FloatArray = methods.xyri.call(relic)
-                val pos = Vector2(attachment.x, attachment.y).rotate(slot.bone.worldRotationX)
+                val pos = when (attachment) {
+                    is RegionAttachment ->
+                        Vector2(attachment.x, attachment.y)
+                            .rotate(slot.bone.worldRotationX)
+                            .add(___skeleton.x, ___skeleton.y)
+                            .add(slot.bone.worldX, slot.bone.worldY)
+                    is OffsetSkeletonAttachment -> {
+                        val bone = attachment.skeleton.findBone("relic") ?: continue
+                        val offset = slot.bone.localToWorld(attachment.position.cpy())
+                        Vector2(bone.worldX, bone.worldY)
+                            .add(___skeleton.x, ___skeleton.y)
+                            .add(offset)
+                    }
+                    else -> continue
+                }
 
                 val lightData = classLightData.kotlin.constructors
                     .first { it.parameters.size == 5 }
                     .call(
-                        ___skeleton.x + slot.bone.worldX + pos.x,
-                        ___skeleton.y + slot.bone.worldY + pos.y,
+                        pos.x,
+                        pos.y,
                         xyri[2] * 0.25f,
                         xyri[3] * 1f,
                         color[0]
