@@ -707,8 +707,7 @@
         "animations": [
           {
             "name": "large",
-            "speed": 0.1,
-            "startTime": "RANDOM"
+            "startTime": "DEFAULT"
           },
           {
             "name": "ccw",
