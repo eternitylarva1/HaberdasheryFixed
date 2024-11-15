@@ -1073,9 +1073,17 @@
           },
           {
             "name": "spin",
+            "speed": 0.3,
             "startTime": "RANDOM"
           }
         ],
+        "onFlash": {
+          "animation": {
+            "name": "spin",
+            "speed": 1.5,
+            "startTime": "DEFAULT"
+          }
+        },
         "boneTransforms": [
           {
             "name": "relic",
