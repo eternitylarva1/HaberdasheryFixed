@@ -352,15 +352,9 @@
         "name": "StrangeSpoon",
         "useRelicAsAtlas": true,
         "animations": [
-          {
-            "name": "headBend"
-          },
-          {
-            "name": "hover"
-          },
-          {
-            "name": "rotate"
-          }
+          "headBend",
+          "hover",
+          "rotate"
         ]
       },
       "large": false,
@@ -702,9 +696,7 @@
         "name": "Spin",
         "useRelicAsAtlas": true,
         "animations": [
-          {
-            "name": "large"
-          },
+          "large",
           {
             "name": "ccw",
             "speed": 0.1,

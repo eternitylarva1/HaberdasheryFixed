@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.RelicLibrary
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.HaberdasheryMod
+import haberdashery.database.adapters.AnimationInfoTypeAdapterFactory
 import haberdashery.extensions.asRegion
 import haberdashery.extensions.getPrivate
 import haberdashery.extensions.skeleton
@@ -105,6 +106,7 @@ object AttachDatabase {
     fun save(character: AbstractPlayer.PlayerClass, skeleton: Skeleton?) {
         logger.info("Saving attach info...")
         val gson = GsonBuilder()
+            .registerTypeAdapterFactory(AnimationInfoTypeAdapterFactory())
             .setPrettyPrinting()
             .create()
         database[character]?.let {
@@ -160,7 +162,9 @@ object AttachDatabase {
         fromJson<T>(reader, object : TypeToken<T>() {}.type)
 
     private fun load(path: Path) {
-        val gson = GsonBuilder().create()
+        val gson = GsonBuilder()
+            .registerTypeAdapterFactory(AnimationInfoTypeAdapterFactory())
+            .create()
         val reader = path.reader()
         val data = gson.fromJson<LinkedHashMap<AbstractPlayer.PlayerClass?, LinkedHashMap<String, AttachInfo>>>(reader)
         reader.close()

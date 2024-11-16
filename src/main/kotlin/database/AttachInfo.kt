@@ -13,7 +13,7 @@ class AttachInfo(
     val boneName: String
 ) {
     // for gson initializing
-    private constructor() : this("") {}
+    private constructor() : this("")
 
     @Transient
     var path: Path? = null
@@ -180,9 +180,12 @@ class AttachInfo(
 
     data class AnimationInfo(
         val name: String,
-        val speed: Float?,
+        val speed: Float? = null,
         val startTime: StartType = StartType.DEFAULT,
-    )
+    ) {
+        // Necessary for gson read to have correct default values
+        private constructor() : this("gson")
+    }
 
     @JsonAdapter(StartTypeAdapter::class)
     enum class StartType {

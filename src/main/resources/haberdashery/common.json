@@ -32,9 +32,7 @@
         "name": "Sozu",
         "useRelicAsAtlas": false,
         "animations": [
-          {
-            "name": "animation"
-          }
+          "animation"
         ],
         "boneTransforms": []
       },
