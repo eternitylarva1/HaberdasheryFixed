@@ -58,10 +58,10 @@
       }
     },
     "Anchor": {
-      "boneName": "Arm_R_2",
+      "boneName": "Arm_R_3",
       "large": false,
       "drawOrder": {
-        "slotName": "sleeve_left",
+        "slotName": "staff",
         "zIndex": 0
       },
       "hideSlotNames": [],
@@ -72,10 +72,10 @@
         "x": 0.722449,
         "y": 0.722449
       },
-      "rotation": 50.39515,
+      "rotation": -121.99067,
       "position": {
-        "x": 209.84477,
-        "y": 62.837616
+        "x": -206.22119,
+        "y": -119.47486
       },
       "shear": {
         "x": 0.0,
