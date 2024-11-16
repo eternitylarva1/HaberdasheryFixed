@@ -726,6 +726,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Pen Nib": {
+      "boneName": "Arm_R_3",
+      "large": false,
+      "drawOrder": {
+        "slotName": "staff",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.37277842,
+        "y": 0.37277842
+      },
+      "rotation": 34.67904,
+      "position": {
+        "x": 156.90979,
+        "y": 81.36448
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }

@@ -721,6 +721,33 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Pen Nib": {
+      "boneName": "Hair_R_6",
+      "large": false,
+      "drawOrder": {
+        "slotName": "hair",
+        "zIndex": -1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [
+        "hair"
+      ],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.20860934,
+        "y": 0.20860934
+      },
+      "rotation": 149.04967,
+      "position": {
+        "x": -0.40175343,
+        "y": 4.2986736
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
