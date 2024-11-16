@@ -39,7 +39,7 @@ class AttachInfo(
         private set
 
     @Transient
-    var scale: Vector2 = Vector2()
+    var scale: Vector2 = Vector2(1f, 1f)
         private set
     var flipHorizontal: Boolean = false
         private set
@@ -58,7 +58,7 @@ class AttachInfo(
         get() = Vector2(calcShearFactor(shear.x), calcShearFactor(shear.y))
 
     @SerializedName("scale")
-    internal var dirtyScale: Vector2 = Vector2()
+    internal var dirtyScale: Vector2 = Vector2(1f, 1f)
         private set
     @SerializedName("rotation")
     internal var dirtyRotation: Float = rotation
