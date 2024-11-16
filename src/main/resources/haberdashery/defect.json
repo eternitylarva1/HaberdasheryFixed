@@ -5,7 +5,7 @@
       "large": false,
       "drawOrder": {
         "slotName": "Eye_up",
-        "zIndex": 0
+        "zIndex": 5
       },
       "hideSlotNames": [],
       "requiredSlotNames": [],
@@ -31,7 +31,7 @@
       "large": false,
       "drawOrder": {
         "slotName": "Eye_up",
-        "zIndex": 0
+        "zIndex": 5
       },
       "hideSlotNames": [
         "head",
@@ -1167,10 +1167,10 @@
         "slotName": "Eye_up",
         "zIndex": 0
       },
-      "hideSlotNames": [
-        "Eye_up"
-      ],
-      "requiredSlotNames": [],
+      "hideSlotNames": [],
+      "requiredSlotNames": [
+		"Eye_up"
+	  ],
       "flipHorizontal": false,
       "flipVertical": false,
       "scale": {
