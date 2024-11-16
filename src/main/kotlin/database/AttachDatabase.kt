@@ -43,6 +43,14 @@ object AttachDatabase {
     private val maskTextureCache = mutableMapOf<String, TextureRegion>()
     private val paths: LinkedHashSet<Path> = linkedSetOf()
 
+    private val gsonLoad = GsonBuilder()
+        .registerTypeAdapterFactory(AnimationInfoTypeAdapterFactory())
+        .create()
+    private val gsonSave = GsonBuilder()
+        .registerTypeAdapterFactory(AnimationInfoTypeAdapterFactory())
+        .setPrettyPrinting()
+        .create()
+
     init {
         load()
     }
@@ -105,12 +113,8 @@ object AttachDatabase {
 
     fun save(character: AbstractPlayer.PlayerClass, skeleton: Skeleton?) {
         logger.info("Saving attach info...")
-        val gson = GsonBuilder()
-            .registerTypeAdapterFactory(AnimationInfoTypeAdapterFactory())
-            .setPrettyPrinting()
-            .create()
         database[character]?.let {
-            val json = gson.toJson(mapOf(character to it))
+            val json = gsonSave.toJson(mapOf(character to it))
             val filename = if (character == Enums.COMMON) {
                 "common.json"
             } else {
@@ -162,11 +166,8 @@ object AttachDatabase {
         fromJson<T>(reader, object : TypeToken<T>() {}.type)
 
     private fun load(path: Path) {
-        val gson = GsonBuilder()
-            .registerTypeAdapterFactory(AnimationInfoTypeAdapterFactory())
-            .create()
         val reader = path.reader()
-        val data = gson.fromJson<LinkedHashMap<AbstractPlayer.PlayerClass?, LinkedHashMap<String, AttachInfo>>>(reader)
+        val data = gsonLoad.fromJson<LinkedHashMap<AbstractPlayer.PlayerClass?, LinkedHashMap<String, AttachInfo>>>(reader)
         reader.close()
 
         paths.add(path.parent)
