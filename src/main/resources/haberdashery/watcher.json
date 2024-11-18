@@ -839,6 +839,47 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Melange": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "Spin",
+        "useRelicAsAtlas": true,
+        "animations": [
+          {
+            "name": "ccw",
+            "speed": 0.3,
+            "startTime": "RANDOM"
+          },
+		  {
+            "name": "scalePulse",
+            "speed": 0.2,
+            "startTime": "RANDOM"
+          }
+        ]
+      },
+      "large": false,
+      "drawOrder": {
+        "slotName": "ear",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.5873016,
+        "y": 0.5873016
+      },
+      "rotation": -95.89604,
+      "position": {
+        "x": -71.71346,
+        "y": -252.7174
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
