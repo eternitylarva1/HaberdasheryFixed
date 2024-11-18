@@ -18,6 +18,9 @@ object Config {
     var animatedRelics by BooleanValue(true)
     var playSfx by BooleanValue(true)
 
+    // FTUE saves, don't appear in settings panel
+    internal var ftueExclusionDragDrop by BooleanValue(false)
+
     init {
         config = try {
             SpireConfig(HaberdasheryMod.ID, "config", defaults())

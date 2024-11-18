@@ -8,5 +8,11 @@
       "playSfx": "Play Sound Effects",
       "playSfx_tooltip": "A few relics will occasionally play sounds."
     }
+  },
+  "${mod.id}:Ftue": {
+    "TEXT_DICT": {
+      "exclusion_header": "Exclusive Relic Visuals",
+      "exclusion_body": "You have two relics that cannot both be displayed on your character at the same time. NL You may drag and drop %1$s or %2$s onto your character to choose which gets displayed."
+    }
   }
 }

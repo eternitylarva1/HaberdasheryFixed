@@ -32,7 +32,7 @@ object PauseAnimation {
             override fun edit(m: MethodCall) {
                 if (m.className == AnimationState::class.qualifiedName && m.methodName == "update") {
                     m.replace(
-                        "if (!${AdjustRelic::class.qualifiedName}.pauseAnimation()) {" +
+                        "if (!${AdjustRelic::class.qualifiedName}.pauseAnimation() && !${Ftue::class.qualifiedName}.fixDoubleAnimation) {" +
                                 "\$_ = \$proceed(\$\$);" +
                                 "}"
                     )
@@ -43,7 +43,7 @@ object PauseAnimation {
     @JvmStatic
     @SpirePrefixPatch
     fun animateAttachments(__instance: AbstractPlayer) {
-        if (AdjustRelic.pauseAnimation()) return
+        if (AdjustRelic.pauseAnimation() || Ftue.fixDoubleAnimation) return
 
         __instance.subSkeletons.forEach { (_, it) ->
             if (Config.animatedRelics) {

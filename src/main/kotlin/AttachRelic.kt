@@ -11,13 +11,16 @@ import com.esotericsoftware.spine.attachments.Attachment
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
+import com.megacrit.cardcrawl.helpers.FontHelper
 import com.megacrit.cardcrawl.helpers.ImageMaster
+import com.megacrit.cardcrawl.helpers.RelicLibrary
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.database.AttachDatabase
 import haberdashery.database.AttachInfo
 import haberdashery.database.AttachInfo.StartType.*
 import haberdashery.database.MySlotData
 import haberdashery.extensions.*
+import haberdashery.patches.Ftue
 import haberdashery.patches.LoseRelic
 import haberdashery.patches.SubSkeleton
 import haberdashery.spine.AnimationEventListener
@@ -273,6 +276,13 @@ object AttachRelic {
                     }
                 }
             }
+        }
+
+        if (Ftue.canOpen(Ftue.EXCLUSION) && exclusionCount.values.any { it.size > 1 }) {
+            val relicNames = exclusionCount.values.first { it.size > 1 }
+                .map { it.removePrefix(HaberdasheryMod.makeID("")) }
+                .map { FontHelper.colorString(RelicLibrary.getRelic(it)?.name ?: "", "y") }
+            Ftue.open(Ftue.EXCLUSION, relicNames[0], relicNames[1])
         }
 
         // Hide relics based on exclusion group
