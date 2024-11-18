@@ -1,5 +1,6 @@
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import org.apache.tools.ant.filters.ReplaceTokens
 import java.util.jar.JarFile
 
 plugins {
@@ -56,8 +57,14 @@ dependencies {
 tasks.processResources {
     filteringCharset = "UTF-8"
     val expansion: FileCopyDetails.() -> Unit = {
-        expand(
-            "mod" to project.extra.properties,
+        val tokens = project.extra.properties.entries
+            .filter { it.value is String }
+            .associate { "mod.${it.key}" to it.value }
+        filter(
+            ReplaceTokens::class,
+            "tokens" to tokens,
+            "beginToken" to "\${",
+            "endToken" to "}",
         )
     }
     filesMatching("ModTheSpire.json", expansion)
