@@ -308,7 +308,9 @@ object AttachRelic {
             if (!data.visible || slot.attachment == null) continue
 
             for (slotName in data.hideSlotNames) {
-                skeleton.setAttachment(slotName, null)
+                if (skeleton.findSlot(slotName) != null) {
+                    skeleton.setAttachment(slotName, null)
+                }
             }
         }
 
