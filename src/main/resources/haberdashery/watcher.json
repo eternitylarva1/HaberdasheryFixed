@@ -751,6 +751,94 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "FaceOfCleric": {
+      "boneName": "Head",
+      "large": true,
+      "drawOrder": {
+        "slotName": "ear",
+        "zIndex": 0
+      },
+      "hideSlotNames": [
+        "ear",
+        "hair_accessory copy",
+        "hair_fg",
+        "face"
+      ],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.54744524,
+        "y": 0.54744524
+      },
+      "rotation": -86.42106,
+      "position": {
+        "x": -1.6213725,
+        "y": -6.9606857
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "SsserpentHead": {
+      "boneName": "Head",
+      "large": false,
+      "drawOrder": {
+        "slotName": "ear",
+        "zIndex": 0
+      },
+      "hideSlotNames": [
+        "ear",
+        "hair_accessory copy",
+        "hair_fg",
+        "face"
+      ],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.91068536,
+        "y": 0.91068536
+      },
+      "rotation": -94.229294,
+      "position": {
+        "x": -8.561988,
+        "y": -9.151084
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "NlothsMask": {
+      "boneName": "Head",
+      "large": false,
+      "drawOrder": {
+        "slotName": "ear",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": -89.17871,
+      "position": {
+        "x": -11.868223,
+        "y": -8.024667
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
