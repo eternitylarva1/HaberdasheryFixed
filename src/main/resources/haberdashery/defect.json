@@ -1169,8 +1169,8 @@
       },
       "hideSlotNames": [],
       "requiredSlotNames": [
-		"Eye_up"
-	  ],
+        "Eye_up"
+      ],
       "flipHorizontal": false,
       "flipVertical": false,
       "scale": {
@@ -1425,6 +1425,92 @@
       "position": {
         "x": 3.6729193,
         "y": -98.079346
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "FaceOfCleric": {
+      "boneName": "Neck_3",
+      "large": true,
+      "drawOrder": {
+        "slotName": "Eye_up",
+        "zIndex": 5
+      },
+      "hideSlotNames": [
+        "head",
+        "Eye_up",
+        "Eye_down"
+      ],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.65054977,
+        "y": 0.65054977
+      },
+      "rotation": -26.120272,
+      "position": {
+        "x": 13.389666,
+        "y": 1.7253706
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "SsserpentHead": {
+      "boneName": "Neck_3",
+      "large": true,
+      "drawOrder": {
+        "slotName": "Eye_up",
+        "zIndex": 5
+      },
+      "hideSlotNames": [
+        "head",
+        "Eye_up",
+        "Eye_down"
+      ],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.53769934,
+        "y": 0.53769934
+      },
+      "rotation": -42.489067,
+      "position": {
+        "x": 17.835365,
+        "y": -7.1344137
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "NlothsMask": {
+      "boneName": "Neck_3",
+      "large": true,
+      "drawOrder": {
+        "slotName": "Eye_up",
+        "zIndex": 5
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.58535373,
+        "y": 0.58535373
+      },
+      "rotation": -27.291294,
+      "position": {
+        "x": 20.094482,
+        "y": -10.107017
       },
       "shear": {
         "x": 0.0,
