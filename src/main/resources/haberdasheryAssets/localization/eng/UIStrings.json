@@ -1,6 +1,7 @@
 {
   "${mod.id}:Config": {
     "TEXT_DICT": {
+      "default_text": "Default: %1$s",
       "title": "Haberdashery",
       "settings": "Settings",
       "animatedRelics": "Animated Relics",

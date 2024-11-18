@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.helpers.FontHelper
 import com.megacrit.cardcrawl.helpers.Hitbox
+import haberdashery.Config
 import haberdashery.ui.config.ModCenteredLabel
 import kotlin.math.max
 import kotlin.reflect.*
@@ -99,9 +100,27 @@ class PanelConfig(val panel: ModPanel) {
     fun toggle(block: ToggleConfig.() -> Unit = {}) {
         ToggleConfig().let {
             block.invoke(it)
+            var tooltip = it.tooltip ?: strings["${it.textID}_tooltip"]
+            if (it.configOption != null) {
+                val delegate = it.configOption?.getDelegate()
+                if (delegate is Config.ConfigValue<*>) {
+                    val defaultText = strings["default_text"]?.format(delegate.default.toString())
+                    if (defaultText != null) {
+                        tooltip = if (tooltip != null) {
+                            "$tooltip NL "
+                        } else {
+                            ""
+                        } + defaultText.split(" ").joinToString(
+                            prefix = "[#aaaaaa]",
+                            postfix = "[]",
+                            separator = "[] [#aaaaaa]",
+                        )
+                    }
+                }
+            }
             val toggle = ModLabeledToggleButton(
                 it.getText(strings),
-                it.tooltip ?: strings["${it.textID}_tooltip"],
+                tooltip,
                 x,
                 y,
                 it.color,
