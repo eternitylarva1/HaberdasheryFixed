@@ -851,7 +851,7 @@
             "speed": 0.3,
             "startTime": "RANDOM"
           },
-		  {
+          {
             "name": "scalePulse",
             "speed": 0.2,
             "startTime": "RANDOM"
@@ -875,6 +875,31 @@
       "position": {
         "x": -71.71346,
         "y": -252.7174
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "Ice Cream": {
+      "boneName": "Arm_L",
+      "large": false,
+      "drawOrder": {
+        "slotName": "robe_upper",
+        "zIndex": 1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.5737052,
+        "y": 0.5737052
+      },
+      "rotation": 191.03651,
+      "position": {
+        "x": -40.336906,
+        "y": 7.009584
       },
       "shear": {
         "x": 0.0,

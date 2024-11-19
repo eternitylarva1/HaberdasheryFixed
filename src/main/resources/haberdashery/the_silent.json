@@ -836,6 +836,33 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Ice Cream": {
+      "boneName": "Hand_L",
+      "large": false,
+      "drawOrder": {
+        "slotName": "kris",
+        "zIndex": -1
+      },
+      "hideSlotNames": [
+        "kris"
+      ],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": 179.80817,
+      "position": {
+        "x": 0.15407002,
+        "y": 24.419382
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
