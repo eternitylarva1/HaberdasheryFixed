@@ -278,6 +278,7 @@ object AttachRelic {
             }
         }
 
+        // Open Ftue if player has 2+ relics that exclude each other
         if (Ftue.canOpen(Ftue.EXCLUSION) && exclusionCount.values.any { it.size > 1 }) {
             val relicNames = exclusionCount.values.first { it.size > 1 }
                 .map { it.removePrefix(HaberdasheryMod.makeID("")) }
