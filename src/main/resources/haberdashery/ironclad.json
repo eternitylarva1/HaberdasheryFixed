@@ -1224,31 +1224,6 @@
         "y": 0.0
       }
     },
-    "Toy Ornithopter": {
-      "boneName": "root",
-      "large": false,
-      "drawOrder": {
-        "slotName": "boot_left",
-        "zIndex": 1
-      },
-      "hideSlotNames": [],
-      "requiredSlotNames": [],
-      "flipHorizontal": true,
-      "flipVertical": false,
-      "scale": {
-        "x": 0.8988764,
-        "y": 0.8988764
-      },
-      "rotation": 21.746595,
-      "position": {
-        "x": -147.48001,
-        "y": -11.760006
-      },
-      "shear": {
-        "x": 0.0,
-        "y": 0.0
-      }
-    },
     "Blood Vial": {
       "boneName": "Spine_",
       "large": false,

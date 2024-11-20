@@ -1,0 +1,56 @@
+{
+"skeleton": { "hash": " ", "x": -689.39, "y": 537.5, "width": 128, "height": 128 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "relic", "parent": "root" }
+],
+"slots": [
+	{ "name": "ornithopter", "bone": "relic", "color": "ffffff00", "attachment": "ornithopter" },
+	{ "name": "flightPath", "bone": "root", "attachment": "flightPath" }
+],
+"path": [
+	{
+		"name": "flightConstraint",
+		"bones": [ "relic" ],
+		"target": "flightPath"
+	}
+],
+"skins": {
+	"default": {
+		"ornithopter": {
+			"ornithopter": { "x": 0.09, "y": 9.35, "scaleX": -1, "rotation": 15.8, "width": 128, "height": 128 }
+		},
+		"flightPath": {
+			"flightPath": {
+				"type": "path",
+				"lengths": [ 392.21, 733.59, 1001.94, 1166.19, 1326.68, 1610.04, 2071.09, 2196.71, 3626.43 ],
+				"vertexCount": 27,
+				"vertices": [ -625.39, 601.5, -625.39, 601.5, -625.39, 601.5, -457.74, 371.33, -379.8, 296.01, -306.91, 225.57, -192.6, 161.05, -71.91, 171.42, 32.29, 180.37, 107.52, 276.22, 99.13, 348.1, 90.3, 423.78, 48.22, 452.48, -6.02, 452.06, -62.23, 451.62, -90.63, 386.96, -85.09, 331.45, -76.83, 248.77, 31.54, 178.01, 107.79, 135.48, 175.71, 97.59, 342.27, -2.62, 542.83, -0.63, 584.38, -0.22, 614.67, -1.61, 668.45, -1.1, 813.45, 0.28 ]
+			}
+		}
+	}
+},
+"animations": {
+	"fly": {
+		"slots": {
+			"ornithopter": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffff00" }
+				]
+			}
+		},
+		"paths": {
+			"flightConstraint": {
+				"position": [
+					{ "time": 0, "position": 0 },
+					{ "time": 1.8333, "position": 0.95, "curve": 0, "c2": 0.28, "c3": 0.649 },
+					{ "time": 2.0667, "position": 1 }
+				]
+			}
+		}
+	}
+}
+}

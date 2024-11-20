@@ -110,6 +110,39 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Toy Ornithopter": {
+      "boneName": "root",
+      "skeleton": {
+        "name": "ToyOrnithopter",
+        "useRelicAsAtlas": true,
+        "animations": [],
+        "onFlash": {
+          "animation": "fly"
+        }
+      },
+      "large": false,
+      "drawOrder": {
+        "slotName": "leg_left",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
