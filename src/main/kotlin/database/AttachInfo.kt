@@ -176,6 +176,7 @@ class AttachInfo(
         var animations: Array<AnimationInfo>,
         val onFlash: OnFlashInfo?,
         val boneTransforms: Array<BoneTransform>?,
+        val vfx: Map<String, VfxInfo>?,
     )
 
     data class AnimationInfo(
@@ -204,5 +205,11 @@ class AttachInfo(
     data class OnFlashInfo(
         val animation: AnimationInfo,
         val beforeAction: String?,
+    )
+
+    data class VfxInfo(
+        val bone: String,
+        @SerializedName("class")
+        val className: String,
     )
 }

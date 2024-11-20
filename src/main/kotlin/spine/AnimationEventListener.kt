@@ -1,5 +1,6 @@
 package haberdashery.spine
 
+import com.badlogic.gdx.math.Vector2
 import com.esotericsoftware.spine.Animation.EventTimeline
 import com.esotericsoftware.spine.AnimationState
 import com.esotericsoftware.spine.AnimationState.AnimationStateListener
@@ -7,7 +8,12 @@ import com.esotericsoftware.spine.Event
 import com.esotericsoftware.spine.Skeleton
 import com.megacrit.cardcrawl.actions.AbstractGameAction
 import com.megacrit.cardcrawl.core.CardCrawlGame
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect
 import haberdashery.Config
+import haberdashery.HaberdasheryMod
+import haberdashery.database.AttachDatabase
+import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
@@ -39,6 +45,32 @@ class AnimationEventListener(
                             if (event.float == 0f) 1f else event.float
                         )
                     }
+                }
+            }
+            PLAY_VFX -> {
+                val vfxInfo = AttachDatabase.getInfo(AbstractDungeon.player.chosenClass, slotName.removePrefix(HaberdasheryMod.makeID("")))
+                    ?.skeletonInfo?.vfx?.get(event.string)
+                val attachment = slot.attachment as? OffsetSkeletonAttachment
+                if (vfxInfo != null && attachment != null) {
+                    val bone = attachment.skeleton.findBone(vfxInfo.bone) ?: return
+                    attachment.apply(parent, slot.bone)
+                    attachment.skeleton.updateWorldTransform()
+
+                    val pos = Vector2(
+                        attachment.skeleton.x + bone.worldX,
+                        attachment.skeleton.y + bone.worldY,
+                    )
+                    try {
+                        val clz = Class.forName(vfxInfo.className).kotlin
+                        val vfx = clz.constructors
+                            .first { it.parameters.size == 2 && it.parameters[0].type.classifier == Float::class && it.parameters[1].type.classifier == Float::class }
+                            .call(pos.x, pos.y)
+                        AbstractDungeon.effectsQueue.add(vfx as AbstractGameEffect)
+                    } catch (e: Exception) {
+                        logger.warn("Failed to make vfx \"${vfxInfo.className}\" for subskeleton($slotName): ${e::class.simpleName}(${e.message})")
+                    }
+
+                    attachment.reset()
                 }
             }
             ON_FLASH -> when (event.string) {
@@ -84,6 +116,8 @@ class AnimationEventListener(
         private const val DRAW_ORDER_FRONT = "front"
 
         private const val PLAY_SFX = "sfx"
+
+        private const val PLAY_VFX = "vfx"
 
         private const val ON_FLASH = "onFlash"
         private const val ON_FLASH_CONTINUE = "continue"
