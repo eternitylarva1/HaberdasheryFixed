@@ -905,6 +905,82 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Peace Pipe": {
+      "boneName": "Arm_R_2",
+      "large": false,
+      "drawOrder": {
+        "slotName": "eye_anchor",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.5252101,
+        "y": 0.5252101
+      },
+      "rotation": 11.559862,
+      "position": {
+        "x": 67.19528,
+        "y": 27.21112
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "Gambling Chip": {
+      "boneName": "Arm_R_2",
+      "large": false,
+      "drawOrder": {
+        "slotName": "thumb",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.23792772,
+        "y": 0.23792772
+      },
+      "rotation": 17.456192,
+      "position": {
+        "x": 68.05683,
+        "y": 27.756752
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "Girya": {
+      "boneName": "Arm_R_2",
+      "large": false,
+      "drawOrder": {
+        "slotName": "sleeve_left",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "mask": "Girya_fMOM.png",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.68957347,
+        "y": 0.68957347
+      },
+      "rotation": 18.83325,
+      "position": {
+        "x": -117.1063,
+        "y": -41.247444
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
