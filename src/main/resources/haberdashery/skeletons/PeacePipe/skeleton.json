@@ -1,0 +1,30 @@
+{
+"skeleton": { "hash": " ", "x": -64, "y": -64, "width": 128, "height": 128 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "relic", "parent": "root" },
+	{ "name": "pipe", "parent": "relic", "length": 61.53, "rotation": -132.21, "x": 28.37, "y": 24.54 },
+	{ "name": "smoke", "parent": "pipe", "x": 62.89, "y": -9.07 }
+],
+"slots": [
+	{ "name": "peacePipe", "bone": "pipe", "attachment": "peacePipe" },
+	{ "name": "smoke", "bone": "pipe", "attachment": "smoke" }
+],
+"skins": {
+	"default": {
+		"peacePipe": {
+			"peacePipe": { "x": 37.23, "y": -4.52, "rotation": 132.21, "width": 128, "height": 128 }
+		}
+	}
+},
+"events": {
+	"vfx": {}
+},
+"animations": {
+	"smoke": {
+		"events": [
+			{ "time": 3, "name": "vfx", "string": "smoke" }
+		]
+	}
+}
+}

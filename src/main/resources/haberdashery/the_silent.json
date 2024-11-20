@@ -266,6 +266,22 @@
     },
     "Peace Pipe": {
       "boneName": "Eye",
+      "skeleton": {
+        "name": "PeacePipe",
+        "useRelicAsAtlas": true,
+        "animations": [
+          {
+            "name": "smoke",
+            "startTime": "RANDOM"
+          }
+        ],
+        "vfx": {
+          "smoke": {
+            "bone": "smoke",
+            "class": "haberdashery.vfx.SmokePuffEffect"
+          }
+        }
+      },
       "large": false,
       "drawOrder": {
         "slotName": "eye",
@@ -273,7 +289,6 @@
       },
       "hideSlotNames": [],
       "requiredSlotNames": [],
-      "mask": "Peace Pipe_F3Go.png",
       "flipHorizontal": true,
       "flipVertical": false,
       "scale": {
@@ -282,8 +297,8 @@
       },
       "rotation": -57.435547,
       "position": {
-        "x": -29.114769,
-        "y": 0.22428834
+        "x": 19.085232,
+        "y": 21.62429
       },
       "shear": {
         "x": 0.0,
