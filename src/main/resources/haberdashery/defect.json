@@ -1542,6 +1542,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Odd Mushroom": {
+      "boneName": "Leg_L_2",
+      "large": false,
+      "drawOrder": {
+        "slotName": "left_quad",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.47792283,
+        "y": 0.47792283
+      },
+      "rotation": 99.65199,
+      "position": {
+        "x": -4.508763,
+        "y": -17.634087
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }

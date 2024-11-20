@@ -878,6 +878,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Odd Mushroom": {
+      "boneName": "Skull",
+      "large": false,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.48709998,
+        "y": 0.48709998
+      },
+      "rotation": -74.769615,
+      "position": {
+        "x": 11.836409,
+        "y": -33.3645
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
