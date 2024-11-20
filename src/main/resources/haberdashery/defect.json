@@ -1567,6 +1567,43 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Mark of the Bloom": {
+      "boneName": "Neck_2",
+      "skeleton": {
+        "name": "Spin",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "large",
+          {
+            "name": "ccw",
+            "speed": 0.22,
+            "startTime": "RANDOM"
+          }
+        ]
+      },
+      "large": true,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.7383221,
+        "y": 0.7383221
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": 17.000002,
+        "y": -20.6
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }

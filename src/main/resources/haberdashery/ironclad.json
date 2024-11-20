@@ -2437,6 +2437,43 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Mark of the Bloom": {
+      "boneName": "Head",
+      "skeleton": {
+        "name": "Spin",
+        "useRelicAsAtlas": true,
+        "animations": [
+          "large",
+          {
+            "name": "ccw",
+            "speed": 0.22,
+            "startTime": "RANDOM"
+          }
+        ]
+      },
+      "large": true,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.7383221,
+        "y": 0.7383221
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": 3.1461477,
+        "y": -7.5844574
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
