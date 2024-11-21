@@ -88,7 +88,7 @@
       "large": false,
       "drawOrder": {
         "slotName": "kris",
-        "zIndex": 2
+        "zIndex": 3
       },
       "hideSlotNames": [
         "kris"
@@ -964,6 +964,33 @@
       },
       "shear": {
         "x": 1.736313,
+        "y": 0.0
+      }
+    },
+    "WarpedTongs": {
+      "boneName": "Hand_L",
+      "large": false,
+      "drawOrder": {
+        "slotName": "kris",
+        "zIndex": 2
+      },
+      "hideSlotNames": [
+        "kris"
+      ],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": 58.19094,
+      "position": {
+        "x": -12.053438,
+        "y": 24.161018
+      },
+      "shear": {
+        "x": 0.0,
         "y": 0.0
       }
     }

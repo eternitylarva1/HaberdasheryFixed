@@ -756,6 +756,7 @@
         "left_finger_3"
       ],
       "requiredSlotNames": [],
+      "exclusionGroup": "LeftHandReplace",
       "mask": "Calipers_KBaR.png",
       "flipHorizontal": false,
       "flipVertical": false,
@@ -1624,6 +1625,38 @@
       "position": {
         "x": -5.499433,
         "y": 0.8038875
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "WarpedTongs": {
+      "boneName": "Arm_L_3",
+      "large": false,
+      "drawOrder": {
+        "slotName": "left_forearm",
+        "zIndex": 0
+      },
+      "hideSlotNames": [
+        "left_thumb",
+        "left_finger_2",
+        "left_finger_1",
+        "left_finger_3"
+      ],
+      "requiredSlotNames": [],
+      "exclusionGroup": "LeftHandReplace",
+      "mask": "WarpedTongs_dzr2.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": 155.43874,
+      "position": {
+        "x": 2.8352945,
+        "y": -1.0588226
       },
       "shear": {
         "x": 0.0,
