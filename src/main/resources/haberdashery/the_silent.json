@@ -940,6 +940,32 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Red Mask": {
+      "boneName": "Skull",
+      "large": false,
+      "drawOrder": {
+        "slotName": "skull",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": -43.81389,
+      "position": {
+        "x": 0.6238959,
+        "y": -14.884247
+      },
+      "shear": {
+        "x": 1.736313,
+        "y": 0.0
+      }
     }
   }
 }

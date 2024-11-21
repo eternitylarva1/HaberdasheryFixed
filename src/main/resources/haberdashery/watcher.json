@@ -1043,6 +1043,32 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Red Mask": {
+      "boneName": "Head",
+      "large": false,
+      "drawOrder": {
+        "slotName": "ear",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.8888889,
+        "y": 0.8888889
+      },
+      "rotation": -96.860214,
+      "position": {
+        "x": -8.013032,
+        "y": -19.240616
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }

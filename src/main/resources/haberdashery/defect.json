@@ -1604,6 +1604,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Red Mask": {
+      "boneName": "Eye_up",
+      "large": false,
+      "drawOrder": {
+        "slotName": "Eye_up",
+        "zIndex": 5
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": -9.354674,
+      "position": {
+        "x": -5.499433,
+        "y": 0.8038875
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
