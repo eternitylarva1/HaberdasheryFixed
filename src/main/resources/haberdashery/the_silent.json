@@ -993,6 +993,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Snecko Eye": {
+      "boneName": "Eye",
+      "large": false,
+      "drawOrder": {
+        "slotName": "eye",
+        "zIndex": -1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.18999152,
+        "y": 0.18999152
+      },
+      "rotation": 100.81498,
+      "position": {
+        "x": -1.0987384,
+        "y": 0.40345287
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
