@@ -122,7 +122,7 @@ object AttachDatabase {
         database[character]?.let {
             val json = gsonSave.toJson(mapOf(character to it))
             val filename = if (character == Enums.SHARED) {
-                "common.json"
+                "shared.json"
             } else {
                 "${character.name.lowercase()}.json"
             }
