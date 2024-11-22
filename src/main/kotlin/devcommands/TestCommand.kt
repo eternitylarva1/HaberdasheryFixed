@@ -21,6 +21,6 @@ class TestCommand : ConsoleCommand() {
     }
 
     override fun extraOptions(tokens: Array<out String>, depth: Int): ArrayList<String> {
-        return arrayListOf("all", "character", "common")
+        return arrayListOf("all", "character", "shared")
     }
 }

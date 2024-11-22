@@ -59,9 +59,9 @@ object AttachDatabase {
         val character = AbstractDungeon.player?.chosenClass ?: return
         val ids = mutableSetOf<String>()
         when (type) {
-            "all" -> listOf(Enums.COMMON, character)
+            "all" -> listOf(Enums.SHARED, character)
             "character" -> listOf(character)
-            "common" -> listOf(Enums.COMMON)
+            "shared" -> listOf(Enums.SHARED)
             else -> emptyList()
         }.forEach {
             ids.addAll(database.getOrDefault(it, mutableMapOf()).keys)
@@ -110,7 +110,7 @@ object AttachDatabase {
     }
 
     fun saveAll() {
-        save(Enums.COMMON, AbstractDungeon.player?.getPrivate("skeleton", clazz = AbstractCreature::class.java))
+        save(Enums.SHARED, AbstractDungeon.player?.getPrivate("skeleton", clazz = AbstractCreature::class.java))
         for (player in CardCrawlGame.characterManager.allCharacters) {
             val skeleton = player.skeleton ?: continue
             save(player.chosenClass, skeleton)
@@ -121,7 +121,7 @@ object AttachDatabase {
         logger.info("Saving attach info...")
         database[character]?.let {
             val json = gsonSave.toJson(mapOf(character to it))
-            val filename = if (character == Enums.COMMON) {
+            val filename = if (character == Enums.SHARED) {
                 "common.json"
             } else {
                 "${character.name.lowercase()}.json"
@@ -191,7 +191,7 @@ object AttachDatabase {
 
     fun getInfo(character: AbstractPlayer.PlayerClass, relicID: String): AttachInfo? {
         return database[character]?.get(relicID)
-            ?: database[Enums.COMMON]?.get(relicID)
+            ?: database[Enums.SHARED]?.get(relicID)
     }
 
     fun relic(character: AbstractPlayer.PlayerClass, relicID: String, info: AttachInfo) {
@@ -272,7 +272,7 @@ object AttachDatabase {
 
     internal object Enums {
         @JvmStatic
-        @SpireEnum(name = "HABERDASHERY_COMMON")
-        lateinit var COMMON: AbstractPlayer.PlayerClass
+        @SpireEnum(name = "HABERDASHERY_SHARED")
+        lateinit var SHARED: AbstractPlayer.PlayerClass
     }
 }
