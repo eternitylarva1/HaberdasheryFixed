@@ -55,11 +55,17 @@ object AttachDatabase {
         load()
     }
 
-    fun test() {
+    fun test(type: String) {
         val character = AbstractDungeon.player?.chosenClass ?: return
         val ids = mutableSetOf<String>()
-        ids.addAll(database.getOrDefault(Enums.COMMON, mutableMapOf()).keys)
-        ids.addAll(database.getOrDefault(character, mutableMapOf()).keys)
+        when (type) {
+            "all" -> listOf(Enums.COMMON, character)
+            "character" -> listOf(character)
+            "common" -> listOf(Enums.COMMON)
+            else -> emptyList()
+        }.forEach {
+            ids.addAll(database.getOrDefault(it, mutableMapOf()).keys)
+        }
         ids.forEach { id ->
             RelicLibrary.getRelic(id)
                 ?.makeCopy()
