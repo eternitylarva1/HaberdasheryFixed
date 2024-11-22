@@ -31,6 +31,7 @@ import haberdashery.spine.attachments.RelicAttachmentLoader
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import kotlin.io.path.exists
+import kotlin.math.max
 
 object AttachRelic {
     private val logger: Logger = LogManager.getLogger(AttachRelic::class.java)
@@ -77,7 +78,7 @@ object AttachRelic {
 
         val drawOrder = skeleton.drawOrder
         var insertIndex = startingDrawOrder(relic.relicId, info, drawOrder, bone)
-        if (info.drawOrder.slotName == null) {
+        if (info.drawOrder.slotName == null && info.drawOrder.specialSlot == null) {
             info.drawOrder(drawOrder[insertIndex].data.name, info.drawOrder.zIndex)
         }
         ++insertIndex
@@ -243,6 +244,12 @@ object AttachRelic {
     private fun startingDrawOrder(relicId: String, info: AttachInfo, drawOrder: Array<Slot>, bone: Bone): Int {
         val ret = if (info.drawOrder.slotName != null) {
             drawOrder.indexOfFirst { it.data.name == info.drawOrder.slotName }
+        } else if (info.drawOrder.specialSlot != null) {
+            when (info.drawOrder.specialSlot) {
+                AttachInfo.SpecialSlotType.SHADOW -> drawOrder.indexOfFirst { it.data.name == "shadow" }
+                AttachInfo.SpecialSlotType.BACK -> -1 // gets increased by 1 outside this method
+                AttachInfo.SpecialSlotType.FRONT -> drawOrder.indexOfLast { it.data !is MySlotData }
+            }
         } else {
             drawOrder.indexOfLast { it.bone == bone && it.data !is MySlotData }
         }

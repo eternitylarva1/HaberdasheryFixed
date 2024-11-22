@@ -163,11 +163,18 @@ class AttachInfo(
 
     data class DrawOrder(
         var slotName: String? = null,
+        val specialSlot: SpecialSlotType? = null,
         var zIndex: Int = 0,
     ) {
         override fun toString(): String {
             return "$slotName [$zIndex]"
         }
+    }
+
+    enum class SpecialSlotType {
+        BACK,
+        SHADOW,
+        FRONT,
     }
 
     data class SkeletonInfo(
