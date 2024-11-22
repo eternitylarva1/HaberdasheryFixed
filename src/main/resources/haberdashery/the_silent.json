@@ -193,8 +193,8 @@
       "boneName": "root",
       "large": true,
       "drawOrder": {
-        "slotName": "tail_spine",
-        "zIndex": 0
+        "slotName": "shadow",
+        "zIndex": -5
       },
       "hideSlotNames": [],
       "requiredSlotNames": [],
@@ -206,8 +206,8 @@
       },
       "rotation": 0.0,
       "position": {
-        "x": -95.799995,
-        "y": 53.600002
+        "x": -89.6,
+        "y": 80.700005
       },
       "shear": {
         "x": 0.0,
