@@ -691,7 +691,7 @@
       "large": false,
       "drawOrder": {
         "slotName": "skull",
-        "zIndex": 0
+        "zIndex": -4
       },
       "hideSlotNames": [],
       "requiredSlotNames": [],
