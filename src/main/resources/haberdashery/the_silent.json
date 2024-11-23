@@ -1018,6 +1018,81 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Ancient Tea Set": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": -2
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.08,
+        "y": 1.08
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": 185.25888,
+        "y": 31.141129
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "Sundial": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "slotName": "skull",
+        "zIndex": 2
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.0656,
+        "y": 1.0656
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": -169.66002,
+        "y": -34.619995
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "Incense Burner": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "slotName": "skull",
+        "zIndex": -3
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.93609756,
+        "y": 0.93609756
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": -146.95999,
+        "y": 3.780002
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
