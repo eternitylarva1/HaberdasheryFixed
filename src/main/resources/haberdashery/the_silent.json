@@ -1159,8 +1159,8 @@
         "zIndex": 0
       },
       "hideSlotNames": [
-		"foot"
-	  ],
+        "foot"
+      ],
       "requiredSlotNames": [],
       "mask": "WingedGreaves_LZnB.png",
       "flipHorizontal": false,
@@ -1173,6 +1173,34 @@
       "position": {
         "x": -13.75207,
         "y": -6.9656744
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "Calling Bell": {
+      "boneName": "Skull",
+      "large": true,
+      "drawOrder": {
+        "slotName": "skull",
+        "zIndex": 0
+      },
+      "hideSlotNames": [
+        "skull"
+      ],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.8543705,
+        "y": 0.8543705
+      },
+      "rotation": -80.015564,
+      "position": {
+        "x": 11.316965,
+        "y": -11.382267
       },
       "shear": {
         "x": 0.0,

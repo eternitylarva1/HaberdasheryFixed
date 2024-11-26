@@ -1097,6 +1097,34 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Calling Bell": {
+      "boneName": "Head",
+      "large": true,
+      "drawOrder": {
+        "slotName": "ear",
+        "zIndex": 0
+      },
+      "hideSlotNames": [
+        "hair_accessory copy"
+      ],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.79746413,
+        "y": 0.79746413
+      },
+      "rotation": -111.79521,
+      "position": {
+        "x": -4.8204546,
+        "y": -32.263508
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }

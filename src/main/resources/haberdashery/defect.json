@@ -1662,6 +1662,32 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Calling Bell": {
+      "boneName": "Neck_3",
+      "large": true,
+      "drawOrder": {
+        "slotName": "Eye_up",
+        "zIndex": 5
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.9129947,
+        "y": 0.9129947
+      },
+      "rotation": -58.32121,
+      "position": {
+        "x": 44.2606,
+        "y": 3.4828835
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }

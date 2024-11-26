@@ -1550,6 +1550,32 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Calling Bell": {
+      "boneName": "Head",
+      "large": true,
+      "drawOrder": {
+        "slotName": "eye",
+        "zIndex": -3
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Head",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.7574164,
+        "y": 0.7574164
+      },
+      "rotation": -118.566,
+      "position": {
+        "x": 0.22555184,
+        "y": -32.522663
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
