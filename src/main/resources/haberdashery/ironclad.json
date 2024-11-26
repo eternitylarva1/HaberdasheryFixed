@@ -1525,6 +1525,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "WingedGreaves": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "slotName": "boot_left",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.92156863,
+        "y": 0.92156863
+      },
+      "rotation": -14.586686,
+      "position": {
+        "x": -54.3,
+        "y": 18.9
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }

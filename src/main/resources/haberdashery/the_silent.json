@@ -1150,6 +1150,34 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "WingedGreaves": {
+      "boneName": "Leg_L_4",
+      "large": false,
+      "drawOrder": {
+        "slotName": "foot",
+        "zIndex": 0
+      },
+      "hideSlotNames": [
+		"foot"
+	  ],
+      "requiredSlotNames": [],
+      "mask": "WingedGreaves_LZnB.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.99684954,
+        "y": 0.99684954
+      },
+      "rotation": 50.194256,
+      "position": {
+        "x": -13.75207,
+        "y": -6.9656744
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
