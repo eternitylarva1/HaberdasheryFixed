@@ -1,3 +1,4 @@
+import com.badlogic.gdx.tools.texturepacker.TexturePacker
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import org.apache.tools.ant.filters.ReplaceTokens
@@ -39,6 +40,7 @@ buildscript {
 
     dependencies {
         classpath("com.google.code.gson:gson:2.11.0")
+        classpath("com.badlogicgames.gdx:gdx-tools:1.9.5")
     }
 }
 
@@ -55,6 +57,8 @@ dependencies {
 }
 
 tasks.processResources {
+    dependsOn("texturePacker")
+
     filteringCharset = "UTF-8"
     val expansion: FileCopyDetails.() -> Unit = {
         val tokens = project.extra.properties.entries
@@ -83,6 +87,29 @@ tasks.jar {
 tasks.register<Copy>("copyJarToMods") {
     from(layout.buildDirectory.dir("libs"))
     into(modsPath)
+}
+
+tasks.register("texturePacker") {
+    val packs = listOf(
+        "vfx",
+    ).map {
+        val input = project.rootDir.resolve("srcAssets").resolve(it)
+        val output = project.layout.buildDirectory.dir("generated/resources/${modID}Assets/images/$it")
+        inputs.dir(input)
+        outputs.dir(output)
+        Triple(input.path, output.get().asFile.path, it)
+    }
+    doLast {
+        packs.forEach {
+            TexturePacker.process(it.first, it.second, it.third)
+        }
+    }
+}
+
+sourceSets {
+    getByName("main") {
+        output.dir(project.layout.buildDirectory.dir("generated/resources"))
+    }
 }
 
 // =============================================
