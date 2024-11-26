@@ -2,6 +2,20 @@
   "HABERDASHERY_SHARED": {
     "Bag of Marbles": {
       "boneName": "root",
+      "skeleton": {
+        "name": "BagOfMarbles",
+        "useRelicAsAtlas": true,
+        "animations": [],
+        "onFlash": {
+          "animation": "spawnMarbles"
+        },
+        "vfx": {
+          "marbles": {
+            "bone": "marbleSpawn",
+            "class": "haberdashery.vfx.BagOfMarblesEffect"
+          }
+        }
+      },
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",

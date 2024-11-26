@@ -1,0 +1,28 @@
+{
+"skeleton": { "hash": " ", "x": -64, "y": -64, "width": 128, "height": 128 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "relic", "parent": "root" },
+	{ "name": "marbleSpawn", "parent": "relic", "x": -14.45, "y": -13.08 }
+],
+"slots": [
+	{ "name": "marbles", "bone": "relic", "attachment": "marbles" }
+],
+"skins": {
+	"default": {
+		"marbles": {
+			"marbles": { "width": 128, "height": 128 }
+		}
+	}
+},
+"events": {
+	"vfx": {}
+},
+"animations": {
+	"spawnMarbles": {
+		"events": [
+			{ "time": 0, "name": "vfx", "string": "marbles" }
+		]
+	}
+}
+}
