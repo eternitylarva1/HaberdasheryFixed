@@ -115,7 +115,7 @@
       "boneName": "Hand_L",
       "large": false,
       "drawOrder": {
-        "slotName": "cape_left",
+        "slotName": "kris",
         "zIndex": 1
       },
       "hideSlotNames": [],
