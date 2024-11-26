@@ -562,7 +562,7 @@
       "large": false,
       "drawOrder": {
         "slotName": "hair_accessory copy",
-        "zIndex": 0
+        "zIndex": 1
       },
       "hideSlotNames": [],
       "requiredSlotNames": [
@@ -1064,6 +1064,34 @@
       "position": {
         "x": -8.013032,
         "y": -19.240616
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "Busted Crown": {
+      "boneName": "Head",
+      "large": false,
+      "drawOrder": {
+        "slotName": "hair_accessory copy",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [
+        "hair_accessory copy",
+        "hair_fg"
+      ],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.36947367,
+        "y": 0.36947367
+      },
+      "rotation": -51.974606,
+      "position": {
+        "x": 16.381855,
+        "y": -24.109848
       },
       "shear": {
         "x": 0.0,
