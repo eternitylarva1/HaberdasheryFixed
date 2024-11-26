@@ -94,6 +94,7 @@
         "kris"
       ],
       "requiredSlotNames": [],
+      "exclusionGroup": "Weapon",
       "flipHorizontal": false,
       "flipVertical": false,
       "scale": {
@@ -146,6 +147,7 @@
         "kris"
       ],
       "requiredSlotNames": [],
+      "exclusionGroup": "Weapon",
       "flipHorizontal": true,
       "flipVertical": false,
       "scale": {
@@ -173,6 +175,7 @@
         "kris"
       ],
       "requiredSlotNames": [],
+      "exclusionGroup": "Weapon",
       "flipHorizontal": false,
       "flipVertical": false,
       "scale": {
@@ -978,6 +981,7 @@
         "kris"
       ],
       "requiredSlotNames": [],
+      "exclusionGroup": "Weapon",
       "flipHorizontal": false,
       "flipVertical": false,
       "scale": {
@@ -1130,6 +1134,7 @@
         "kris"
       ],
       "requiredSlotNames": [],
+      "exclusionGroup": "Weapon",
       "flipHorizontal": false,
       "flipVertical": false,
       "scale": {
