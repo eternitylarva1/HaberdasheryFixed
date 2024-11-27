@@ -4,12 +4,12 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion
-import com.badlogic.gdx.math.Interpolation
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect
 import haberdashery.extensions.getPrivate
 import haberdashery.extensions.scale
+import haberdashery.util.Assets
 
 class BagOfMarblesEffect(
     private val x: Float,
@@ -63,7 +63,7 @@ class BagOfMarblesEffect(
         private var x: Float,
         private var y: Float,
     ) : AbstractGameEffect() {
-        private val img: AtlasRegion = VfxMaster.atlas.findRegions("marble").random()
+        private val img: AtlasRegion = Assets.vfx.findRegions("marble").random()
         private val v: Vector2 = Vector2(1f, 0f)
         private var speed: Float = MathUtils.randomTriangular(MIN_FORCE, MAX_FORCE, MODE_FORCE).scale()
 

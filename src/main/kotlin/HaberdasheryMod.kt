@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.devcommands.HaberdasheryCommand
 import haberdashery.extensions.chosenExclusions
 import haberdashery.extensions.panel
+import haberdashery.util.AssetLoader
+import haberdashery.util.Assets
 
 @SpireInitializer
 class HaberdasheryMod :
@@ -38,6 +40,8 @@ class HaberdasheryMod :
     }
 
     override fun receivePostInitialize() {
+        Assets.preload()
+
         val settingsPanel = panel {
             loadStrings(makeID("Config"))
             spacing = 5f
@@ -92,6 +96,7 @@ class HaberdasheryMod :
     }
 
     override fun receivePreUpdate() {
+        AssetLoader.update()
         AdjustRelic.update()
     }
 
