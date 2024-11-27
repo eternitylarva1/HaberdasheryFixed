@@ -1,14 +1,19 @@
 package haberdashery.util
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
-import haberdashery.HaberdasheryMod
+import kotlin.reflect.full.declaredMemberProperties
+import kotlin.reflect.jvm.isAccessible
 
 object Assets {
-    val vfx by lazy { AssetLoader.get<TextureAtlas>(VFX_PATH)!! }
+    val vfx: TextureAtlas by preload("images/vfx/vfx.atlas")
 
     internal fun preload() {
-        AssetLoader.preload<TextureAtlas>(VFX_PATH)
+        Assets::class.declaredMemberProperties.forEach {
+            it.isAccessible = true
+            val delegate = it.getDelegate(this)
+            if (delegate is AssetDelegate<*> && delegate.preload) {
+                delegate.preload()
+            }
+        }
     }
-
-    private val VFX_PATH = HaberdasheryMod.assetPath("images/vfx/vfx.atlas")
 }

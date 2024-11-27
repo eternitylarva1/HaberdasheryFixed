@@ -20,14 +20,7 @@ object AssetLoader {
 
     fun <T> get(filename: String, clazz: Class<T>): T? {
         if (!manager.isLoaded(filename, clazz)) {
-            val param: AssetLoaderParameters<*>? = when (clazz) {
-                Texture::class.java -> TextureLoader.TextureParameter().apply {
-                    minFilter = Texture.TextureFilter.Linear
-                    magFilter = Texture.TextureFilter.Linear
-                }
-                else -> null
-            }
-            manager.load(filename, clazz, param as AssetLoaderParameters<T>?)
+            manager.load(filename, clazz, getParam(clazz))
             try {
                 manager.finishLoadingAsset(filename)
             } catch (e: GdxRuntimeException) {
@@ -42,7 +35,18 @@ object AssetLoader {
     }
 
     fun <T> preload(filename: String, clazz: Class<T>) {
-        manager.load(filename, clazz)
+        manager.load(filename, clazz, getParam(clazz))
+    }
+
+    private fun <T> getParam(clazz: Class<T>): AssetLoaderParameters<T>? {
+        val ret: AssetLoaderParameters<*>? = when (clazz) {
+            Texture::class.java -> TextureLoader.TextureParameter().apply {
+                minFilter = Texture.TextureFilter.Linear
+                magFilter = Texture.TextureFilter.Linear
+            }
+            else -> null
+        }
+        return ret as AssetLoaderParameters<T>?
     }
 
     internal fun update() {
