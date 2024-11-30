@@ -1,0 +1,28 @@
+{
+"skeleton": { "hash": " ", "x": -64, "y": -64, "width": 128, "height": 128 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "relic", "parent": "root" },
+	{ "name": "lightSource", "parent": "root", "x": -4.27, "y": 23.27 }
+],
+"slots": [
+	{ "name": "blueCandle", "bone": "relic", "attachment": "blueCandle" }
+],
+"skins": {
+	"default": {
+		"blueCandle": {
+			"blueCandle": { "width": 128, "height": 128 }
+		}
+	}
+},
+"events": {
+	"vfx": {}
+},
+"animations": {
+	"flames": {
+		"events": [
+			{ "time": 1, "name": "vfx", "string": "flame" }
+		]
+	}
+}
+}

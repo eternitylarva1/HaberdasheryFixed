@@ -816,6 +816,23 @@
     },
     "Blue Candle": {
       "boneName": "Arm_R_1",
+      "skeleton": {
+        "name": "BlueCandle",
+        "useRelicAsAtlas": true,
+        "animations": [
+          {
+            "name": "flames",
+            "speed": 3.0,
+            "startTime": "RANDOM"
+          }
+        ],
+        "vfx": {
+          "flame": {
+            "bone": "lightSource",
+            "class": "haberdashery.vfx.FlameParticleEffect"
+          }
+        }
+      },
       "large": false,
       "drawOrder": {
         "slotName": "pauldron_left",
@@ -831,8 +848,8 @@
       },
       "rotation": 101.70204,
       "position": {
-        "x": 4.8119287,
-        "y": -25.447935
+        "x": -3.1880713,
+        "y": -25.847935
       },
       "shear": {
         "x": 0.0,

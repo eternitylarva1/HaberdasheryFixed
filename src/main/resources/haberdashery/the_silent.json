@@ -615,6 +615,23 @@
     },
     "Blue Candle": {
       "boneName": "Skull",
+      "skeleton": {
+        "name": "BlueCandle",
+        "useRelicAsAtlas": true,
+        "animations": [
+          {
+            "name": "flames",
+            "speed": 3.0,
+            "startTime": "RANDOM"
+          }
+        ],
+        "vfx": {
+          "flame": {
+            "bone": "lightSource",
+            "class": "haberdashery.vfx.FlameParticleEffect"
+          }
+        }
+      },
       "large": false,
       "drawOrder": {
         "slotName": "skull",
@@ -630,8 +647,8 @@
       },
       "rotation": -46.38592,
       "position": {
-        "x": 18.572369,
-        "y": -8.007312
+        "x": 11.072369,
+        "y": -15.907312
       },
       "shear": {
         "x": 0.0,
