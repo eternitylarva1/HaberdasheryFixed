@@ -1192,6 +1192,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Damaru": {
+      "boneName": "Cloth_R_6",
+      "large": false,
+      "drawOrder": {
+        "slotName": "threads_left_1",
+        "zIndex": -1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.521653,
+        "y": 0.521653
+      },
+      "rotation": 162.71617,
+      "position": {
+        "x": 0.21205014,
+        "y": -1.7902611
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
