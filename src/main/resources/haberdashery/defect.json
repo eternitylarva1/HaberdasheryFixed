@@ -1755,6 +1755,51 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Blue Candle": {
+      "boneName": "Chest",
+      "skeleton": {
+        "name": "BlueCandle",
+        "useRelicAsAtlas": true,
+        "animations": [
+          {
+            "name": "flames",
+            "speed": 3.0,
+            "startTime": "RANDOM"
+          }
+        ],
+        "vfx": {
+          "flame": {
+            "bone": "lightSource",
+            "class": "haberdashery.vfx.FlameParticleEffect",
+			"extraArgs": {
+				"behind": true
+			}
+          }
+        }
+      },
+      "large": false,
+      "drawOrder": {
+        "slotName": "mantle",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.4056422,
+        "y": 0.4056422
+      },
+      "rotation": -31.12836,
+      "position": {
+        "x": 18.900002,
+        "y": -22.100004
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
