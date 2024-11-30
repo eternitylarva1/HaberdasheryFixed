@@ -1206,6 +1206,33 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Centennial Puzzle": {
+      "boneName": "Skull",
+      "large": false,
+      "drawOrder": {
+        "slotName": "eye",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [
+        "skull"
+      ],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.44634145,
+        "y": 0.44634145
+      },
+      "rotation": -34.206455,
+      "position": {
+        "x": 13.817797,
+        "y": 28.59875
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }

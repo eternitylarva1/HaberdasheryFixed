@@ -1125,6 +1125,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Centennial Puzzle": {
+      "boneName": "Spine_3",
+      "large": false,
+      "drawOrder": {
+        "slotName": "robe_upper",
+        "zIndex": 1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.4921875,
+        "y": 0.4921875
+      },
+      "rotation": -87.04319,
+      "position": {
+        "x": -21.184761,
+        "y": -3.8634124
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
