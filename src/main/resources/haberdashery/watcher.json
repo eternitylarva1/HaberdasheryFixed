@@ -886,7 +886,7 @@
       "large": false,
       "drawOrder": {
         "slotName": "robe_upper",
-        "zIndex": 1
+        "zIndex": 2
       },
       "hideSlotNames": [],
       "requiredSlotNames": [],
