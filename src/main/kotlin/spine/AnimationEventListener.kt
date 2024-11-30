@@ -16,6 +16,9 @@ import haberdashery.database.AttachDatabase
 import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import kotlin.reflect.KParameter
+import kotlin.reflect.full.primaryConstructor
+import kotlin.reflect.full.valueParameters
 
 class AnimationEventListener(
     private val anim: AnimationState,
@@ -62,9 +65,16 @@ class AnimationEventListener(
                     )
                     try {
                         val clz = Class.forName(vfxInfo.className).kotlin
-                        val vfx = clz.constructors
-                            .first { it.parameters.size == 2 && it.parameters[0].type.classifier == Float::class && it.parameters[1].type.classifier == Float::class }
-                            .call(pos.x, pos.y)
+                        val ctor = clz.primaryConstructor ?:
+                            clz.constructors.first { it.valueParameters.size >= 2 }
+                        val args = mutableMapOf<KParameter, Any?>(
+                            ctor.valueParameters[0] to pos.x,
+                            ctor.valueParameters[1] to pos.y,
+                        )
+                        vfxInfo.extraArgs?.forEach { (name, arg) ->
+                            args[ctor.valueParameters.first { it.name == name }] = arg
+                        }
+                        val vfx = ctor.callBy(args)
                         AbstractDungeon.effectsQueue.add(vfx as AbstractGameEffect)
                     } catch (e: Exception) {
                         logger.warn("Failed to make vfx \"${vfxInfo.className}\" for subskeleton($slotName): ${e::class.simpleName}(${e.message})")

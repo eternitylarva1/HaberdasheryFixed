@@ -218,5 +218,6 @@ class AttachInfo(
         val bone: String,
         @SerializedName("class")
         val className: String,
+        val extraArgs: Map<String, Any?>?,
     )
 }
