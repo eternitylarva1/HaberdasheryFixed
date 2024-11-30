@@ -1593,6 +1593,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Paper Frog": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.45117456,
+        "y": 0.45117456
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": 83.7,
+        "y": 4.299999
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
