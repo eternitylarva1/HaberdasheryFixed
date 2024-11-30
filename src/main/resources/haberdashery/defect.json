@@ -1664,25 +1664,46 @@
       }
     },
     "Calling Bell": {
-      "boneName": "Neck_3",
-      "large": true,
+      "boneName": "root",
+      "skeleton": {
+        "name": "Orbit",
+        "useRelicAsAtlas": true,
+        "animations": [
+          {
+            "name": "orbit",
+            "startTime": "EVENLY_SPACED"
+          },
+          {
+            "name": "rotate",
+            "startTime": "RANDOM"
+          }
+        ],
+        "boneTransforms": [
+          {
+            "name": "relic",
+            "rotation": -22.0,
+            "scaleX": -0.85,
+            "scaleY": 0.85
+          }
+        ]
+      },
+      "large": false,
       "drawOrder": {
-        "slotName": "Eye_up",
-        "zIndex": 5
+        "slotName": "left_thumb",
+        "zIndex": 0
       },
       "hideSlotNames": [],
       "requiredSlotNames": [],
-      "exclusionGroup": "Head",
-      "flipHorizontal": true,
+      "flipHorizontal": false,
       "flipVertical": false,
       "scale": {
-        "x": 0.9129947,
-        "y": 0.9129947
+        "x": 1.0,
+        "y": 1.0
       },
-      "rotation": -58.32121,
+      "rotation": 0.0,
       "position": {
-        "x": 44.2606,
-        "y": 3.4828835
+        "x": 3.6729193,
+        "y": -98.079346
       },
       "shear": {
         "x": 0.0,
