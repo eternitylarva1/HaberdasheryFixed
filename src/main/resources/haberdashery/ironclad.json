@@ -1099,7 +1099,7 @@
       "boneName": "root",
       "large": false,
       "drawOrder": {
-        "slotName": "boot_left",
+        "slotName": "eye",
         "zIndex": 3
       },
       "hideSlotNames": [],
@@ -1112,8 +1112,8 @@
       },
       "rotation": 1.1839459,
       "position": {
-        "x": -41.64,
-        "y": -36.12
+        "x": -42.44,
+        "y": -29.519999
       },
       "shear": {
         "x": 0.0,
