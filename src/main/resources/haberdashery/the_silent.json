@@ -1250,6 +1250,32 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Boot": {
+      "boneName": "Skull",
+      "large": false,
+      "drawOrder": {
+        "slotName": "skull",
+        "zIndex": -1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "mask": "Boot_Jjt4.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.8423077,
+        "y": 0.8423077
+      },
+      "rotation": 125.46602,
+      "position": {
+        "x": 19.07851,
+        "y": -17.645975
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
