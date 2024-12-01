@@ -180,9 +180,9 @@ class AttachInfo(
     data class SkeletonInfo(
         val name: String,
         val useRelicAsAtlas: Boolean,
-        var animations: Array<AnimationInfo>,
+        var animations: List<AnimationInfo>,
         val onFlash: OnFlashInfo?,
-        val boneTransforms: Array<BoneTransform>?,
+        val boneTransforms: List<BoneTransform>?,
         val vfx: Map<String, VfxInfo>?,
     )
 

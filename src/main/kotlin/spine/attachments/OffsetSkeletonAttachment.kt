@@ -16,7 +16,7 @@ class OffsetSkeletonAttachment(name: String) : SkeletonAttachment(name) {
     private var oldScaleX: Float = 1f
     private var oldScaleY: Float = 1f
 
-    var boneTransforms: Array<AttachInfo.BoneTransform>? = null
+    var boneTransforms: List<AttachInfo.BoneTransform>? = null
 
     fun apply(parentSkeleton: Skeleton, parentBone: Bone, oldRotation: Float = skeleton.rootBone.rotation) {
         this.oldRotation = oldRotation
