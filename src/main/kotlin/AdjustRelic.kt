@@ -722,7 +722,7 @@ object AdjustRelic {
             for (i in bottom..top) {
                 val data = drawOrder[i].data
                 if (data is MySlotData) {
-                    if (lastOrigSlot != info.drawOrder.slotName) {
+                    if (!info.drawOrder.debugShow(lastOrigSlot)) {
                         continue
                     }
                     drawOrderMsg.append("    [").append(data.zIndex).append("] ")

@@ -176,6 +176,21 @@ class AttachInfo(
             }
         }
 
+        internal fun debugShow(lastOrigSlot: String?): Boolean {
+            if (slotName != null) {
+                if (lastOrigSlot != null && lastOrigSlot != slotName) {
+                    return false
+                }
+            } else {
+                if (specialSlot == SpecialSlotType.SHADOW) {
+                    return lastOrigSlot == "shadow"
+                } else if (specialSlot == SpecialSlotType.BACK) {
+                    return lastOrigSlot == null
+                }
+            }
+            return true
+        }
+
         fun startingDrawOrder(): (GdxArray<Slot>) -> Int? =
             if (slotName != null) {
                 { drawOrder -> drawOrder.indexOfFirst { it.data.name == slotName } }
