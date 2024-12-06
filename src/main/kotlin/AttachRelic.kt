@@ -248,7 +248,7 @@ object AttachRelic {
             if (info.drawOrder.slotName != null) {
                 logger.warn("Failed to find drawOrder.slotName[\"${info.drawOrder.slotName}\"]")
             }
-            return 0
+            return -1
         }
         return ret
     }
