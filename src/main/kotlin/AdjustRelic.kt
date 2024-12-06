@@ -102,6 +102,7 @@ object AdjustRelic {
 
     private var mode: EditMode = EditMode.Main
     private var pauseAnimation: Boolean = false
+    private var drawOrderOffset: Int = 0
 
     private var saveTimer = 0f
 
@@ -350,6 +351,24 @@ object AdjustRelic {
                     moveSlotName(drawOrder, slot, info, true)
                 }
             }
+        }
+
+        if (isKeyJustPressed(Input.Keys.PAGE_UP)) {
+            if (drawOrderOffset == 2) {
+                drawOrderOffset = 0
+            } else {
+                --drawOrderOffset
+            }
+            // TODO
+            drawOrderOffset = drawOrderOffset.coerceIn(0, 100)
+        }
+        if (isKeyJustPressed(Input.Keys.PAGE_DOWN)) {
+            if (drawOrderOffset == 0) {
+                drawOrderOffset = 2
+            } else {
+                ++drawOrderOffset
+            }
+            drawOrderOffset = drawOrderOffset.coerceIn(0, 100)
         }
 
         // Position
@@ -714,9 +733,9 @@ object AdjustRelic {
 
     private fun renderDrawOrder(sb: SpriteBatch, info: AttachInfo) {
         val relicSlotName = HaberdasheryMod.makeID(relicId!!)
-        val drawOrderMsg = StringBuilder("[Draw Order]\n")
+        val drawOrderMsg = StringBuilder()
         skeleton?.drawOrder?.let { drawOrder ->
-            val bottom = 0
+            val bottom = drawOrderOffset
             val top = drawOrder.size-1
             var lastOrigSlot: String? = null
             for (i in bottom..top) {
@@ -737,11 +756,33 @@ object AdjustRelic {
             }
         }
 
+        val lines = drawOrderMsg.count { it == '\n' } + 1 // +1 to account for header that gets added later
+        val maxLines = ((Settings.HEIGHT - 200.scale()) / FontHelper.tipBodyFont.lineHeight).toInt()
+
+        if (drawOrderOffset > 0) {
+            drawOrderMsg.insert(0, "+++ $drawOrderOffset more +++\n")
+        }
+        if (lines > maxLines) {
+            var index = 0
+            repeat(maxLines - 2) {
+                index = drawOrderMsg.indexOf("\n", index + 1)
+            }
+            drawOrderMsg.setLength(index)
+            if (drawOrderOffset > 0) {
+                drawOrderMsg.append("\n+++ ${lines - maxLines + 2} more +++")
+            } else {
+                drawOrderMsg.append("\n+++ ${lines - maxLines + 1} more +++")
+            }
+        }
+
+        drawOrderMsg.insert(0, "[Draw Order]\n")
+
         FontHelper.renderFontRightTopAligned(
             sb,
             FontHelper.tipBodyFont,
             drawOrderMsg.toString(),
-            Settings.WIDTH - 30f.scale(), Settings.HEIGHT - 200.scale(),
+            Settings.WIDTH - 30f.scale(),
+            Settings.HEIGHT - 200.scale(),
             Color.WHITE
         )
     }

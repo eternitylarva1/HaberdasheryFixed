@@ -177,8 +177,11 @@ class AttachInfo(
         }
 
         internal fun debugShow(lastOrigSlot: String?): Boolean {
+            if (lastOrigSlot == null) {
+                return true
+            }
             if (slotName != null) {
-                if (lastOrigSlot != null && lastOrigSlot != slotName) {
+                if (lastOrigSlot != slotName) {
                     return false
                 }
             } else {
