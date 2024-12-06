@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.math.MathUtils
-import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.Disposable
 import com.esotericsoftware.spine.*
 import com.esotericsoftware.spine.attachments.Attachment
@@ -32,6 +31,7 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import kotlin.io.path.exists
 import kotlin.math.max
+import com.badlogic.gdx.utils.Array as GdxArray
 
 object AttachRelic {
     private val logger: Logger = LogManager.getLogger(AttachRelic::class.java)
@@ -241,18 +241,9 @@ object AttachRelic {
         throw RuntimeException("Failed to find skeleton: ${skeletonInfo.name}")
     }
 
-    private fun startingDrawOrder(relicId: String, info: AttachInfo, drawOrder: Array<Slot>, bone: Bone): Int {
-        val ret = if (info.drawOrder.slotName != null) {
-            drawOrder.indexOfFirst { it.data.name == info.drawOrder.slotName }
-        } else if (info.drawOrder.specialSlot != null) {
-            when (info.drawOrder.specialSlot) {
-                AttachInfo.SpecialSlotType.SHADOW -> drawOrder.indexOfFirst { it.data.name == "shadow" }
-                AttachInfo.SpecialSlotType.BACK -> -1 // gets increased by 1 outside this method
-                AttachInfo.SpecialSlotType.FRONT -> drawOrder.indexOfLast { it.data !is MySlotData }
-            }
-        } else {
-            drawOrder.indexOfLast { it.bone == bone && it.data !is MySlotData }
-        }
+    private fun startingDrawOrder(relicId: String, info: AttachInfo, drawOrder: GdxArray<Slot>, bone: Bone): Int {
+        val ret = info.drawOrder.startingDrawOrder().invoke(drawOrder)
+            ?: drawOrder.indexOfLast { it.bone == bone && it.data !is MySlotData }
         if (ret < 0) {
             if (info.drawOrder.slotName != null) {
                 logger.warn("Failed to find drawOrder.slotName[\"${info.drawOrder.slotName}\"]")

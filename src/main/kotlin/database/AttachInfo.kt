@@ -2,12 +2,14 @@ package haberdashery.database
 
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
+import com.esotericsoftware.spine.Slot
 import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
 import haberdashery.AdjustRelic
 import haberdashery.database.adapters.StartTypeAdapter
 import java.nio.file.Path
 import kotlin.math.absoluteValue
+import com.badlogic.gdx.utils.Array as GdxArray
 
 class AttachInfo(
     val boneName: String
@@ -167,8 +169,25 @@ class AttachInfo(
         var zIndex: Int = 0,
     ) {
         override fun toString(): String {
-            return "$slotName [$zIndex]"
+            return if (slotName == null && specialSlot != null) {
+                "$specialSlot [$zIndex]"
+            } else {
+                "$slotName [$zIndex]"
+            }
         }
+
+        fun startingDrawOrder(): (GdxArray<Slot>) -> Int? =
+            if (slotName != null) {
+                { drawOrder -> drawOrder.indexOfFirst { it.data.name == slotName } }
+            } else if (specialSlot != null) {
+                when (specialSlot) {
+                    SpecialSlotType.SHADOW -> { drawOrder -> drawOrder.indexOfFirst { it.data.name == "shadow" } }
+                    SpecialSlotType.BACK -> { _ -> -1 } // gets increased by 1 outside this method
+                    SpecialSlotType.FRONT -> { drawOrder -> drawOrder.indexOfLast { it.data !is MySlotData } }
+                }
+            } else {
+                { _ -> null }
+            }
     }
 
     enum class SpecialSlotType {
