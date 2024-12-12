@@ -1231,6 +1231,32 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "OrangePellets": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "specialSlot": "FRONT",
+        "zIndex": -1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "mask": "OrangePellets_fcTf.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.51303923,
+        "y": 0.51303923
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": 111.50001,
+        "y": -22.900003
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
