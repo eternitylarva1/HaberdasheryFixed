@@ -1439,6 +1439,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "TheAbacus": {
+      "boneName": "Hips",
+      "large": false,
+      "drawOrder": {
+        "slotName": "cape_left",
+        "zIndex": -3
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.7969925,
+        "y": 0.7969925
+      },
+      "rotation": -77.55047,
+      "position": {
+        "x": 14.900001,
+        "y": 48.0
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
