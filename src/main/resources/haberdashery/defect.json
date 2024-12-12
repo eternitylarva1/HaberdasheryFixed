@@ -1772,9 +1772,9 @@
           "flame": {
             "bone": "lightSource",
             "class": "haberdashery.vfx.FlameParticleEffect",
-			"extraArgs": {
-				"behind": true
-			}
+            "extraArgs": {
+              "behind": true
+            }
           }
         }
       },
@@ -1795,6 +1795,33 @@
       "position": {
         "x": 18.900002,
         "y": -22.100004
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "Vajra": {
+      "boneName": "Arm_R_",
+      "large": false,
+      "drawOrder": {
+        "slotName": "right_arm",
+        "zIndex": 0
+      },
+      "hideSlotNames": [
+        "right_arm"
+      ],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.7636213,
+        "y": 0.7636213
+      },
+      "rotation": 43.834423,
+      "position": {
+        "x": 11.3655205,
+        "y": 11.883808
       },
       "shear": {
         "x": 0.0,
