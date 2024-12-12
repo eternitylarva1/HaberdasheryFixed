@@ -1326,6 +1326,34 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Eternal Feather": {
+      "boneName": "Hand_L",
+      "large": false,
+      "drawOrder": {
+        "slotName": "kris",
+        "zIndex": 3
+      },
+      "hideSlotNames": [
+        "kris"
+      ],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Weapon",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": 245.95996,
+      "position": {
+        "x": -0.3995785,
+        "y": 33.89691
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
