@@ -30,7 +30,6 @@ import haberdashery.spine.attachments.RelicAttachmentLoader
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import kotlin.io.path.exists
-import kotlin.math.max
 import com.badlogic.gdx.utils.Array as GdxArray
 
 object AttachRelic {

@@ -2,7 +2,6 @@ package haberdashery.devcommands
 
 import basemod.devcommands.ConsoleCommand
 import haberdashery.database.AttachDatabase
-import java.util.ArrayList
 
 class TestCommand : ConsoleCommand() {
     init {
