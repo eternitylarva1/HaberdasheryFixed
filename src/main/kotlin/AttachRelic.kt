@@ -79,7 +79,11 @@ object AttachRelic {
         val drawOrder = skeleton.drawOrder
         var insertIndex = startingDrawOrder(relic.relicId, info, drawOrder, bone)
         if (info.drawOrder.slotName == null && info.drawOrder.specialSlot == null) {
-            info.drawOrder(drawOrder[insertIndex].data.name, info.drawOrder.zIndex)
+            if (insertIndex < 0) {
+                info.drawOrder(drawOrder[0].data.name, info.drawOrder.zIndex)
+            } else {
+                info.drawOrder(drawOrder[insertIndex].data.name, info.drawOrder.zIndex)
+            }
         }
         ++insertIndex
         for (i in insertIndex until drawOrder.size) {
