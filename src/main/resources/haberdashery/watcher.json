@@ -1270,6 +1270,33 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Smiling Mask": {
+      "boneName": "Head",
+      "large": false,
+      "drawOrder": {
+        "slotName": "ear",
+        "zIndex": -1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [
+		"face"
+	  ],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.5795918,
+        "y": 0.5795918
+      },
+      "rotation": -138.6842,
+      "position": {
+        "x": -10.900218,
+        "y": -4.0292993
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
