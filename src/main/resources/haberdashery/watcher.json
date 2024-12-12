@@ -1322,6 +1322,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Shuriken": {
+      "boneName": "Arm_R_2",
+      "large": false,
+      "drawOrder": {
+        "slotName": "thumb",
+        "zIndex": -1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.37362278,
+        "y": 0.37362278
+      },
+      "rotation": -27.683846,
+      "position": {
+        "x": 68.54791,
+        "y": 33.615833
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
