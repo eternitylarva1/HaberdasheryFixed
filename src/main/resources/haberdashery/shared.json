@@ -1156,6 +1156,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Thread and Needle": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "specialSlot": "FRONT",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.6513158,
+        "y": 0.6513158
+      },
+      "rotation": -18.177427,
+      "position": {
+        "x": 79.2,
+        "y": -35.0
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
