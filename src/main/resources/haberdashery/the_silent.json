@@ -1070,7 +1070,7 @@
       "large": false,
       "drawOrder": {
         "slotName": "skull",
-        "zIndex": 2
+        "zIndex": 3
       },
       "hideSlotNames": [],
       "requiredSlotNames": [],
@@ -1422,7 +1422,7 @@
       "hideSlotNames": [],
       "requiredSlotNames": [
         "skull"
-	  ],
+      ],
       "mask": "Mummified Hand_5sjA.png",
       "flipHorizontal": false,
       "flipVertical": false,
