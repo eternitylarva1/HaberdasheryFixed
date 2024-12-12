@@ -1411,6 +1411,34 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Mummified Hand": {
+      "boneName": "Skull",
+      "large": false,
+      "drawOrder": {
+        "slotName": "skull",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [
+        "skull"
+	  ],
+      "mask": "Mummified Hand_5sjA.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.50285715,
+        "y": 0.50285715
+      },
+      "rotation": -172.94981,
+      "position": {
+        "x": 10.051189,
+        "y": 35.800335
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
