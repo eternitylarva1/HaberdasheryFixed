@@ -1245,6 +1245,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "MealTicket": {
+      "boneName": "Arm_R_2",
+      "large": false,
+      "drawOrder": {
+        "slotName": "eye_anchor",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.587013,
+        "y": 0.587013
+      },
+      "rotation": 6.368503,
+      "position": {
+        "x": 54.571526,
+        "y": 4.661372
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
