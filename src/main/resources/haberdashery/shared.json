@@ -1206,6 +1206,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Orrery": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "specialSlot": "SHADOW",
+        "zIndex": -6
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": -61.699997,
+        "y": 44.4
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
