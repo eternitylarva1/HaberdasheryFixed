@@ -1372,6 +1372,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Mummified Hand": {
+      "boneName": "Arm_L",
+      "large": false,
+      "drawOrder": {
+        "slotName": "sash",
+        "zIndex": 1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.4265079,
+        "y": 0.4265079
+      },
+      "rotation": 339.4317,
+      "position": {
+        "x": -52.671864,
+        "y": -18.206463
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
