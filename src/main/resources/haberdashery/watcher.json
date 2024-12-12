@@ -1280,8 +1280,8 @@
       },
       "hideSlotNames": [],
       "requiredSlotNames": [
-		"face"
-	  ],
+        "face"
+      ],
       "flipHorizontal": true,
       "flipVertical": false,
       "scale": {
@@ -1292,6 +1292,31 @@
       "position": {
         "x": -10.900218,
         "y": -4.0292993
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "Eternal Feather": {
+      "boneName": "Ribbon_2",
+      "large": false,
+      "drawOrder": {
+        "slotName": "sleeve_right",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.67325276,
+        "y": 0.67325276
+      },
+      "rotation": -86.06325,
+      "position": {
+        "x": 5.104876,
+        "y": -21.922367
       },
       "shear": {
         "x": 0.0,
