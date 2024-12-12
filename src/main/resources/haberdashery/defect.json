@@ -1852,6 +1852,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Medical Kit": {
+      "boneName": "Arm_R_3",
+      "large": false,
+      "drawOrder": {
+        "slotName": "crackedOrb",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.7921569,
+        "y": 0.7921569
+      },
+      "rotation": 39.00916,
+      "position": {
+        "x": 19.670496,
+        "y": 0.34868097
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
