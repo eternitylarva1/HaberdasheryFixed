@@ -1131,6 +1131,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "StoneCalendar": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "specialSlot": "FRONT",
+        "zIndex": 4
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.8218263,
+        "y": 0.8218263
+      },
+      "rotation": 81.2133,
+      "position": {
+        "x": -226.1,
+        "y": -30.300009
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
