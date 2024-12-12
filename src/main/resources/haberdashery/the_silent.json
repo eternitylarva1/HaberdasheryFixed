@@ -1276,6 +1276,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "MealTicket": {
+      "boneName": "Hips",
+      "large": false,
+      "drawOrder": {
+        "slotName": "hand",
+        "zIndex": -1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.54230493,
+        "y": 0.54230493
+      },
+      "rotation": -61.867256,
+      "position": {
+        "x": 12.400001,
+        "y": 42.7
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
