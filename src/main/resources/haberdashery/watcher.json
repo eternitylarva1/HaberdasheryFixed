@@ -1447,6 +1447,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Chemical X": {
+      "boneName": "Ribbon_",
+      "large": false,
+      "drawOrder": {
+        "slotName": "sleeve_right",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.37747183,
+        "y": 0.37747183
+      },
+      "rotation": -165.29852,
+      "position": {
+        "x": 9.64237,
+        "y": -2.4155052
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
