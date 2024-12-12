@@ -1618,6 +1618,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "TheAbacus": {
+      "boneName": "Hips",
+      "large": false,
+      "drawOrder": {
+        "slotName": "pants",
+        "zIndex": -1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.5805085,
+        "y": 0.5805085
+      },
+      "rotation": -30.436737,
+      "position": {
+        "x": 25.400003,
+        "y": 12.099998
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
