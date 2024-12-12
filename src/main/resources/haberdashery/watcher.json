@@ -1347,6 +1347,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Ornamental Fan": {
+      "boneName": "Arm_L",
+      "large": false,
+      "drawOrder": {
+        "slotName": "robe_upper",
+        "zIndex": 3
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.6628535,
+        "y": 0.6628535
+      },
+      "rotation": -183.53522,
+      "position": {
+        "x": -36.643906,
+        "y": 4.4479976
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
