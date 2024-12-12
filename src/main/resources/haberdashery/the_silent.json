@@ -1301,6 +1301,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Vajra": {
+      "boneName": "Hand_L",
+      "large": false,
+      "drawOrder": {
+        "slotName": "kris",
+        "zIndex": 5
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.63126844,
+        "y": 0.63126844
+      },
+      "rotation": 62.346203,
+      "position": {
+        "x": -12.001202,
+        "y": 9.268828
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
