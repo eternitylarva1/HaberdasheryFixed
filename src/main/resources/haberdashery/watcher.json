@@ -1422,6 +1422,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Medical Kit": {
+      "boneName": "HIPS",
+      "large": false,
+      "drawOrder": {
+        "slotName": "robe_lower_bg",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.6979167,
+        "y": 0.6979167
+      },
+      "rotation": 18.988033,
+      "position": {
+        "x": -15.6,
+        "y": -3.8
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
