@@ -1397,6 +1397,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "TheAbacus": {
+      "boneName": "Arm_L",
+      "large": false,
+      "drawOrder": {
+        "slotName": "robe_upper",
+        "zIndex": 4
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.67568356,
+        "y": 0.67568356
+      },
+      "rotation": -41.800056,
+      "position": {
+        "x": -32.706284,
+        "y": -2.7890725
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
