@@ -64,7 +64,7 @@ object AdjustRelic {
         setBoundingBoxes(true)
         setMeshHull(true)
         setMeshTriangles(false)
-        setRegionAttachments(false)
+        setRegionAttachments(true)
         setPaths(false)
         setScale(Settings.scale)
     }
@@ -596,12 +596,8 @@ object AdjustRelic {
 
         sb.end()
         srd.shapeRenderer.projectionMatrix = projection
-        srd.setMeshHull(false)
-        srd.setRegionAttachments(true)
         srd.setPaths(false)
         srd.draw(skeleton)
-        srd.setMeshHull(true)
-        srd.setRegionAttachments(true)
         srd.setPaths(true)
         for (slot in skeleton.drawOrder) {
             val attachment = slot.attachment
