@@ -1827,6 +1827,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "TheAbacus": {
+      "boneName": "particles",
+      "large": false,
+      "drawOrder": {
+        "slotName": "wire_neck_l2",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.71158296,
+        "y": 0.71158296
+      },
+      "rotation": -25.44356,
+      "position": {
+        "x": 2.300003,
+        "y": 3.7999992
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
