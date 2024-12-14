@@ -1955,6 +1955,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Ectoplasm": {
+      "boneName": "Leg_L_",
+      "large": false,
+      "drawOrder": {
+        "slotName": "left_quad",
+        "zIndex": -1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.41778976,
+        "y": 0.41778976
+      },
+      "rotation": 176.98257,
+      "position": {
+        "x": -8.878319,
+        "y": 31.437967
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
