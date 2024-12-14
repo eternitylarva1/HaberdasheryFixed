@@ -1464,6 +1464,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Girya": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "slotName": "skull",
+        "zIndex": 4
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.7028326,
+        "y": 0.7028326
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": -118.1,
+        "y": -33.399998
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
