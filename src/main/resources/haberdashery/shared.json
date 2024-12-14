@@ -1257,6 +1257,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "DollysMirror": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "specialSlot": "SHADOW",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.8,
+        "y": 1.0
+      },
+      "rotation": 83.75411,
+      "position": {
+        "x": -66.5,
+        "y": -43.800003
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 28.556656
+      }
     }
   }
 }
