@@ -459,8 +459,8 @@
       "boneName": "eye_anchor",
       "large": false,
       "drawOrder": {
-        "slotName": "eye_anchor",
-        "zIndex": 0
+        "slotName": "staff",
+        "zIndex": 1
       },
       "hideSlotNames": [],
       "requiredSlotNames": [],
