@@ -1575,6 +1575,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Ectoplasm": {
+      "boneName": "Leg_L_2",
+      "large": false,
+      "drawOrder": {
+        "slotName": "leg_right",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.3554423,
+        "y": 0.3554423
+      },
+      "rotation": 4.3331366,
+      "position": {
+        "x": -4.3372955,
+        "y": -12.208108
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
