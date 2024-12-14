@@ -1472,6 +1472,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Letter Opener": {
+      "boneName": "Ribbon_",
+      "large": false,
+      "drawOrder": {
+        "slotName": "sleeve_right",
+        "zIndex": -1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.55470204,
+        "y": 0.55470204
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": -1.3391292,
+        "y": -1.7397513
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
