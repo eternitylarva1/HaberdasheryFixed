@@ -479,7 +479,7 @@
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
-        "zIndex": 2
+        "zIndex": 3
       },
       "hideSlotNames": [],
       "requiredSlotNames": [],
@@ -1327,6 +1327,31 @@
       "position": {
         "x": -149.4,
         "y": 44.099995
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "Coffee Dripper": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "specialSlot": "FRONT",
+        "zIndex": 2
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.5717703,
+        "y": 0.5717703
+      },
+      "rotation": -4.686732,
+      "position": {
+        "x": -122.00001,
+        "y": -31.300001
       },
       "shear": {
         "x": 0.0,
