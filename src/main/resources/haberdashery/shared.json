@@ -1282,6 +1282,31 @@
         "x": 0.0,
         "y": 28.556656
       }
+    },
+    "PrismaticShard": {
+      "boneName": "root",
+      "large": true,
+      "drawOrder": {
+        "specialSlot": "SHADOW",
+        "zIndex": -4
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.7803468,
+        "y": 0.7803468
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": 48.399994,
+        "y": 63.899998
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
