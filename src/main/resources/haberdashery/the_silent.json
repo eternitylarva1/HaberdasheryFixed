@@ -1567,6 +1567,34 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "TwistedFunnel": {
+      "boneName": "Skull",
+      "large": false,
+      "drawOrder": {
+        "slotName": "skull",
+        "zIndex": 1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [
+        "skull"
+      ],
+      "mask": "TwistedFunnel_CiFU.png",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.37281623,
+        "y": 0.37281623
+      },
+      "rotation": 22.664574,
+      "position": {
+        "x": -29.908308,
+        "y": -44.698917
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
