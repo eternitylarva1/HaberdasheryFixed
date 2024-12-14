@@ -1497,6 +1497,84 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Necronomicon": {
+      "boneName": "HIPS",
+      "large": false,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Book",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.9198812,
+        "y": 0.9198812
+      },
+      "rotation": -102.85315,
+      "position": {
+        "x": -25.4,
+        "y": 32.8
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "Enchiridion": {
+      "boneName": "HIPS",
+      "large": false,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Book",
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": -86.98682,
+      "position": {
+        "x": -25.7,
+        "y": 25.300001
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "Nilry\u0027s Codex": {
+      "boneName": "HIPS",
+      "large": false,
+      "drawOrder": {
+        "slotName": "shadow",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "exclusionGroup": "Book",
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": 86.99461,
+      "position": {
+        "x": -25.800001,
+        "y": 24.0
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
