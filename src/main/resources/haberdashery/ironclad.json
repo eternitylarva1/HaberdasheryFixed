@@ -1721,6 +1721,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Brimstone": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "slotName": "eye",
+        "zIndex": 4
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.8537234,
+        "y": 0.8537234
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": -141.4,
+        "y": -20.1
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
