@@ -1307,6 +1307,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Nloth\u0027s Gift": {
+      "boneName": "root",
+      "large": false,
+      "drawOrder": {
+        "specialSlot": "SHADOW",
+        "zIndex": -1
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.74787533,
+        "y": 0.74787533
+      },
+      "rotation": -4.4497256,
+      "position": {
+        "x": -149.4,
+        "y": 44.099995
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
