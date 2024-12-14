@@ -1595,6 +1595,31 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Ectoplasm": {
+      "boneName": "Spine_2",
+      "large": false,
+      "drawOrder": {
+        "slotName": "tail_spine",
+        "zIndex": 0
+      },
+      "hideSlotNames": [],
+      "requiredSlotNames": [],
+      "flipHorizontal": true,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.3915489,
+        "y": 0.3915489
+      },
+      "rotation": -176.18748,
+      "position": {
+        "x": -52.15682,
+        "y": -7.6148634
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
