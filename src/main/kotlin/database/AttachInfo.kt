@@ -219,6 +219,7 @@ class AttachInfo(
         val useRelicAsAtlas: Boolean,
         var animations: List<AnimationInfo>,
         val onFlash: OnFlashInfo?,
+        val onStance: Map<String, AnimationInfo>?,
         val boneTransforms: List<BoneTransform>?,
         val vfx: Map<String, VfxInfo>?,
     )
