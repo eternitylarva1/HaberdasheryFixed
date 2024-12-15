@@ -1600,6 +1600,53 @@
         "x": 0.0,
         "y": 0.0
       }
+    },
+    "Snecko Eye": {
+      "boneName": "eye_anchor",
+      "skeleton": {
+        "name": "SneckoEye",
+        "useRelicAsAtlas": false,
+        "animations": [],
+        "onStance": {
+          "Calm": {
+            "name": "calm",
+            "speed": 0.3,
+            "startTime": "RANDOM"
+          },
+          "Wrath": {
+            "name": "wrath",
+            "speed": 1.0
+          },
+          "Divinity": {
+            "name": "divinity",
+            "speed": 1.8
+          }
+        }
+      },
+      "large": false,
+      "drawOrder": {
+        "slotName": "eye_anchor",
+        "zIndex": 1
+      },
+      "hideSlotNames": [
+        "eye_anchor"
+      ],
+      "requiredSlotNames": [],
+      "flipHorizontal": false,
+      "flipVertical": false,
+      "scale": {
+        "x": 0.70242214,
+        "y": 0.70242214
+      },
+      "rotation": 0.0,
+      "position": {
+        "x": 1.2699972,
+        "y": -1.1536096
+      },
+      "shear": {
+        "x": 0.0,
+        "y": 0.0
+      }
     }
   }
 }
