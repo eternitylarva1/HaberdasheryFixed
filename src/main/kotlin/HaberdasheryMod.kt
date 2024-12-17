@@ -4,8 +4,10 @@ import basemod.BaseMod
 import basemod.abstracts.CustomSavable
 import basemod.devcommands.ConsoleCommand
 import basemod.interfaces.*
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
+import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.localization.UIStrings
@@ -15,6 +17,8 @@ import haberdashery.extensions.chosenExclusions
 import haberdashery.extensions.panel
 import haberdashery.util.AssetLoader
 import haberdashery.util.Assets
+import java.nio.charset.StandardCharsets
+import java.util.*
 
 @SpireInitializer
 class HaberdasheryMod :
@@ -81,8 +85,19 @@ class HaberdasheryMod :
     }
 
     override fun receiveEditStrings() {
-        // TODO
-        BaseMod.loadCustomStringsFile(UIStrings::class.java, assetPath("localization/eng/UIStrings.json"))
+        loadStrings(UIStrings::class.java)
+    }
+
+    private fun loadStrings(clazz: Class<*>, lang: Settings.GameLanguage = Settings.language) {
+        val path = assetPath("localization/${lang.name.lowercase(locale = Locale.ENGLISH)}/${clazz.simpleName}.json")
+        val file = Gdx.files.internal(path)
+        if (file.exists()) {
+            BaseMod.loadCustomStrings(clazz, file.readString(StandardCharsets.UTF_8?.toString()))
+        } else if (lang != Settings.GameLanguage.ENG) {
+            loadStrings(clazz, Settings.GameLanguage.ENG)
+        } else {
+            throw RuntimeException("Failed to load localization: ${clazz.simpleName}")
+        }
     }
 
     override fun receiveAddAudio() {
