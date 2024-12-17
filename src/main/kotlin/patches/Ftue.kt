@@ -2,13 +2,13 @@ package haberdashery.patches
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.evacipated.cardcrawl.modthespire.lib.*
-import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.ui.FtueTip
 import com.megacrit.cardcrawl.ui.FtueTip.TipType
 import haberdashery.Config
 import haberdashery.HaberdasheryMod
+import haberdashery.util.L10nStrings
 import javassist.CtBehavior
 import kotlin.reflect.KMutableProperty
 
@@ -19,7 +19,7 @@ object Ftue {
 
     @JvmField var fixDoubleAnimation = false
 
-    private val strings by lazy { CardCrawlGame.languagePack.getUIString(HaberdasheryMod.makeID("Ftue")).TEXT_DICT }
+    private val strings by lazy { L10nStrings(HaberdasheryMod.makeID("Ftue")) }
     private val keyMap by lazy { mapOf(
         EXCLUSION to "exclusion"
     ) }
@@ -36,8 +36,8 @@ object Ftue {
         val body = strings["${keyMap[type]}_body"]
 
         AbstractDungeon.ftue = FtueTip(
-            header ?: "[MISSING]",
-            body?.format(*args) ?: "[MISSING]",
+            header,
+            body.format(*args),
             Settings.WIDTH * 0.5f,
             Settings.HEIGHT * 0.75f,
             type,
@@ -78,5 +78,4 @@ object Ftue {
             }
         }
     }
-
 }

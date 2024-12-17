@@ -6,12 +6,12 @@ import basemod.ModPanel
 import basemod.ModToggleButton
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.BitmapFont
-import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.helpers.FontHelper
 import com.megacrit.cardcrawl.helpers.Hitbox
 import haberdashery.Config
 import haberdashery.ui.config.ModCenteredLabel
+import haberdashery.util.L10nStrings
 import kotlin.math.max
 import kotlin.reflect.*
 import kotlin.reflect.full.declaredMemberProperties
@@ -25,14 +25,13 @@ fun panel(block: PanelConfig.() -> Unit): ModPanel {
 }
 
 class PanelConfig(val panel: ModPanel) {
-    private var strings: Map<String, String> = emptyMap()
+    private var strings: L10nStrings = L10nStrings(null)
     var x = 380f
     var y = Settings.OPTION_Y / Settings.yScale + 242f
     var spacing = 0f
 
     fun loadStrings(id: String) {
-        val uiStrings = CardCrawlGame.languagePack.getUIString(id)
-        strings = uiStrings?.TEXT_DICT ?: emptyMap()
+        strings = L10nStrings(id)
     }
 
     fun <T : Any> fromConfig(config: T) {
@@ -150,6 +149,9 @@ open class LabelConfig {
 
     fun getText(strings: Map<String, String>): String =
         text ?: strings[textID] ?: textID?.let { "[MISSING:$it]" } ?: "[MISSING]"
+
+    fun getText(strings: L10nStrings): String =
+        text ?: textID?.let { strings[it] } ?: "[MISSING]"
 }
 
 open class ToggleConfig : LabelConfig() {
