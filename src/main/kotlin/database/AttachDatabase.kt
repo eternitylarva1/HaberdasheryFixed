@@ -78,12 +78,15 @@ object AttachDatabase {
 
         // Load local json
         val localFS = FileSystems.getDefault()
-        Files.walk(localFS.getPath(HaberdasheryMod.ID), 1)
-            .filter(Files::isRegularFile)
-            .forEach {
-                logger.info("Loading ${it.fileName} (LOCAL)")
-                load(it)
-            }
+        val localPath = localFS.getPath(HaberdasheryMod.ID)
+        if (localPath.exists()) {
+            Files.walk(localPath, 1)
+                .filter(Files::isRegularFile)
+                .forEach {
+                    logger.info("Loading ${it.fileName} (LOCAL)")
+                    load(it)
+                }
+        }
 
         // Load mod jsons
         for (modInfo in Loader.MODINFOS) {
