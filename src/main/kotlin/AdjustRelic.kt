@@ -832,7 +832,11 @@ object AdjustRelic {
             val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()).sub(center)
 
             val angle = mouse.angle(startRotation)
-            info.relativeRotation(angle)
+            if ((skeleton?.flipX == true) xor (skeleton?.flipY == true)) {
+                info.relativeRotation(-angle)
+            } else {
+                info.relativeRotation(angle)
+            }
 
             if (info.dirtyRotation != info.rotation) {
                 attachmentRotation(info)
