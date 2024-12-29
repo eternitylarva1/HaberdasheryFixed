@@ -45,8 +45,8 @@ object PauseAnimation {
     fun animateAttachments(__instance: AbstractPlayer) {
         if (AdjustRelic.pauseAnimation() || Ftue.fixDoubleAnimation) return
 
-        __instance.subSkeletons.forEach { (_, it) ->
-            if (Config.animatedRelics) {
+        __instance.subSkeletons.forEach { (key, it) ->
+            if (Config.animatedRelics || key == WatcherEyeFix.WATCHER_EYE_SKEL_KEY) {
                 it.anim.update(Gdx.graphics.deltaTime)
             }
             it.anim.apply(it.skeleton)

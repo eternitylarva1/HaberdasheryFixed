@@ -17,6 +17,8 @@ import javassist.expr.ExprEditor
 import javassist.expr.FieldAccess
 
 object WatcherEyeFix {
+    internal const val WATCHER_EYE_SKEL_KEY = "eye_anim"
+
     @SpirePatch2(
         clz = Watcher::class,
         method = "loadEyeAnimation"
@@ -30,7 +32,7 @@ object WatcherEyeFix {
             ___eyeSkeleton: Skeleton,
             ___eyeState: AnimationState
         ) {
-            val attachment = OffsetSkeletonAttachment("eye_anim").apply {
+            val attachment = OffsetSkeletonAttachment(WATCHER_EYE_SKEL_KEY).apply {
                 skeleton = ___eyeSkeleton
                 rotation = 25f
             }
@@ -39,7 +41,7 @@ object WatcherEyeFix {
             val skin = ___skeleton.data.defaultSkin
             skin.addAttachment(eyeSlot.data.index, attachment.name, attachment)
 
-            __instance.subSkeletons["eye_anim"] = SubSkeleton(___eyeSkeleton, ___eyeState, {})
+            __instance.subSkeletons[WATCHER_EYE_SKEL_KEY] = SubSkeleton(___eyeSkeleton, ___eyeState, {})
         }
 
         @JvmStatic
