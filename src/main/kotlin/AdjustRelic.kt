@@ -48,6 +48,7 @@ object AdjustRelic {
     private val skeletonStart
         get() = Skeleton(skeleton).apply {
             setToSetupPose()
+            setFlip(false, false)
             updateWorldTransform()
         }
     private val bonePicker = BonePickerSkeletonRendererDebug().apply {
@@ -794,6 +795,12 @@ object AdjustRelic {
 
             val mouse = Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
             val diff = mouse.cpy().sub(startPosition).scl(0.1f)
+            if (skeleton?.flipX == true) {
+                diff.x *= -1
+            }
+            if (skeleton?.flipY == true) {
+                diff.y *= -1
+            }
             if (attachment is RegionAttachment) {
                 skeletonStart.findBone(info.boneName)?.let { bone ->
                     diff.rotate(bone.worldRotationX).scl(1f, -1f).rotate(-bone.worldRotationX)
