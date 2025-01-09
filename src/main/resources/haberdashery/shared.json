@@ -1040,7 +1040,7 @@
       },
       "large": false,
       "drawOrder": {
-        "specialSlot": "SHADOW",
+        "specialSlot": "FRONT",
         "zIndex": 3
       },
       "hideSlotNames": [],
