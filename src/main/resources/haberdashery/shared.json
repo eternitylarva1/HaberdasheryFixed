@@ -19,7 +19,7 @@
       },
       "large": false,
       "drawOrder": {
-        "specialSlot": "SHADOW",
+        "specialSlot": "FRONT",
         "zIndex": 0
       },
       "hideSlotNames": [],
@@ -393,7 +393,7 @@
       "noFlipRoot": true,
       "large": true,
       "drawOrder": {
-        "specialSlot": "SHADOW",
+        "specialSlot": "FRONT",
         "zIndex": -1
       },
       "hideSlotNames": [],
