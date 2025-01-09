@@ -194,6 +194,7 @@
     },
     "The Specimen": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": true,
       "drawOrder": {
         "slotName": "shadow",
@@ -365,6 +366,7 @@
     },
     "Paper Crane": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "slotName": "cape_right",
@@ -576,6 +578,7 @@
     },
     "HoveringKite": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "HoveringKite",
         "useRelicAsAtlas": true,
@@ -708,6 +711,7 @@
     },
     "Snake Skull": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "slotName": "skull",
@@ -1042,6 +1046,7 @@
     },
     "Ancient Tea Set": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "slotName": "shadow",
@@ -1067,6 +1072,7 @@
     },
     "Sundial": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "slotName": "skull",
@@ -1092,6 +1098,7 @@
     },
     "Incense Burner": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "slotName": "skull",
@@ -1467,6 +1474,7 @@
     },
     "Girya": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "slotName": "skull",

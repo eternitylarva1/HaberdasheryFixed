@@ -2,6 +2,7 @@
   "HABERDASHERY_SHARED": {
     "Bag of Marbles": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "BagOfMarbles",
         "useRelicAsAtlas": true,
@@ -41,6 +42,7 @@
     },
     "Happy Flower": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "HappyFlower",
         "useRelicAsAtlas": true,
@@ -76,6 +78,7 @@
     },
     "Ancient Tea Set": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -101,6 +104,7 @@
     },
     "Tiny Chest": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -126,6 +130,7 @@
     },
     "War Paint": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -151,6 +156,7 @@
     },
     "Whetstone": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -176,6 +182,7 @@
     },
     "Molten Egg 2": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -201,6 +208,7 @@
     },
     "Toxic Egg 2": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -226,6 +234,7 @@
     },
     "Frozen Egg 2": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -251,6 +260,7 @@
     },
     "Akabeko": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -276,6 +286,7 @@
     },
     "MawBank": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -301,6 +312,7 @@
     },
     "Regal Pillow": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -326,6 +338,7 @@
     },
     "Bag of Preparation": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -351,6 +364,7 @@
     },
     "StrikeDummy": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -376,6 +390,7 @@
     },
     "Torii": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": true,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -401,6 +416,7 @@
     },
     "Oddly Smooth Stone": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -426,6 +442,7 @@
     },
     "Orichalcum": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -451,6 +468,7 @@
     },
     "PreservedInsect": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -476,6 +494,7 @@
     },
     "CeramicFish": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -501,6 +520,7 @@
     },
     "Pear": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -526,6 +546,7 @@
     },
     "Mango": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -551,6 +572,7 @@
     },
     "Strawberry": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -576,6 +598,7 @@
     },
     "Singing Bowl": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -601,6 +624,7 @@
     },
     "Pantograph": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -626,6 +650,7 @@
     },
     "Sundial": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -651,6 +676,7 @@
     },
     "Bird Faced Urn": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -676,6 +702,7 @@
     },
     "Incense Burner": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -701,6 +728,7 @@
     },
     "Empty Cage": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -726,6 +754,7 @@
     },
     "Toolbox": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -751,6 +780,7 @@
     },
     "Tiny House": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -776,6 +806,7 @@
     },
     "Unceasing Top": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "UnceasingTop",
         "useRelicAsAtlas": true,
@@ -815,6 +846,7 @@
     },
     "Prayer Wheel": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -840,6 +872,7 @@
     },
     "Matryoshka": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -865,6 +898,7 @@
     },
     "White Beast Statue": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -890,6 +924,7 @@
     },
     "InkBottle": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -915,6 +950,7 @@
     },
     "FossilizedHelix": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -940,6 +976,7 @@
     },
     "Pandora\u0027s Box": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -965,6 +1002,7 @@
     },
     "Shovel": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": true,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -991,6 +1029,7 @@
     },
     "Sozu": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Sozu",
         "useRelicAsAtlas": false,
@@ -1024,6 +1063,7 @@
     },
     "Golden Idol": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -1050,6 +1090,7 @@
     },
     "Bloody Idol": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -1076,6 +1117,7 @@
     },
     "Toy Ornithopter": {
       "boneName": "root",
+      "noFlipRoot": false,
       "skeleton": {
         "name": "ToyOrnithopter",
         "useRelicAsAtlas": true,
@@ -1109,6 +1151,7 @@
     },
     "Cauldron": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -1134,6 +1177,7 @@
     },
     "StoneCalendar": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -1159,6 +1203,7 @@
     },
     "Thread and Needle": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -1184,6 +1229,7 @@
     },
     "Medical Kit": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -1209,6 +1255,7 @@
     },
     "Orrery": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -1234,6 +1281,7 @@
     },
     "OrangePellets": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -1260,6 +1308,7 @@
     },
     "DollysMirror": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -1285,6 +1334,7 @@
     },
     "PrismaticShard": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": true,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -1310,6 +1360,7 @@
     },
     "Nloth\u0027s Gift": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "SHADOW",
@@ -1335,6 +1386,7 @@
     },
     "Coffee Dripper": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",
@@ -1360,6 +1412,7 @@
     },
     "Runic Pyramid": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "specialSlot": "FRONT",

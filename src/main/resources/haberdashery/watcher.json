@@ -348,6 +348,7 @@
     },
     "Strange Spoon": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "StrangeSpoon",
         "useRelicAsAtlas": true,
@@ -843,6 +844,7 @@
     },
     "Melange": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Spin",
         "useRelicAsAtlas": true,

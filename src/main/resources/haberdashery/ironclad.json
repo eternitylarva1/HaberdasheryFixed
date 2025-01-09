@@ -947,6 +947,7 @@
     },
     "Charon\u0027s Ashes": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "slotName": "shadow",
@@ -1097,6 +1098,7 @@
     },
     "Runic Cube": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "slotName": "eye",
@@ -1596,6 +1598,7 @@
     },
     "Paper Frog": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "slotName": "shadow",
@@ -1724,6 +1727,7 @@
     },
     "Brimstone": {
       "boneName": "root",
+      "noFlipRoot": true,
       "large": false,
       "drawOrder": {
         "slotName": "eye",

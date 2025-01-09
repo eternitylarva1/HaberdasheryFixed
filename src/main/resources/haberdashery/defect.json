@@ -832,6 +832,7 @@
     },
     "Strange Spoon": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
@@ -879,6 +880,7 @@
     },
     "Anchor": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
@@ -924,6 +926,7 @@
     },
     "HornCleat": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
@@ -971,6 +974,7 @@
     },
     "Mercury Hourglass": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
@@ -1018,6 +1022,7 @@
     },
     "Kunai": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
@@ -1064,6 +1069,7 @@
     },
     "Shuriken": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
@@ -1117,6 +1123,7 @@
     },
     "ClockworkSouvenir": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
@@ -1190,6 +1197,7 @@
     },
     "Lantern": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
@@ -1236,6 +1244,7 @@
     },
     "Astrolabe": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
@@ -1282,6 +1291,7 @@
     },
     "Girya": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
@@ -1353,6 +1363,7 @@
     },
     "Inserter": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Inserter",
         "useRelicAsAtlas": false,
@@ -1388,6 +1399,7 @@
     },
     "Pen Nib": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
@@ -1665,6 +1677,7 @@
     },
     "Calling Bell": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
@@ -1712,6 +1725,7 @@
     },
     "Centennial Puzzle": {
       "boneName": "root",
+      "noFlipRoot": true,
       "skeleton": {
         "name": "Orbit",
         "useRelicAsAtlas": true,
