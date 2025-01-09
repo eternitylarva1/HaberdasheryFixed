@@ -5,6 +5,7 @@ import com.esotericsoftware.spine.Bone
 import com.esotericsoftware.spine.Skeleton
 import com.esotericsoftware.spine.attachments.SkeletonAttachment
 import haberdashery.database.AttachInfo
+import haberdashery.extensions.inheritFlip
 
 class OffsetSkeletonAttachment(name: String) : SkeletonAttachment(name) {
     var position: Vector2 = Vector2()
@@ -29,13 +30,15 @@ class OffsetSkeletonAttachment(name: String) : SkeletonAttachment(name) {
             parentSkeleton.y + offset.y,
         )
         var boneRotation = parentBone.worldRotationX
-        if (parentSkeleton.flipX xor parentSkeleton.flipY) {
+        if ((parentSkeleton.flipX xor parentSkeleton.flipY) && parentBone.data.inheritFlip) {
             boneRotation = 180f - boneRotation
         }
         val rootBone = skeleton.rootBone
         rootBone.rotation = oldRotation + boneRotation + rotation
         rootBone.setScale(scaleX, scaleY)
-        skeleton.setFlip(parentSkeleton.flipX, parentSkeleton.flipY)
+        if (parentBone.data.inheritFlip) {
+            skeleton.setFlip(parentSkeleton.flipX, parentSkeleton.flipY)
+        }
 
         boneTransforms?.forEach { transform ->
             val bone = skeleton.findBone(transform.name) ?: return@forEach

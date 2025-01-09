@@ -19,6 +19,7 @@ import haberdashery.database.AttachInfo
 import haberdashery.database.AttachInfo.StartType.*
 import haberdashery.database.MySlotData
 import haberdashery.extensions.*
+import haberdashery.patches.CreateSpecialRootBone
 import haberdashery.patches.Ftue
 import haberdashery.patches.LoseRelic
 import haberdashery.patches.SubSkeleton
@@ -56,9 +57,12 @@ object AttachRelic {
             return
         }
 
-        val bone = skeleton.findBone(info.boneName) ?: run {
+        var bone = skeleton.findBone(info.boneName) ?: run {
             logger.warn("Failed to find bone[\"${info.boneName}\"]")
             return
+        }
+        if (info.noFlipRoot && bone == skeleton.rootBone) {
+            bone = skeleton.findBone(CreateSpecialRootBone.SPECIAL_ROOT_BONE_NAME)
         }
         val slotClone = Slot(
             MySlotData(
@@ -134,9 +138,14 @@ object AttachRelic {
     private fun makeAttachment(relicSlotName: String, relic: AbstractRelic, skeleton: Skeleton, info: AttachInfo): Attachment {
         val skeletonStart = Skeleton(skeleton).apply {
             setToSetupPose()
+            setFlip(false, false)
             updateWorldTransform()
         }
-        val bone = skeletonStart.findBone(info.boneName)
+        var bone = skeletonStart.findBone(info.boneName)
+        val rootBone = skeletonStart.rootBone
+        if (info.noFlipRoot && bone == rootBone) {
+            bone = skeletonStart.findBone(CreateSpecialRootBone.SPECIAL_ROOT_BONE_NAME)
+        }
 
         info.skeletonInfo?.let { skeletonInfo ->
             val subSkeleton = loadSubSkeleton(relic, info, skeletonInfo, skeleton)

@@ -20,6 +20,7 @@ class AttachInfo(
     @Transient
     var path: Path? = null
 
+    val noFlipRoot: Boolean = false
     @SerializedName("skeleton")
     val skeletonInfo: SkeletonInfo? = null
     var large: Boolean = false
