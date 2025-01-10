@@ -61,7 +61,7 @@ object AttachRelic {
             logger.warn("Failed to find bone[\"${info.boneName}\"]")
             return
         }
-        if (info.noFlipRoot && bone == skeleton.rootBone) {
+        if (info.noFlipRoot == true && bone == skeleton.rootBone) {
             bone = skeleton.findBone(CreateSpecialRootBone.SPECIAL_ROOT_BONE_NAME)
         }
         val slotClone = Slot(
@@ -143,7 +143,7 @@ object AttachRelic {
         }
         var bone = skeletonStart.findBone(info.boneName)
         val rootBone = skeletonStart.rootBone
-        if (info.noFlipRoot && bone == rootBone) {
+        if (info.noFlipRoot == true && bone == rootBone) {
             bone = skeletonStart.findBone(CreateSpecialRootBone.SPECIAL_ROOT_BONE_NAME)
         }
 
