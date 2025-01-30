@@ -2,7 +2,9 @@ package haberdashery.ui
 
 import basemod.BaseMod
 import basemod.TopPanelItem
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.math.MathUtils
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.MathHelper
@@ -15,6 +17,7 @@ import haberdashery.util.L10nStrings
 
 class CustomizeAttachmentsTopPanelItem : TopPanelItem(Assets.topPanelImg, ID) {
     private var targetAngle = angle
+    private var rotateTimer = 0f
 
     override fun onClick() {
         if (CustomizeAttachmentsScreen.isOpen()) {
@@ -27,7 +30,12 @@ class CustomizeAttachmentsTopPanelItem : TopPanelItem(Assets.topPanelImg, ID) {
     override fun update() {
         isClickable = AbstractDungeon.currMapNode?.getRoom()?.phase == AbstractRoom.RoomPhase.COMBAT
         super.update()
-        angle = MathHelper.angleLerpSnap(angle, targetAngle)
+        if (CustomizeAttachmentsScreen.isOpen()) {
+            rotateTimer += Gdx.graphics.deltaTime * 4f
+            angle = MathHelper.angleLerpSnap(angle, MathUtils.sin(rotateTimer) * 15f)
+        } else {
+            angle = MathHelper.angleLerpSnap(angle, targetAngle)
+        }
     }
 
     override fun onHover() {
