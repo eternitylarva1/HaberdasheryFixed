@@ -6,12 +6,15 @@ import com.evacipated.cardcrawl.modthespire.lib.*
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.GameCursor
 import com.megacrit.cardcrawl.core.GameCursor.CursorType
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon
+import com.megacrit.cardcrawl.helpers.Hitbox
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.helpers.input.InputHelper
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.HaberdasheryMod
 import haberdashery.extensions.inst
 import haberdashery.extensions.scale
+import haberdashery.ui.CustomizeAttachmentsScreen
 import javassist.CtBehavior
 import javassist.expr.ExprEditor
 import javassist.expr.MethodCall
@@ -87,6 +90,12 @@ object NewCursors {
                         "\$_ = \$proceed(\$\$);" +
                                 "${GrabCursor::changeCursorOnHover.inst}(this);"
                     )
+                } else if (m.className == Hitbox::class.qualifiedName && m.methodName == "update") {
+                    m.replace(
+                        "if (${GrabCursor::updateRelicHitbox.inst}(this)) {" +
+                                "\$_ = \$proceed(\$\$);" +
+                                "}"
+                    )
                 }
             }
         }
@@ -106,6 +115,11 @@ object NewCursors {
             if (DragRelicToAdjustExcludes.canDragRelic(relic)) {
                 CardCrawlGame.cursor.changeType(HAND)
             }
+        }
+
+        @JvmStatic
+        fun updateRelicHitbox(relic: AbstractRelic): Boolean {
+            return AbstractDungeon.screen != CustomizeAttachmentsScreen.Enum.CUSTOMIZE_ATTACHMENTS || DragRelicToAdjustExcludes.canDragRelic(relic)
         }
     }
 }

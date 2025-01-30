@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatches2
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn
 import com.megacrit.cardcrawl.core.AbstractCreature
@@ -129,6 +130,27 @@ class CustomizeAttachmentsScreen : CustomScreen() {
                 if (showDraggable && DragRelicToAdjustExcludes.canDragRelic(__instance)) {
                     return SpireReturn.Continue()
                 }
+                return SpireReturn.Return()
+            }
+            return SpireReturn.Continue()
+        }
+    }
+
+    @SpirePatches2(
+        SpirePatch2(
+            clz = AbstractRelic::class,
+            method = "updateRelicPopupClick"
+        ),
+        SpirePatch2(
+            clz = AbstractRelic::class,
+            method = "renderTip"
+        )
+    )
+    object DisableInspectAndTooltip {
+        @JvmStatic
+        @SpirePrefixPatch
+        fun prefix(): SpireReturn<Void> {
+            if ((BaseMod.getCustomScreen(Enum.CUSTOMIZE_ATTACHMENTS) as? CustomizeAttachmentsScreen)?.isOpen == true) {
                 return SpireReturn.Return()
             }
             return SpireReturn.Continue()
