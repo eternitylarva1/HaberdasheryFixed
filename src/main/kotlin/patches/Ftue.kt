@@ -29,7 +29,11 @@ object Ftue {
         return !prop.getter.call()
     }
 
-    fun open(type: TipType, vararg args: Any?) {
+    fun open(
+        type: TipType, vararg args: Any?,
+        x: Float = 0.5f, y: Float = 0.5f,
+        posX: Float = Settings.WIDTH * x, posY: Float = Settings.HEIGHT * y
+    ) {
         if (AbstractDungeon.currMapNode?.getRoom() == null) return
 
         val header = strings["${keyMap[type]}_header"]
@@ -38,8 +42,8 @@ object Ftue {
         AbstractDungeon.ftue = FtueTip(
             header,
             body.format(*args),
-            Settings.WIDTH * 0.5f,
-            Settings.HEIGHT * 0.75f,
+            posX,
+            posY,
             type,
         )
 

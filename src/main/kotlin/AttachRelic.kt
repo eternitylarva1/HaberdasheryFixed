@@ -293,7 +293,7 @@ object AttachRelic {
             val relicNames = exclusionCount.values.first { it.size > 1 }
                 .map { it.removePrefix(HaberdasheryMod.makeID("")) }
                 .map { FontHelper.colorString(RelicLibrary.getRelic(it)?.name ?: "", "y") }
-            Ftue.open(Ftue.EXCLUSION, relicNames[0], relicNames[1])
+            Ftue.open(Ftue.EXCLUSION, relicNames[0], relicNames[1], y = 0.75f)
         }
 
         // Hide relics based on exclusion group
