@@ -19,7 +19,7 @@
   "${mod.id}:CustomizeAttachmentsTopPanelItem": {
     "TEXT_DICT": {
       "header": "Haberdashery",
-      "body": "Customize Appearance"
+      "body": "Customize appearance."
     }
   },
   "${mod.id}:CustomizeAttachmentsScreen": {
