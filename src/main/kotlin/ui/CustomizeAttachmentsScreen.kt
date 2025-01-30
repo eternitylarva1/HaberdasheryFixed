@@ -104,6 +104,10 @@ class CustomizeAttachmentsScreen : CustomScreen() {
     companion object {
         val ID = HaberdasheryMod.makeID("CustomizeAttachmentsScreen")
         private val strings by lazy { L10nStrings(ID) }
+
+        fun isOpen(): Boolean {
+            return (BaseMod.getCustomScreen(Enum.CUSTOMIZE_ATTACHMENTS) as? CustomizeAttachmentsScreen)?.isOpen == true
+        }
     }
 
     object Enum {
@@ -123,7 +127,7 @@ class CustomizeAttachmentsScreen : CustomScreen() {
         fun disableWhenScreenOpen(__instance: AbstractRelic, sb: SpriteBatch): SpireReturn<Void> {
             DragRelicToAdjustExcludes.MoveRelicOnDrag.setRelicPositionToCursor(__instance, sb)
 
-            if ((BaseMod.getCustomScreen(Enum.CUSTOMIZE_ATTACHMENTS) as? CustomizeAttachmentsScreen)?.isOpen == true) {
+            if (isOpen()) {
                 if (showAll) {
                     return SpireReturn.Continue()
                 }
@@ -150,7 +154,7 @@ class CustomizeAttachmentsScreen : CustomScreen() {
         @JvmStatic
         @SpirePrefixPatch
         fun prefix(): SpireReturn<Void> {
-            if ((BaseMod.getCustomScreen(Enum.CUSTOMIZE_ATTACHMENTS) as? CustomizeAttachmentsScreen)?.isOpen == true) {
+            if (isOpen()) {
                 return SpireReturn.Return()
             }
             return SpireReturn.Continue()

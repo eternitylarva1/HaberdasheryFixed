@@ -17,7 +17,7 @@ class CustomizeAttachmentsTopPanelItem : TopPanelItem(Assets.topPanelImg, ID) {
     private var targetAngle = angle
 
     override fun onClick() {
-        if (AbstractDungeon.screen == CustomizeAttachmentsScreen.Enum.CUSTOMIZE_ATTACHMENTS) {
+        if (CustomizeAttachmentsScreen.isOpen()) {
             AbstractDungeon.closeCurrentScreen()
         } else {
             BaseMod.openCustomScreen(CustomizeAttachmentsScreen.Enum.CUSTOMIZE_ATTACHMENTS)

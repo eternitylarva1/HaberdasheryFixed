@@ -119,7 +119,7 @@ object NewCursors {
 
         @JvmStatic
         fun updateRelicHitbox(relic: AbstractRelic): Boolean {
-            return AbstractDungeon.screen != CustomizeAttachmentsScreen.Enum.CUSTOMIZE_ATTACHMENTS || DragRelicToAdjustExcludes.canDragRelic(relic)
+            return !CustomizeAttachmentsScreen.isOpen() || DragRelicToAdjustExcludes.canDragRelic(relic)
         }
     }
 }

@@ -28,7 +28,7 @@ object DragRelicToAdjustExcludes {
 
     @JvmStatic
     fun canDragRelic(relic: AbstractRelic): Boolean {
-        if (AbstractDungeon.screen != CustomizeAttachmentsScreen.Enum.CUSTOMIZE_ATTACHMENTS) {
+        if (!CustomizeAttachmentsScreen.isOpen()) {
             return false
         }
         val player = AbstractDungeon.player ?: return false
