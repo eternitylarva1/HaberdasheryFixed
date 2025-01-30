@@ -13,7 +13,7 @@
   "${mod.id}:Ftue": {
     "TEXT_DICT": {
       "exclusion_header": "Customize Appearance",
-      "exclusion_body": "You have two relics that cannot both be displayed on your character at the same time. NL To customize which relic is displayed, click the above button."
+      "exclusion_body": "You have two relics that cannot both be displayed on your character at the same time. NL To customize which relic is displayed, click the above button while in combat."
     }
   },
   "${mod.id}:CustomizeAttachmentsTopPanelItem": {
