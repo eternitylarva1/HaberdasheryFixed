@@ -16,6 +16,7 @@ import haberdashery.HaberdasheryMod
 import haberdashery.database.AttachDatabase
 import haberdashery.extensions.chosenExclusions
 import haberdashery.extensions.scale
+import haberdashery.ui.CustomizeAttachmentsScreen
 import javassist.CtBehavior
 import javassist.expr.ExprEditor
 import javassist.expr.MethodCall
@@ -25,7 +26,11 @@ object DragRelicToAdjustExcludes {
     internal var droppedTimer = 0f
     private var grabOffset = Vector2()
 
+    @JvmStatic
     fun canDragRelic(relic: AbstractRelic): Boolean {
+        if (AbstractDungeon.screen != CustomizeAttachmentsScreen.Enum.CUSTOMIZE_ATTACHMENTS) {
+            return false
+        }
         val player = AbstractDungeon.player ?: return false
         val exclusionGroup = AttachDatabase.getInfo(player.chosenClass, relic.relicId)?.exclusionGroup
             ?: return false
@@ -106,13 +111,11 @@ object DragRelicToAdjustExcludes {
         clz = AbstractRelic::class,
         method = "renderInTopPanel"
     )
-    object Render {
+    object MoveRelicOnDrag {
         private var saveX = 0f
         private var saveY = 0f
 
-        @JvmStatic
-        @SpirePrefixPatch
-        fun prefix(__instance: AbstractRelic, sb: SpriteBatch) {
+        fun setRelicPositionToCursor(__instance: AbstractRelic, sb: SpriteBatch) {
             saveX = __instance.currentX
             saveY = __instance.currentY
             if (__instance == grabbedRelic) {
@@ -125,7 +128,7 @@ object DragRelicToAdjustExcludes {
 
         @JvmStatic
         @SpirePostfixPatch
-        fun postfix(__instance: AbstractRelic) {
+        fun resetRelicPosition(__instance: AbstractRelic) {
             __instance.currentX = saveX
             __instance.currentY = saveY
         }

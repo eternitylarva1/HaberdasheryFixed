@@ -15,6 +15,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.devcommands.HaberdasheryCommand
 import haberdashery.extensions.chosenExclusions
 import haberdashery.extensions.panel
+import haberdashery.ui.CustomizeAttachmentsScreen
+import haberdashery.ui.CustomizeAttachmentsTopPanelItem
 import haberdashery.util.AssetLoader
 import haberdashery.util.Assets
 import java.nio.charset.StandardCharsets
@@ -67,6 +69,9 @@ class HaberdasheryMod :
             "TODO",
             settingsPanel
         )
+
+        BaseMod.addCustomScreen(CustomizeAttachmentsScreen())
+        BaseMod.addTopPanelItem(CustomizeAttachmentsTopPanelItem())
 
         ConsoleCommand.addCommand("haberdashery", HaberdasheryCommand::class.java)
 

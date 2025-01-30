@@ -15,5 +15,11 @@
       "exclusion_header": "Exclusive Relic Visuals",
       "exclusion_body": "You have two relics that cannot both be displayed on your character at the same time. NL You may drag and drop %1$s or %2$s onto your character to choose which gets displayed."
     }
+  },
+  "${mod.id}:CustomizeAttachmentsTopPanelItem": {
+    "TEXT_DICT": {
+      "header": "Haberdashery",
+      "body": "Customize Appearance"
+    }
   }
 }
