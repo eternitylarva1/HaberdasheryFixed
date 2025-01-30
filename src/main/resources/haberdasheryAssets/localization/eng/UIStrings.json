@@ -12,8 +12,8 @@
   },
   "${mod.id}:Ftue": {
     "TEXT_DICT": {
-      "exclusion_header": "Exclusive Relic Visuals",
-      "exclusion_body": "You have two relics that cannot both be displayed on your character at the same time. NL You may drag and drop %1$s or %2$s onto your character to choose which gets displayed."
+      "exclusion_header": "Customize Appearance",
+      "exclusion_body": "You have two relics that cannot both be displayed on your character at the same time. NL To customize which relic is displayed, click the above button."
     }
   },
   "${mod.id}:CustomizeAttachmentsTopPanelItem": {
