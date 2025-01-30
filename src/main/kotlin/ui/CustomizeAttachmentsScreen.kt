@@ -14,10 +14,14 @@ import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon.CurrentScreen
+import com.megacrit.cardcrawl.helpers.FontHelper
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.relics.AbstractRelic
+import haberdashery.HaberdasheryMod
+import haberdashery.extensions.scale
 import haberdashery.patches.DragRelicToAdjustExcludes
 import haberdashery.patches.Ftue
+import haberdashery.util.L10nStrings
 
 class CustomizeAttachmentsScreen : CustomScreen() {
     private var isOpen = false
@@ -88,10 +92,17 @@ class CustomizeAttachmentsScreen : CustomScreen() {
         DisableRenderRelicsPatch.showDraggable = true
         AbstractDungeon.player?.renderRelics(sb)
         DisableRenderRelicsPatch.showDraggable = false
+
+        FontHelper.renderDeckViewTip(sb, strings["tip"], 96.scale(), Settings.CREAM_COLOR)
     }
 
     override fun openingSettings() {
         isOpen = false
+    }
+
+    companion object {
+        val ID = HaberdasheryMod.makeID("CustomizeAttachmentsScreen")
+        private val strings by lazy { L10nStrings(ID) }
     }
 
     object Enum {

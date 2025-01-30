@@ -21,5 +21,10 @@
       "header": "Haberdashery",
       "body": "Customize Appearance"
     }
+  },
+  "${mod.id}:CustomizeAttachmentsScreen": {
+    "TEXT_DICT": {
+      "tip": "Drag and drop a highlighted relic onto your character to display it."
+    }
   }
 }
