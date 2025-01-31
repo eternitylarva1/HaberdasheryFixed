@@ -1,9 +1,13 @@
 package haberdashery
 
 import basemod.BaseMod
+import basemod.ReflectionHacks
+import basemod.TopPanelGroup
+import basemod.TopPanelItem
 import basemod.abstracts.CustomSavable
 import basemod.devcommands.ConsoleCommand
 import basemod.interfaces.*
+import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
@@ -15,6 +19,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.devcommands.HaberdasheryCommand
 import haberdashery.extensions.chosenExclusions
 import haberdashery.extensions.panel
+import haberdashery.extensions.skeleton
 import haberdashery.patches.ModBadgePatch
 import haberdashery.ui.CustomizeAttachmentsScreen
 import haberdashery.ui.CustomizeAttachmentsTopPanelItem
@@ -30,11 +35,13 @@ class HaberdasheryMod :
     AddAudioSubscriber,
     RelicGetSubscriber,
     PreUpdateSubscriber,
-    PostRenderSubscriber
+    PostRenderSubscriber,
+    StartGameSubscriber
 {
     companion object Statics {
         val ID: String = "haberdashery"
         val NAME: String = "Haberdashery"
+        private val topPanelItem by lazy { CustomizeAttachmentsTopPanelItem() }
 
         @Suppress("unused")
         @JvmStatic
@@ -44,6 +51,17 @@ class HaberdasheryMod :
 
         fun makeID(id: String) = "$ID:$id"
         fun assetPath(path: String) = "${ID}Assets/$path"
+
+        internal fun addTopPanelItem() {
+            val items = ReflectionHacks.getPrivate<ArrayList<TopPanelItem>>(TopPanelHelper.topPanelGroup, TopPanelGroup::class.java, "topPanelItems")
+            if (!items.contains(topPanelItem)) {
+                BaseMod.addTopPanelItem(topPanelItem)
+            }
+        }
+
+        internal fun removeTopPanelItem() {
+            BaseMod.removeTopPanelItem(topPanelItem)
+        }
     }
 
     override fun receivePostInitialize() {
@@ -73,7 +91,6 @@ class HaberdasheryMod :
         ModBadgePatch.panel = settingsPanel
 
         BaseMod.addCustomScreen(CustomizeAttachmentsScreen())
-        BaseMod.addTopPanelItem(CustomizeAttachmentsTopPanelItem())
 
         ConsoleCommand.addCommand("haberdashery", HaberdasheryCommand::class.java)
 
@@ -124,5 +141,12 @@ class HaberdasheryMod :
 
     override fun receivePostRender(sb: SpriteBatch) {
         AdjustRelic.render(sb)
+    }
+
+    override fun receiveStartGame() {
+        removeTopPanelItem()
+        val player = AbstractDungeon.player ?: return
+        val skeleton = player.skeleton ?: return
+        AttachRelic.updateSlotVisibilities(player, skeleton)
     }
 }

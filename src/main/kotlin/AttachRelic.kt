@@ -263,7 +263,7 @@ object AttachRelic {
         return ret
     }
 
-    private fun updateSlotVisibilities(player: AbstractPlayer, skeleton: Skeleton) {
+    internal fun updateSlotVisibilities(player: AbstractPlayer, skeleton: Skeleton) {
         val exclusionCount = mutableMapOf<String, MutableList<String>>()
         for (slot in skeleton.slots) {
             val data = slot.data
@@ -286,9 +286,12 @@ object AttachRelic {
             }
         }
 
-        // Open Ftue if player has 2+ relics that exclude each other
-        if (Ftue.canOpen(Ftue.EXCLUSION) && exclusionCount.values.any { it.size > 1 }) {
-            Ftue.open(Ftue.EXCLUSION, x = 0.8f, y = 0.75f)
+        // Add top panel item and open Ftue if player has 2+ relics that exclude each other
+        if (exclusionCount.values.any { it.size > 1 }) {
+            HaberdasheryMod.addTopPanelItem()
+            if (Ftue.canOpen(Ftue.EXCLUSION)) {
+                Ftue.open(Ftue.EXCLUSION, x = 0.8f, y = 0.75f)
+            }
         }
 
         // Hide relics based on exclusion group
