@@ -18,8 +18,8 @@ object ModBadgePatch {
     @SpirePrefixPatch
     fun prefix(___modPanel: ModPanel, @ByRef ___x: FloatArray, @ByRef ___y: FloatArray) {
         if (___modPanel == panel) {
-            ___x[0] += 30.scale()
-            ___y[0] += 8.scale()
+            ___x[0] += 34.5f.scale()
+            ___y[0] += 9.scale()
         }
     }
 }
