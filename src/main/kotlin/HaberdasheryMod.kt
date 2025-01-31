@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic
 import haberdashery.devcommands.HaberdasheryCommand
 import haberdashery.extensions.chosenExclusions
 import haberdashery.extensions.panel
+import haberdashery.patches.ModBadgePatch
 import haberdashery.ui.CustomizeAttachmentsScreen
 import haberdashery.ui.CustomizeAttachmentsTopPanelItem
 import haberdashery.util.AssetLoader
@@ -69,6 +70,7 @@ class HaberdasheryMod :
             "TODO",
             settingsPanel
         )
+        ModBadgePatch.panel = settingsPanel
 
         BaseMod.addCustomScreen(CustomizeAttachmentsScreen())
         BaseMod.addTopPanelItem(CustomizeAttachmentsTopPanelItem())
