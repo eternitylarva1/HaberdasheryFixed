@@ -58,7 +58,12 @@ class CustomizeAttachmentsTopPanelItem : TopPanelItem(Assets.topPanelImg, ID) {
                 x - hb_w,
                 TIP_Y_POS,
                 strings["header"],
-                strings["body"]
+                strings["body"] +
+                strings["body_grey"].split(" ").joinToString(
+                    prefix = "[#aaaaaa]",
+                    postfix = "[]",
+                    separator = "[] [#aaaaaa]",
+                )
             )
         }
     }

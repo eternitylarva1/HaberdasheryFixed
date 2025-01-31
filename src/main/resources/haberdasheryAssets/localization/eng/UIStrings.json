@@ -19,7 +19,8 @@
   "${mod.id}:CustomizeAttachmentsTopPanelItem": {
     "TEXT_DICT": {
       "header": "Haberdashery",
-      "body": "Customize appearance."
+      "body": "Customize appearance. NL ",
+      "body_grey": "(Only available in combat.)"
     }
   },
   "${mod.id}:CustomizeAttachmentsScreen": {
