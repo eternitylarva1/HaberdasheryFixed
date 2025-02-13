@@ -1,13 +1,21 @@
-package haberdashery.database
+package com.evacipated.cardcrawl.mod.haberdashery.database
 
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
 import com.esotericsoftware.spine.Slot
+import com.evacipated.cardcrawl.mod.haberdashery.AdjustRelic
+import com.evacipated.cardcrawl.mod.haberdashery.database.adapters.StartTypeAdapter
 import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
-import haberdashery.AdjustRelic
-import haberdashery.database.adapters.StartTypeAdapter
 import java.nio.file.Path
+import kotlin.Any
+import kotlin.Array
+import kotlin.Boolean
+import kotlin.Float
+import kotlin.Int
+import kotlin.String
+import kotlin.apply
+import kotlin.emptyArray
 import kotlin.math.absoluteValue
 import com.badlogic.gdx.utils.Array as GdxArray
 

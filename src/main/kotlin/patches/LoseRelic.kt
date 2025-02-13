@@ -1,8 +1,8 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
+import com.evacipated.cardcrawl.mod.haberdashery.AttachRelic
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
 import com.megacrit.cardcrawl.characters.AbstractPlayer
-import haberdashery.AttachRelic
 
 @SpirePatch2(
     clz = AbstractPlayer::class,

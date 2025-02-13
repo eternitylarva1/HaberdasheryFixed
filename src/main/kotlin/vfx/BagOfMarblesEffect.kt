@@ -1,4 +1,4 @@
-package haberdashery.vfx
+package com.evacipated.cardcrawl.mod.haberdashery.vfx
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.getPrivate
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.scale
+import com.evacipated.cardcrawl.mod.haberdashery.util.Assets
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect
-import haberdashery.extensions.getPrivate
-import haberdashery.extensions.scale
-import haberdashery.util.Assets
 
 class BagOfMarblesEffect(
     private val x: Float,

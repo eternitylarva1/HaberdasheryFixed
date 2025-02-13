@@ -1,16 +1,16 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.esotericsoftware.spine.AnimationState
 import com.esotericsoftware.spine.Skeleton
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.inst
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.subSkeletons
+import com.evacipated.cardcrawl.mod.haberdashery.spine.attachments.OffsetSkeletonAttachment
 import com.evacipated.cardcrawl.modthespire.lib.SpireInstrumentPatch
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch
 import com.evacipated.cardcrawl.modthespire.lib.SpireRawPatch
 import com.megacrit.cardcrawl.characters.Watcher
 import com.megacrit.cardcrawl.core.Settings
-import haberdashery.extensions.inst
-import haberdashery.extensions.subSkeletons
-import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import javassist.CtBehavior
 import javassist.CtMethod
 import javassist.expr.ExprEditor

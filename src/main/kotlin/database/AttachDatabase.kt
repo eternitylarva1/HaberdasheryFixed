@@ -1,4 +1,4 @@
-package haberdashery.database
+package com.evacipated.cardcrawl.mod.haberdashery.database
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Pixmap
@@ -6,6 +6,12 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Gdx2DPixmap
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.esotericsoftware.spine.Skeleton
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.database.adapters.AnimationInfoTypeAdapterFactory
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.asRegion
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.getPrivate
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.skeleton
+import com.evacipated.cardcrawl.mod.haberdashery.spine.attachments.MaskedRegionAttachment
 import com.evacipated.cardcrawl.modthespire.Loader
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum
 import com.google.gson.Gson
@@ -17,12 +23,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.RelicLibrary
 import com.megacrit.cardcrawl.relics.AbstractRelic
-import haberdashery.HaberdasheryMod
-import haberdashery.database.adapters.AnimationInfoTypeAdapterFactory
-import haberdashery.extensions.asRegion
-import haberdashery.extensions.getPrivate
-import haberdashery.extensions.skeleton
-import haberdashery.spine.attachments.MaskedRegionAttachment
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import java.awt.image.BufferedImage

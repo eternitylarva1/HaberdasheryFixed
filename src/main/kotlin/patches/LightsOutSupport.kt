@@ -1,17 +1,17 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.math.Vector2
 import com.esotericsoftware.spine.Skeleton
 import com.esotericsoftware.spine.attachments.RegionAttachment
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.database.MySlotData
+import com.evacipated.cardcrawl.mod.haberdashery.spine.attachments.OffsetSkeletonAttachment
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatches2
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.characters.Watcher
-import haberdashery.HaberdasheryMod
-import haberdashery.database.MySlotData
-import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import kotlin.reflect.KFunction
 import kotlin.reflect.full.declaredMemberFunctions
 

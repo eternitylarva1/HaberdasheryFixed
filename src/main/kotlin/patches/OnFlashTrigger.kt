@@ -1,18 +1,18 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.badlogic.gdx.utils.Array
 import com.esotericsoftware.spine.AnimationState
 import com.esotericsoftware.spine.AnimationState.AnimationStateListener
+import com.evacipated.cardcrawl.mod.haberdashery.Config
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachDatabase
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.getPrivate
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.subSkeletons
+import com.evacipated.cardcrawl.mod.haberdashery.spine.AnimationEventListener
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch
 import com.megacrit.cardcrawl.actions.AbstractGameAction
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.relics.AbstractRelic
-import haberdashery.Config
-import haberdashery.database.AttachDatabase
-import haberdashery.extensions.getPrivate
-import haberdashery.extensions.subSkeletons
-import haberdashery.spine.AnimationEventListener
 
 @SpirePatch2(
     clz = AbstractRelic::class,

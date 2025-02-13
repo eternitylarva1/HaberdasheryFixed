@@ -1,4 +1,4 @@
-package haberdashery
+package com.evacipated.cardcrawl.mod.haberdashery
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig
 import java.io.IOException
@@ -71,13 +71,13 @@ object Config {
 
     class BooleanValue(default: Boolean) : ConfigValue<Boolean>(default) {
         override fun getValue(thisRef: Config, property: KProperty<*>): Boolean {
-            return thisRef.config?.getBool(property.name) ?: default
+            return config?.getBool(property.name) ?: default
         }
 
         override fun setValue(thisRef: Config, property: KProperty<*>, value: Boolean) {
-            thisRef.config?.setBool(property.name, value)
+            config?.setBool(property.name, value)
             try {
-                thisRef.config?.save()
+                config?.save()
             } catch (e: IOException) {
                 e.printStackTrace()
             }

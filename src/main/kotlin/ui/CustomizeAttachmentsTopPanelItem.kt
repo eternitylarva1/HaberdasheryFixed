@@ -1,19 +1,19 @@
-package haberdashery.ui
+package com.evacipated.cardcrawl.mod.haberdashery.ui
 
 import basemod.BaseMod
 import basemod.TopPanelItem
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.MathUtils
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.scale
+import com.evacipated.cardcrawl.mod.haberdashery.util.Assets
+import com.evacipated.cardcrawl.mod.haberdashery.util.L10nStrings
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.MathHelper
 import com.megacrit.cardcrawl.helpers.TipHelper
 import com.megacrit.cardcrawl.rooms.AbstractRoom
-import haberdashery.HaberdasheryMod
-import haberdashery.extensions.scale
-import haberdashery.util.Assets
-import haberdashery.util.L10nStrings
 
 class CustomizeAttachmentsTopPanelItem : TopPanelItem(Assets.topPanelImg, ID) {
     private var targetAngle = angle

@@ -1,4 +1,4 @@
-package haberdashery.util
+package com.evacipated.cardcrawl.mod.haberdashery.util
 
 import com.badlogic.gdx.assets.AssetLoaderParameters
 import com.badlogic.gdx.assets.AssetManager

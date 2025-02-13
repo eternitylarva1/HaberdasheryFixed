@@ -1,4 +1,4 @@
-package haberdashery.spine
+package com.evacipated.cardcrawl.mod.haberdashery.spine
 
 import com.badlogic.gdx.math.Vector2
 import com.esotericsoftware.spine.Animation.EventTimeline
@@ -6,14 +6,14 @@ import com.esotericsoftware.spine.AnimationState
 import com.esotericsoftware.spine.AnimationState.AnimationStateListener
 import com.esotericsoftware.spine.Event
 import com.esotericsoftware.spine.Skeleton
+import com.evacipated.cardcrawl.mod.haberdashery.Config
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachDatabase
+import com.evacipated.cardcrawl.mod.haberdashery.spine.attachments.OffsetSkeletonAttachment
 import com.megacrit.cardcrawl.actions.AbstractGameAction
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect
-import haberdashery.Config
-import haberdashery.HaberdasheryMod
-import haberdashery.database.AttachDatabase
-import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import kotlin.reflect.KParameter
@@ -51,7 +51,8 @@ class AnimationEventListener(
                 }
             }
             PLAY_VFX -> {
-                val vfxInfo = AttachDatabase.getInfo(AbstractDungeon.player.chosenClass, slotName.removePrefix(HaberdasheryMod.makeID("")))
+                val vfxInfo = AttachDatabase.getInfo(AbstractDungeon.player.chosenClass, slotName.removePrefix(
+                    HaberdasheryMod.makeID("")))
                     ?.skeletonInfo?.vfx?.get(event.string)
                 val attachment = slot.attachment as? OffsetSkeletonAttachment
                 if (vfxInfo != null && attachment != null) {

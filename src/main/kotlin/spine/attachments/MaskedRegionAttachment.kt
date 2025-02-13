@@ -1,4 +1,4 @@
-package haberdashery.spine.attachments
+package com.evacipated.cardcrawl.mod.haberdashery.spine.attachments
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.math.Affine2

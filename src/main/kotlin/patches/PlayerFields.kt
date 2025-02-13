@@ -1,4 +1,4 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.badlogic.gdx.utils.Disposable
 import com.esotericsoftware.spine.AnimationState

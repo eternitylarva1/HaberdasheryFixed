@@ -1,18 +1,18 @@
-package haberdashery.devcommands
+package com.evacipated.cardcrawl.mod.haberdashery.devcommands
 
 import basemod.ReflectionHacks
 import basemod.devcommands.ConsoleCommand
 import com.badlogic.gdx.utils.ObjectMap
 import com.esotericsoftware.spine.Skin
 import com.esotericsoftware.spine.attachments.Attachment
+import com.evacipated.cardcrawl.mod.haberdashery.AdjustRelic
+import com.evacipated.cardcrawl.mod.haberdashery.AttachRelic
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachDatabase
+import com.evacipated.cardcrawl.mod.haberdashery.database.MySlotData
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.skeleton
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.subSkeletons
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
-import haberdashery.AdjustRelic
-import haberdashery.AttachRelic
-import haberdashery.HaberdasheryMod
-import haberdashery.database.AttachDatabase
-import haberdashery.database.MySlotData
-import haberdashery.extensions.skeleton
-import haberdashery.extensions.subSkeletons
 
 class ReloadCommand : ConsoleCommand() {
     override fun execute(tokens: Array<out String>, depth: Int) {

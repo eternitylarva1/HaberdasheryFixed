@@ -1,9 +1,9 @@
-package haberdashery.vfx
+package com.evacipated.cardcrawl.mod.haberdashery.vfx
 
 import com.badlogic.gdx.math.MathUtils
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.scale
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.setPrivate
 import com.megacrit.cardcrawl.vfx.scene.TorchParticleSEffect
-import haberdashery.extensions.scale
-import haberdashery.extensions.setPrivate
 
 class FlameParticleEffect(x: Float, y: Float, behind: Boolean = false) : TorchParticleSEffect(setNotGreen(x), y) {
     init {

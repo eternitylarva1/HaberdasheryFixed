@@ -1,7 +1,7 @@
-package haberdashery.devcommands
+package com.evacipated.cardcrawl.mod.haberdashery.devcommands
 
 import basemod.devcommands.ConsoleCommand
-import haberdashery.database.AttachDatabase
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachDatabase
 
 class TestCommand : ConsoleCommand() {
     init {

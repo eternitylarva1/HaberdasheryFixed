@@ -1,12 +1,12 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch
 import com.esotericsoftware.spine.Bone
 import com.esotericsoftware.spine.Skeleton
 import com.esotericsoftware.spine.SkeletonMeshRenderer
 import com.esotericsoftware.spine.attachments.Attachment
+import com.evacipated.cardcrawl.mod.haberdashery.spine.attachments.OffsetSkeletonAttachment
 import com.evacipated.cardcrawl.modthespire.lib.*
-import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import javassist.CtBehavior
 
 @SpirePatch2(

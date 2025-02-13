@@ -1,4 +1,4 @@
-package haberdashery.ui
+package com.evacipated.cardcrawl.mod.haberdashery.ui
 
 import basemod.BaseMod
 import basemod.ReflectionHacks
@@ -6,11 +6,12 @@ import basemod.abstracts.CustomScreen
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.evacipated.cardcrawl.modthespire.lib.SpireEnum
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatches2
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch
-import com.evacipated.cardcrawl.modthespire.lib.SpireReturn
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.scale
+import com.evacipated.cardcrawl.mod.haberdashery.patches.DragRelicToAdjustExcludes
+import com.evacipated.cardcrawl.mod.haberdashery.patches.Ftue
+import com.evacipated.cardcrawl.mod.haberdashery.util.L10nStrings
+import com.evacipated.cardcrawl.modthespire.lib.*
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
@@ -18,11 +19,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon.CurrentScreen
 import com.megacrit.cardcrawl.helpers.FontHelper
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.relics.AbstractRelic
-import haberdashery.HaberdasheryMod
-import haberdashery.extensions.scale
-import haberdashery.patches.DragRelicToAdjustExcludes
-import haberdashery.patches.Ftue
-import haberdashery.util.L10nStrings
 
 class CustomizeAttachmentsScreen : CustomScreen() {
     private var isOpen = false

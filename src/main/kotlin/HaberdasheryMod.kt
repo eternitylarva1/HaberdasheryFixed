@@ -1,4 +1,4 @@
-package haberdashery
+package com.evacipated.cardcrawl.mod.haberdashery
 
 import basemod.BaseMod
 import basemod.ReflectionHacks
@@ -10,21 +10,21 @@ import basemod.interfaces.*
 import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.evacipated.cardcrawl.mod.haberdashery.devcommands.HaberdasheryCommand
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.chosenExclusions
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.panel
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.skeleton
+import com.evacipated.cardcrawl.mod.haberdashery.patches.ModBadgePatch
+import com.evacipated.cardcrawl.mod.haberdashery.ui.CustomizeAttachmentsScreen
+import com.evacipated.cardcrawl.mod.haberdashery.ui.CustomizeAttachmentsTopPanelItem
+import com.evacipated.cardcrawl.mod.haberdashery.util.AssetLoader
+import com.evacipated.cardcrawl.mod.haberdashery.util.Assets
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.localization.UIStrings
 import com.megacrit.cardcrawl.relics.AbstractRelic
-import haberdashery.devcommands.HaberdasheryCommand
-import haberdashery.extensions.chosenExclusions
-import haberdashery.extensions.panel
-import haberdashery.extensions.skeleton
-import haberdashery.patches.ModBadgePatch
-import haberdashery.ui.CustomizeAttachmentsScreen
-import haberdashery.ui.CustomizeAttachmentsTopPanelItem
-import haberdashery.util.AssetLoader
-import haberdashery.util.Assets
 import java.nio.charset.StandardCharsets
 import java.util.*
 

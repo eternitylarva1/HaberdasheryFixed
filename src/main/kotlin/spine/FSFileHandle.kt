@@ -1,4 +1,4 @@
-package haberdashery.spine
+package com.evacipated.cardcrawl.mod.haberdashery.spine
 
 import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.utils.StreamUtils

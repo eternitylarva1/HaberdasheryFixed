@@ -1,11 +1,11 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import basemod.ModBadge
 import basemod.ModPanel
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.scale
 import com.evacipated.cardcrawl.modthespire.lib.ByRef
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch
-import haberdashery.extensions.scale
 
 @SpirePatch2(
     clz = ModBadge::class,

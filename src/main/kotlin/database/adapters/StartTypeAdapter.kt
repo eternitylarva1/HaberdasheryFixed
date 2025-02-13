@@ -1,10 +1,10 @@
-package haberdashery.database.adapters
+package com.evacipated.cardcrawl.mod.haberdashery.database.adapters
 
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachInfo
 import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
 import com.google.gson.stream.JsonWriter
-import haberdashery.database.AttachInfo
 
 class StartTypeAdapter : TypeAdapter<AttachInfo.StartType>() {
     override fun read(input: JsonReader): AttachInfo.StartType? {

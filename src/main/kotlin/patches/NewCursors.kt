@@ -1,6 +1,10 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.inst
+import com.evacipated.cardcrawl.mod.haberdashery.ui.CustomCursor
+import com.evacipated.cardcrawl.mod.haberdashery.ui.CustomizeAttachmentsScreen
 import com.evacipated.cardcrawl.modthespire.lib.*
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.GameCursor
@@ -8,10 +12,6 @@ import com.megacrit.cardcrawl.core.GameCursor.CursorType
 import com.megacrit.cardcrawl.helpers.Hitbox
 import com.megacrit.cardcrawl.helpers.input.InputHelper
 import com.megacrit.cardcrawl.relics.AbstractRelic
-import haberdashery.HaberdasheryMod
-import haberdashery.extensions.inst
-import haberdashery.ui.CustomCursor
-import haberdashery.ui.CustomizeAttachmentsScreen
 import javassist.CtBehavior
 import javassist.expr.ExprEditor
 import javassist.expr.MethodCall

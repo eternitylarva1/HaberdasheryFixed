@@ -1,16 +1,16 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.badlogic.gdx.math.MathUtils
 import com.esotericsoftware.spine.Skeleton
+import com.evacipated.cardcrawl.mod.haberdashery.Config
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachDatabase
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachInfo
+import com.evacipated.cardcrawl.mod.haberdashery.database.MySlotData
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.subSkeletons
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch
 import com.megacrit.cardcrawl.characters.Watcher
-import haberdashery.Config
-import haberdashery.HaberdasheryMod
-import haberdashery.database.AttachDatabase
-import haberdashery.database.AttachInfo
-import haberdashery.database.MySlotData
-import haberdashery.extensions.subSkeletons
 
 @SpirePatch2(
     clz = Watcher::class,

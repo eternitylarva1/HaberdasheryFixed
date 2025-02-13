@@ -1,4 +1,4 @@
-package haberdashery.extensions
+package com.evacipated.cardcrawl.mod.haberdashery.extensions
 
 import basemod.ModLabel
 import basemod.ModLabeledToggleButton
@@ -6,12 +6,12 @@ import basemod.ModPanel
 import basemod.ModToggleButton
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.BitmapFont
+import com.evacipated.cardcrawl.mod.haberdashery.Config
+import com.evacipated.cardcrawl.mod.haberdashery.ui.config.ModCenteredLabel
+import com.evacipated.cardcrawl.mod.haberdashery.util.L10nStrings
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.helpers.FontHelper
 import com.megacrit.cardcrawl.helpers.Hitbox
-import haberdashery.Config
-import haberdashery.ui.config.ModCenteredLabel
-import haberdashery.util.L10nStrings
 import kotlin.math.max
 import kotlin.reflect.*
 import kotlin.reflect.full.declaredMemberProperties

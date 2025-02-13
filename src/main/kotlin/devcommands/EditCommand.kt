@@ -1,9 +1,9 @@
-package haberdashery.devcommands
+package com.evacipated.cardcrawl.mod.haberdashery.devcommands
 
 import basemod.devcommands.ConsoleCommand
 import basemod.devcommands.relic.Relic
+import com.evacipated.cardcrawl.mod.haberdashery.AdjustRelic
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
-import haberdashery.AdjustRelic
 
 class EditCommand : ConsoleCommand() {
     init {

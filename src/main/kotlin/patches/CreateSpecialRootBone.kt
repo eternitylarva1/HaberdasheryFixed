@@ -1,12 +1,12 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.esotericsoftware.spine.Bone
 import com.esotericsoftware.spine.BoneData
 import com.esotericsoftware.spine.Skeleton
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.inheritFlip
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch
 import com.megacrit.cardcrawl.core.AbstractCreature
-import haberdashery.extensions.inheritFlip
 
 @SpirePatch2(
     clz = AbstractCreature::class,

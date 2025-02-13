@@ -1,8 +1,8 @@
-package haberdashery.extensions
+package com.evacipated.cardcrawl.mod.haberdashery.extensions
 
 import com.esotericsoftware.spine.BoneData
-import haberdashery.patches.BoneNoFlip
-import haberdashery.util.SpireFieldDelegate
+import com.evacipated.cardcrawl.mod.haberdashery.patches.BoneNoFlip
+import com.evacipated.cardcrawl.mod.haberdashery.util.SpireFieldDelegate
 
 var BoneData.inheritFlip
         by SpireFieldDelegate<BoneData, Boolean>(BoneNoFlip.Fields.inheritFlip)

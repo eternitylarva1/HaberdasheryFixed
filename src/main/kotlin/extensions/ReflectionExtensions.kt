@@ -1,4 +1,4 @@
-package haberdashery.extensions
+package com.evacipated.cardcrawl.mod.haberdashery.extensions
 
 import basemod.ReflectionHacks
 import kotlin.reflect.KClass

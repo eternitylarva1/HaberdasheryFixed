@@ -1,4 +1,4 @@
-package haberdashery.util
+package com.evacipated.cardcrawl.mod.haberdashery.util
 
 import com.megacrit.cardcrawl.core.CardCrawlGame
 

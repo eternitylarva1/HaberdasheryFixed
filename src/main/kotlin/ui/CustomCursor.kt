@@ -1,4 +1,4 @@
-package haberdashery.ui
+package com.evacipated.cardcrawl.mod.haberdashery.ui
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.files.FileHandle
@@ -8,9 +8,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.GdxRuntimeException
 import com.badlogic.gdx.utils.StreamUtils
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.scale
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.helpers.ImageMaster
-import haberdashery.extensions.scale
 import java.io.BufferedReader
 import java.io.InputStreamReader
 

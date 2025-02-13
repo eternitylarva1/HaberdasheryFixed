@@ -1,7 +1,7 @@
-package haberdashery.devcommands
+package com.evacipated.cardcrawl.mod.haberdashery.devcommands
 
 import basemod.devcommands.ConsoleCommand
-import haberdashery.database.AttachDatabase
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachDatabase
 
 class SaveAllCommand : ConsoleCommand() {
     override fun execute(tokens: Array<out String>, depth: Int) {

@@ -1,4 +1,4 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch
@@ -6,11 +6,11 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.esotericsoftware.spine.Skeleton
 import com.esotericsoftware.spine.SkeletonMeshRenderer
 import com.esotericsoftware.spine.attachments.Attachment
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.bind
+import com.evacipated.cardcrawl.mod.haberdashery.spine.attachments.MaskedRegionAttachment
 import com.evacipated.cardcrawl.modthespire.lib.SpireInstrumentPatch
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
-import haberdashery.HaberdasheryMod
-import haberdashery.extensions.bind
-import haberdashery.spine.attachments.MaskedRegionAttachment
 import javassist.expr.ExprEditor
 import javassist.expr.MethodCall
 

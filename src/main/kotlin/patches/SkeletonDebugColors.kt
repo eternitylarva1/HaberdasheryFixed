@@ -1,10 +1,10 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.badlogic.gdx.graphics.Color
 import com.esotericsoftware.spine.SkeletonRendererDebug
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.inst
 import com.evacipated.cardcrawl.modthespire.lib.SpireInstrumentPatch
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
-import haberdashery.extensions.inst
 import javassist.expr.ExprEditor
 import javassist.expr.FieldAccess
 

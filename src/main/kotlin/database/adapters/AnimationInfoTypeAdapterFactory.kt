@@ -1,5 +1,6 @@
-package haberdashery.database.adapters
+package com.evacipated.cardcrawl.mod.haberdashery.database.adapters
 
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachInfo
 import com.google.gson.Gson
 import com.google.gson.TypeAdapter
 import com.google.gson.TypeAdapterFactory
@@ -7,7 +8,6 @@ import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
 import com.google.gson.stream.JsonWriter
-import haberdashery.database.AttachInfo
 
 class AnimationInfoTypeAdapterFactory : TypeAdapterFactory {
     override fun <T : Any?> create(gson: Gson, type: TypeToken<T>): TypeAdapter<T>? {

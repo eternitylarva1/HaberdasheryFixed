@@ -1,9 +1,9 @@
-package haberdashery.spine.attachments
+package com.evacipated.cardcrawl.mod.haberdashery.spine.attachments
 
 import com.badlogic.gdx.graphics.Texture
 import com.esotericsoftware.spine.Skin
 import com.esotericsoftware.spine.attachments.*
-import haberdashery.extensions.asRegion
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.asRegion
 
 class RelicAttachmentLoader(
     private val tex: Texture

@@ -1,8 +1,8 @@
-package haberdashery.devcommands
+package com.evacipated.cardcrawl.mod.haberdashery.devcommands
 
 import basemod.DevConsole
 import basemod.devcommands.ConsoleCommand
-import haberdashery.Config
+import com.evacipated.cardcrawl.mod.haberdashery.Config
 
 class ConfigCommand : ConsoleCommand() {
     init {
@@ -17,7 +17,7 @@ class ConfigCommand : ConsoleCommand() {
 
         val name = tokens[depth]
         val value = tokens[depth+1]
-        val err =Config.setFromCommand(name, value)
+        val err = Config.setFromCommand(name, value)
         if (err != null) {
             DevConsole.log("Error: $err")
         } else {

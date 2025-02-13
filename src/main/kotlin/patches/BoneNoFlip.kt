@@ -1,10 +1,10 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.esotericsoftware.spine.Bone
 import com.esotericsoftware.spine.BoneData
 import com.esotericsoftware.spine.Skeleton
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.inheritFlip
 import com.evacipated.cardcrawl.modthespire.lib.*
-import haberdashery.extensions.inheritFlip
 
 object BoneNoFlip {
     @SpirePatch2(

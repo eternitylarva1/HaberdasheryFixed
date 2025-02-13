@@ -1,13 +1,13 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.badlogic.gdx.graphics.glutils.PixmapTextureData
 import com.esotericsoftware.spine.attachments.RegionAttachment
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.database.MySlotData
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.skeleton
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.subSkeletons
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2
 import com.megacrit.cardcrawl.characters.AbstractPlayer
-import haberdashery.HaberdasheryMod
-import haberdashery.database.MySlotData
-import haberdashery.extensions.skeleton
-import haberdashery.extensions.subSkeletons
 
 @SpirePatch2(
     clz = AbstractPlayer::class,

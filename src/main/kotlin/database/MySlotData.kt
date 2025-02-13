@@ -1,4 +1,4 @@
-package haberdashery.database
+package com.evacipated.cardcrawl.mod.haberdashery.database
 
 import com.esotericsoftware.spine.BoneData
 import com.esotericsoftware.spine.SlotData

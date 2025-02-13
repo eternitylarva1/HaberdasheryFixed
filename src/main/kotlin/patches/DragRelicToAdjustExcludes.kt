@@ -1,8 +1,14 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.Vector2
+import com.evacipated.cardcrawl.mod.haberdashery.AttachRelic
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachDatabase
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.chosenExclusions
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.scale
+import com.evacipated.cardcrawl.mod.haberdashery.ui.CustomizeAttachmentsScreen
 import com.evacipated.cardcrawl.modthespire.lib.*
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.CardCrawlGame
@@ -11,12 +17,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.ShaderHelper
 import com.megacrit.cardcrawl.helpers.input.InputHelper
 import com.megacrit.cardcrawl.relics.AbstractRelic
-import haberdashery.AttachRelic
-import haberdashery.HaberdasheryMod
-import haberdashery.database.AttachDatabase
-import haberdashery.extensions.chosenExclusions
-import haberdashery.extensions.scale
-import haberdashery.ui.CustomizeAttachmentsScreen
 import javassist.CtBehavior
 import javassist.expr.ExprEditor
 import javassist.expr.MethodCall

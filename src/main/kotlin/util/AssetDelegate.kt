@@ -1,6 +1,6 @@
-package haberdashery.util
+package com.evacipated.cardcrawl.mod.haberdashery.util
 
-import haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
 
 class AssetDelegate<T : Any?>(
     private val filename: String,

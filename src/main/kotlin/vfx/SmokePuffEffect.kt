@@ -1,4 +1,4 @@
-package haberdashery.vfx
+package com.evacipated.cardcrawl.mod.haberdashery.vfx
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion
 import com.badlogic.gdx.math.Interpolation
 import com.badlogic.gdx.math.MathUtils
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.scale
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect
-import haberdashery.extensions.scale
 
 class SmokePuffEffect(
     private var x: Float,

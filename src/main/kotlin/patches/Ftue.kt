@@ -1,14 +1,14 @@
-package haberdashery.patches
+package com.evacipated.cardcrawl.mod.haberdashery.patches
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.evacipated.cardcrawl.mod.haberdashery.Config
+import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
+import com.evacipated.cardcrawl.mod.haberdashery.util.L10nStrings
 import com.evacipated.cardcrawl.modthespire.lib.*
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.ui.FtueTip
 import com.megacrit.cardcrawl.ui.FtueTip.TipType
-import haberdashery.Config
-import haberdashery.HaberdasheryMod
-import haberdashery.util.L10nStrings
 import javassist.CtBehavior
 import kotlin.reflect.KMutableProperty
 

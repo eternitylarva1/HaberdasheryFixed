@@ -1,11 +1,11 @@
-package haberdashery.spine.attachments
+package com.evacipated.cardcrawl.mod.haberdashery.spine.attachments
 
 import com.badlogic.gdx.math.Vector2
 import com.esotericsoftware.spine.Bone
 import com.esotericsoftware.spine.Skeleton
 import com.esotericsoftware.spine.attachments.SkeletonAttachment
-import haberdashery.database.AttachInfo
-import haberdashery.extensions.inheritFlip
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachInfo
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.inheritFlip
 
 class OffsetSkeletonAttachment(name: String) : SkeletonAttachment(name) {
     var position: Vector2 = Vector2()

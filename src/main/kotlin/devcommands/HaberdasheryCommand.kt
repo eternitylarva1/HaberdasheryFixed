@@ -1,4 +1,4 @@
-package haberdashery.devcommands
+package com.evacipated.cardcrawl.mod.haberdashery.devcommands
 
 import basemod.devcommands.ConsoleCommand
 

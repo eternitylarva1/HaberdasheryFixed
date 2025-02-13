@@ -1,7 +1,7 @@
-package haberdashery.devcommands
+package com.evacipated.cardcrawl.mod.haberdashery.devcommands
 
 import basemod.devcommands.ConsoleCommand
-import haberdashery.AdjustRelic
+import com.evacipated.cardcrawl.mod.haberdashery.AdjustRelic
 
 class DebugCommand : ConsoleCommand() {
     override fun execute(tokens: Array<out String>, depth: Int) {

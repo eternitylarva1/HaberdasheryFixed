@@ -1,4 +1,4 @@
-package haberdashery.ui.config
+package com.evacipated.cardcrawl.mod.haberdashery.ui.config
 
 import basemod.ModLabel
 import basemod.ModPanel

@@ -1,4 +1,4 @@
-package haberdashery.extensions
+package com.evacipated.cardcrawl.mod.haberdashery.extensions
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20

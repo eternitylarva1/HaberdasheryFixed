@@ -1,4 +1,4 @@
-package haberdashery
+package com.evacipated.cardcrawl.mod.haberdashery
 
 import basemod.DevConsole
 import com.badlogic.gdx.Gdx
@@ -21,6 +21,13 @@ import com.esotericsoftware.spine.SkeletonRendererDebug
 import com.esotericsoftware.spine.Slot
 import com.esotericsoftware.spine.attachments.Attachment
 import com.esotericsoftware.spine.attachments.RegionAttachment
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachDatabase
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachInfo
+import com.evacipated.cardcrawl.mod.haberdashery.database.MySlotData
+import com.evacipated.cardcrawl.mod.haberdashery.extensions.*
+import com.evacipated.cardcrawl.mod.haberdashery.patches.StopOtherKeyboardShortcuts
+import com.evacipated.cardcrawl.mod.haberdashery.spine.attachments.MaskedRegionAttachment
+import com.evacipated.cardcrawl.mod.haberdashery.spine.attachments.OffsetSkeletonAttachment
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
@@ -28,13 +35,6 @@ import com.megacrit.cardcrawl.helpers.FontHelper
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.helpers.RelicLibrary
 import com.megacrit.cardcrawl.helpers.input.InputHelper
-import haberdashery.database.AttachDatabase
-import haberdashery.database.AttachInfo
-import haberdashery.database.MySlotData
-import haberdashery.extensions.*
-import haberdashery.patches.StopOtherKeyboardShortcuts
-import haberdashery.spine.attachments.MaskedRegionAttachment
-import haberdashery.spine.attachments.OffsetSkeletonAttachment
 import java.util.*
 import kotlin.math.absoluteValue
 import kotlin.math.max
@@ -130,13 +130,13 @@ object AdjustRelic {
         if (AttachDatabase.getInfo(AbstractDungeon.player.chosenClass, relicId) != null) {
             return
         }
-        this.relicId = relicId
+        AdjustRelic.relicId = relicId
         mode = EditMode.PickingBone
     }
 
     fun setRelic(relicId: String?) {
         if (relicId == null) {
-            this.relicId = relicId
+            AdjustRelic.relicId = relicId
             return
         }
 
@@ -148,7 +148,7 @@ object AdjustRelic {
             return
         }
 
-        this.relicId = relicId
+        AdjustRelic.relicId = relicId
     }
 
     fun reload() {
