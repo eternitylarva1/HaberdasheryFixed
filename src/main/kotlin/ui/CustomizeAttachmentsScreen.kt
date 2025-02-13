@@ -40,6 +40,7 @@ class CustomizeAttachmentsScreen : CustomScreen() {
         AbstractDungeon.screen = curScreen()
         AbstractDungeon.isScreenUp = true
         blackScreenTarget = 0.85f
+        AbstractDungeon.overlayMenu.cancelButton.show(strings["return"])
     }
 
     override fun close() {

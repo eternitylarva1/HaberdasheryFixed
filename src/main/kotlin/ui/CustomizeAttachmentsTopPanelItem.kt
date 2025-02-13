@@ -22,6 +22,7 @@ class CustomizeAttachmentsTopPanelItem : TopPanelItem(Assets.topPanelImg, ID) {
     override fun onClick() {
         if (CustomizeAttachmentsScreen.isOpen()) {
             AbstractDungeon.closeCurrentScreen()
+            AbstractDungeon.overlayMenu.cancelButton.hide()
         } else {
             BaseMod.openCustomScreen(CustomizeAttachmentsScreen.Enum.CUSTOMIZE_ATTACHMENTS)
         }
