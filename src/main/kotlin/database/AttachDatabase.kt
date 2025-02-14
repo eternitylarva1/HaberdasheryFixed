@@ -13,6 +13,7 @@ import com.evacipated.cardcrawl.mod.haberdashery.extensions.getPrivate
 import com.evacipated.cardcrawl.mod.haberdashery.extensions.skeleton
 import com.evacipated.cardcrawl.mod.haberdashery.spine.attachments.MaskedRegionAttachment
 import com.evacipated.cardcrawl.modthespire.Loader
+import com.evacipated.cardcrawl.modthespire.ModInfo
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -90,16 +91,7 @@ object AttachDatabase {
 
         // Load mod jsons
         for (modInfo in Loader.MODINFOS) {
-            val uri = modInfo.jarURL?.toURI()?.let { URI.create("jar:$it") } ?: continue
-            val fs = try {
-                FileSystems.newFileSystem(uri, emptyMap<String, Any?>())
-            } catch (e: FileSystemAlreadyExistsException) {
-                FileSystems.getFileSystem(uri)
-            } catch (e: Exception) {
-                logger.error("Failed to make FileSystem: $uri", e)
-                continue
-            }
-
+            val fs = getModFileSystem(modInfo) ?: continue
             val path = fs.getPath("/${HaberdasheryMod.ID}")
             if (path.notExists()) continue
             Files.walk(path, 1)
@@ -244,6 +236,18 @@ object AttachDatabase {
             throw FileNotFoundException()
         } catch (e: Exception) {
             logger.warn("Failed to load mask", e)
+            return null
+        }
+    }
+
+    fun getModFileSystem(modInfo: ModInfo): FileSystem? {
+        val uri = modInfo.jarURL?.toURI()?.let { URI.create("jar:$it") } ?: return null
+        return try {
+            FileSystems.newFileSystem(uri, emptyMap<String, Any?>())
+        } catch (e: FileSystemAlreadyExistsException) {
+            FileSystems.getFileSystem(uri)
+        } catch (e: Exception) {
+            logger.error("Failed to make FileSystem: $uri", e)
             return null
         }
     }

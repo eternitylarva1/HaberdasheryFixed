@@ -73,6 +73,7 @@ tasks.processResources {
     }
     filesMatching("ModTheSpire.json", expansion)
     filesMatching("${modID}Assets/**/*.json", expansion)
+    filesMatching("${modID}/audio/**/*.audio", expansion)
 }
 
 tasks.jar {

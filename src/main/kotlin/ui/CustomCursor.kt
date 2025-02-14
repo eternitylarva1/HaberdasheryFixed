@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.GdxRuntimeException
 import com.badlogic.gdx.utils.StreamUtils
 import com.evacipated.cardcrawl.mod.haberdashery.extensions.scale
+import com.evacipated.cardcrawl.mod.haberdashery.util.FileReadUtil
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.helpers.ImageMaster
 import java.io.BufferedReader
@@ -46,7 +47,7 @@ class CustomCursor(cursorFile: FileHandle, imagesDir: FileHandle) {
                         this@CustomCursor.height = height.toFloat()
                     }
                 } else {
-                    with(readTuple(line)) {
+                    with(FileReadUtil.readTuple(line)) {
                         when (name) {
                             "size" -> if (size == 2) {
                                 width = data[0].toInt().toFloat()
@@ -102,40 +103,5 @@ class CustomCursor(cursorFile: FileHandle, imagesDir: FileHandle) {
         private val SHADOW_COLOR by lazy { Color(0f, 0f, 0f, 0.15f) }
         private val SHADOW_OFFSET_X by lazy { (-10).scale() }
         private val SHADOW_OFFSET_Y by lazy { 8.scale() }
-
-        private fun readTuple(line: String): Tuple {
-            val colon = line.indexOf(':')
-            if (colon == -1) {
-                throw GdxRuntimeException("Invalid line: $line")
-            } else {
-                val tuple = Tuple(line.substring(0, colon))
-                var lastMatch = colon + 1
-                var i = 0
-
-                while (i < 3) {
-                    val comma = line.indexOf(',', lastMatch)
-                    if (comma == -1) {
-                        break
-                    }
-
-                    tuple.add(line.substring(lastMatch, comma).trim())
-                    lastMatch = comma + 1
-                    i++
-                }
-                tuple.add(line.substring(lastMatch).trim())
-                return tuple
-            }
-        }
-    }
-
-    private data class Tuple(val name: String) {
-        val data = Array(4) { "" }
-        var size = 0
-            private set
-
-        fun add(str: String) {
-            data[size] = str
-            size++
-        }
     }
 }

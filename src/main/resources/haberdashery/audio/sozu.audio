@@ -1,0 +1,3 @@
+id: ${mod.id}:SOZU
+file: sozu.ogg
+preload: false
