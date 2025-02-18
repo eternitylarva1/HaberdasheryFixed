@@ -5,10 +5,13 @@ import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
 import com.evacipated.cardcrawl.mod.haberdashery.extensions.inst
 import com.evacipated.cardcrawl.mod.haberdashery.ui.CustomCursor
 import com.evacipated.cardcrawl.mod.haberdashery.ui.CustomizeAttachmentsScreen
+import com.evacipated.cardcrawl.mod.haberdashery.util.CursorLoader
 import com.evacipated.cardcrawl.modthespire.lib.*
+import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.GameCursor
 import com.megacrit.cardcrawl.core.GameCursor.CursorType
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.Hitbox
 import com.megacrit.cardcrawl.helpers.input.InputHelper
 import com.megacrit.cardcrawl.relics.AbstractRelic
@@ -17,16 +20,31 @@ import javassist.expr.ExprEditor
 import javassist.expr.MethodCall
 
 object NewCursors {
-    @SpireEnum @JvmStatic lateinit var HAND: CursorType
-    @SpireEnum @JvmStatic lateinit var GRAB: CursorType
+    object Enums {
+        @SpireEnum @JvmStatic lateinit var HAND: CursorType
+        @SpireEnum @JvmStatic lateinit var GRAB: CursorType
+    }
 
-    @SpirePatch2(
-        clz = GameCursor::class,
-        method = SpirePatch.CLASS
-    )
-    object Fields {
-        @JvmField val imgHand = SpireField { CustomCursor(HaberdasheryMod.assetPath("images/cursors/cursorHand.cursor")) }
-        @JvmField val imgGrab = SpireField { CustomCursor(HaberdasheryMod.assetPath("images/cursors/cursorGrab.cursor")) }
+    private val handGeneric = CursorLoader.load(HaberdasheryMod.assetPath("images/cursors/genericHand.json"))
+    private val grabGeneric = CursorLoader.load(HaberdasheryMod.assetPath("images/cursors/genericGrab.json"))
+    private val handCursors = mutableMapOf<PlayerClass, CustomCursor>()
+    private val grabCursors = mutableMapOf<PlayerClass, CustomCursor>()
+
+    fun addCursor(character: PlayerClass, type: CursorType, cursor: CustomCursor) {
+        val map = when (type) {
+            Enums.HAND -> handCursors
+            Enums.GRAB -> grabCursors
+            else -> return
+        }
+        map[character] = cursor
+    }
+
+    fun getGeneric(type: CursorType): CustomCursor? {
+        return when (type) {
+            Enums.HAND -> handGeneric
+            Enums.GRAB -> grabGeneric
+            else -> null
+        }
     }
 
     @SpirePatch2(
@@ -39,12 +57,13 @@ object NewCursors {
             locator = Locator::class
         )
         fun render(__instance: GameCursor, ___type: CursorType, sb: SpriteBatch) {
-            val cursor = when (___type) {
-                HAND -> Fields.imgHand.get(__instance)
-                GRAB -> Fields.imgGrab.get(__instance)
+            val map = when (___type) {
+                Enums.HAND -> handCursors
+                Enums.GRAB -> grabCursors
                 else -> return
             }
-            cursor.render(sb, InputHelper.mX, InputHelper.mY)
+            val cursor = map[AbstractDungeon.player?.chosenClass] ?: getGeneric(___type)
+            cursor?.render(sb, InputHelper.mX, InputHelper.mY)
         }
 
         private class Locator : SpireInsertLocator() {
@@ -83,16 +102,16 @@ object NewCursors {
         @SpirePostfixPatch
         fun postfix() {
             if (DragRelicToAdjustExcludes.grabbedRelic != null) {
-                CardCrawlGame.cursor.changeType(GRAB)
+                CardCrawlGame.cursor.changeType(Enums.GRAB)
             } else if (DragRelicToAdjustExcludes.droppedTimer > 0f) {
-                CardCrawlGame.cursor.changeType(HAND)
+                CardCrawlGame.cursor.changeType(Enums.HAND)
             }
         }
 
         @JvmStatic
         fun changeCursorOnHover(relic: AbstractRelic) {
             if (DragRelicToAdjustExcludes.canDragRelic(relic)) {
-                CardCrawlGame.cursor.changeType(HAND)
+                CardCrawlGame.cursor.changeType(Enums.HAND)
             }
         }
 

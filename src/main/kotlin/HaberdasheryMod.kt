@@ -21,6 +21,7 @@ import com.evacipated.cardcrawl.mod.haberdashery.ui.CustomizeAttachmentsTopPanel
 import com.evacipated.cardcrawl.mod.haberdashery.util.AssetLoader
 import com.evacipated.cardcrawl.mod.haberdashery.util.Assets
 import com.evacipated.cardcrawl.mod.haberdashery.util.AudioLoader
+import com.evacipated.cardcrawl.mod.haberdashery.util.CursorLoader
 import com.evacipated.cardcrawl.modthespire.Loader
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
 import com.megacrit.cardcrawl.core.Settings
@@ -111,6 +112,8 @@ class HaberdasheryMod :
                 }
             }
         })
+
+        CursorLoader.loadAll()
     }
 
     override fun receiveEditStrings() {

@@ -1,0 +1,6 @@
+{
+  "image": "genericGrab.png",
+  "type": "GRAB",
+  "size": [64, 64],
+  "hotspot": [32, 32]
+}

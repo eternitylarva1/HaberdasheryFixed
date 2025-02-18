@@ -1,0 +1,6 @@
+{
+  "image": "genericHand.png",
+  "type": "HAND",
+  "size": [64, 64],
+  "hotspot": [32, 32]
+}
