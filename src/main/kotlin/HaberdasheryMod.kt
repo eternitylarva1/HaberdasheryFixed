@@ -10,7 +10,6 @@ import basemod.interfaces.*
 import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.evacipated.cardcrawl.mod.haberdashery.database.AttachDatabase
 import com.evacipated.cardcrawl.mod.haberdashery.devcommands.HaberdasheryCommand
 import com.evacipated.cardcrawl.mod.haberdashery.extensions.chosenExclusions
 import com.evacipated.cardcrawl.mod.haberdashery.extensions.panel
@@ -22,7 +21,6 @@ import com.evacipated.cardcrawl.mod.haberdashery.util.AssetLoader
 import com.evacipated.cardcrawl.mod.haberdashery.util.Assets
 import com.evacipated.cardcrawl.mod.haberdashery.util.AudioLoader
 import com.evacipated.cardcrawl.mod.haberdashery.util.CursorLoader
-import com.evacipated.cardcrawl.modthespire.Loader
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
@@ -30,9 +28,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster
 import com.megacrit.cardcrawl.localization.UIStrings
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import java.nio.charset.StandardCharsets
-import java.nio.file.Files
 import java.util.*
-import kotlin.io.path.notExists
 
 @SpireInitializer
 class HaberdasheryMod :
@@ -133,17 +129,7 @@ class HaberdasheryMod :
     }
 
     override fun receiveAddAudio() {
-        for (modInfo in Loader.MODINFOS) {
-            val fs = AttachDatabase.getModFileSystem(modInfo) ?: continue
-            val path = fs.getPath("/$ID/audio")
-            if (path.notExists()) continue
-            Files.walk(path)
-                .filter(Files::isRegularFile)
-                .filter { it.fileName?.toString()?.substringAfterLast(".", "") == "audio" }
-                .forEach {
-                    AudioLoader.load(it)
-                }
-        }
+        AudioLoader.loadAll()
     }
 
     override fun receiveRelicGet(relic: AbstractRelic?) {
