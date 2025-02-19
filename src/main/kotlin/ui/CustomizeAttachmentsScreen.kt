@@ -10,14 +10,17 @@ import com.evacipated.cardcrawl.mod.haberdashery.HaberdasheryMod
 import com.evacipated.cardcrawl.mod.haberdashery.extensions.scale
 import com.evacipated.cardcrawl.mod.haberdashery.patches.DragRelicToAdjustExcludes
 import com.evacipated.cardcrawl.mod.haberdashery.patches.Ftue
+import com.evacipated.cardcrawl.mod.haberdashery.patches.NewCursors
 import com.evacipated.cardcrawl.mod.haberdashery.util.L10nStrings
 import com.evacipated.cardcrawl.modthespire.lib.*
 import com.megacrit.cardcrawl.core.AbstractCreature
+import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon.CurrentScreen
 import com.megacrit.cardcrawl.helpers.FontHelper
 import com.megacrit.cardcrawl.helpers.ImageMaster
+import com.megacrit.cardcrawl.helpers.input.InputHelper
 import com.megacrit.cardcrawl.relics.AbstractRelic
 
 class CustomizeAttachmentsScreen : CustomScreen() {
@@ -69,6 +72,15 @@ class CustomizeAttachmentsScreen : CustomScreen() {
             player.hb.update()
             ReflectionHacks.privateMethod(AbstractCreature::class.java, "updateReticle")
                 .invoke<Unit>(player)
+        }
+
+        if (InputHelper.mY < (Settings.HEIGHT - 64.scale())
+            && !AbstractDungeon.overlayMenu.cancelButton.hovered()) {
+            if (InputHelper.isMouseDown) {
+                CardCrawlGame.cursor.changeType(NewCursors.Enums.GRAB)
+            } else {
+                CardCrawlGame.cursor.changeType(NewCursors.Enums.HAND)
+            }
         }
     }
 
