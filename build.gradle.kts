@@ -20,14 +20,17 @@ val localLibPath = project.properties["sts.localLibPath"]
 val modsPath = project.properties["sts.modsPath"] ?: "$steamPath/common/SlayTheSpire/mods"
 
 extra.apply {
+    val srcAssets = project.rootDir.resolve("srcAssets")
     mapOf(
         "id" to modID,
         "name" to description,
         "version" to version,
         "sts_version" to "12-22-2020",
         "mts_version" to "3.21.0",
-        "authors" to listOf("kiooeht")
+        "authors" to srcAssets.resolve("authors.txt").readLines()
             .joinToString(separator = "\", \""),
+        "credits" to srcAssets.resolve("credits.txt").readText().trimIndent(),
+        "description" to srcAssets.resolve("description.txt").readText().trimIndent(),
         "dependencies" to listOf("basemod")
             .joinToString(separator = "\", \""),
     ).forEach { (k, v) -> set(k, v) }
