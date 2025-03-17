@@ -1,5 +1,6 @@
 {
-  "image": "genericHand.png",
+  "character": "THE_SILENT",
+  "image": "silentHand.png",
   "type": "HAND",
   "size": [64, 64],
   "hotspot": [32, 36]

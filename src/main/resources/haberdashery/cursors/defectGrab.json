@@ -1,0 +1,7 @@
+{
+  "character": "DEFECT",
+  "image": "defectGrab.png",
+  "type": "GRAB",
+  "size": [64, 64],
+  "hotspot": [34, 36]
+}
