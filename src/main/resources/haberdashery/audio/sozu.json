@@ -1,5 +1,6 @@
 {
   "id": "${mod.id}:SOZU",
   "file": "sozu.ogg",
-  "preload": false
+  "preload": false,
+  "credit": "deerchaser.mp3 by morgantj -- https://freesound.org/s/58569/ -- License: Attribution 4.0"
 }
