@@ -25,8 +25,8 @@ extra.apply {
         "id" to modID,
         "name" to description,
         "version" to version,
-        "sts_version" to "12-22-2020",
-        "mts_version" to "3.21.0",
+        "sts_version" to "12-18-2022",
+        "mts_version" to "3.30.3",
         "authors" to srcAssets.resolve("authors.txt").readLines()
             .joinToString(separator = "\", \""),
         "credits" to srcAssets.resolve("credits.txt").readText().trimIndent(),
