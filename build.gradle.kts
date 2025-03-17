@@ -62,6 +62,10 @@ dependencies {
 tasks.processResources {
     dependsOn("texturePacker")
 
+    inputs.files("srcAssets/authors.txt")
+    inputs.files("srcAssets/credits.txt")
+    inputs.files("srcAssets/description.txt")
+
     filteringCharset = "UTF-8"
     val expansion: FileCopyDetails.() -> Unit = {
         val tokens = project.extra.properties.entries
