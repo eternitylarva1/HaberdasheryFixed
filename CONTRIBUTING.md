@@ -9,8 +9,12 @@
   * Will first have you select what bone to relic will be attached too, then activate the Attachment Editor for the relic.
 * `edit <relicId>`
   * Edit the attachment of the given relic for the current character.
-* `test`
+* `test [all|character|shared]`
   * Gives the player all relics that have attachment info defined for the current character.
+  * `shared` gives only relics with shared, non-character specific attachments.
+  * `character` gives only relics with specific attachments for the current character.
+  * `all` gives gives both shared and character relics.
+  * If none give, defaults to `all`.
 * `debug`
   * Enables debug visuals for player and relic skeletons.
 * `saveall`
