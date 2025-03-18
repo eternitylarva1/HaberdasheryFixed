@@ -1,1 +1,2 @@
-TODO
+Haberdashery add visuals for relics, allowing you to see the relics you have collected on your character.
+Covers most base game relics for the four base game characters.
