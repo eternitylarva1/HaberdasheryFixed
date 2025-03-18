@@ -14,7 +14,7 @@
   * `shared` gives only relics with shared, non-character specific attachments.
   * `character` gives only relics with specific attachments for the current character.
   * `all` gives gives both shared and character relics.
-  * If none give, defaults to `all`.
+  * If none given, defaults to `all`.
 * `debug`
   * Enables debug visuals for player and relic skeletons.
 * `saveall`
