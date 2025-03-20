@@ -13,7 +13,7 @@
         "vfx": {
           "marbles": {
             "bone": "marbleSpawn",
-            "class": "haberdashery.vfx.BagOfMarblesEffect"
+            "class": "com.evacipated.cardcrawl.mod.haberdashery.vfx.BagOfMarblesEffect"
           }
         }
       },

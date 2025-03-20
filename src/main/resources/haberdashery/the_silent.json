@@ -282,7 +282,7 @@
         "vfx": {
           "smoke": {
             "bone": "smoke",
-            "class": "haberdashery.vfx.SmokePuffEffect"
+            "class": "com.evacipated.cardcrawl.mod.haberdashery.vfx.SmokePuffEffect"
           }
         }
       },
@@ -631,7 +631,7 @@
         "vfx": {
           "flame": {
             "bone": "lightSource",
-            "class": "haberdashery.vfx.FlameParticleEffect"
+            "class": "com.evacipated.cardcrawl.mod.haberdashery.vfx.FlameParticleEffect"
           }
         }
       },

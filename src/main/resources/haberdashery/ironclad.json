@@ -829,7 +829,7 @@
         "vfx": {
           "flame": {
             "bone": "lightSource",
-            "class": "haberdashery.vfx.FlameParticleEffect"
+            "class": "com.evacipated.cardcrawl.mod.haberdashery.vfx.FlameParticleEffect"
           }
         }
       },
