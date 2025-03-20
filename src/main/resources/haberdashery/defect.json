@@ -1369,7 +1369,10 @@
         "useRelicAsAtlas": false,
         "animations": [],
         "onFlash": {
-          "animation": "insert",
+          "animation": {
+            "name": "insert",
+            "speed": 2
+          },
           "beforeAction": "com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction"
         },
         "boneTransforms": []
