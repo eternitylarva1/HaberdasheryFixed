@@ -51,6 +51,10 @@ object OnFlashTrigger {
                         listeners.filterIsInstance<AnimationEventListener>()
                             .forEach { it.addOnFlashAction(innerAction) }
 
+                        if (innerAction.isDone) {
+                            return
+                        }
+
                         val actions = AbstractDungeon.actionManager.actions
                         for ((i, action) in actions.withIndex()) {
                             if (action::class.qualifiedName == info.onFlash.beforeAction) {

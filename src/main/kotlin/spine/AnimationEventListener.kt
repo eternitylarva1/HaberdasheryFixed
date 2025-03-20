@@ -26,6 +26,8 @@ class AnimationEventListener(
     private val slotName: String,
 ) : AnimationStateListener {
     private val actions = mutableListOf<AbstractGameAction>()
+    // Counts how many onflashinneractions should be waited for, if negative, added actions are immediately set to done
+    private var counter = 0
 
     override fun event(trackIndex: Int, event: Event) {
         val slot = parent.findSlot(slotName) ?: return
@@ -110,12 +112,19 @@ class AnimationEventListener(
     }
 
     fun addOnFlashAction(action: AbstractGameAction) {
-        actions.add(action)
+        if (counter < 0) {
+            ++counter
+            action.isDone = true
+        } else {
+            actions.add(action)
+        }
     }
 
     private fun continueActions() {
         if (actions.size > 0) {
             actions.removeAt(0).isDone = true
+        } else {
+            --counter
         }
     }
 
