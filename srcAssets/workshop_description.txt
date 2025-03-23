@@ -1,0 +1,15 @@
+Ever wondered what the Slay the Spire characters do with all the relics they collect?
+
+This mod makes the relics you obtain appear on and around your character, allowing you to see the pile of trinkets your character has to drag through the spire with them.
+
+Haberdashery comes with support for most of the base game relics for all four base game characters while allowing other mods to add support for their own relics and characters.
+
+[h1]Special Thanks[/h1]
+[list]
+[*] [b]Laugic[/b] for creating the hand cursors art.
+[*] [b]Gk[/b] for providing some Defect attachments.
+[/list]
+
+[h1]For Modders[/h1]
+If you want to add your custom relics to characters or add relics to your custom character, you can find instructions on the github:
+https://github.com/kiooeht/Haberdashery/wiki
