@@ -11,7 +11,7 @@ plugins {
 
 val modID = "haberdashery"
 group = "com.evacipated.cardcrawl.mod"
-version = "0.1"
+version = "1.0"
 description = "Haberdashery"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
