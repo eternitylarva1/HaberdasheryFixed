@@ -5,6 +5,7 @@ import basemod.devcommands.relic.Relic
 import com.evacipated.cardcrawl.mod.haberdashery.AdjustRelic
 import com.evacipated.cardcrawl.mod.haberdashery.database.AttachDatabase
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
+import com.megacrit.cardcrawl.helpers.RelicLibrary
 
 class EditCommand : ConsoleCommand() {
     init {
@@ -20,6 +21,11 @@ class EditCommand : ConsoleCommand() {
             return
         }
         val relicId = Relic.getRelicName(tokens.copyOfRange(2, tokens.size))
+        if (!AbstractDungeon.player.hasRelic(relicId)) {
+            RelicLibrary.getRelic(relicId)
+                ?.makeCopy()
+                ?.instantObtain(AbstractDungeon.player, AbstractDungeon.player.relics.size, false)
+        }
         AdjustRelic.setRelic(relicId)
     }
 
