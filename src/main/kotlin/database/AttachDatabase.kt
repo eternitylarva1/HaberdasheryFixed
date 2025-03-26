@@ -205,6 +205,12 @@ object AttachDatabase {
         }
     }
 
+    fun getRelicsDevCommand(character: AbstractPlayer.PlayerClass): Set<String> {
+        val ret = (database[Enums.SHARED]?.keys ?: emptySet()) +
+                (database[character]?.keys ?: emptySet())
+        return ret.map { it.replace(' ', '_') }.toSet()
+    }
+
     fun getPaths(info: AttachInfo?): Iterable<Path> {
         return info?.path?.let { listOf(it.parent) + paths } ?: paths
     }

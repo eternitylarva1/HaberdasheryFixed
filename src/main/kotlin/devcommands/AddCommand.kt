@@ -3,6 +3,8 @@ package com.evacipated.cardcrawl.mod.haberdashery.devcommands
 import basemod.devcommands.ConsoleCommand
 import basemod.devcommands.relic.Relic
 import com.evacipated.cardcrawl.mod.haberdashery.AdjustRelic
+import com.evacipated.cardcrawl.mod.haberdashery.database.AttachDatabase
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.RelicLibrary
 
 class AddCommand : ConsoleCommand() {
@@ -23,6 +25,8 @@ class AddCommand : ConsoleCommand() {
     }
 
     override fun extraOptions(tokens: Array<out String>, depth: Int): ArrayList<String> {
-        return getRelicOptions()
+        val allRelics = getRelicOptions()
+        allRelics.removeAll(AttachDatabase.getRelicsDevCommand(AbstractDungeon.player.chosenClass))
+        return allRelics
     }
 }
