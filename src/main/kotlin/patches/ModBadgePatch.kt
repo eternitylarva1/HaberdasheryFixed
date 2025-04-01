@@ -16,7 +16,7 @@ object ModBadgePatch {
 
     @JvmStatic
     @SpirePrefixPatch
-    fun prefix(___modPanel: ModPanel, @ByRef ___x: FloatArray, @ByRef ___y: FloatArray) {
+    fun prefix(___modPanel: ModPanel?, @ByRef ___x: FloatArray, @ByRef ___y: FloatArray) {
         if (___modPanel == panel) {
             ___x[0] += 34.5f.scale()
             ___y[0] += 9.scale()
