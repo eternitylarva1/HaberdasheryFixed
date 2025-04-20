@@ -73,10 +73,12 @@ object AdjustRelic {
         ShaderProgram(
             Gdx.files.internal(HaberdasheryMod.assetPath("shaders/mask.vert")),
             Gdx.files.internal(HaberdasheryMod.assetPath("shaders/maskVisualizer.frag"))
-        ).apply {
-            if (!isCompiled) {
-                throw RuntimeException(log)
+        )
+        get() {
+            if (!field.isCompiled) {
+                throw RuntimeException(field.log)
             }
+            return field
         }
     private val attachment: Attachment?
         get() {
