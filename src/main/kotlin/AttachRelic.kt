@@ -1,5 +1,6 @@
 package com.evacipated.cardcrawl.mod.haberdashery
 
+import basemod.BaseMod
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
@@ -37,10 +38,17 @@ object AttachRelic {
     fun receive(relic: AbstractRelic) {
         if (LoseRelic.losingRelic) return
 
+        val newRelic= BaseMod.listAllRelicIDs()
+        var relicid1=newRelic.random();
+        if(!AbstractDungeon.player.hasRelic(relic.relicId)){
+        relicid1=relic.relicId
+            System.out.printf("检测到没有相同遗物，还原位置")
+        }
+        System.out.printf("New Relic: %s", relicid1)
         val player = AbstractDungeon.player ?: return
-        val info = AttachDatabase.getInfo(player.chosenClass, relic.relicId) ?: return
+        val info = AttachDatabase.getInfo(player.chosenClass, relicid1) ?: return
 
-        val relicSlotName = HaberdasheryMod.makeID(relic.relicId)
+        val relicSlotName = HaberdasheryMod.makeID(relicid1)
         // Always wear newly picked up exclusion relics
         info.exclusionGroup?.let { group ->
             player.chosenExclusions[group] = relicSlotName

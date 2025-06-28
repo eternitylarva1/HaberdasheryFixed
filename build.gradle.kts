@@ -11,8 +11,8 @@ plugins {
 
 val modID = "haberdashery"
 group = "com.evacipated.cardcrawl.mod"
-version = "1.1.2"
-description = "Haberdashery"
+version = "1.2.7"
+description = "HaberdasheryFixed"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 val steamPath = project.properties["sts.steamPath"] ?: "C:/Program Files (x86)/Steam/steamapps"
