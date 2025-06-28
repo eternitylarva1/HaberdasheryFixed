@@ -41,10 +41,11 @@ object AttachRelic {
         val newRelic= BaseMod.listAllRelicIDs()
         var relicid1=newRelic.random();
         if(!AbstractDungeon.player.hasRelic(relic.relicId)){
-        relicid1=relic.relicId
+            relicid1=relic.relicId
             System.out.printf("检测到没有相同遗物，还原位置")
         }
         System.out.printf("New Relic: %s", relicid1)
+
         val player = AbstractDungeon.player ?: return
         val info = AttachDatabase.getInfo(player.chosenClass, relicid1) ?: return
 
